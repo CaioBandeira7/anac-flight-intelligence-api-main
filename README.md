@@ -1,5 +1,5 @@
 [README.md](https://github.com/user-attachments/files/32026750/README.md)
-# anac-flight-intelligence-api-main# ✈️ ANAC Flight Intelligence API
+✈️ ANAC Flight Intelligence API
 
 A production-ready machine learning API that predicts airport congestion, seat occupancy, ticket pricing pressure, and baggage excess probability for Brazilian aviation routes — built on 20GB+ of open ANAC (Brazilian Civil Aviation Agency) data.
 
