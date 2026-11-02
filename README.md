@@ -1,97 +1,24 @@
-[README.md](https://github.com/user-attachments/files/32026750/README.md)
-✈️ ANAC Flight Intelligence API
+# ANAC Flight Intelligence API
 
-A production-ready machine learning API that predicts airport congestion, seat occupancy, ticket pricing pressure, and baggage excess probability for Brazilian aviation routes — built on 20GB+ of open ANAC (Brazilian Civil Aviation Agency) data.
+Four machine-learning models behind one API, trained on 20 GB of open data from ANAC, Brazil's civil aviation agency (domestic and international flights, 2018–2024).
 
-## 🚀 Live Demo
-API running at: https://anac-flight-intelligence-api-production.up.railway.app/docs
+Send a route, an airline and a date. Get back airport congestion, expected seat occupancy, price pressure and the probability of excess baggage.
 
-## 🧠 Models
+**Live API docs:** [anac-flight-intelligence-api-production.up.railway.app/docs](https://anac-flight-intelligence-api-production.up.railway.app/docs) · **Portfolio:** [caiobandeira7.github.io](https://caiobandeira7.github.io)
 
-| Model | Architecture | Task | Key Metric |
-|-------|-------------|------|------------|
-| Airport Congestion | Bidirectional LSTM | Regression | MAE on hourly flow |
-| Seat Occupancy | FT-Transformer | Multi-task (reg + clf) | MAE + AUC |
-| Price Pressure | MLP (PyTorch) | Regression | MAE on price index |
-| Baggage Excess | LightGBM + DNN | Binary classification | AUC-ROC |
+## Models
 
-## 📦 Tech Stack
+| Prediction | Architecture | Task | Metric |
+|---|---|---|---|
+| Airport congestion | Bidirectional LSTM with attention | Regression on hourly flow | MAE |
+| Seat occupancy | FT-Transformer | Multi-task: occupancy + overbooking | MAE, AUC |
+| Price pressure | MLP with categorical embeddings | Regression on a price index | MAE |
+| Excess baggage | LightGBM + neural network stack | Binary classification | AUC-ROC |
 
-- **ML:** PyTorch, LightGBM, scikit-learn, HuggingFace-style Transformer
-- **API:** FastAPI + Uvicorn
-- **Data:** Polars (20GB+ Parquet pipeline)
-- **MLOps:** MLflow experiment tracking, drift monitoring (PSI + MAE threshold alerts)
-- **Infra:** Docker, Railway-ready
-
-## 🗂️ Project Structure
-
-```
-projeto-anac/
-│
-├── 01_ingestao.py                 # Raw CSV → Parquet ingestion (handles 20GB+)
-├── 02_feature_engineering.py      # Feature pipelines for all 4 models
-├── 03_modelo_aeroporto.py         # Bidirectional LSTM — airport congestion
-├── 04_modelo_assentos.py          # FT-Transformer — seat occupancy (multi-task)
-├── 05_modelos_preco_bagagem.py    # MLP (pricing) + LightGBM+DNN stack (baggage)
-├── 06_api.py                      # FastAPI inference server
-├── 07_monitorar_drift.py          # Monthly drift monitoring for all 4 models
-│
-├── data/
-│   ├── raw/                       # Original ANAC CSV files (~20GB)
-│   ├── processed/                 # Intermediate Parquet
-│   ├── features/                  # Model-ready feature tables
-│   │   ├── feat_aeroporto.parquet
-│   │   ├── feat_assentos.parquet
-│   │   ├── feat_precificacao.parquet
-│   │   └── feat_bagagem.parquet
-│   └── drift/                     # Drift monitoring reports (JSON)
-│
-├── models/
-│   ├── modelo_aeroporto.pt        # LSTM checkpoint
-│   ├── modelo_assentos.pt         # FT-Transformer checkpoint
-│   ├── modelo_precificacao.pt     # MLP checkpoint
-│   ├── lgb_bagagem.txt            # LightGBM booster
-│   └── dnn_bagagem.pt             # DNN stacking layer checkpoint
-│
-├── dashboard.html                 # Static analytics dashboard
-├── Dockerfile                     # Production image (Python 3.11-slim + CPU PyTorch)
-├── docker-compose.yml             # API + Nginx dashboard in one command
-└── requirements.txt
-```
-
-## ⚡ Quick Start
-
-### Docker (recommended)
+## Example
 
 ```bash
-docker-compose up --build
-```
-
-- API: `http://localhost:8000/docs`
-- Dashboard: `http://localhost:3000`
-
-### Local
-
-```bash
-pip install -r requirements.txt
-
-# Run the full pipeline (only needed once)
-python 01_ingestao.py
-python 02_feature_engineering.py
-python 03_modelo_aeroporto.py
-python 04_modelo_assentos.py
-python 05_modelos_preco_bagagem.py
-
-# Start the API
-uvicorn 06_api:app --reload --port 8000
-```
-
-## 🔌 API Usage
-
-**Single endpoint — all predictions in one call:**
-
-```bash
-curl -X POST http://localhost:8001/prever \
+curl -X POST https://anac-flight-intelligence-api-production.up.railway.app/prever \
   -H "Content-Type: application/json" \
   -d '{
     "aeroporto_origem": "GRU",
@@ -102,7 +29,6 @@ curl -X POST http://localhost:8001/prever \
   }'
 ```
 
-**Response:**
 ```json
 {
   "prob_aeroporto_cheio": 0.74,
@@ -116,47 +42,60 @@ curl -X POST http://localhost:8001/prever \
 }
 ```
 
-## ⚙️ Running Locally
+Other endpoints: `GET /health`, `GET /historico` (occupancy history by route), `GET /cache/stats`, `DELETE /cache`.
 
-**With Docker (recommended):**
-```bash
-docker build -t anac-api .
-docker run -p 8001:8001 anac-api
-```
+## Pipeline
 
-**Without Docker:**
+| Step | Script | What it does |
+|---|---|---|
+| 0 | `00_verificar_dados.py` | Checks the raw ANAC files |
+| 1 | `01_ingestao.py` | Raw CSV (~20 GB) to Parquet with Polars |
+| 2 | `02_feature_engineering.py` | Feature tables for the four models |
+| 3 | `03_modelo_aeroporto.py` | Trains the LSTM (congestion) |
+| 4 | `04_modelo_assentos.py` | Trains the FT-Transformer (occupancy) |
+| 5 | `05_modelos_preco_bagagem.py` | Trains the MLP (pricing) and the LightGBM + NN stack (baggage) |
+| 6 | `06_api.py` | FastAPI inference server |
+| 7 | `07_monitorar_drift.py` | Monthly drift report for all four models |
+
+Data and trained models (`data/`, `models/`) are not versioned because of their size. Run steps 1–5 to rebuild them.
+
+## Engineering decisions
+
+- **FT-Transformer for tabular data:** chosen for seat occupancy because of the strong interactions between route, carrier and season.
+- **Multi-task learning:** occupancy and overbooking share one representation.
+- **Class imbalance:** stratified splits and `scale_pos_weight` for excess baggage.
+- **Route-aware inference:** historical stats looked up by route and carrier, with a three-level fallback when a route is rare.
+- **Demo mode:** if model files are missing at startup, the API switches to a lightweight path and keeps answering. `/health` reports which mode is active.
+- **Drift monitoring:** Population Stability Index on inputs plus MAE thresholds on outputs.
+- **Reproducibility:** fixed seed (42) in every training script.
+
+## Run locally
+
 ```bash
 pip install -r requirements.txt
-uvicorn 06_api:app --reload --port 8001
+
+# build data and models (once)
+python 01_ingestao.py
+python 02_feature_engineering.py
+python 03_modelo_aeroporto.py
+python 04_modelo_assentos.py
+python 05_modelos_preco_bagagem.py
+
+# start the API
+uvicorn 06_api:app --reload --port 8000
 ```
 
-## 📊 Data Pipeline
+API docs at `http://localhost:8000/docs`. `dashboard.html` is a static analytics dashboard; `docker-compose.yml` serves it next to the API once a `Dockerfile` is in place (see `Dockerfile.bak`).
 
-- Source: [ANAC Open Data](https://www.anac.gov.br/acesso-a-informacao/dados-abertos)
-- Raw data: ~20GB CSV files (domestic + international flights 2018–2024)
-- Processed: Parquet format via Polars for high-performance feature engineering
-- Features: route statistics, seasonality, carrier history, airport flow patterns
+## Roadmap
 
-## 🔍 MLOps & Monitoring
+- [ ] Restore the Docker image with models pulled from storage at build time
+- [ ] Automated tests
+- [ ] CI/CD with GitHub Actions
+- [ ] Deploy on Azure
 
-- **Drift detection:** PSI (Population Stability Index) + MAE threshold alerts for all 4 models
-- **Reproducibility:** Fixed seeds (42) across all training scripts
-- **Experiment tracking:** MLflow integration
-- **Cache layer:** Built-in prediction caching with TTL
+## Author
 
-## 📈 Key Engineering Decisions
+Caio Bandeira, data scientist in Brasília. [Portfolio](https://caiobandeira7.github.io) · [LinkedIn](https://www.linkedin.com/in/caio-bandeira-cv) · [GitHub](https://github.com/CaioBandeira7)
 
-- **FT-Transformer for tabular data:** Outperformed XGBoost on seat occupancy due to complex feature interactions
-- **Multi-task learning:** Joint seat occupancy + overbook probability sharing representations
-- **Stratified splits + scale_pos_weight:** Handles class imbalance in baggage excess prediction
-- **Route-aware inference:** Historical stats lookup by route+carrier with 3-level fallback
-
-## 🛠️ Author
-
-**Caio Bandeira**
-- Data Science & ML student @ UniCEUB
-- Former Parliamentary Data Analyst @ Câmara dos Deputados
-- [LinkedIn](https://linkedin.com/in/bandeira-caio) | [GitHub](https://github.com/caiobandeira777)
-
----
-*Data source: ANAC (Agência Nacional de Aviação Civil) — publicly available under Brazilian open data law*
+Data: ANAC open data, published under Brazil's access to information law.
