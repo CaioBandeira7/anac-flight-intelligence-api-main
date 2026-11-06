@@ -1,0 +1,215 @@
+@import "tailwindcss";
+
+/* ─────────────────────────────────────────────────────────────
+   ANAC Flight Intelligence — design tokens
+   Landing: natural sky. Product: deep navy.
+   ───────────────────────────────────────────────────────────── */
+:root {
+  /* Product palette */
+  --navy: #080d19;
+  --surface: #111a2b;
+  --surface-2: #162238;
+  --line: rgba(148, 163, 184, 0.14);
+  --line-strong: rgba(148, 163, 184, 0.26);
+  --blue: #3b82f6;
+  --cyan: #22d3ee;
+  --ink: #f8fafc;
+  --ink-2: #cbd5e1;
+  --muted: #94a3b8;
+  --demo: #fbbf24;
+
+  /* Sky palette */
+  --sky-zenith: #2a6bc4;
+  --sky-mid: #6aa8e6;
+  --sky-horizon: #d4e6f6;
+  --sky-high: #0d2347;
+
+  /* Motion */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+
+  /* shadcn semantic tokens (dark product as default surface) */
+  --background: var(--navy);
+  --foreground: var(--ink);
+  --card: var(--surface);
+  --card-foreground: var(--ink);
+  --primary: var(--blue);
+  --primary-foreground: #ffffff;
+  --secondary: var(--surface-2);
+  --secondary-foreground: var(--ink);
+  --muted-foreground: var(--muted);
+  --accent: var(--cyan);
+  --accent-foreground: var(--navy);
+  --border: var(--line);
+  --ring: var(--cyan);
+  --radius: 0.875rem;
+}
+
+@theme inline {
+  --color-navy: var(--navy);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-blue: var(--blue);
+  --color-cyan: var(--cyan);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-muted: var(--muted);
+  --color-demo: var(--demo);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-border: var(--border);
+  --color-ring: var(--ring);
+
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  --font-display: var(--font-instrument-serif), ui-serif, Georgia, serif;
+
+  --radius-sm: calc(var(--radius) - 6px);
+  --radius-md: calc(var(--radius) - 4px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 6px);
+
+  --ease-out-expo: var(--ease-out-expo);
+  --ease-in-out-cine: var(--ease-in-out);
+}
+
+/* ─────────────── Base ─────────────── */
+html {
+  background: var(--navy);
+  color-scheme: dark;
+  -webkit-text-size-adjust: 100%;
+  overflow-x: clip;
+}
+
+body {
+  /* No body background: the html canvas stays navy, and the landing's fixed
+     atmosphere (z-index: -10) can paint above it. */
+  color: var(--ink);
+  font-family: var(--font-sans);
+  overflow-x: clip;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: rgba(34, 211, 238, 0.35);
+  color: #fff;
+}
+
+:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* ─────────────── Sky & clouds ─────────────── */
+.cloud-strip {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  /* Five tiles side by side; the strip slides by exactly one tile (20%),
+     so wide screens and the takeoff push never reveal an edge. */
+  width: calc(var(--cloud-h) * var(--cloud-ratio) * 5);
+  height: var(--cloud-h);
+  background-image: var(--cloud-src);
+  background-repeat: repeat-x;
+  background-size: 20% 100%;
+  will-change: transform;
+  animation: cloud-drift var(--cloud-speed, 120s) linear infinite;
+  pointer-events: none;
+}
+
+@keyframes cloud-drift {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-20%, 0, 0);
+  }
+}
+
+.sun-glow {
+  background: radial-gradient(
+    ellipse at center,
+    rgba(255, 250, 235, 0.95) 0%,
+    rgba(255, 244, 214, 0.55) 12%,
+    rgba(255, 236, 200, 0.18) 34%,
+    rgba(255, 236, 200, 0) 62%
+  );
+}
+
+.text-sky-shadow {
+  text-shadow:
+    0 1px 1px rgba(13, 35, 71, 0.18),
+    0 8px 40px rgba(13, 35, 71, 0.28);
+}
+
+/* HUD grid used in the takeoff + dashboard boot */
+.hud-grid {
+  background-image:
+    linear-gradient(rgba(34, 211, 238, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(34, 211, 238, 0.07) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse at center, #000 30%, transparent 75%);
+}
+
+/* Shimmer skeleton (single CSS animation, compositor-friendly) */
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  background: rgba(148, 163, 184, 0.08);
+}
+.skeleton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, rgba(148, 163, 184, 0.12), transparent);
+  animation: shimmer 1.6s var(--ease-in-out) infinite;
+}
+@keyframes shimmer {
+  to {
+    transform: translateX(100%);
+  }
+}
+
+.scrollbar-thin {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(148, 163, 184, 0.25) transparent;
+}
+
+/* ─────────────── Reduced motion ─────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .cloud-strip {
+    animation: none;
+  }
+}
+
+@media (forced-colors: active) {
+  .cloud-strip,
+  .sun-glow,
+  .hud-grid {
+    display: none;
+  }
+}

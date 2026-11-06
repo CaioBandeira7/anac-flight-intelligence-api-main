@@ -58,6 +58,7 @@ class ModelMetric(BaseModel):
     name: str
     value: float
     evaluatedOn: str
+    unit: Literal["percent", "points"] | None = None
 
 
 class ModelCard(BaseModel):
@@ -68,6 +69,10 @@ class ModelCard(BaseModel):
     status: Literal["not_trained", "training", "available", "deprecated"]
     metrics: list[ModelMetric] | None
     lastTrainedAt: str | None
+    module: str | None = None
+    method: str | None = None
+    selected: bool | None = None
+    note: str | None = None
 
 
 class DatasetInfo(BaseModel):

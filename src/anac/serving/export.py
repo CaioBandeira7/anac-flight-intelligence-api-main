@@ -251,6 +251,12 @@ def build_models(reports: Path) -> list[dict[str, Any]]:
     }
     cards = []
     for module, (baseline, metrics) in primary.items():
+        model_report = reports.parent / "models" / f"module_{module}.json"
+        if model_report.exists():
+            cards.extend(
+                _validation_cards(module, json.loads(model_report.read_text(encoding="utf-8")))
+            )
+            continue
         contract = CONTRACTS[module]
         path = reports / f"module_{module}.json"
         values: list[dict[str, Any]] | None = None
@@ -279,10 +285,10 @@ def build_models(reports: Path) -> list[dict[str, Any]]:
                 "lastTrainedAt": evaluated_at,
             }
         )
-    cards.extend(_lightgbm_cards(reports.parent / "models"))
     cards.append(
         {
             "id": "module-c",
+            "module": "c",
             "name": "Checked baggage per passenger",
             "task": "Provisional target. Published only if it beats its baseline on validation.",
             "pipeline": "scripts/assess_module_c.py",
@@ -294,35 +300,78 @@ def build_models(reports: Path) -> list[dict[str, Any]]:
     return cards
 
 
-def _lightgbm_cards(directory: Path) -> list[dict[str, Any]]:
-    """Trained models appear only when a real report exists, labelled with the split."""
-    cards = []
-    for module in CONTRACTS:
-        path = directory / f"module_{module}.json"
-        if not path.exists():
-            continue
-        report = json.loads(path.read_text(encoding="utf-8"))
-        metrics = []
-        for target, item in report["targets"].items():
-            metrics.append(
-                {
-                    "name": f"{item['metric']} ({target})",
-                    "value": item["lightgbm"]["value"],
-                    "evaluatedOn": report["evaluated_on"],
-                }
-            )
-        cards.append(
-            {
-                "id": f"lightgbm-{module}",
-                "name": f"LightGBM: {CONTRACTS[module].title}",
-                "task": ", ".join(report["targets"]),
-                "pipeline": "anac-models train",
-                "status": "available",
-                "metrics": metrics,
-                "lastTrainedAt": report["trained_at"],
-            }
+BASELINE_NAMES = {
+    "pred_recent_weekday": "same weekday, recent 8 weeks",
+    "pred_seasonal_naive": "same weekday a year earlier",
+    "pred_seasonal_trend": "same weekday a year earlier, with trend",
+    "pred_mean_12": "mean of the last 12 known months",
+    "pred_mean_3": "mean of the last 3 known months",
+    "pred_same_month_last_year": "same month last year",
+    "pred_pax_seasonal_naive": "same month last year",
+    "pred_pax_seasonal_trend": "same month last year, with trend",
+    "pred_seats_seasonal_naive": "same month last year",
+    "pred_seats_seasonal_trend": "same month last year, with trend",
+}
+TARGET_LABELS = {
+    "movements": "movements",
+    "load_factor": "load factor",
+    "pax": "passengers",
+    "seats": "seats",
+}
+
+
+def _validation_cards(module: str, report: dict[str, Any]) -> list[dict[str, Any]]:
+    """Baseline and LightGBM cards of one module. A model is selected only if it beat the baseline."""
+    items = report["targets"]
+    use_model = all(item["beats_best_baseline"] for item in items.values())
+    baseline_metrics, model_metrics, comparisons, names = [], [], [], []
+    for target, item in items.items():
+        label = TARGET_LABELS.get(target, target)
+        unit = "points" if "MAE" in item["metric"] else "percent"
+        names.append(BASELINE_NAMES.get(item["best_baseline"], item["best_baseline"]))
+        shared = {
+            "name": f"{item['metric']}, {label}",
+            "evaluatedOn": report["evaluated_on"],
+            "unit": unit,
+        }
+        baseline_metrics.append(
+            {**shared, "value": item["baselines"][item["best_baseline"]]["value"]}
         )
-    return cards
+        model_metrics.append({**shared, "value": item["lightgbm"]["value"]})
+        difference = item["difference_vs_best_baseline"]
+        low, high = difference["ci95"]
+        comparisons.append(
+            f"{label}: {difference['value'] * 100:+.2f} points against the baseline "
+            f"(95% interval {low * 100:+.2f} to {high * 100:+.2f})"
+        )
+    common = {
+        "module": module,
+        "name": CONTRACTS[module].title,
+        "task": ", ".join(TARGET_LABELS.get(target, target) for target in items),
+        "status": "available",
+        "lastTrainedAt": report["trained_at"],
+    }
+    baseline_note = "LightGBM did not beat this baseline on validation, so this rule is used."
+    return [
+        {
+            **common,
+            "id": f"baseline-{module}",
+            "pipeline": "anac-features baselines",
+            "method": f"Baseline: {' / '.join(dict.fromkeys(names))}",
+            "selected": not use_model,
+            "metrics": baseline_metrics,
+            "note": None if use_model else baseline_note,
+        },
+        {
+            **common,
+            "id": f"lightgbm-{module}",
+            "pipeline": "anac-models train",
+            "method": "LightGBM",
+            "selected": use_model,
+            "metrics": model_metrics,
+            "note": "; ".join(comparisons) + ".",
+        },
+    ]
 
 
 def build_datasets(processed: Path, version: str, rows: int) -> list[dict[str, Any]]:
@@ -421,7 +470,7 @@ def export_all(cfg: FeatureConfig, airports_csv: Path, output: Path) -> dict[str
             build_models(cfg.reports),
             generated_at,
             (
-                "Metrics come from validation. The final test on 2024-2025 has not been run."
+                "Metrics are validation results for 2023, not current forecasts. The final test on 2024-2025 has not been run."
                 if (cfg.reports.parent / "models").exists()
                 else "Baselines only. No forecasting model has been trained."
             ),

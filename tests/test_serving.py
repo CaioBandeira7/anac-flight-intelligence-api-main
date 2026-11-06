@@ -140,3 +140,36 @@ def test_airport_list_is_read_with_coordinates(tmp_path: Path) -> None:
     frame = load_airports(path)
     assert frame.height == 2
     assert frame.filter(pl.col("icao") == "SBGR").get_column("lat")[0] == -23.43
+
+
+def _model_report(beats: bool) -> dict[str, object]:
+    return {
+        "evaluated_on": "validation (2023-01 to 2023-12)",
+        "trained_at": "2026-11-06T00:00:00+00:00",
+        "targets": {
+            "movements": {
+                "metric": "WAPE",
+                "lightgbm": {"value": 0.10},
+                "baselines": {"pred_recent_weekday": {"value": 0.11}},
+                "best_baseline": "pred_recent_weekday",
+                "difference_vs_best_baseline": {"value": -0.01, "ci95": [-0.02, 0.01]},
+                "beats_best_baseline": beats,
+            }
+        },
+    }
+
+
+@pytest.mark.parametrize("beats", [True, False])
+def test_only_a_model_that_beat_its_baseline_is_selected(tmp_path: Path, beats: bool) -> None:
+    reports = tmp_path / "baselines"
+    reports.mkdir()
+    (tmp_path / "models").mkdir()
+    (tmp_path / "models" / "module_a.json").write_text(
+        json.dumps(_model_report(beats)), encoding="utf-8"
+    )
+    cards = {card["id"]: card for card in build_models(reports)}
+    assert cards["lightgbm-a"]["selected"] is beats
+    assert cards["baseline-a"]["selected"] is not beats
+    assert cards["baseline-a"]["metrics"][0]["value"] == 0.11
+    assert cards["baseline-a"]["method"] == "Baseline: same weekday, recent 8 weeks"
+    assert cards["lightgbm-a"]["metrics"][0]["evaluatedOn"].startswith("validation")

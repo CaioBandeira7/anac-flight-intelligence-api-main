@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="640" viewBox="0 0 1200 640" role="img" aria-label="Business jet seen from above">
+  <defs>
+    <linearGradient id="fus" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#cfd7e2"/>
+      <stop offset="0.32" stop-color="#ffffff"/>
+      <stop offset="0.5" stop-color="#ffffff"/>
+      <stop offset="0.78" stop-color="#dfe5ed"/>
+      <stop offset="1" stop-color="#a9b4c3"/>
+    </linearGradient>
+    <linearGradient id="wingT" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0" stop-color="#f4f7fb"/>
+      <stop offset="1" stop-color="#c7d0dc"/>
+    </linearGradient>
+    <linearGradient id="wingB" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#eef2f7"/>
+      <stop offset="1" stop-color="#b3bfcd"/>
+    </linearGradient>
+    <linearGradient id="nac" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e9eef4"/>
+      <stop offset="0.5" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#9eabbb"/>
+    </linearGradient>
+    <linearGradient id="glass" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#1b2a44"/>
+      <stop offset="1" stop-color="#3d5a82"/>
+    </linearGradient>
+    <linearGradient id="stripe" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#22d3ee" stop-opacity="0"/>
+      <stop offset="0.4" stop-color="#22d3ee"/>
+      <stop offset="1" stop-color="#3b82f6"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feGaussianBlur stdDeviation="10"/>
+    </filter>
+  </defs>
+
+  <!-- ground shadow (altitude) -->
+  <g transform="translate(26 34)" opacity="0.18" filter="url(#shadow)" fill="#0b1f3f">
+    <path d="M70 320 C120 282 260 270 600 266 C900 264 1080 276 1150 310 C1172 318 1172 322 1150 330 C1080 364 900 376 600 374 C260 370 120 358 70 320 Z"/>
+    <path d="M640 300 L440 40 L400 40 L520 300 Z M640 340 L440 600 L400 600 L520 340 Z"/>
+  </g>
+
+  <!-- horizontal stabilizer (T-tail) -->
+  <path d="M190 314 L96 186 L66 186 L120 314 Z" fill="url(#wingT)"/>
+  <path d="M190 326 L96 454 L66 454 L120 326 Z" fill="url(#wingB)"/>
+  <path d="M96 186 L66 186 L70 194 L98 194 Z M96 454 L66 454 L70 446 L98 446 Z" fill="#1d4ed8"/>
+
+  <!-- wings -->
+  <path d="M700 302 L560 302 L430 58 Q424 42 440 42 L470 42 Q486 42 494 56 Z" fill="url(#wingT)"/>
+  <path d="M700 338 L560 338 L430 582 Q424 598 440 598 L470 598 Q486 598 494 584 Z" fill="url(#wingB)"/>
+  <!-- flaps / control surfaces -->
+  <path d="M560 302 L520 228 L556 228 L600 302 Z" fill="#b9c4d2" opacity="0.6"/>
+  <path d="M560 338 L520 412 L556 412 L600 338 Z" fill="#9faabb" opacity="0.6"/>
+  <!-- winglets -->
+  <path d="M430 58 L404 44 L440 42 Z" fill="#1d4ed8"/>
+  <path d="M430 582 L404 596 L440 598 Z" fill="#1d4ed8"/>
+  <!-- leading-edge highlight -->
+  <path d="M700 302 L494 56 L500 64 L690 302 Z" fill="#ffffff" opacity="0.8"/>
+  <path d="M700 338 L494 584 L500 576 L690 338 Z" fill="#ffffff" opacity="0.5"/>
+
+  <g transform="translate(0 320) scale(1 1.75) translate(0 -320)">
+  <!-- fuselage -->
+  <path d="M70 320 C110 302 230 288 600 286 C880 284 1040 290 1120 306 C1160 313 1176 318 1176 320 C1176 322 1160 327 1120 334 C1040 350 880 356 600 354 C230 352 110 338 70 320 Z" fill="url(#fus)"/>
+  <!-- spine highlight -->
+  <path d="M160 316 C300 306 700 302 1080 310 C1110 312 1130 316 1140 319 C1100 317 700 314 160 320 Z" fill="#ffffff"/>
+  <!-- livery stripe -->
+  <path d="M260 312 L1020 306 C1060 306 1096 310 1120 314 L1120 316 C1096 313 1060 310 1020 310 L260 316 Z" fill="url(#stripe)" opacity="0.85"/>
+
+  <!-- vertical fin seen from above -->
+  <path d="M250 316 L92 314 L74 318 L74 322 L92 326 L250 324 Z" fill="#0f1e3a"/>
+  <path d="M250 318 L110 317 L110 319 L250 321 Z" fill="#22d3ee" opacity="0.7"/>
+
+  </g>
+  <!-- rear-mounted engines -->
+  <g>
+    <rect x="236" y="238" width="128" height="36" rx="18" fill="url(#nac)"/>
+    <rect x="236" y="366" width="128" height="36" rx="18" fill="url(#nac)"/>
+    <ellipse cx="362" cy="256" rx="6" ry="15" fill="#3a4558"/>
+    <ellipse cx="362" cy="384" rx="6" ry="15" fill="#3a4558"/>
+    <path d="M280 274 L340 274 L330 290 L290 290 Z M280 366 L340 366 L330 350 L290 350 Z" fill="#b8c3d1"/>
+  </g>
+
+  <g transform="translate(0 320) scale(1 1.75) translate(0 -320)">
+  <!-- cockpit -->
+  <path d="M1080 308 C1104 310 1124 314 1136 318 L1136 322 C1124 326 1104 330 1080 332 C1088 324 1088 316 1080 308 Z" fill="url(#glass)"/>
+  <path d="M1086 311 C1102 313 1116 316 1126 319 L1090 318 Z" fill="#9ec3ef" opacity="0.45"/>
+  </g>
+  <!-- beacon -->
+  <circle cx="640" cy="320" r="3" fill="#ef4444"/>
+</svg>
