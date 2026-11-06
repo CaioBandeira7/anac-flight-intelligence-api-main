@@ -74,7 +74,15 @@ def test_period_keeps_the_frontend_field_names(client: TestClient) -> None:
 
 def test_api_is_read_only_and_documented(client: TestClient) -> None:
     paths = client.get("/openapi.json").json()["paths"]
-    assert set(paths) == {*ENDPOINTS, "/v2/analyst/status", "/v2/analyst/chat"}
+    analytics = {path for path in paths if path.startswith("/v2/analytics/")}
+    assert analytics == {
+        "/v2/analytics/routes",
+        "/v2/analytics/routes/monthly",
+        "/v2/analytics/airports",
+        "/v2/analytics/airports/monthly",
+        "/v2/analytics/coverage",
+    }
+    assert set(paths) == {*ENDPOINTS, "/v2/analyst/status", "/v2/analyst/chat", *analytics}
     # The chat is the only POST, and it cannot write anything.
     assert all(
         set(methods) == {"get"} for path, methods in paths.items() if path != "/v2/analyst/chat"

@@ -13,6 +13,7 @@ from pydantic import BaseModel, ConfigDict, Field
 from anac.agent.analyst import Analyst, AnalystAnswer
 from anac.agent.llm import LlmClient, LlmConfig, LlmError, LlmErrorCode, load_env_file
 from anac.agent.tools import AnalystTools
+from anac.api.analytics import build_router
 from anac.api.schemas import (
     AirportStat,
     AnalystCatalog,
@@ -28,6 +29,7 @@ from anac.serving.export import PayloadStore
 
 DEFAULT_DIRECTORY = Path("data/serving/v1")
 DEFAULT_ORIGINS = "http://localhost:3000"
+DEFAULT_ANALYTICS = Path("data/analytics/v1")
 MAX_QUESTION_CHARS = 500
 ERROR_RESPONSES = {
     LlmErrorCode.NOT_CONFIGURED: (503, "The analyst is not configured on the server."),
@@ -74,7 +76,11 @@ class AnalystStatus(BaseModel):
     reason: str | None
 
 
-def create_app(directory: Path | None = None, llm: LlmClient | None = None) -> FastAPI:
+def create_app(
+    directory: Path | None = None,
+    llm: LlmClient | None = None,
+    analytics_dir: Path | None = None,
+) -> FastAPI:
     load_env_file(Path(".env"))
     store = PayloadStore(directory or Path(os.environ.get("ANAC_SERVING_DIR", DEFAULT_DIRECTORY)))
     app = FastAPI(
@@ -131,6 +137,10 @@ def create_app(directory: Path | None = None, llm: LlmClient | None = None) -> F
     @app.get("/v2/analyst/catalog", tags=["analyst"])
     def analyst_catalog() -> Envelope[AnalystCatalog]:
         return Envelope[AnalystCatalog].model_validate(payload("/v2/analyst/catalog"))
+
+    app.include_router(
+        build_router(analytics_dir or Path(os.environ.get("ANAC_ANALYTICS_DIR", DEFAULT_ANALYTICS)))
+    )
 
     analyst = Analyst(llm or LlmClient(LlmConfig.from_env()), AnalystTools(store))
 
