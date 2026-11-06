@@ -1,0 +1,43 @@
+{
+  "model": "openai/gpt-oss-120b",
+  "provider": "groq",
+  "results": [
+    {
+      "case": 1,
+      "question": "Quantos passageiros pagos o mercado transportou no período mais recente e qual foi a variação?",
+      "tool_calls": [
+        {
+          "name": "get_market_overview",
+          "arguments": {
+            "include_monthly": false
+          }
+        }
+      ],
+      "status": "unverified",
+      "answer": "I could not verify the figures for this answer against the available data, so I am not giving them. Please try rephrasing the question.",
+      "sources": [],
+      "caveats": [],
+      "rejected_drafts": [
+        {
+          "answer": "O mercado transportou 131,593,763 passageiros pagos no período de 2025‑01 a 2025‑12 (dataset flights). A variação foi de 9.722 % em relação ao período anterior (dataset flights).",
+          "problems": [
+            "12 does not belong to the entity or metric it is attached to"
+          ]
+        },
+        {
+          "answer": "Paid passengers in the market were 131,593,763 (2025‑01 to 2025‑12, dataset flights).  \nThe change in paid passengers was 9.722 % (2025‑01 to 2025‑12, dataset flights).",
+          "problems": [
+            "12 does not belong to the entity or metric it is attached to",
+            "9.722 does not belong to the entity or metric it is attached to",
+            "12 does not belong to the entity or metric it is attached to"
+          ]
+        }
+      ],
+      "problems": [
+        "expected value 131593763 not in the answer",
+        "expected value 0.09722098855441708 not in the answer",
+        "the verifier refused the answer"
+      ]
+    }
+  ]
+}

@@ -1,14 +1,18 @@
-"""FastAPI over the eight exported payloads. GET only: there is nothing here that can write."""
+"""FastAPI over the exported payloads, plus the analyst. Nothing here can write data."""
 
 from __future__ import annotations
 
 import os
 from pathlib import Path
-from typing import Any
+from typing import Any, Literal
 
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from pydantic import BaseModel, ConfigDict, Field
 
+from anac.agent.analyst import Analyst, AnalystAnswer
+from anac.agent.llm import LlmClient, LlmConfig, LlmError, LlmErrorCode, load_env_file
+from anac.agent.tools import AnalystTools
 from anac.api.schemas import (
     AirportStat,
     AnalystCatalog,
@@ -24,9 +28,54 @@ from anac.serving.export import PayloadStore
 
 DEFAULT_DIRECTORY = Path("data/serving/v1")
 DEFAULT_ORIGINS = "http://localhost:3000"
+MAX_QUESTION_CHARS = 500
+ERROR_RESPONSES = {
+    LlmErrorCode.NOT_CONFIGURED: (503, "The analyst is not configured on the server."),
+    LlmErrorCode.AUTH: (503, "The analyst could not authenticate with its model provider."),
+    LlmErrorCode.RATE_LIMITED: (429, "The free usage limit was reached. Please try again shortly."),
+    LlmErrorCode.UNAVAILABLE: (503, "The model provider is unavailable right now."),
+    LlmErrorCode.TIMEOUT: (504, "The model took too long to answer."),
+    LlmErrorCode.BAD_OUTPUT: (502, "The model returned an unusable answer. Please try again."),
+}
 
 
-def create_app(directory: Path | None = None) -> FastAPI:
+class ChatTurn(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    # Only these roles: a client cannot add system or tool messages.
+    role: Literal["user", "assistant"]
+    content: str = Field(max_length=2000)
+
+
+class ChatRequest(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    question: str = Field(min_length=1, max_length=MAX_QUESTION_CHARS)
+    history: list[ChatTurn] = Field(default_factory=list, max_length=6)
+
+
+class ChatSource(BaseModel):
+    endpoint: str
+    dataset: str
+    period: str
+    unit: str
+    generated_at: str
+
+
+class ChatResponse(BaseModel):
+    status: Literal["answered", "no_data", "unverified"]
+    answer: str
+    sources: list[ChatSource]
+    caveats: list[str]
+
+
+class AnalystStatus(BaseModel):
+    available: bool
+    provider: str
+    model: str
+    reason: str | None
+
+
+def create_app(directory: Path | None = None, llm: LlmClient | None = None) -> FastAPI:
+    load_env_file(Path(".env"))
     store = PayloadStore(directory or Path(os.environ.get("ANAC_SERVING_DIR", DEFAULT_DIRECTORY)))
     app = FastAPI(
         title="ANAC Flight Intelligence API",
@@ -39,7 +88,7 @@ def create_app(directory: Path | None = None) -> FastAPI:
     app.add_middleware(
         CORSMiddleware,
         allow_origins=os.environ.get("ANAC_CORS_ORIGINS", DEFAULT_ORIGINS).split(","),
-        allow_methods=["GET"],
+        allow_methods=["GET", "POST"],
         allow_headers=["*"],
     )
 
@@ -82,6 +131,39 @@ def create_app(directory: Path | None = None) -> FastAPI:
     @app.get("/v2/analyst/catalog", tags=["analyst"])
     def analyst_catalog() -> Envelope[AnalystCatalog]:
         return Envelope[AnalystCatalog].model_validate(payload("/v2/analyst/catalog"))
+
+    analyst = Analyst(llm or LlmClient(LlmConfig.from_env()), AnalystTools(store))
+
+    @app.get("/v2/analyst/status", tags=["analyst"])
+    def analyst_status() -> AnalystStatus:
+        return AnalystStatus.model_validate(analyst.status())
+
+    @app.post("/v2/analyst/chat", tags=["analyst"])
+    def analyst_chat(request: ChatRequest) -> ChatResponse:
+        """Ask a question. Answers come only from fixed read-only tools over the exported data."""
+        try:
+            result: AnalystAnswer = analyst.ask(
+                request.question.strip(), [turn.model_dump() for turn in request.history]
+            )
+        except LlmError as error:
+            status, message = ERROR_RESPONSES[error.code]
+            headers = {"Retry-After": str(error.retry_after)} if error.retry_after else None
+            raise HTTPException(
+                status_code=status,
+                detail={"code": error.code.value, "message": message},
+                headers=headers,
+            ) from None
+        except FileNotFoundError:
+            raise HTTPException(
+                status_code=503,
+                detail={"code": "data_unavailable", "message": "The data has not been exported."},
+            ) from None
+        return ChatResponse(
+            status=result.status,  # type: ignore[arg-type]
+            answer=result.answer,
+            sources=[ChatSource.model_validate(source) for source in result.sources],
+            caveats=result.caveats,
+        )
 
     return app
 

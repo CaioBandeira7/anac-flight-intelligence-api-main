@@ -18,6 +18,9 @@ import {
   DataProviderError,
   type AirportStat,
   type AnalystCatalog,
+  type AnalystStatus,
+  type ChatResponse,
+  type ChatTurn,
   type DatasetInfo,
   type Envelope,
   type FlightDataProvider,
@@ -34,6 +37,8 @@ export interface ApiOptions {
   timeoutMs?: number;
   fetchImpl?: typeof fetch;
 }
+
+const ANALYST_TIMEOUT_MS = 90_000;
 
 export class ApiDataProvider implements FlightDataProvider {
   readonly kind = "API" as const;
@@ -92,6 +97,42 @@ export class ApiDataProvider implements FlightDataProvider {
   }
   getAnalystCatalog() {
     return this.get<AnalystCatalog>("/v2/analyst/catalog");
+  }
+
+  async getAnalystStatus(): Promise<AnalystStatus> {
+    return this.requestJson<AnalystStatus>("/v2/analyst/status", { method: "GET" }, this.timeoutMs);
+  }
+
+  /** The API key stays on the server: this only sends the question. */
+  async askAnalyst(question: string, history: ChatTurn[]): Promise<ChatResponse> {
+    return this.requestJson<ChatResponse>(
+      "/v2/analyst/chat",
+      { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ question, history }) },
+      ANALYST_TIMEOUT_MS,
+    );
+  }
+
+  private async requestJson<T>(path: string, init: RequestInit, timeoutMs: number): Promise<T> {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), timeoutMs);
+    try {
+      const res = await this.fetchImpl(`${this.baseUrl}${path}`, {
+        ...init,
+        headers: { Accept: "application/json", ...init.headers },
+        signal: controller.signal,
+      });
+      if (!res.ok) {
+        const body = (await res.json().catch(() => null)) as { detail?: { code?: string; message?: string } } | null;
+        throw new DataProviderError(body?.detail?.message ?? `Request failed (${res.status})`, res.status, path, body?.detail?.code);
+      }
+      return (await res.json()) as T;
+    } catch (err) {
+      if (err instanceof DataProviderError) throw err;
+      const aborted = err instanceof DOMException && err.name === "AbortError";
+      throw new DataProviderError(aborted ? "Request timed out" : "Backend unreachable", undefined, path);
+    } finally {
+      clearTimeout(timer);
+    }
   }
 }
 

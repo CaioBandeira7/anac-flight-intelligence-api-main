@@ -1,0 +1,50 @@
+{
+  "model": "openai/gpt-oss-120b",
+  "provider": "groq",
+  "results": [
+    {
+      "case": 6,
+      "question": "Quantos passageiros teve a rota BJP para GRU?",
+      "tool_calls": [
+        {
+          "name": "search_airports",
+          "arguments": {
+            "query": "BJP"
+          }
+        },
+        {
+          "name": "search_routes",
+          "arguments": {
+            "destination": "GRU",
+            "limit": 10,
+            "origin": "BJP"
+          }
+        }
+      ],
+      "status": "answered",
+      "answer": "A rota BJP → GRU não está entre as 200 rotas mais movimentadas disponíveis; portanto, os números de passageiros pagos não estão disponíveis neste conjunto de dados.",
+      "sources": [
+        {
+          "endpoint": "/v2/airports",
+          "dataset": "flights",
+          "period": "2025-01 to 2025-12",
+          "unit": "movements: takeoffs plus landings, as a count",
+          "generated_at": "2026-11-06T18:02:59+00:00"
+        },
+        {
+          "endpoint": "/v2/routes",
+          "dataset": "flights",
+          "period": "2025-01 to 2025-12",
+          "unit": "passengers: paid passengers per leg, as a count; loadFactor: ratio from 0 to 1",
+          "generated_at": "2026-11-06T18:02:59+00:00"
+        }
+      ],
+      "caveats": [
+        "Covers Brazilian public aerodromes with published coordinates, ranked by movements. Movements do not measure congestion or delays.",
+        "Only the 200 busiest routes by paid passengers are available, in IATA codes. A route missing here may still exist."
+      ],
+      "rejected_drafts": [],
+      "problems": []
+    }
+  ]
+}

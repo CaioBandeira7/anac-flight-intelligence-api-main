@@ -44,3 +44,12 @@ Settings: `ANAC_SERVING_DIR`, `ANAC_CORS_ORIGINS`, `ANAC_API_HOST`, `ANAC_API_PO
 5. **Not evaluated:** the 2003 window, pandemic treatment and a 3-month publication lag.
 6. **Pending data:** the four missing months and the 2026 evaluation still need the official ZIPs. Models must be retrained on `flights_v2_1` and frozen as `models/v2`.
 7. **Dashboard:** `/v2/models` shows LightGBM alongside baselines, and the frontend may need to label them.
+
+## AI Aviation Analyst
+
+One agent over five fixed, read-only tools (`src/anac/agent/tools.py`): market overview, airports, routes, model results and data coverage. There is no SQL or free-form query, and arguments are validated and capped.
+
+- **Provider:** any OpenAI-compatible API with tool calls, Groq by default. Set `GROQ_API_KEY` in `.env` (see `.env.example`), and optionally `ANAC_LLM_PROVIDER`, `ANAC_LLM_BASE_URL`, `ANAC_LLM_MODEL`, `ANAC_LLM_API_KEY`. The key stays on the backend.
+- **Endpoints:** `GET /v2/analyst/status` and `POST /v2/analyst/chat`.
+- **Grounding:** sources are attached by the backend from the tools actually called. Every number in an answer must match a tool result, allowing for rounding, unit conversion and integers up to 12. An unmatched number triggers one correction, then a refusal.
+- **Limit of that check:** it verifies that a number exists in the tool results, not that it is attached to the right entity, so a model could still misattribute a real figure.

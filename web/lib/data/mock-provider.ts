@@ -9,6 +9,8 @@
 import { AIRPORTS } from "./airports";
 import type {
   AnalystCatalog,
+  AnalystStatus,
+  ChatResponse,
   ModuleDescription,
   AirportStat,
   DatasetInfo,
@@ -173,6 +175,15 @@ export class MockDataProvider implements FlightDataProvider {
 
   getModules(): Promise<Envelope<ModuleDescription[]>> {
     return this.wrap([]);
+  }
+
+  /** Demo mode never talks to a model and never produces an answer. */
+  getAnalystStatus(): Promise<AnalystStatus> {
+    return Promise.resolve({ available: false, provider: "none", model: "none", reason: "demo_mode" });
+  }
+
+  askAnalyst(): Promise<ChatResponse> {
+    return Promise.reject(new Error("The analyst is not available on demonstration data"));
   }
 
   getAnalystCatalog(): Promise<Envelope<AnalystCatalog>> {

@@ -18,3 +18,8 @@ __pycache__/
 .ruff_cache/
 .coverage
 htmlcov/
+
+# Secrets
+.env
+.env.*
+!.env.example

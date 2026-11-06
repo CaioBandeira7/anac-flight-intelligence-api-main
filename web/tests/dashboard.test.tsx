@@ -1,8 +1,8 @@
-import { render, screen, within } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor, within } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 import { DataProviderRoot } from "@/components/data-provider";
 import { AirportsView, AnalystView, MlStudioView, formatMetric } from "@/components/dashboard/data-views";
-import { ApiDataProvider, MockDataProvider, type FlightDataProvider, type ModelCard } from "@/lib/data";
+import { ApiDataProvider, DataProviderError, MockDataProvider, type FlightDataProvider, type ModelCard } from "@/lib/data";
 
 const meta = { source: "API" as const, isDemo: false, generatedAt: "2026-11-06T00:00:00Z" };
 const ON = "validation (2023-01 to 2023-12)";
@@ -59,12 +59,53 @@ describe("data states", () => {
 });
 
 describe("AI Aviation Analyst", () => {
-  it("cannot be used yet and shows no generated answers", async () => {
+  const status = { available: true, provider: "groq", model: "m", reason: null };
+
+  it("stays disabled on demo data and generates no answers", async () => {
     withProvider({}, <AnalystView />);
+    expect(await screen.findByText(/only works with real data/)).toBeInTheDocument();
     expect(screen.getByRole("textbox", { name: /question/i })).toBeDisabled();
     expect(screen.getByRole("button", { name: /send/i })).toBeDisabled();
-    expect(screen.getByText("Not connected yet")).toBeInTheDocument();
-    expect(await screen.findByText("No answers are generated on this page.")).toBeInTheDocument();
+  });
+
+  it("shows the answer with its period, unit and source", async () => {
+    const askAnalyst = vi.fn(() =>
+      Promise.resolve({
+        status: "answered" as const,
+        answer: "CGH to SDU carried 1,968,523 paid passengers.",
+        sources: [{ endpoint: "/v2/routes", dataset: "flights", period: "2025-01 to 2025-12", unit: "paid passengers", generated_at: "x" }],
+        caveats: ["Only the 200 busiest routes are available."],
+      }),
+    );
+    withProvider({ getAnalystStatus: () => Promise.resolve(status), askAnalyst }, <AnalystView />);
+    const input = await screen.findByRole("textbox", { name: /question/i });
+    await waitFor(() => expect(input).toBeEnabled());
+    fireEvent.change(input, { target: { value: "Busiest route?" } });
+    fireEvent.click(screen.getByRole("button", { name: /send/i }));
+    expect(await screen.findByText(/1,968,523/)).toBeInTheDocument();
+    expect(screen.getByText(/Period: 2025-01 to 2025-12/)).toBeInTheDocument();
+    expect(screen.getByText("/v2/routes")).toBeInTheDocument();
+    expect(askAnalyst).toHaveBeenCalledWith("Busiest route?", []);
+  });
+
+  it("shows a usage limit message with retry", async () => {
+    const askAnalyst = vi.fn(() => Promise.reject(new DataProviderError("The free usage limit was reached", 429, "/v2/analyst/chat", "rate_limited")));
+    withProvider({ getAnalystStatus: () => Promise.resolve(status), askAnalyst }, <AnalystView />);
+    const input = await screen.findByRole("textbox", { name: /question/i });
+    await waitFor(() => expect(input).toBeEnabled());
+    fireEvent.change(input, { target: { value: "Q" } });
+    fireEvent.click(screen.getByRole("button", { name: /send/i }));
+    expect(await screen.findByRole("alert")).toHaveTextContent("free usage limit");
+    expect(screen.getByRole("button", { name: /retry/i })).toBeInTheDocument();
+  });
+
+  it("explains when the server has no key", async () => {
+    withProvider(
+      { getAnalystStatus: () => Promise.resolve({ ...status, available: false, reason: "not_configured" }) },
+      <AnalystView />,
+    );
+    expect(await screen.findByText(/not configured on the server/)).toBeInTheDocument();
+    expect(screen.getByRole("textbox", { name: /question/i })).toBeDisabled();
   });
 });
 

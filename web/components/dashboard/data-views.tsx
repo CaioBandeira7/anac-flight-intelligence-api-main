@@ -1,10 +1,10 @@
 "use client";
 
-import { useCallback, type ReactNode } from "react";
+import { useCallback, useEffect, useRef, useState, type FormEvent, type ReactNode } from "react";
 import { Bot, CircleCheck, CircleDashed, Send } from "lucide-react";
 import { useDataProvider } from "@/components/data-provider";
 import { useResource, type Resource } from "@/hooks/use-resource";
-import type { AirportStat, ModelCard, ModelMetric, RouteStat } from "@/lib/data/contracts";
+import type { AirportStat, AnalystStatus, ChatResponse, ChatTurn, DataProviderError, ModelCard, ModelMetric, RouteStat } from "@/lib/data/contracts";
 import { formatNumber, formatPercent } from "@/lib/utils";
 import { navByHref } from "./nav";
 import { BarList } from "./charts";
@@ -265,40 +265,177 @@ export function MethodologyView() {
   );
 }
 
-/** The agent itself is the next stage. This only shows what it will be allowed to do. */
+const UNAVAILABLE_COPY: Record<string, string> = {
+  not_configured: "The analyst is not configured on the server: GROQ_API_KEY is missing.",
+  auth_failed: "The server could not authenticate with the model provider.",
+  rate_limited: "The free usage limit was reached. Please try again shortly.",
+  model_not_available: "The configured model is not available for this account.",
+  demo_mode: "The analyst only works with real data, and this build runs on demonstration data.",
+  timeout: "The model provider is taking too long to respond.",
+};
+
+interface ChatEntry {
+  question: string;
+  response?: ChatResponse;
+  error?: DataProviderError | Error;
+}
+
+function SourceList({ response }: { response: ChatResponse }) {
+  if (!response.sources.length && !response.caveats.length) return null;
+  return (
+    <div className="mt-3 space-y-1.5 border-t border-line pt-3 text-[11.5px] leading-relaxed text-muted">
+      {response.sources.map((source) => (
+        <p key={source.endpoint}>
+          <span className="text-ink-2">Source:</span> <code className="font-mono">{source.endpoint}</code>, dataset{" "}
+          <code className="font-mono">{source.dataset}</code>. Period: {source.period}. Unit: {source.unit}.
+        </p>
+      ))}
+      {response.caveats.map((caveat) => (
+        <p key={caveat}>{caveat}</p>
+      ))}
+    </div>
+  );
+}
+
+function ChatMessage({ entry, onRetry }: { entry: ChatEntry; onRetry: () => void }) {
+  return (
+    <div className="space-y-3">
+      <p className="ml-auto w-fit max-w-[85%] whitespace-pre-wrap rounded-xl bg-blue/15 px-3.5 py-2.5 text-[13.5px] text-ink">{entry.question}</p>
+      {entry.response ? (
+        <div className="max-w-[92%] rounded-xl border border-line bg-white/[0.03] px-3.5 py-3">
+          <p className="whitespace-pre-wrap text-[13.5px] leading-relaxed text-ink-2">{entry.response.answer}</p>
+          <SourceList response={entry.response} />
+        </div>
+      ) : entry.error ? (
+        <ErrorState error={entry.error} onRetry={onRetry} hint="Please try again." />
+      ) : (
+        <div role="status" aria-label="The analyst is working" className="max-w-[70%] space-y-2 rounded-xl border border-line px-3.5 py-3">
+          <Skeleton className="h-3 w-5/6" />
+          <Skeleton className="h-3 w-2/3" />
+        </div>
+      )}
+    </div>
+  );
+}
+
+/** Chat over fixed read-only tools. The key lives on the server, and answers are plain text. */
 export function AnalystView() {
   const provider = useDataProvider();
   const catalog = useResource(useCallback(() => provider.getAnalystCatalog(), [provider]));
+  const [status, setStatus] = useState<AnalystStatus | "checking" | "error">("checking");
+  const [entries, setEntries] = useState<ChatEntry[]>([]);
+  const [draft, setDraft] = useState("");
+  const [checks, setChecks] = useState(0);
+  const end = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    let alive = true;
+    provider.getAnalystStatus().then(
+      (value) => alive && setStatus(value),
+      () => alive && setStatus("error"),
+    );
+    return () => {
+      alive = false;
+    };
+  }, [provider, checks]);
+
+  useEffect(() => {
+    end.current?.scrollIntoView?.({ behavior: "smooth", block: "nearest" });
+  }, [entries]);
+
+  const available = status !== "checking" && status !== "error" && status.available;
+  const busy = entries.some((entry) => !entry.response && !entry.error);
+
+  const ask = (question: string) => {
+    // The request runs once, here. State updaters can run twice in development.
+    const kept = entries.filter((entry) => entry.question !== question || !entry.error);
+    const history: ChatTurn[] = kept
+      .filter((entry) => entry.response?.status === "answered")
+      .slice(-3)
+      .flatMap((entry) => [
+        { role: "user" as const, content: entry.question.slice(0, 2000) },
+        { role: "assistant" as const, content: (entry.response as ChatResponse).answer.slice(0, 2000) },
+      ]);
+    setEntries([...kept, { question }]);
+    const settle = (result: Partial<ChatEntry>) =>
+      setEntries((list) => list.map((entry) => (entry.question === question && !entry.response ? { question, ...result } : entry)));
+    provider.askAnalyst(question, history).then(
+      (response) => settle({ response }),
+      (error: Error) => settle({ error }),
+    );
+  };
+
+  const submit = (event: FormEvent) => {
+    event.preventDefault();
+    const question = draft.trim();
+    if (!question || !available || busy) return;
+    setDraft("");
+    ask(question);
+  };
+
+  const unavailableMessage =
+    status === "error"
+      ? "The backend is not reachable. Check that the API is running."
+      : status !== "checking" && !status.available
+        ? (UNAVAILABLE_COPY[status.reason ?? ""] ?? "The model provider is unavailable right now.")
+        : null;
+
   return (
     <>
       <Header href="/dashboard/analyst" state={catalog} />
       <div className="grid gap-5 xl:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)]">
-        <Card title="Ask the analyst" action={<span className="text-xs text-muted">Not connected yet</span>}>
-          <div className="grid min-h-48 place-items-center rounded-xl border border-dashed border-line px-6 py-10 text-center">
-            <div>
-              <Bot className="mx-auto size-7 text-muted" strokeWidth={1.5} aria-hidden />
-              <p className="mt-3 text-sm text-ink-2">The AI Aviation Analyst is not available yet.</p>
-              <p className="mt-1 text-xs text-muted">No answers are generated on this page.</p>
-            </div>
+        <Card
+          title="Ask the analyst"
+          action={
+            <span className="text-xs text-muted">
+              {status === "checking" ? "Checking…" : available ? `${(status as AnalystStatus).model}` : "Unavailable"}
+            </span>
+          }
+        >
+          <div aria-live="polite" className="scrollbar-thin max-h-[480px] min-h-48 space-y-5 overflow-y-auto">
+            {unavailableMessage && (
+              <div role="alert" className="flex items-start justify-between gap-3 rounded-xl border border-demo/30 bg-demo/10 px-3.5 py-3 text-[13px] text-ink-2">
+                <span>{unavailableMessage}</span>
+                <button type="button" onClick={() => setChecks((n) => n + 1)} className="shrink-0 text-xs text-cyan hover:underline">
+                  Check again
+                </button>
+              </div>
+            )}
+            {entries.length === 0 && !unavailableMessage && (
+              <div className="grid min-h-44 place-items-center rounded-xl border border-dashed border-line px-6 py-8 text-center">
+                <div>
+                  <Bot className="mx-auto size-7 text-muted" strokeWidth={1.5} aria-hidden />
+                  <p className="mt-3 text-sm text-ink-2">Ask about airports, routes, market totals or model results.</p>
+                  <p className="mt-1 text-xs text-muted">Answers come only from this project&apos;s data, with period, unit and source.</p>
+                </div>
+              </div>
+            )}
+            {entries.map((entry, index) => (
+              <ChatMessage key={`${index}-${entry.question}`} entry={entry} onRetry={() => ask(entry.question)} />
+            ))}
+            <div ref={end} />
           </div>
-          <form className="mt-4 flex gap-2" onSubmit={(event) => event.preventDefault()}>
+          <form className="mt-4 flex gap-2" onSubmit={submit}>
             <input
-              disabled
+              value={draft}
+              onChange={(event) => setDraft(event.target.value)}
+              disabled={!available}
+              maxLength={500}
               aria-label="Question for the analyst"
-              placeholder="Available in the next stage"
-              className="min-w-0 flex-1 cursor-not-allowed rounded-lg border border-line bg-white/[0.03] px-3 py-2 text-sm text-muted placeholder:text-muted"
+              placeholder={available ? "Which route carried the most passengers?" : "Unavailable"}
+              className="min-w-0 flex-1 rounded-lg border border-line bg-white/[0.03] px-3 py-2 text-sm text-ink placeholder:text-muted focus:outline-none focus-visible:border-cyan disabled:cursor-not-allowed"
             />
             <button
               type="submit"
-              disabled
+              disabled={!available || busy || !draft.trim()}
               aria-label="Send question"
-              className="grid size-9 shrink-0 cursor-not-allowed place-items-center rounded-lg border border-line text-muted"
+              className="grid size-9 shrink-0 place-items-center rounded-lg border border-line text-ink-2 transition-colors hover:border-line-strong disabled:cursor-not-allowed disabled:text-muted"
             >
               <Send className="size-4" aria-hidden />
             </button>
           </form>
         </Card>
-        <Card title="Rules it will follow">
+        <Card title="What it can and cannot do">
           <Loaded
             state={catalog}
             isEmpty={(data) => data.must_not_claim.length === 0 && data.tools.length === 0}
@@ -307,7 +444,7 @@ export function AnalystView() {
             {(data) => (
               <div className="space-y-5 text-[13px] leading-relaxed">
                 <div>
-                  <h3 className="mb-2 font-medium text-ink">It will read only</h3>
+                  <h3 className="mb-2 font-medium text-ink">It reads only</h3>
                   <ul className="space-y-1 font-mono text-xs text-muted">
                     {data.tools.map((tool) => (
                       <li key={tool.endpoint}>{tool.endpoint}</li>

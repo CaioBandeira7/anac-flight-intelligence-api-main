@@ -51,7 +51,7 @@ export const NAV: NavItem[] = [
     href: "/dashboard/analyst",
     label: "AI Aviation Analyst",
     icon: Bot,
-    description: "An assistant grounded on these data. Not available yet.",
+    description: "Questions in plain language, answered only from these data.",
   },
 ];
 

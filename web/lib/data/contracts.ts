@@ -128,6 +128,33 @@ export interface AnalystCatalog {
   must_not_claim: string[];
 }
 
+export interface AnalystStatus {
+  available: boolean;
+  provider: string;
+  model: string;
+  reason: string | null;
+}
+
+export interface ChatTurn {
+  role: "user" | "assistant";
+  content: string;
+}
+
+export interface ChatSource {
+  endpoint: string;
+  dataset: string;
+  period: string;
+  unit: string;
+  generated_at: string;
+}
+
+export interface ChatResponse {
+  status: "answered" | "no_data" | "unverified";
+  answer: string;
+  sources: ChatSource[];
+  caveats: string[];
+}
+
 export interface HealthStatus {
   ok: boolean;
   version?: string;
@@ -145,6 +172,8 @@ export interface FlightDataProvider {
   getDatasets(): Promise<Envelope<DatasetInfo[]>>;
   getModules(): Promise<Envelope<ModuleDescription[]>>;
   getAnalystCatalog(): Promise<Envelope<AnalystCatalog>>;
+  getAnalystStatus(): Promise<AnalystStatus>;
+  askAnalyst(question: string, history: ChatTurn[]): Promise<ChatResponse>;
 }
 
 export class DataProviderError extends Error {
@@ -152,6 +181,8 @@ export class DataProviderError extends Error {
     message: string,
     readonly status?: number,
     readonly endpoint?: string,
+    /** Machine-readable reason sent by the backend, when there is one. */
+    readonly code?: string,
   ) {
     super(message);
     this.name = "DataProviderError";

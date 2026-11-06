@@ -67,14 +67,22 @@ export function Skeleton({ className }: { className?: string }) {
   return <div aria-hidden className={cn("skeleton rounded-lg", className)} />;
 }
 
-export function ErrorState({ error, onRetry }: { error: Error; onRetry: () => void }) {
+export function ErrorState({
+  error,
+  onRetry,
+  hint = "Check that the backend is running, then try again.",
+}: {
+  error: Error;
+  onRetry: () => void;
+  hint?: string;
+}) {
   return (
     <div role="alert" className="flex flex-col items-start gap-4 rounded-2xl border border-red-400/25 bg-red-500/[0.06] p-6">
       <div className="flex items-center gap-3 text-ink">
         <AlertTriangle className="size-5 text-red-300" aria-hidden />
         <p className="font-medium">Couldn&apos;t load this data</p>
       </div>
-      <p className="text-sm text-muted">{error.message}. Check that the backend is running, then try again.</p>
+      <p className="text-sm text-muted">{error.message.replace(/\.$/, "")}. {hint}</p>
       <Button variant="secondary" size="sm" onClick={onRetry}>
         <RotateCw aria-hidden /> Retry
       </Button>
