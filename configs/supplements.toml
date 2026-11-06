@@ -1,0 +1,22 @@
+# Official monthly files that complement the source CSV. Download by browser into
+# data/raw/supplements/ (the portal refuses scripted downloads). See docs/supplements.md.
+
+[paths]
+directory = "data/raw/supplements"
+reference_csv = "data/raw/supplements/reference/Dados_Estatisticos.csv"
+report = "reports/ingestion/supplement_report.json"
+
+[gates]
+# Share of rows whose reference date must fall in the declared month.
+min_rows_in_month = 0.999
+# Control month: share of ids found in the base, and of those matching on compared fields.
+min_control_id_match = 0.99
+min_control_value_match = 0.99
+# Takeoffs, seats, RPK and ASK against ANAC's aggregate, for each month.
+max_reference_difference = 0.005
+
+[months]
+gap = ["2015-08", "2016-02", "2018-07", "2020-08"]
+control = ["2018-06"]
+revision = ["2025-10", "2025-11", "2025-12"]
+evaluation = ["2026-01", "2026-02", "2026-03", "2026-04", "2026-05", "2026-06", "2026-07", "2026-08", "2026-09"]

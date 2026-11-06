@@ -1,0 +1,367 @@
+{
+  "module": "d",
+  "title": "Demand and capacity by route",
+  "kind": "baseline",
+  "evaluated_on": "validation (2023-01 to 2023-12)",
+  "dataset": "flights",
+  "dataset_digest": "14fa41725d655b59",
+  "config_fingerprint": "6b053f861555d17b",
+  "git": {
+    "commit": "0508d88",
+    "tracked_changes": true
+  },
+  "evaluated_at": "2026-11-06T15:08:48+00:00",
+  "unknown_months": [
+    "2015-08",
+    "2016-02",
+    "2018-07",
+    "2020-08"
+  ],
+  "rows": {
+    "train": 318149,
+    "validation": 33762
+  },
+  "targets": {
+    "pax": "Paid passengers carried. Demand served, not unconstrained demand",
+    "seats": "Seats operated",
+    "pressure": "Paid passengers over seats"
+  },
+  "primary_metric": "WAPE of passengers and of seats",
+  "results": {
+    "pred_pax_seasonal_naive": {
+      "all": {
+        "rows": 33762,
+        "wape": {
+          "value": 0.25308501,
+          "ci95": [
+            0.24122908,
+            0.26575363
+          ],
+          "months": 12
+        },
+        "bias": {
+          "value": -0.12197382,
+          "ci95": [
+            -0.14682717,
+            -0.09694844
+          ],
+          "months": 12
+        },
+        "rmsse": 0.65263383
+      },
+      "horizon=1": {
+        "rows": 11383,
+        "wape": {
+          "value": 0.25486578,
+          "ci95": [
+            0.24314349,
+            0.26696587
+          ],
+          "months": 12
+        },
+        "bias": {
+          "value": -0.12783349,
+          "ci95": [
+            -0.15206039,
+            -0.10337041
+          ],
+          "months": 12
+        },
+        "rmsse": 0.6504877
+      },
+      "horizon=3": {
+        "rows": 11280,
+        "wape": {
+          "value": 0.25348088,
+          "ci95": [
+            0.24154169,
+            0.26654131
+          ],
+          "months": 12
+        },
+        "bias": {
+          "value": -0.12280013,
+          "ci95": [
+            -0.14731303,
+            -0.09786765
+          ],
+          "months": 12
+        },
+        "rmsse": 0.65220572
+      },
+      "horizon=6": {
+        "rows": 11099,
+        "wape": {
+          "value": 0.2508875,
+          "ci95": [
+            0.23850687,
+            0.26364564
+          ],
+          "months": 12
+        },
+        "bias": {
+          "value": -0.11522217,
+          "ci95": [
+            -0.14062148,
+            -0.0896034
+          ],
+          "months": 12
+        },
+        "rmsse": 0.65526092
+      }
+    },
+    "pred_pax_seasonal_trend": {
+      "all": {
+        "rows": 33762,
+        "wape": {
+          "value": 0.30523136,
+          "ci95": [
+            0.28381859,
+            0.32822793
+          ],
+          "months": 12
+        },
+        "bias": {
+          "value": 0.11835505,
+          "ci95": [
+            0.09640803,
+            0.1464933
+          ],
+          "months": 12
+        },
+        "rmsse": 0.79945717
+      },
+      "horizon=1": {
+        "rows": 11383,
+        "wape": {
+          "value": 0.2407447,
+          "ci95": [
+            0.2237881,
+            0.25657019
+          ],
+          "months": 12
+        },
+        "bias": {
+          "value": 0.05390556,
+          "ci95": [
+            0.03109596,
+            0.074502
+          ],
+          "months": 12
+        },
+        "rmsse": 0.59361953
+      },
+      "horizon=3": {
+        "rows": 11280,
+        "wape": {
+          "value": 0.28941924,
+          "ci95": [
+            0.27399449,
+            0.30537473
+          ],
+          "months": 12
+        },
+        "bias": {
+          "value": 0.09748543,
+          "ci95": [
+            0.07189095,
+            0.12009119
+          ],
+          "months": 12
+        },
+        "rmsse": 0.72291087
+      },
+      "horizon=6": {
+        "rows": 11099,
+        "wape": {
+          "value": 0.38629449,
+          "ci95": [
+            0.35137879,
+            0.42743394
+          ],
+          "months": 12
+        },
+        "bias": {
+          "value": 0.20446958,
+          "ci95": [
+            0.15371528,
+            0.26504187
+          ],
+          "months": 12
+        },
+        "rmsse": 1.02549924
+      }
+    },
+    "pred_seats_seasonal_naive": {
+      "all": {
+        "rows": 33762,
+        "wape": {
+          "value": 0.25729931,
+          "ci95": [
+            0.24391342,
+            0.27162484
+          ],
+          "months": 12
+        },
+        "bias": {
+          "value": -0.10443697,
+          "ci95": [
+            -0.13781644,
+            -0.06830326
+          ],
+          "months": 12
+        },
+        "rmsse": 0.69274005
+      },
+      "horizon=1": {
+        "rows": 11383,
+        "wape": {
+          "value": 0.25897198,
+          "ci95": [
+            0.24581143,
+            0.27281365
+          ],
+          "months": 12
+        },
+        "bias": {
+          "value": -0.1108203,
+          "ci95": [
+            -0.14395897,
+            -0.07506344
+          ],
+          "months": 12
+        },
+        "rmsse": 0.69032369
+      },
+      "horizon=3": {
+        "rows": 11280,
+        "wape": {
+          "value": 0.25763616,
+          "ci95": [
+            0.24431689,
+            0.27192518
+          ],
+          "months": 12
+        },
+        "bias": {
+          "value": -0.10531031,
+          "ci95": [
+            -0.13886992,
+            -0.06909844
+          ],
+          "months": 12
+        },
+        "rmsse": 0.69221454
+      },
+      "horizon=6": {
+        "rows": 11099,
+        "wape": {
+          "value": 0.25526948,
+          "ci95": [
+            0.24104747,
+            0.26993344
+          ],
+          "months": 12
+        },
+        "bias": {
+          "value": -0.09710547,
+          "ci95": [
+            -0.13116315,
+            -0.06018695
+          ],
+          "months": 12
+        },
+        "rmsse": 0.69574129
+      }
+    },
+    "pred_seats_seasonal_trend": {
+      "all": {
+        "rows": 33762,
+        "wape": {
+          "value": 0.32567432,
+          "ci95": [
+            0.30499209,
+            0.34722127
+          ],
+          "months": 12
+        },
+        "bias": {
+          "value": 0.15115382,
+          "ci95": [
+            0.12961477,
+            0.17473292
+          ],
+          "months": 12
+        },
+        "rmsse": 0.88633732
+      },
+      "horizon=1": {
+        "rows": 11383,
+        "wape": {
+          "value": 0.25717633,
+          "ci95": [
+            0.23902598,
+            0.27495873
+          ],
+          "months": 12
+        },
+        "bias": {
+          "value": 0.08038815,
+          "ci95": [
+            0.05512215,
+            0.10309763
+          ],
+          "months": 12
+        },
+        "rmsse": 0.66233403
+      },
+      "horizon=3": {
+        "rows": 11280,
+        "wape": {
+          "value": 0.31060583,
+          "ci95": [
+            0.29194024,
+            0.32910562
+          ],
+          "months": 12
+        },
+        "bias": {
+          "value": 0.12977498,
+          "ci95": [
+            0.10336239,
+            0.15333232
+          ],
+          "months": 12
+        },
+        "rmsse": 0.8028905
+      },
+      "horizon=6": {
+        "rows": 11099,
+        "wape": {
+          "value": 0.4100807,
+          "ci95": [
+            0.37933611,
+            0.44471749
+          ],
+          "months": 12
+        },
+        "bias": {
+          "value": 0.24420354,
+          "ci95": [
+            0.20689924,
+            0.29056108
+          ],
+          "months": 12
+        },
+        "rmsse": 1.13341846
+      }
+    },
+    "high_pressure_event": {
+      "threshold_from_train": 0.84545093,
+      "base_rate_validation": 0.32818606,
+      "pr_auc": 0.58904433,
+      "brier": 0.18634969,
+      "rows": 31473
+    }
+  }
+}

@@ -1,0 +1,381 @@
+{
+  "module": "b",
+  "title": "Seat occupancy by route and carrier",
+  "kind": "baseline",
+  "evaluated_on": "validation (2023-01 to 2023-12)",
+  "dataset": "flights",
+  "dataset_digest": "14fa41725d655b59",
+  "config_fingerprint": "6b053f861555d17b",
+  "git": {
+    "commit": "0508d88",
+    "tracked_changes": true
+  },
+  "evaluated_at": "2026-11-06T15:08:48+00:00",
+  "unknown_months": [
+    "2015-08",
+    "2016-02",
+    "2018-07",
+    "2020-08"
+  ],
+  "rows": {
+    "train": 488226,
+    "validation": 47197
+  },
+  "targets": {
+    "load_factor": "Paid passengers over seats, in the target month",
+    "operated": "Whether the unit flew in the target month"
+  },
+  "primary_metric": "seat-weighted MAE of load factor",
+  "results": {
+    "operating_rate_of_eligible_units": 0.89770536,
+    "training_rows_with_target": 401356,
+    "pred_same_month_last_year": {
+      "all": {
+        "rows": 42369,
+        "seat_weighted_mae": {
+          "value": 0.06897146,
+          "ci95": [
+            0.06505608,
+            0.07296727
+          ],
+          "months": 12
+        },
+        "seat_weighted_bias": {
+          "value": -0.01436885,
+          "ci95": [
+            -0.02365689,
+            -0.00471162
+          ],
+          "months": 12
+        }
+      },
+      "horizon=1": {
+        "rows": 14510,
+        "seat_weighted_mae": {
+          "value": 0.06922681,
+          "ci95": [
+            0.06553274,
+            0.07304539
+          ],
+          "months": 12
+        },
+        "seat_weighted_bias": {
+          "value": -0.01468616,
+          "ci95": [
+            -0.02370863,
+            -0.00505096
+          ],
+          "months": 12
+        }
+      },
+      "horizon=3": {
+        "rows": 14171,
+        "seat_weighted_mae": {
+          "value": 0.06894846,
+          "ci95": [
+            0.06494158,
+            0.07296999
+          ],
+          "months": 12
+        },
+        "seat_weighted_bias": {
+          "value": -0.01422998,
+          "ci95": [
+            -0.02368957,
+            -0.00442293
+          ],
+          "months": 12
+        }
+      },
+      "horizon=6": {
+        "rows": 13688,
+        "seat_weighted_mae": {
+          "value": 0.06873309,
+          "ci95": [
+            0.06458251,
+            0.07285043
+          ],
+          "months": 12
+        },
+        "seat_weighted_bias": {
+          "value": -0.01418449,
+          "ci95": [
+            -0.02340896,
+            -0.00452006
+          ],
+          "months": 12
+        }
+      },
+      "large_units": {
+        "rows": 11721,
+        "seat_weighted_mae": {
+          "value": 0.06138055,
+          "ci95": [
+            0.05716348,
+            0.06564062
+          ],
+          "months": 12
+        },
+        "seat_weighted_bias": {
+          "value": -0.01251155,
+          "ci95": [
+            -0.02479162,
+            0.00025489
+          ],
+          "months": 12
+        }
+      },
+      "small_units": {
+        "rows": 30648,
+        "seat_weighted_mae": {
+          "value": 0.08081095,
+          "ci95": [
+            0.0770893,
+            0.08448843
+          ],
+          "months": 12
+        },
+        "seat_weighted_bias": {
+          "value": -0.01726567,
+          "ci95": [
+            -0.02293225,
+            -0.01153121
+          ],
+          "months": 12
+        }
+      }
+    },
+    "pred_mean_12": {
+      "all": {
+        "rows": 42369,
+        "seat_weighted_mae": {
+          "value": 0.06541995,
+          "ci95": [
+            0.06170788,
+            0.06948926
+          ],
+          "months": 12
+        },
+        "seat_weighted_bias": {
+          "value": -0.01332227,
+          "ci95": [
+            -0.0265255,
+            -3.187e-05
+          ],
+          "months": 12
+        }
+      },
+      "horizon=1": {
+        "rows": 14510,
+        "seat_weighted_mae": {
+          "value": 0.0632984,
+          "ci95": [
+            0.05968489,
+            0.06698029
+          ],
+          "months": 12
+        },
+        "seat_weighted_bias": {
+          "value": -0.01433959,
+          "ci95": [
+            -0.02731492,
+            -0.00159311
+          ],
+          "months": 12
+        }
+      },
+      "horizon=3": {
+        "rows": 14171,
+        "seat_weighted_mae": {
+          "value": 0.06555343,
+          "ci95": [
+            0.06174586,
+            0.06982785
+          ],
+          "months": 12
+        },
+        "seat_weighted_bias": {
+          "value": -0.01343449,
+          "ci95": [
+            -0.02714983,
+            0.00013226
+          ],
+          "months": 12
+        }
+      },
+      "horizon=6": {
+        "rows": 13688,
+        "seat_weighted_mae": {
+          "value": 0.0674588,
+          "ci95": [
+            0.0630162,
+            0.07236511
+          ],
+          "months": 12
+        },
+        "seat_weighted_bias": {
+          "value": -0.01216589,
+          "ci95": [
+            -0.02586332,
+            0.00221687
+          ],
+          "months": 12
+        }
+      },
+      "large_units": {
+        "rows": 11721,
+        "seat_weighted_mae": {
+          "value": 0.06115518,
+          "ci95": [
+            0.05715565,
+            0.0660291
+          ],
+          "months": 12
+        },
+        "seat_weighted_bias": {
+          "value": -0.01182463,
+          "ci95": [
+            -0.02795863,
+            0.00485971
+          ],
+          "months": 12
+        }
+      },
+      "small_units": {
+        "rows": 30648,
+        "seat_weighted_mae": {
+          "value": 0.07207169,
+          "ci95": [
+            0.06844007,
+            0.07594016
+          ],
+          "months": 12
+        },
+        "seat_weighted_bias": {
+          "value": -0.01565812,
+          "ci95": [
+            -0.02558301,
+            -0.00556033
+          ],
+          "months": 12
+        }
+      }
+    },
+    "pred_mean_3": {
+      "all": {
+        "rows": 42369,
+        "seat_weighted_mae": {
+          "value": 0.07265192,
+          "ci95": [
+            0.06931301,
+            0.0757333
+          ],
+          "months": 12
+        },
+        "seat_weighted_bias": {
+          "value": -0.01370168,
+          "ci95": [
+            -0.02787884,
+            0.00042011
+          ],
+          "months": 12
+        }
+      },
+      "horizon=1": {
+        "rows": 14510,
+        "seat_weighted_mae": {
+          "value": 0.06822511,
+          "ci95": [
+            0.06436116,
+            0.07235263
+          ],
+          "months": 12
+        },
+        "seat_weighted_bias": {
+          "value": -0.01141669,
+          "ci95": [
+            -0.0264636,
+            0.00301065
+          ],
+          "months": 12
+        }
+      },
+      "horizon=3": {
+        "rows": 14171,
+        "seat_weighted_mae": {
+          "value": 0.07416607,
+          "ci95": [
+            0.07039507,
+            0.07867685
+          ],
+          "months": 12
+        },
+        "seat_weighted_bias": {
+          "value": -0.01409499,
+          "ci95": [
+            -0.03061688,
+            0.00198829
+          ],
+          "months": 12
+        }
+      },
+      "horizon=6": {
+        "rows": 13688,
+        "seat_weighted_mae": {
+          "value": 0.07565318,
+          "ci95": [
+            0.07057998,
+            0.0815493
+          ],
+          "months": 12
+        },
+        "seat_weighted_bias": {
+          "value": -0.01564452,
+          "ci95": [
+            -0.02930142,
+            -0.00014528
+          ],
+          "months": 12
+        }
+      },
+      "large_units": {
+        "rows": 11721,
+        "seat_weighted_mae": {
+          "value": 0.06774726,
+          "ci95": [
+            0.06394248,
+            0.07154918
+          ],
+          "months": 12
+        },
+        "seat_weighted_bias": {
+          "value": -0.01411132,
+          "ci95": [
+            -0.03064999,
+            0.00288081
+          ],
+          "months": 12
+        }
+      },
+      "small_units": {
+        "rows": 30648,
+        "seat_weighted_mae": {
+          "value": 0.08030169,
+          "ci95": [
+            0.07748971,
+            0.08301083
+          ],
+          "months": 12
+        },
+        "seat_weighted_bias": {
+          "value": -0.01306276,
+          "ci95": [
+            -0.02428747,
+            -0.00203281
+          ],
+          "months": 12
+        }
+      }
+    }
+  }
+}

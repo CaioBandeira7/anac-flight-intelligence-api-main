@@ -1,0 +1,3929 @@
+{
+  "scope": "domestic passenger flights of AZU, GLO and TAM, 2015-2022",
+  "monthly": [
+    {
+      "carrier": "AZU",
+      "year": 2015,
+      "month": 1,
+      "flights": 24646,
+      "bag_per_pax": 11.7,
+      "pct_flights_zero_bag": 0.06,
+      "median_flight_bag_per_pax": 11.72,
+      "p90_p10_spread": 7.15,
+      "pct_bag_multiple_of_10": 9.8
+    },
+    {
+      "carrier": "AZU",
+      "year": 2015,
+      "month": 2,
+      "flights": 22075,
+      "bag_per_pax": 10.662,
+      "pct_flights_zero_bag": 0.09,
+      "median_flight_bag_per_pax": 10.51,
+      "p90_p10_spread": 7.58,
+      "pct_bag_multiple_of_10": 10.0
+    },
+    {
+      "carrier": "AZU",
+      "year": 2015,
+      "month": 3,
+      "flights": 23852,
+      "bag_per_pax": 9.717,
+      "pct_flights_zero_bag": 0.06,
+      "median_flight_bag_per_pax": 9.58,
+      "p90_p10_spread": 7.54,
+      "pct_bag_multiple_of_10": 10.3
+    },
+    {
+      "carrier": "AZU",
+      "year": 2015,
+      "month": 4,
+      "flights": 22073,
+      "bag_per_pax": 9.871,
+      "pct_flights_zero_bag": 0.05,
+      "median_flight_bag_per_pax": 9.82,
+      "p90_p10_spread": 6.96,
+      "pct_bag_multiple_of_10": 9.8
+    },
+    {
+      "carrier": "AZU",
+      "year": 2015,
+      "month": 5,
+      "flights": 22384,
+      "bag_per_pax": 9.964,
+      "pct_flights_zero_bag": 0.19,
+      "median_flight_bag_per_pax": 9.92,
+      "p90_p10_spread": 7.32,
+      "pct_bag_multiple_of_10": 10.6
+    },
+    {
+      "carrier": "AZU",
+      "year": 2015,
+      "month": 6,
+      "flights": 21348,
+      "bag_per_pax": 10.387,
+      "pct_flights_zero_bag": 0.07,
+      "median_flight_bag_per_pax": 10.32,
+      "p90_p10_spread": 7.44,
+      "pct_bag_multiple_of_10": 9.9
+    },
+    {
+      "carrier": "AZU",
+      "year": 2015,
+      "month": 7,
+      "flights": 22833,
+      "bag_per_pax": 11.268,
+      "pct_flights_zero_bag": 0.03,
+      "median_flight_bag_per_pax": 11.33,
+      "p90_p10_spread": 6.72,
+      "pct_bag_multiple_of_10": 10.4
+    },
+    {
+      "carrier": "AZU",
+      "year": 2015,
+      "month": 9,
+      "flights": 22775,
+      "bag_per_pax": 10.09,
+      "pct_flights_zero_bag": 0.03,
+      "median_flight_bag_per_pax": 10.03,
+      "p90_p10_spread": 6.84,
+      "pct_bag_multiple_of_10": 10.1
+    },
+    {
+      "carrier": "AZU",
+      "year": 2015,
+      "month": 10,
+      "flights": 23228,
+      "bag_per_pax": 10.169,
+      "pct_flights_zero_bag": 0.04,
+      "median_flight_bag_per_pax": 10.07,
+      "p90_p10_spread": 6.68,
+      "pct_bag_multiple_of_10": 9.6
+    },
+    {
+      "carrier": "AZU",
+      "year": 2015,
+      "month": 11,
+      "flights": 22256,
+      "bag_per_pax": 10.002,
+      "pct_flights_zero_bag": 0.05,
+      "median_flight_bag_per_pax": 9.86,
+      "p90_p10_spread": 6.86,
+      "pct_bag_multiple_of_10": 10.1
+    },
+    {
+      "carrier": "AZU",
+      "year": 2015,
+      "month": 12,
+      "flights": 23902,
+      "bag_per_pax": 11.447,
+      "pct_flights_zero_bag": 0.04,
+      "median_flight_bag_per_pax": 11.46,
+      "p90_p10_spread": 7.33,
+      "pct_bag_multiple_of_10": 10.7
+    },
+    {
+      "carrier": "AZU",
+      "year": 2016,
+      "month": 1,
+      "flights": 23469,
+      "bag_per_pax": 12.335,
+      "pct_flights_zero_bag": 0.06,
+      "median_flight_bag_per_pax": 12.35,
+      "p90_p10_spread": 6.44,
+      "pct_bag_multiple_of_10": 10.2
+    },
+    {
+      "carrier": "AZU",
+      "year": 2016,
+      "month": 3,
+      "flights": 21921,
+      "bag_per_pax": 10.007,
+      "pct_flights_zero_bag": 0.02,
+      "median_flight_bag_per_pax": 9.91,
+      "p90_p10_spread": 6.98,
+      "pct_bag_multiple_of_10": 10.6
+    },
+    {
+      "carrier": "AZU",
+      "year": 2016,
+      "month": 4,
+      "flights": 19677,
+      "bag_per_pax": 9.968,
+      "pct_flights_zero_bag": 0.01,
+      "median_flight_bag_per_pax": 9.89,
+      "p90_p10_spread": 6.86,
+      "pct_bag_multiple_of_10": 10.2
+    },
+    {
+      "carrier": "AZU",
+      "year": 2016,
+      "month": 5,
+      "flights": 19893,
+      "bag_per_pax": 10.345,
+      "pct_flights_zero_bag": 0.04,
+      "median_flight_bag_per_pax": 10.3,
+      "p90_p10_spread": 6.92,
+      "pct_bag_multiple_of_10": 9.9
+    },
+    {
+      "carrier": "AZU",
+      "year": 2016,
+      "month": 6,
+      "flights": 20146,
+      "bag_per_pax": 10.421,
+      "pct_flights_zero_bag": 0.07,
+      "median_flight_bag_per_pax": 10.33,
+      "p90_p10_spread": 7.32,
+      "pct_bag_multiple_of_10": 10.0
+    },
+    {
+      "carrier": "AZU",
+      "year": 2016,
+      "month": 7,
+      "flights": 21305,
+      "bag_per_pax": 11.315,
+      "pct_flights_zero_bag": 0.01,
+      "median_flight_bag_per_pax": 11.36,
+      "p90_p10_spread": 6.59,
+      "pct_bag_multiple_of_10": 10.0
+    },
+    {
+      "carrier": "AZU",
+      "year": 2016,
+      "month": 8,
+      "flights": 21435,
+      "bag_per_pax": 10.549,
+      "pct_flights_zero_bag": 0.02,
+      "median_flight_bag_per_pax": 10.52,
+      "p90_p10_spread": 6.88,
+      "pct_bag_multiple_of_10": 9.7
+    },
+    {
+      "carrier": "AZU",
+      "year": 2016,
+      "month": 9,
+      "flights": 20788,
+      "bag_per_pax": 10.45,
+      "pct_flights_zero_bag": 0.01,
+      "median_flight_bag_per_pax": 10.41,
+      "p90_p10_spread": 6.89,
+      "pct_bag_multiple_of_10": 9.8
+    },
+    {
+      "carrier": "AZU",
+      "year": 2016,
+      "month": 10,
+      "flights": 21324,
+      "bag_per_pax": 10.414,
+      "pct_flights_zero_bag": 0.05,
+      "median_flight_bag_per_pax": 10.39,
+      "p90_p10_spread": 6.86,
+      "pct_bag_multiple_of_10": 10.4
+    },
+    {
+      "carrier": "AZU",
+      "year": 2016,
+      "month": 11,
+      "flights": 20739,
+      "bag_per_pax": 10.257,
+      "pct_flights_zero_bag": 0.02,
+      "median_flight_bag_per_pax": 10.23,
+      "p90_p10_spread": 6.98,
+      "pct_bag_multiple_of_10": 10.3
+    },
+    {
+      "carrier": "AZU",
+      "year": 2016,
+      "month": 12,
+      "flights": 22556,
+      "bag_per_pax": 11.404,
+      "pct_flights_zero_bag": 0.02,
+      "median_flight_bag_per_pax": 11.47,
+      "p90_p10_spread": 7.09,
+      "pct_bag_multiple_of_10": 9.9
+    },
+    {
+      "carrier": "AZU",
+      "year": 2017,
+      "month": 1,
+      "flights": 23429,
+      "bag_per_pax": 12.097,
+      "pct_flights_zero_bag": 0.04,
+      "median_flight_bag_per_pax": 12.14,
+      "p90_p10_spread": 6.33,
+      "pct_bag_multiple_of_10": 10.1
+    },
+    {
+      "carrier": "AZU",
+      "year": 2017,
+      "month": 2,
+      "flights": 19898,
+      "bag_per_pax": 10.675,
+      "pct_flights_zero_bag": 0.02,
+      "median_flight_bag_per_pax": 10.56,
+      "p90_p10_spread": 7.06,
+      "pct_bag_multiple_of_10": 9.7
+    },
+    {
+      "carrier": "AZU",
+      "year": 2017,
+      "month": 3,
+      "flights": 22550,
+      "bag_per_pax": 9.957,
+      "pct_flights_zero_bag": 0.02,
+      "median_flight_bag_per_pax": 9.91,
+      "p90_p10_spread": 7.07,
+      "pct_bag_multiple_of_10": 10.3
+    },
+    {
+      "carrier": "AZU",
+      "year": 2017,
+      "month": 4,
+      "flights": 20060,
+      "bag_per_pax": 10.005,
+      "pct_flights_zero_bag": 0.04,
+      "median_flight_bag_per_pax": 9.96,
+      "p90_p10_spread": 6.64,
+      "pct_bag_multiple_of_10": 10.1
+    },
+    {
+      "carrier": "AZU",
+      "year": 2017,
+      "month": 5,
+      "flights": 21566,
+      "bag_per_pax": 9.737,
+      "pct_flights_zero_bag": 0.02,
+      "median_flight_bag_per_pax": 9.69,
+      "p90_p10_spread": 6.75,
+      "pct_bag_multiple_of_10": 9.9
+    },
+    {
+      "carrier": "AZU",
+      "year": 2017,
+      "month": 6,
+      "flights": 19885,
+      "bag_per_pax": 10.0,
+      "pct_flights_zero_bag": 0.03,
+      "median_flight_bag_per_pax": 9.93,
+      "p90_p10_spread": 6.87,
+      "pct_bag_multiple_of_10": 9.6
+    },
+    {
+      "carrier": "AZU",
+      "year": 2017,
+      "month": 7,
+      "flights": 21103,
+      "bag_per_pax": 10.344,
+      "pct_flights_zero_bag": 0.03,
+      "median_flight_bag_per_pax": 10.36,
+      "p90_p10_spread": 6.31,
+      "pct_bag_multiple_of_10": 9.9
+    },
+    {
+      "carrier": "AZU",
+      "year": 2017,
+      "month": 8,
+      "flights": 20673,
+      "bag_per_pax": 8.926,
+      "pct_flights_zero_bag": 0.02,
+      "median_flight_bag_per_pax": 8.83,
+      "p90_p10_spread": 7.0,
+      "pct_bag_multiple_of_10": 10.5
+    },
+    {
+      "carrier": "AZU",
+      "year": 2017,
+      "month": 9,
+      "flights": 19960,
+      "bag_per_pax": 8.468,
+      "pct_flights_zero_bag": 0.02,
+      "median_flight_bag_per_pax": 8.34,
+      "p90_p10_spread": 6.71,
+      "pct_bag_multiple_of_10": 10.0
+    },
+    {
+      "carrier": "AZU",
+      "year": 2017,
+      "month": 10,
+      "flights": 20051,
+      "bag_per_pax": 8.356,
+      "pct_flights_zero_bag": 0.06,
+      "median_flight_bag_per_pax": 8.2,
+      "p90_p10_spread": 6.61,
+      "pct_bag_multiple_of_10": 10.4
+    },
+    {
+      "carrier": "AZU",
+      "year": 2017,
+      "month": 11,
+      "flights": 19616,
+      "bag_per_pax": 7.966,
+      "pct_flights_zero_bag": 0.05,
+      "median_flight_bag_per_pax": 7.8,
+      "p90_p10_spread": 6.44,
+      "pct_bag_multiple_of_10": 10.2
+    },
+    {
+      "carrier": "AZU",
+      "year": 2017,
+      "month": 12,
+      "flights": 21015,
+      "bag_per_pax": 9.474,
+      "pct_flights_zero_bag": 0.03,
+      "median_flight_bag_per_pax": 9.47,
+      "p90_p10_spread": 7.17,
+      "pct_bag_multiple_of_10": 10.6
+    },
+    {
+      "carrier": "AZU",
+      "year": 2018,
+      "month": 1,
+      "flights": 21881,
+      "bag_per_pax": 10.145,
+      "pct_flights_zero_bag": 0.02,
+      "median_flight_bag_per_pax": 10.09,
+      "p90_p10_spread": 6.61,
+      "pct_bag_multiple_of_10": 10.0
+    },
+    {
+      "carrier": "AZU",
+      "year": 2018,
+      "month": 2,
+      "flights": 18535,
+      "bag_per_pax": 8.831,
+      "pct_flights_zero_bag": 0.06,
+      "median_flight_bag_per_pax": 8.72,
+      "p90_p10_spread": 7.04,
+      "pct_bag_multiple_of_10": 10.1
+    },
+    {
+      "carrier": "AZU",
+      "year": 2018,
+      "month": 3,
+      "flights": 20606,
+      "bag_per_pax": 7.85,
+      "pct_flights_zero_bag": 0.05,
+      "median_flight_bag_per_pax": 7.7,
+      "p90_p10_spread": 6.65,
+      "pct_bag_multiple_of_10": 9.9
+    },
+    {
+      "carrier": "AZU",
+      "year": 2018,
+      "month": 4,
+      "flights": 20536,
+      "bag_per_pax": 7.631,
+      "pct_flights_zero_bag": 0.01,
+      "median_flight_bag_per_pax": 7.47,
+      "p90_p10_spread": 6.43,
+      "pct_bag_multiple_of_10": 10.1
+    },
+    {
+      "carrier": "AZU",
+      "year": 2018,
+      "month": 5,
+      "flights": 20744,
+      "bag_per_pax": 7.817,
+      "pct_flights_zero_bag": 0.01,
+      "median_flight_bag_per_pax": 7.6,
+      "p90_p10_spread": 6.59,
+      "pct_bag_multiple_of_10": 10.0
+    },
+    {
+      "carrier": "AZU",
+      "year": 2018,
+      "month": 6,
+      "flights": 20549,
+      "bag_per_pax": 8.001,
+      "pct_flights_zero_bag": 0.02,
+      "median_flight_bag_per_pax": 7.78,
+      "p90_p10_spread": 6.93,
+      "pct_bag_multiple_of_10": 10.1
+    },
+    {
+      "carrier": "AZU",
+      "year": 2018,
+      "month": 8,
+      "flights": 21466,
+      "bag_per_pax": 8.024,
+      "pct_flights_zero_bag": 0.03,
+      "median_flight_bag_per_pax": 7.81,
+      "p90_p10_spread": 6.64,
+      "pct_bag_multiple_of_10": 9.8
+    },
+    {
+      "carrier": "AZU",
+      "year": 2018,
+      "month": 9,
+      "flights": 20460,
+      "bag_per_pax": 7.701,
+      "pct_flights_zero_bag": 0.03,
+      "median_flight_bag_per_pax": 7.44,
+      "p90_p10_spread": 6.34,
+      "pct_bag_multiple_of_10": 10.2
+    },
+    {
+      "carrier": "AZU",
+      "year": 2018,
+      "month": 10,
+      "flights": 21213,
+      "bag_per_pax": 7.412,
+      "pct_flights_zero_bag": 0.0,
+      "median_flight_bag_per_pax": 7.21,
+      "p90_p10_spread": 6.24,
+      "pct_bag_multiple_of_10": 10.3
+    },
+    {
+      "carrier": "AZU",
+      "year": 2018,
+      "month": 11,
+      "flights": 19537,
+      "bag_per_pax": 7.529,
+      "pct_flights_zero_bag": 0.02,
+      "median_flight_bag_per_pax": 7.28,
+      "p90_p10_spread": 6.29,
+      "pct_bag_multiple_of_10": 10.1
+    },
+    {
+      "carrier": "AZU",
+      "year": 2018,
+      "month": 12,
+      "flights": 21910,
+      "bag_per_pax": 8.891,
+      "pct_flights_zero_bag": 0.04,
+      "median_flight_bag_per_pax": 8.71,
+      "p90_p10_spread": 7.19,
+      "pct_bag_multiple_of_10": 10.7
+    },
+    {
+      "carrier": "AZU",
+      "year": 2019,
+      "month": 1,
+      "flights": 23367,
+      "bag_per_pax": 9.18,
+      "pct_flights_zero_bag": 0.02,
+      "median_flight_bag_per_pax": 9.01,
+      "p90_p10_spread": 6.72,
+      "pct_bag_multiple_of_10": 10.0
+    },
+    {
+      "carrier": "AZU",
+      "year": 2019,
+      "month": 2,
+      "flights": 21194,
+      "bag_per_pax": 7.825,
+      "pct_flights_zero_bag": 0.03,
+      "median_flight_bag_per_pax": 7.5,
+      "p90_p10_spread": 6.77,
+      "pct_bag_multiple_of_10": 10.3
+    },
+    {
+      "carrier": "AZU",
+      "year": 2019,
+      "month": 3,
+      "flights": 21877,
+      "bag_per_pax": 7.616,
+      "pct_flights_zero_bag": 0.04,
+      "median_flight_bag_per_pax": 7.41,
+      "p90_p10_spread": 6.5,
+      "pct_bag_multiple_of_10": 10.2
+    },
+    {
+      "carrier": "AZU",
+      "year": 2019,
+      "month": 4,
+      "flights": 21808,
+      "bag_per_pax": 7.103,
+      "pct_flights_zero_bag": 0.03,
+      "median_flight_bag_per_pax": 6.9,
+      "p90_p10_spread": 5.96,
+      "pct_bag_multiple_of_10": 10.3
+    },
+    {
+      "carrier": "AZU",
+      "year": 2019,
+      "month": 5,
+      "flights": 22412,
+      "bag_per_pax": 7.16,
+      "pct_flights_zero_bag": 0.02,
+      "median_flight_bag_per_pax": 6.9,
+      "p90_p10_spread": 6.04,
+      "pct_bag_multiple_of_10": 10.0
+    },
+    {
+      "carrier": "AZU",
+      "year": 2019,
+      "month": 6,
+      "flights": 22057,
+      "bag_per_pax": 7.559,
+      "pct_flights_zero_bag": 0.01,
+      "median_flight_bag_per_pax": 7.26,
+      "p90_p10_spread": 6.39,
+      "pct_bag_multiple_of_10": 9.9
+    },
+    {
+      "carrier": "AZU",
+      "year": 2019,
+      "month": 7,
+      "flights": 24456,
+      "bag_per_pax": 8.222,
+      "pct_flights_zero_bag": 0.02,
+      "median_flight_bag_per_pax": 8.0,
+      "p90_p10_spread": 6.09,
+      "pct_bag_multiple_of_10": 10.1
+    },
+    {
+      "carrier": "AZU",
+      "year": 2019,
+      "month": 8,
+      "flights": 24154,
+      "bag_per_pax": 7.7,
+      "pct_flights_zero_bag": 0.03,
+      "median_flight_bag_per_pax": 7.38,
+      "p90_p10_spread": 6.52,
+      "pct_bag_multiple_of_10": 9.9
+    },
+    {
+      "carrier": "AZU",
+      "year": 2019,
+      "month": 9,
+      "flights": 24589,
+      "bag_per_pax": 6.996,
+      "pct_flights_zero_bag": 0.04,
+      "median_flight_bag_per_pax": 6.73,
+      "p90_p10_spread": 6.6,
+      "pct_bag_multiple_of_10": 10.2
+    },
+    {
+      "carrier": "AZU",
+      "year": 2019,
+      "month": 10,
+      "flights": 25535,
+      "bag_per_pax": 6.837,
+      "pct_flights_zero_bag": 0.07,
+      "median_flight_bag_per_pax": 6.58,
+      "p90_p10_spread": 6.41,
+      "pct_bag_multiple_of_10": 9.9
+    },
+    {
+      "carrier": "AZU",
+      "year": 2019,
+      "month": 11,
+      "flights": 22873,
+      "bag_per_pax": 7.089,
+      "pct_flights_zero_bag": 0.08,
+      "median_flight_bag_per_pax": 6.85,
+      "p90_p10_spread": 6.55,
+      "pct_bag_multiple_of_10": 10.3
+    },
+    {
+      "carrier": "AZU",
+      "year": 2019,
+      "month": 12,
+      "flights": 24228,
+      "bag_per_pax": 8.316,
+      "pct_flights_zero_bag": 0.05,
+      "median_flight_bag_per_pax": 8.04,
+      "p90_p10_spread": 7.45,
+      "pct_bag_multiple_of_10": 10.5
+    },
+    {
+      "carrier": "AZU",
+      "year": 2020,
+      "month": 1,
+      "flights": 26528,
+      "bag_per_pax": 8.779,
+      "pct_flights_zero_bag": 0.07,
+      "median_flight_bag_per_pax": 8.54,
+      "p90_p10_spread": 7.28,
+      "pct_bag_multiple_of_10": 10.0
+    },
+    {
+      "carrier": "AZU",
+      "year": 2020,
+      "month": 2,
+      "flights": 22639,
+      "bag_per_pax": 7.588,
+      "pct_flights_zero_bag": 0.07,
+      "median_flight_bag_per_pax": 7.33,
+      "p90_p10_spread": 6.83,
+      "pct_bag_multiple_of_10": 10.0
+    },
+    {
+      "carrier": "AZU",
+      "year": 2020,
+      "month": 3,
+      "flights": 16462,
+      "bag_per_pax": 7.612,
+      "pct_flights_zero_bag": 0.07,
+      "median_flight_bag_per_pax": 7.34,
+      "p90_p10_spread": 6.92,
+      "pct_bag_multiple_of_10": 9.8
+    },
+    {
+      "carrier": "AZU",
+      "year": 2020,
+      "month": 4,
+      "flights": 1717,
+      "bag_per_pax": 10.108,
+      "pct_flights_zero_bag": 0.12,
+      "median_flight_bag_per_pax": 9.55,
+      "p90_p10_spread": 6.64,
+      "pct_bag_multiple_of_10": 10.0
+    },
+    {
+      "carrier": "AZU",
+      "year": 2020,
+      "month": 5,
+      "flights": 2463,
+      "bag_per_pax": 10.328,
+      "pct_flights_zero_bag": 0.0,
+      "median_flight_bag_per_pax": 9.76,
+      "p90_p10_spread": 6.39,
+      "pct_bag_multiple_of_10": 9.9
+    },
+    {
+      "carrier": "AZU",
+      "year": 2020,
+      "month": 6,
+      "flights": 3522,
+      "bag_per_pax": 9.825,
+      "pct_flights_zero_bag": 0.0,
+      "median_flight_bag_per_pax": 9.35,
+      "p90_p10_spread": 6.51,
+      "pct_bag_multiple_of_10": 9.9
+    },
+    {
+      "carrier": "AZU",
+      "year": 2020,
+      "month": 7,
+      "flights": 5335,
+      "bag_per_pax": 9.052,
+      "pct_flights_zero_bag": 0.22,
+      "median_flight_bag_per_pax": 8.77,
+      "p90_p10_spread": 6.27,
+      "pct_bag_multiple_of_10": 10.3
+    },
+    {
+      "carrier": "AZU",
+      "year": 2020,
+      "month": 9,
+      "flights": 8990,
+      "bag_per_pax": 8.365,
+      "pct_flights_zero_bag": 0.04,
+      "median_flight_bag_per_pax": 8.11,
+      "p90_p10_spread": 6.0,
+      "pct_bag_multiple_of_10": 9.9
+    },
+    {
+      "carrier": "AZU",
+      "year": 2020,
+      "month": 10,
+      "flights": 12816,
+      "bag_per_pax": 7.9,
+      "pct_flights_zero_bag": 0.05,
+      "median_flight_bag_per_pax": 7.72,
+      "p90_p10_spread": 5.71,
+      "pct_bag_multiple_of_10": 10.3
+    },
+    {
+      "carrier": "AZU",
+      "year": 2020,
+      "month": 11,
+      "flights": 15801,
+      "bag_per_pax": 7.733,
+      "pct_flights_zero_bag": 0.03,
+      "median_flight_bag_per_pax": 7.48,
+      "p90_p10_spread": 5.95,
+      "pct_bag_multiple_of_10": 10.0
+    },
+    {
+      "carrier": "AZU",
+      "year": 2020,
+      "month": 12,
+      "flights": 18080,
+      "bag_per_pax": 8.513,
+      "pct_flights_zero_bag": 0.03,
+      "median_flight_bag_per_pax": 8.3,
+      "p90_p10_spread": 6.29,
+      "pct_bag_multiple_of_10": 10.0
+    },
+    {
+      "carrier": "AZU",
+      "year": 2021,
+      "month": 1,
+      "flights": 20558,
+      "bag_per_pax": 8.405,
+      "pct_flights_zero_bag": 0.02,
+      "median_flight_bag_per_pax": 8.15,
+      "p90_p10_spread": 6.39,
+      "pct_bag_multiple_of_10": 10.4
+    },
+    {
+      "carrier": "AZU",
+      "year": 2021,
+      "month": 2,
+      "flights": 15882,
+      "bag_per_pax": 7.542,
+      "pct_flights_zero_bag": 0.01,
+      "median_flight_bag_per_pax": 7.37,
+      "p90_p10_spread": 5.95,
+      "pct_bag_multiple_of_10": 10.1
+    },
+    {
+      "carrier": "AZU",
+      "year": 2021,
+      "month": 3,
+      "flights": 15919,
+      "bag_per_pax": 7.277,
+      "pct_flights_zero_bag": 0.06,
+      "median_flight_bag_per_pax": 7.07,
+      "p90_p10_spread": 5.9,
+      "pct_bag_multiple_of_10": 9.9
+    },
+    {
+      "carrier": "AZU",
+      "year": 2021,
+      "month": 4,
+      "flights": 12182,
+      "bag_per_pax": 7.316,
+      "pct_flights_zero_bag": 0.07,
+      "median_flight_bag_per_pax": 7.18,
+      "p90_p10_spread": 5.64,
+      "pct_bag_multiple_of_10": 9.7
+    },
+    {
+      "carrier": "AZU",
+      "year": 2021,
+      "month": 5,
+      "flights": 14257,
+      "bag_per_pax": 7.816,
+      "pct_flights_zero_bag": 0.02,
+      "median_flight_bag_per_pax": 7.65,
+      "p90_p10_spread": 5.82,
+      "pct_bag_multiple_of_10": 10.3
+    },
+    {
+      "carrier": "AZU",
+      "year": 2021,
+      "month": 6,
+      "flights": 16340,
+      "bag_per_pax": 8.036,
+      "pct_flights_zero_bag": 0.07,
+      "median_flight_bag_per_pax": 7.84,
+      "p90_p10_spread": 5.98,
+      "pct_bag_multiple_of_10": 10.2
+    },
+    {
+      "carrier": "AZU",
+      "year": 2021,
+      "month": 7,
+      "flights": 19494,
+      "bag_per_pax": 8.507,
+      "pct_flights_zero_bag": 0.07,
+      "median_flight_bag_per_pax": 8.38,
+      "p90_p10_spread": 5.86,
+      "pct_bag_multiple_of_10": 10.2
+    },
+    {
+      "carrier": "AZU",
+      "year": 2021,
+      "month": 8,
+      "flights": 21107,
+      "bag_per_pax": 8.031,
+      "pct_flights_zero_bag": 0.09,
+      "median_flight_bag_per_pax": 7.79,
+      "p90_p10_spread": 6.24,
+      "pct_bag_multiple_of_10": 10.2
+    },
+    {
+      "carrier": "AZU",
+      "year": 2021,
+      "month": 9,
+      "flights": 20504,
+      "bag_per_pax": 7.798,
+      "pct_flights_zero_bag": 0.03,
+      "median_flight_bag_per_pax": 7.62,
+      "p90_p10_spread": 5.83,
+      "pct_bag_multiple_of_10": 9.9
+    },
+    {
+      "carrier": "AZU",
+      "year": 2021,
+      "month": 10,
+      "flights": 20660,
+      "bag_per_pax": 7.894,
+      "pct_flights_zero_bag": 0.15,
+      "median_flight_bag_per_pax": 7.7,
+      "p90_p10_spread": 5.76,
+      "pct_bag_multiple_of_10": 10.0
+    },
+    {
+      "carrier": "AZU",
+      "year": 2021,
+      "month": 11,
+      "flights": 22302,
+      "bag_per_pax": 7.75,
+      "pct_flights_zero_bag": 0.15,
+      "median_flight_bag_per_pax": 7.52,
+      "p90_p10_spread": 6.1,
+      "pct_bag_multiple_of_10": 10.7
+    },
+    {
+      "carrier": "AZU",
+      "year": 2021,
+      "month": 12,
+      "flights": 23423,
+      "bag_per_pax": 8.641,
+      "pct_flights_zero_bag": 0.09,
+      "median_flight_bag_per_pax": 8.48,
+      "p90_p10_spread": 6.45,
+      "pct_bag_multiple_of_10": 10.7
+    },
+    {
+      "carrier": "AZU",
+      "year": 2022,
+      "month": 1,
+      "flights": 20406,
+      "bag_per_pax": 9.122,
+      "pct_flights_zero_bag": 0.33,
+      "median_flight_bag_per_pax": 8.97,
+      "p90_p10_spread": 6.1,
+      "pct_bag_multiple_of_10": 10.4
+    },
+    {
+      "carrier": "AZU",
+      "year": 2022,
+      "month": 2,
+      "flights": 17514,
+      "bag_per_pax": 7.874,
+      "pct_flights_zero_bag": 0.13,
+      "median_flight_bag_per_pax": 7.62,
+      "p90_p10_spread": 6.3,
+      "pct_bag_multiple_of_10": 10.2
+    },
+    {
+      "carrier": "AZU",
+      "year": 2022,
+      "month": 3,
+      "flights": 22412,
+      "bag_per_pax": 7.393,
+      "pct_flights_zero_bag": 0.08,
+      "median_flight_bag_per_pax": 7.2,
+      "p90_p10_spread": 5.96,
+      "pct_bag_multiple_of_10": 10.1
+    },
+    {
+      "carrier": "AZU",
+      "year": 2022,
+      "month": 4,
+      "flights": 21909,
+      "bag_per_pax": 7.548,
+      "pct_flights_zero_bag": 0.16,
+      "median_flight_bag_per_pax": 7.28,
+      "p90_p10_spread": 6.0,
+      "pct_bag_multiple_of_10": 9.8
+    },
+    {
+      "carrier": "AZU",
+      "year": 2022,
+      "month": 5,
+      "flights": 24551,
+      "bag_per_pax": 7.588,
+      "pct_flights_zero_bag": 0.12,
+      "median_flight_bag_per_pax": 7.29,
+      "p90_p10_spread": 6.02,
+      "pct_bag_multiple_of_10": 10.2
+    },
+    {
+      "carrier": "AZU",
+      "year": 2022,
+      "month": 6,
+      "flights": 22234,
+      "bag_per_pax": 8.033,
+      "pct_flights_zero_bag": 0.08,
+      "median_flight_bag_per_pax": 7.73,
+      "p90_p10_spread": 6.26,
+      "pct_bag_multiple_of_10": 10.3
+    },
+    {
+      "carrier": "AZU",
+      "year": 2022,
+      "month": 7,
+      "flights": 24468,
+      "bag_per_pax": 8.54,
+      "pct_flights_zero_bag": 0.08,
+      "median_flight_bag_per_pax": 8.26,
+      "p90_p10_spread": 6.17,
+      "pct_bag_multiple_of_10": 10.3
+    },
+    {
+      "carrier": "AZU",
+      "year": 2022,
+      "month": 8,
+      "flights": 23743,
+      "bag_per_pax": 7.85,
+      "pct_flights_zero_bag": 0.08,
+      "median_flight_bag_per_pax": 7.57,
+      "p90_p10_spread": 6.36,
+      "pct_bag_multiple_of_10": 10.2
+    },
+    {
+      "carrier": "AZU",
+      "year": 2022,
+      "month": 9,
+      "flights": 22539,
+      "bag_per_pax": 7.56,
+      "pct_flights_zero_bag": 0.09,
+      "median_flight_bag_per_pax": 7.26,
+      "p90_p10_spread": 6.13,
+      "pct_bag_multiple_of_10": 10.1
+    },
+    {
+      "carrier": "AZU",
+      "year": 2022,
+      "month": 10,
+      "flights": 23535,
+      "bag_per_pax": 7.551,
+      "pct_flights_zero_bag": 0.19,
+      "median_flight_bag_per_pax": 7.22,
+      "p90_p10_spread": 6.22,
+      "pct_bag_multiple_of_10": 10.2
+    },
+    {
+      "carrier": "AZU",
+      "year": 2022,
+      "month": 11,
+      "flights": 22549,
+      "bag_per_pax": 7.648,
+      "pct_flights_zero_bag": 0.11,
+      "median_flight_bag_per_pax": 7.32,
+      "p90_p10_spread": 6.15,
+      "pct_bag_multiple_of_10": 10.0
+    },
+    {
+      "carrier": "AZU",
+      "year": 2022,
+      "month": 12,
+      "flights": 23826,
+      "bag_per_pax": 8.515,
+      "pct_flights_zero_bag": 0.13,
+      "median_flight_bag_per_pax": 8.24,
+      "p90_p10_spread": 6.75,
+      "pct_bag_multiple_of_10": 10.0
+    },
+    {
+      "carrier": "GLO",
+      "year": 2015,
+      "month": 1,
+      "flights": 27999,
+      "bag_per_pax": 13.302,
+      "pct_flights_zero_bag": 0.06,
+      "median_flight_bag_per_pax": 13.29,
+      "p90_p10_spread": 7.62,
+      "pct_bag_multiple_of_10": 10.3
+    },
+    {
+      "carrier": "GLO",
+      "year": 2015,
+      "month": 2,
+      "flights": 23181,
+      "bag_per_pax": 12.17,
+      "pct_flights_zero_bag": 0.04,
+      "median_flight_bag_per_pax": 12.04,
+      "p90_p10_spread": 8.31,
+      "pct_bag_multiple_of_10": 10.6
+    },
+    {
+      "carrier": "GLO",
+      "year": 2015,
+      "month": 3,
+      "flights": 25095,
+      "bag_per_pax": 10.709,
+      "pct_flights_zero_bag": 0.01,
+      "median_flight_bag_per_pax": 10.54,
+      "p90_p10_spread": 8.88,
+      "pct_bag_multiple_of_10": 10.0
+    },
+    {
+      "carrier": "GLO",
+      "year": 2015,
+      "month": 4,
+      "flights": 24495,
+      "bag_per_pax": 10.634,
+      "pct_flights_zero_bag": 0.01,
+      "median_flight_bag_per_pax": 10.48,
+      "p90_p10_spread": 7.87,
+      "pct_bag_multiple_of_10": 10.2
+    },
+    {
+      "carrier": "GLO",
+      "year": 2015,
+      "month": 5,
+      "flights": 24826,
+      "bag_per_pax": 10.712,
+      "pct_flights_zero_bag": 0.04,
+      "median_flight_bag_per_pax": 10.47,
+      "p90_p10_spread": 8.63,
+      "pct_bag_multiple_of_10": 10.1
+    },
+    {
+      "carrier": "GLO",
+      "year": 2015,
+      "month": 6,
+      "flights": 23767,
+      "bag_per_pax": 11.2,
+      "pct_flights_zero_bag": 0.16,
+      "median_flight_bag_per_pax": 11.03,
+      "p90_p10_spread": 8.7,
+      "pct_bag_multiple_of_10": 10.4
+    },
+    {
+      "carrier": "GLO",
+      "year": 2015,
+      "month": 7,
+      "flights": 26420,
+      "bag_per_pax": 12.143,
+      "pct_flights_zero_bag": 0.03,
+      "median_flight_bag_per_pax": 12.11,
+      "p90_p10_spread": 7.58,
+      "pct_bag_multiple_of_10": 10.5
+    },
+    {
+      "carrier": "GLO",
+      "year": 2015,
+      "month": 9,
+      "flights": 23411,
+      "bag_per_pax": 10.884,
+      "pct_flights_zero_bag": 0.02,
+      "median_flight_bag_per_pax": 10.72,
+      "p90_p10_spread": 8.44,
+      "pct_bag_multiple_of_10": 10.3
+    },
+    {
+      "carrier": "GLO",
+      "year": 2015,
+      "month": 10,
+      "flights": 24654,
+      "bag_per_pax": 10.789,
+      "pct_flights_zero_bag": 0.04,
+      "median_flight_bag_per_pax": 10.7,
+      "p90_p10_spread": 8.16,
+      "pct_bag_multiple_of_10": 10.2
+    },
+    {
+      "carrier": "GLO",
+      "year": 2015,
+      "month": 11,
+      "flights": 23957,
+      "bag_per_pax": 10.523,
+      "pct_flights_zero_bag": 0.03,
+      "median_flight_bag_per_pax": 10.38,
+      "p90_p10_spread": 8.43,
+      "pct_bag_multiple_of_10": 10.3
+    },
+    {
+      "carrier": "GLO",
+      "year": 2015,
+      "month": 12,
+      "flights": 26655,
+      "bag_per_pax": 11.957,
+      "pct_flights_zero_bag": 0.06,
+      "median_flight_bag_per_pax": 12.12,
+      "p90_p10_spread": 8.47,
+      "pct_bag_multiple_of_10": 10.3
+    },
+    {
+      "carrier": "GLO",
+      "year": 2016,
+      "month": 1,
+      "flights": 27211,
+      "bag_per_pax": 12.943,
+      "pct_flights_zero_bag": 0.06,
+      "median_flight_bag_per_pax": 12.95,
+      "p90_p10_spread": 7.75,
+      "pct_bag_multiple_of_10": 10.8
+    },
+    {
+      "carrier": "GLO",
+      "year": 2016,
+      "month": 3,
+      "flights": 20897,
+      "bag_per_pax": 10.43,
+      "pct_flights_zero_bag": 0.01,
+      "median_flight_bag_per_pax": 10.25,
+      "p90_p10_spread": 9.08,
+      "pct_bag_multiple_of_10": 9.9
+    },
+    {
+      "carrier": "GLO",
+      "year": 2016,
+      "month": 4,
+      "flights": 19027,
+      "bag_per_pax": 10.314,
+      "pct_flights_zero_bag": 0.05,
+      "median_flight_bag_per_pax": 10.19,
+      "p90_p10_spread": 8.66,
+      "pct_bag_multiple_of_10": 10.1
+    },
+    {
+      "carrier": "GLO",
+      "year": 2016,
+      "month": 5,
+      "flights": 19357,
+      "bag_per_pax": 10.866,
+      "pct_flights_zero_bag": 0.1,
+      "median_flight_bag_per_pax": 10.95,
+      "p90_p10_spread": 8.73,
+      "pct_bag_multiple_of_10": 9.9
+    },
+    {
+      "carrier": "GLO",
+      "year": 2016,
+      "month": 6,
+      "flights": 18969,
+      "bag_per_pax": 11.149,
+      "pct_flights_zero_bag": 0.18,
+      "median_flight_bag_per_pax": 11.15,
+      "p90_p10_spread": 9.35,
+      "pct_bag_multiple_of_10": 10.4
+    },
+    {
+      "carrier": "GLO",
+      "year": 2016,
+      "month": 7,
+      "flights": 20404,
+      "bag_per_pax": 12.213,
+      "pct_flights_zero_bag": 0.08,
+      "median_flight_bag_per_pax": 12.41,
+      "p90_p10_spread": 8.2,
+      "pct_bag_multiple_of_10": 9.8
+    },
+    {
+      "carrier": "GLO",
+      "year": 2016,
+      "month": 8,
+      "flights": 19425,
+      "bag_per_pax": 11.343,
+      "pct_flights_zero_bag": 0.04,
+      "median_flight_bag_per_pax": 11.39,
+      "p90_p10_spread": 8.89,
+      "pct_bag_multiple_of_10": 10.1
+    },
+    {
+      "carrier": "GLO",
+      "year": 2016,
+      "month": 9,
+      "flights": 18980,
+      "bag_per_pax": 11.275,
+      "pct_flights_zero_bag": 0.01,
+      "median_flight_bag_per_pax": 11.35,
+      "p90_p10_spread": 8.69,
+      "pct_bag_multiple_of_10": 10.3
+    },
+    {
+      "carrier": "GLO",
+      "year": 2016,
+      "month": 10,
+      "flights": 19613,
+      "bag_per_pax": 11.179,
+      "pct_flights_zero_bag": 0.1,
+      "median_flight_bag_per_pax": 11.34,
+      "p90_p10_spread": 8.48,
+      "pct_bag_multiple_of_10": 10.3
+    },
+    {
+      "carrier": "GLO",
+      "year": 2016,
+      "month": 11,
+      "flights": 19268,
+      "bag_per_pax": 11.001,
+      "pct_flights_zero_bag": 0.11,
+      "median_flight_bag_per_pax": 11.15,
+      "p90_p10_spread": 8.44,
+      "pct_bag_multiple_of_10": 10.1
+    },
+    {
+      "carrier": "GLO",
+      "year": 2016,
+      "month": 12,
+      "flights": 21474,
+      "bag_per_pax": 12.051,
+      "pct_flights_zero_bag": 0.16,
+      "median_flight_bag_per_pax": 12.35,
+      "p90_p10_spread": 8.29,
+      "pct_bag_multiple_of_10": 10.1
+    },
+    {
+      "carrier": "GLO",
+      "year": 2017,
+      "month": 1,
+      "flights": 22444,
+      "bag_per_pax": 12.625,
+      "pct_flights_zero_bag": 0.05,
+      "median_flight_bag_per_pax": 12.77,
+      "p90_p10_spread": 7.47,
+      "pct_bag_multiple_of_10": 10.4
+    },
+    {
+      "carrier": "GLO",
+      "year": 2017,
+      "month": 2,
+      "flights": 18032,
+      "bag_per_pax": 11.289,
+      "pct_flights_zero_bag": 0.1,
+      "median_flight_bag_per_pax": 11.31,
+      "p90_p10_spread": 8.84,
+      "pct_bag_multiple_of_10": 10.2
+    },
+    {
+      "carrier": "GLO",
+      "year": 2017,
+      "month": 3,
+      "flights": 19894,
+      "bag_per_pax": 10.499,
+      "pct_flights_zero_bag": 0.1,
+      "median_flight_bag_per_pax": 10.54,
+      "p90_p10_spread": 9.07,
+      "pct_bag_multiple_of_10": 9.9
+    },
+    {
+      "carrier": "GLO",
+      "year": 2017,
+      "month": 4,
+      "flights": 17840,
+      "bag_per_pax": 10.216,
+      "pct_flights_zero_bag": 0.02,
+      "median_flight_bag_per_pax": 10.22,
+      "p90_p10_spread": 8.16,
+      "pct_bag_multiple_of_10": 9.9
+    },
+    {
+      "carrier": "GLO",
+      "year": 2017,
+      "month": 5,
+      "flights": 18861,
+      "bag_per_pax": 9.959,
+      "pct_flights_zero_bag": 0.02,
+      "median_flight_bag_per_pax": 10.03,
+      "p90_p10_spread": 8.69,
+      "pct_bag_multiple_of_10": 10.0
+    },
+    {
+      "carrier": "GLO",
+      "year": 2017,
+      "month": 6,
+      "flights": 18029,
+      "bag_per_pax": 10.312,
+      "pct_flights_zero_bag": 0.0,
+      "median_flight_bag_per_pax": 10.4,
+      "p90_p10_spread": 8.81,
+      "pct_bag_multiple_of_10": 10.5
+    },
+    {
+      "carrier": "GLO",
+      "year": 2017,
+      "month": 7,
+      "flights": 21593,
+      "bag_per_pax": 10.856,
+      "pct_flights_zero_bag": 0.24,
+      "median_flight_bag_per_pax": 11.04,
+      "p90_p10_spread": 7.84,
+      "pct_bag_multiple_of_10": 10.5
+    },
+    {
+      "carrier": "GLO",
+      "year": 2017,
+      "month": 8,
+      "flights": 19414,
+      "bag_per_pax": 9.37,
+      "pct_flights_zero_bag": 0.01,
+      "median_flight_bag_per_pax": 9.26,
+      "p90_p10_spread": 9.04,
+      "pct_bag_multiple_of_10": 10.0
+    },
+    {
+      "carrier": "GLO",
+      "year": 2017,
+      "month": 9,
+      "flights": 19027,
+      "bag_per_pax": 9.04,
+      "pct_flights_zero_bag": 0.01,
+      "median_flight_bag_per_pax": 8.96,
+      "p90_p10_spread": 8.32,
+      "pct_bag_multiple_of_10": 10.2
+    },
+    {
+      "carrier": "GLO",
+      "year": 2017,
+      "month": 10,
+      "flights": 19717,
+      "bag_per_pax": 9.015,
+      "pct_flights_zero_bag": 0.08,
+      "median_flight_bag_per_pax": 9.02,
+      "p90_p10_spread": 8.21,
+      "pct_bag_multiple_of_10": 10.6
+    },
+    {
+      "carrier": "GLO",
+      "year": 2017,
+      "month": 11,
+      "flights": 19374,
+      "bag_per_pax": 8.778,
+      "pct_flights_zero_bag": 0.07,
+      "median_flight_bag_per_pax": 8.7,
+      "p90_p10_spread": 8.14,
+      "pct_bag_multiple_of_10": 10.5
+    },
+    {
+      "carrier": "GLO",
+      "year": 2017,
+      "month": 12,
+      "flights": 22124,
+      "bag_per_pax": 10.017,
+      "pct_flights_zero_bag": 0.03,
+      "median_flight_bag_per_pax": 10.15,
+      "p90_p10_spread": 8.21,
+      "pct_bag_multiple_of_10": 10.5
+    },
+    {
+      "carrier": "GLO",
+      "year": 2018,
+      "month": 1,
+      "flights": 23077,
+      "bag_per_pax": 10.617,
+      "pct_flights_zero_bag": 0.1,
+      "median_flight_bag_per_pax": 10.66,
+      "p90_p10_spread": 7.87,
+      "pct_bag_multiple_of_10": 10.6
+    },
+    {
+      "carrier": "GLO",
+      "year": 2018,
+      "month": 2,
+      "flights": 18133,
+      "bag_per_pax": 9.495,
+      "pct_flights_zero_bag": 0.26,
+      "median_flight_bag_per_pax": 9.37,
+      "p90_p10_spread": 8.77,
+      "pct_bag_multiple_of_10": 10.4
+    },
+    {
+      "carrier": "GLO",
+      "year": 2018,
+      "month": 3,
+      "flights": 18974,
+      "bag_per_pax": 8.316,
+      "pct_flights_zero_bag": 0.14,
+      "median_flight_bag_per_pax": 8.14,
+      "p90_p10_spread": 8.76,
+      "pct_bag_multiple_of_10": 9.9
+    },
+    {
+      "carrier": "GLO",
+      "year": 2018,
+      "month": 4,
+      "flights": 18021,
+      "bag_per_pax": 8.04,
+      "pct_flights_zero_bag": 0.05,
+      "median_flight_bag_per_pax": 7.81,
+      "p90_p10_spread": 8.35,
+      "pct_bag_multiple_of_10": 10.6
+    },
+    {
+      "carrier": "GLO",
+      "year": 2018,
+      "month": 5,
+      "flights": 19260,
+      "bag_per_pax": 8.139,
+      "pct_flights_zero_bag": 0.06,
+      "median_flight_bag_per_pax": 7.9,
+      "p90_p10_spread": 8.38,
+      "pct_bag_multiple_of_10": 10.6
+    },
+    {
+      "carrier": "GLO",
+      "year": 2018,
+      "month": 6,
+      "flights": 18192,
+      "bag_per_pax": 8.587,
+      "pct_flights_zero_bag": 0.07,
+      "median_flight_bag_per_pax": 8.37,
+      "p90_p10_spread": 8.77,
+      "pct_bag_multiple_of_10": 10.1
+    },
+    {
+      "carrier": "GLO",
+      "year": 2018,
+      "month": 8,
+      "flights": 19276,
+      "bag_per_pax": 8.325,
+      "pct_flights_zero_bag": 0.02,
+      "median_flight_bag_per_pax": 8.14,
+      "p90_p10_spread": 8.5,
+      "pct_bag_multiple_of_10": 10.2
+    },
+    {
+      "carrier": "GLO",
+      "year": 2018,
+      "month": 9,
+      "flights": 18697,
+      "bag_per_pax": 8.163,
+      "pct_flights_zero_bag": 0.01,
+      "median_flight_bag_per_pax": 7.97,
+      "p90_p10_spread": 7.99,
+      "pct_bag_multiple_of_10": 9.6
+    },
+    {
+      "carrier": "GLO",
+      "year": 2018,
+      "month": 10,
+      "flights": 19104,
+      "bag_per_pax": 7.895,
+      "pct_flights_zero_bag": 0.01,
+      "median_flight_bag_per_pax": 7.65,
+      "p90_p10_spread": 7.81,
+      "pct_bag_multiple_of_10": 10.2
+    },
+    {
+      "carrier": "GLO",
+      "year": 2018,
+      "month": 11,
+      "flights": 18911,
+      "bag_per_pax": 8.072,
+      "pct_flights_zero_bag": 0.09,
+      "median_flight_bag_per_pax": 7.8,
+      "p90_p10_spread": 7.67,
+      "pct_bag_multiple_of_10": 10.6
+    },
+    {
+      "carrier": "GLO",
+      "year": 2018,
+      "month": 12,
+      "flights": 21690,
+      "bag_per_pax": 9.185,
+      "pct_flights_zero_bag": 0.01,
+      "median_flight_bag_per_pax": 9.17,
+      "p90_p10_spread": 7.94,
+      "pct_bag_multiple_of_10": 10.3
+    },
+    {
+      "carrier": "GLO",
+      "year": 2019,
+      "month": 1,
+      "flights": 22805,
+      "bag_per_pax": 9.52,
+      "pct_flights_zero_bag": 0.0,
+      "median_flight_bag_per_pax": 9.5,
+      "p90_p10_spread": 7.51,
+      "pct_bag_multiple_of_10": 10.3
+    },
+    {
+      "carrier": "GLO",
+      "year": 2019,
+      "month": 2,
+      "flights": 17856,
+      "bag_per_pax": 8.195,
+      "pct_flights_zero_bag": 0.06,
+      "median_flight_bag_per_pax": 8.13,
+      "p90_p10_spread": 8.33,
+      "pct_bag_multiple_of_10": 10.7
+    },
+    {
+      "carrier": "GLO",
+      "year": 2019,
+      "month": 3,
+      "flights": 18656,
+      "bag_per_pax": 7.829,
+      "pct_flights_zero_bag": 0.5,
+      "median_flight_bag_per_pax": 7.71,
+      "p90_p10_spread": 7.91,
+      "pct_bag_multiple_of_10": 10.4
+    },
+    {
+      "carrier": "GLO",
+      "year": 2019,
+      "month": 4,
+      "flights": 17931,
+      "bag_per_pax": 7.318,
+      "pct_flights_zero_bag": 1.65,
+      "median_flight_bag_per_pax": 7.16,
+      "p90_p10_spread": 7.87,
+      "pct_bag_multiple_of_10": 11.3
+    },
+    {
+      "carrier": "GLO",
+      "year": 2019,
+      "month": 5,
+      "flights": 18370,
+      "bag_per_pax": 6.924,
+      "pct_flights_zero_bag": 6.89,
+      "median_flight_bag_per_pax": 6.96,
+      "p90_p10_spread": 9.04,
+      "pct_bag_multiple_of_10": 16.0
+    },
+    {
+      "carrier": "GLO",
+      "year": 2019,
+      "month": 6,
+      "flights": 18460,
+      "bag_per_pax": 6.757,
+      "pct_flights_zero_bag": 15.16,
+      "median_flight_bag_per_pax": 7.1,
+      "p90_p10_spread": 11.46,
+      "pct_bag_multiple_of_10": 23.7
+    },
+    {
+      "carrier": "GLO",
+      "year": 2019,
+      "month": 7,
+      "flights": 22989,
+      "bag_per_pax": 7.15,
+      "pct_flights_zero_bag": 15.37,
+      "median_flight_bag_per_pax": 7.84,
+      "p90_p10_spread": 11.7,
+      "pct_bag_multiple_of_10": 24.0
+    },
+    {
+      "carrier": "GLO",
+      "year": 2019,
+      "month": 8,
+      "flights": 20638,
+      "bag_per_pax": 4.902,
+      "pct_flights_zero_bag": 18.48,
+      "median_flight_bag_per_pax": 4.25,
+      "p90_p10_spread": 10.58,
+      "pct_bag_multiple_of_10": 26.8
+    },
+    {
+      "carrier": "GLO",
+      "year": 2019,
+      "month": 9,
+      "flights": 20330,
+      "bag_per_pax": 3.182,
+      "pct_flights_zero_bag": 0.99,
+      "median_flight_bag_per_pax": 2.91,
+      "p90_p10_spread": 3.88,
+      "pct_bag_multiple_of_10": 10.8
+    },
+    {
+      "carrier": "GLO",
+      "year": 2019,
+      "month": 10,
+      "flights": 20506,
+      "bag_per_pax": 3.099,
+      "pct_flights_zero_bag": 0.43,
+      "median_flight_bag_per_pax": 2.82,
+      "p90_p10_spread": 3.79,
+      "pct_bag_multiple_of_10": 10.5
+    },
+    {
+      "carrier": "GLO",
+      "year": 2019,
+      "month": 11,
+      "flights": 20523,
+      "bag_per_pax": 3.123,
+      "pct_flights_zero_bag": 0.87,
+      "median_flight_bag_per_pax": 2.82,
+      "p90_p10_spread": 3.91,
+      "pct_bag_multiple_of_10": 10.7
+    },
+    {
+      "carrier": "GLO",
+      "year": 2019,
+      "month": 12,
+      "flights": 23252,
+      "bag_per_pax": 3.63,
+      "pct_flights_zero_bag": 0.95,
+      "median_flight_bag_per_pax": 3.45,
+      "p90_p10_spread": 4.11,
+      "pct_bag_multiple_of_10": 10.9
+    },
+    {
+      "carrier": "GLO",
+      "year": 2020,
+      "month": 1,
+      "flights": 24106,
+      "bag_per_pax": 3.904,
+      "pct_flights_zero_bag": 0.46,
+      "median_flight_bag_per_pax": 3.69,
+      "p90_p10_spread": 3.94,
+      "pct_bag_multiple_of_10": 10.6
+    },
+    {
+      "carrier": "GLO",
+      "year": 2020,
+      "month": 2,
+      "flights": 19735,
+      "bag_per_pax": 3.57,
+      "pct_flights_zero_bag": 0.76,
+      "median_flight_bag_per_pax": 3.33,
+      "p90_p10_spread": 3.97,
+      "pct_bag_multiple_of_10": 10.5
+    },
+    {
+      "carrier": "GLO",
+      "year": 2020,
+      "month": 3,
+      "flights": 14814,
+      "bag_per_pax": 3.621,
+      "pct_flights_zero_bag": 0.53,
+      "median_flight_bag_per_pax": 3.39,
+      "p90_p10_spread": 4.44,
+      "pct_bag_multiple_of_10": 11.0
+    },
+    {
+      "carrier": "GLO",
+      "year": 2020,
+      "month": 4,
+      "flights": 1164,
+      "bag_per_pax": 5.331,
+      "pct_flights_zero_bag": 0.52,
+      "median_flight_bag_per_pax": 5.23,
+      "p90_p10_spread": 3.99,
+      "pct_bag_multiple_of_10": 10.0
+    },
+    {
+      "carrier": "GLO",
+      "year": 2020,
+      "month": 5,
+      "flights": 1367,
+      "bag_per_pax": 5.354,
+      "pct_flights_zero_bag": 0.15,
+      "median_flight_bag_per_pax": 5.23,
+      "p90_p10_spread": 4.25,
+      "pct_bag_multiple_of_10": 9.5
+    },
+    {
+      "carrier": "GLO",
+      "year": 2020,
+      "month": 6,
+      "flights": 2607,
+      "bag_per_pax": 4.975,
+      "pct_flights_zero_bag": 1.0,
+      "median_flight_bag_per_pax": 4.79,
+      "p90_p10_spread": 4.87,
+      "pct_bag_multiple_of_10": 10.5
+    },
+    {
+      "carrier": "GLO",
+      "year": 2020,
+      "month": 7,
+      "flights": 5420,
+      "bag_per_pax": 4.583,
+      "pct_flights_zero_bag": 0.59,
+      "median_flight_bag_per_pax": 4.39,
+      "p90_p10_spread": 4.14,
+      "pct_bag_multiple_of_10": 10.3
+    },
+    {
+      "carrier": "GLO",
+      "year": 2020,
+      "month": 9,
+      "flights": 8108,
+      "bag_per_pax": 4.005,
+      "pct_flights_zero_bag": 0.37,
+      "median_flight_bag_per_pax": 3.79,
+      "p90_p10_spread": 3.74,
+      "pct_bag_multiple_of_10": 10.5
+    },
+    {
+      "carrier": "GLO",
+      "year": 2020,
+      "month": 10,
+      "flights": 11255,
+      "bag_per_pax": 3.817,
+      "pct_flights_zero_bag": 0.35,
+      "median_flight_bag_per_pax": 3.66,
+      "p90_p10_spread": 3.57,
+      "pct_bag_multiple_of_10": 10.3
+    },
+    {
+      "carrier": "GLO",
+      "year": 2020,
+      "month": 11,
+      "flights": 11069,
+      "bag_per_pax": 3.875,
+      "pct_flights_zero_bag": 0.46,
+      "median_flight_bag_per_pax": 3.71,
+      "p90_p10_spread": 3.72,
+      "pct_bag_multiple_of_10": 10.1
+    },
+    {
+      "carrier": "GLO",
+      "year": 2020,
+      "month": 12,
+      "flights": 14745,
+      "bag_per_pax": 4.226,
+      "pct_flights_zero_bag": 0.41,
+      "median_flight_bag_per_pax": 4.05,
+      "p90_p10_spread": 3.68,
+      "pct_bag_multiple_of_10": 10.5
+    },
+    {
+      "carrier": "GLO",
+      "year": 2021,
+      "month": 1,
+      "flights": 15273,
+      "bag_per_pax": 4.151,
+      "pct_flights_zero_bag": 0.44,
+      "median_flight_bag_per_pax": 3.99,
+      "p90_p10_spread": 3.53,
+      "pct_bag_multiple_of_10": 10.1
+    },
+    {
+      "carrier": "GLO",
+      "year": 2021,
+      "month": 2,
+      "flights": 9938,
+      "bag_per_pax": 3.71,
+      "pct_flights_zero_bag": 0.25,
+      "median_flight_bag_per_pax": 3.58,
+      "p90_p10_spread": 3.34,
+      "pct_bag_multiple_of_10": 9.9
+    },
+    {
+      "carrier": "GLO",
+      "year": 2021,
+      "month": 3,
+      "flights": 7582,
+      "bag_per_pax": 3.711,
+      "pct_flights_zero_bag": 0.53,
+      "median_flight_bag_per_pax": 3.56,
+      "p90_p10_spread": 3.46,
+      "pct_bag_multiple_of_10": 10.6
+    },
+    {
+      "carrier": "GLO",
+      "year": 2021,
+      "month": 4,
+      "flights": 4547,
+      "bag_per_pax": 3.747,
+      "pct_flights_zero_bag": 0.26,
+      "median_flight_bag_per_pax": 3.6,
+      "p90_p10_spread": 3.44,
+      "pct_bag_multiple_of_10": 10.2
+    },
+    {
+      "carrier": "GLO",
+      "year": 2021,
+      "month": 5,
+      "flights": 6855,
+      "bag_per_pax": 3.907,
+      "pct_flights_zero_bag": 0.15,
+      "median_flight_bag_per_pax": 3.75,
+      "p90_p10_spread": 3.36,
+      "pct_bag_multiple_of_10": 9.7
+    },
+    {
+      "carrier": "GLO",
+      "year": 2021,
+      "month": 6,
+      "flights": 8242,
+      "bag_per_pax": 4.131,
+      "pct_flights_zero_bag": 0.33,
+      "median_flight_bag_per_pax": 3.96,
+      "p90_p10_spread": 3.68,
+      "pct_bag_multiple_of_10": 10.3
+    },
+    {
+      "carrier": "GLO",
+      "year": 2021,
+      "month": 7,
+      "flights": 12675,
+      "bag_per_pax": 4.169,
+      "pct_flights_zero_bag": 0.15,
+      "median_flight_bag_per_pax": 3.99,
+      "p90_p10_spread": 3.5,
+      "pct_bag_multiple_of_10": 10.1
+    },
+    {
+      "carrier": "GLO",
+      "year": 2021,
+      "month": 8,
+      "flights": 11216,
+      "bag_per_pax": 4.797,
+      "pct_flights_zero_bag": 0.69,
+      "median_flight_bag_per_pax": 4.36,
+      "p90_p10_spread": 5.46,
+      "pct_bag_multiple_of_10": 11.0
+    },
+    {
+      "carrier": "GLO",
+      "year": 2021,
+      "month": 9,
+      "flights": 12315,
+      "bag_per_pax": 7.97,
+      "pct_flights_zero_bag": 0.08,
+      "median_flight_bag_per_pax": 7.85,
+      "p90_p10_spread": 6.37,
+      "pct_bag_multiple_of_10": 10.3
+    },
+    {
+      "carrier": "GLO",
+      "year": 2021,
+      "month": 10,
+      "flights": 13005,
+      "bag_per_pax": 8.024,
+      "pct_flights_zero_bag": 0.26,
+      "median_flight_bag_per_pax": 7.92,
+      "p90_p10_spread": 6.23,
+      "pct_bag_multiple_of_10": 10.4
+    },
+    {
+      "carrier": "GLO",
+      "year": 2021,
+      "month": 11,
+      "flights": 14132,
+      "bag_per_pax": 7.965,
+      "pct_flights_zero_bag": 0.35,
+      "median_flight_bag_per_pax": 7.83,
+      "p90_p10_spread": 6.67,
+      "pct_bag_multiple_of_10": 10.7
+    },
+    {
+      "carrier": "GLO",
+      "year": 2021,
+      "month": 12,
+      "flights": 17783,
+      "bag_per_pax": 8.602,
+      "pct_flights_zero_bag": 0.29,
+      "median_flight_bag_per_pax": 8.51,
+      "p90_p10_spread": 6.54,
+      "pct_bag_multiple_of_10": 10.5
+    },
+    {
+      "carrier": "GLO",
+      "year": 2022,
+      "month": 1,
+      "flights": 19579,
+      "bag_per_pax": 8.92,
+      "pct_flights_zero_bag": 0.17,
+      "median_flight_bag_per_pax": 8.69,
+      "p90_p10_spread": 6.46,
+      "pct_bag_multiple_of_10": 10.3
+    },
+    {
+      "carrier": "GLO",
+      "year": 2022,
+      "month": 2,
+      "flights": 13415,
+      "bag_per_pax": 8.011,
+      "pct_flights_zero_bag": 0.11,
+      "median_flight_bag_per_pax": 7.78,
+      "p90_p10_spread": 6.82,
+      "pct_bag_multiple_of_10": 10.0
+    },
+    {
+      "carrier": "GLO",
+      "year": 2022,
+      "month": 3,
+      "flights": 14987,
+      "bag_per_pax": 7.7,
+      "pct_flights_zero_bag": 0.08,
+      "median_flight_bag_per_pax": 7.38,
+      "p90_p10_spread": 6.68,
+      "pct_bag_multiple_of_10": 10.0
+    },
+    {
+      "carrier": "GLO",
+      "year": 2022,
+      "month": 4,
+      "flights": 14497,
+      "bag_per_pax": 7.856,
+      "pct_flights_zero_bag": 0.11,
+      "median_flight_bag_per_pax": 7.44,
+      "p90_p10_spread": 7.08,
+      "pct_bag_multiple_of_10": 10.6
+    },
+    {
+      "carrier": "GLO",
+      "year": 2022,
+      "month": 5,
+      "flights": 15392,
+      "bag_per_pax": 7.889,
+      "pct_flights_zero_bag": 0.05,
+      "median_flight_bag_per_pax": 7.47,
+      "p90_p10_spread": 7.43,
+      "pct_bag_multiple_of_10": 10.5
+    },
+    {
+      "carrier": "GLO",
+      "year": 2022,
+      "month": 6,
+      "flights": 14318,
+      "bag_per_pax": 8.399,
+      "pct_flights_zero_bag": 0.04,
+      "median_flight_bag_per_pax": 7.96,
+      "p90_p10_spread": 7.74,
+      "pct_bag_multiple_of_10": 10.0
+    },
+    {
+      "carrier": "GLO",
+      "year": 2022,
+      "month": 7,
+      "flights": 17765,
+      "bag_per_pax": 9.74,
+      "pct_flights_zero_bag": 0.05,
+      "median_flight_bag_per_pax": 8.45,
+      "p90_p10_spread": 7.87,
+      "pct_bag_multiple_of_10": 10.3
+    },
+    {
+      "carrier": "GLO",
+      "year": 2022,
+      "month": 8,
+      "flights": 15610,
+      "bag_per_pax": 7.872,
+      "pct_flights_zero_bag": 0.06,
+      "median_flight_bag_per_pax": 7.62,
+      "p90_p10_spread": 7.35,
+      "pct_bag_multiple_of_10": 10.1
+    },
+    {
+      "carrier": "GLO",
+      "year": 2022,
+      "month": 9,
+      "flights": 15329,
+      "bag_per_pax": 7.586,
+      "pct_flights_zero_bag": 0.03,
+      "median_flight_bag_per_pax": 7.33,
+      "p90_p10_spread": 7.0,
+      "pct_bag_multiple_of_10": 10.4
+    },
+    {
+      "carrier": "GLO",
+      "year": 2022,
+      "month": 10,
+      "flights": 17041,
+      "bag_per_pax": 7.446,
+      "pct_flights_zero_bag": 0.32,
+      "median_flight_bag_per_pax": 7.15,
+      "p90_p10_spread": 6.85,
+      "pct_bag_multiple_of_10": 10.2
+    },
+    {
+      "carrier": "GLO",
+      "year": 2022,
+      "month": 11,
+      "flights": 17395,
+      "bag_per_pax": 7.465,
+      "pct_flights_zero_bag": 0.09,
+      "median_flight_bag_per_pax": 7.16,
+      "p90_p10_spread": 6.77,
+      "pct_bag_multiple_of_10": 9.9
+    },
+    {
+      "carrier": "GLO",
+      "year": 2022,
+      "month": 12,
+      "flights": 19859,
+      "bag_per_pax": 8.112,
+      "pct_flights_zero_bag": 0.12,
+      "median_flight_bag_per_pax": 7.88,
+      "p90_p10_spread": 7.08,
+      "pct_bag_multiple_of_10": 10.2
+    },
+    {
+      "carrier": "TAM",
+      "year": 2015,
+      "month": 1,
+      "flights": 21943,
+      "bag_per_pax": 13.037,
+      "pct_flights_zero_bag": 0.06,
+      "median_flight_bag_per_pax": 13.06,
+      "p90_p10_spread": 7.9,
+      "pct_bag_multiple_of_10": 9.8
+    },
+    {
+      "carrier": "TAM",
+      "year": 2015,
+      "month": 2,
+      "flights": 18226,
+      "bag_per_pax": 12.333,
+      "pct_flights_zero_bag": 0.02,
+      "median_flight_bag_per_pax": 12.21,
+      "p90_p10_spread": 9.09,
+      "pct_bag_multiple_of_10": 10.1
+    },
+    {
+      "carrier": "TAM",
+      "year": 2015,
+      "month": 3,
+      "flights": 20490,
+      "bag_per_pax": 10.993,
+      "pct_flights_zero_bag": 0.02,
+      "median_flight_bag_per_pax": 10.95,
+      "p90_p10_spread": 9.29,
+      "pct_bag_multiple_of_10": 10.4
+    },
+    {
+      "carrier": "TAM",
+      "year": 2015,
+      "month": 4,
+      "flights": 19197,
+      "bag_per_pax": 10.965,
+      "pct_flights_zero_bag": 0.06,
+      "median_flight_bag_per_pax": 10.89,
+      "p90_p10_spread": 8.41,
+      "pct_bag_multiple_of_10": 10.2
+    },
+    {
+      "carrier": "TAM",
+      "year": 2015,
+      "month": 5,
+      "flights": 19384,
+      "bag_per_pax": 10.958,
+      "pct_flights_zero_bag": 0.04,
+      "median_flight_bag_per_pax": 10.9,
+      "p90_p10_spread": 8.98,
+      "pct_bag_multiple_of_10": 10.4
+    },
+    {
+      "carrier": "TAM",
+      "year": 2015,
+      "month": 6,
+      "flights": 19245,
+      "bag_per_pax": 11.455,
+      "pct_flights_zero_bag": 0.03,
+      "median_flight_bag_per_pax": 11.38,
+      "p90_p10_spread": 9.25,
+      "pct_bag_multiple_of_10": 10.1
+    },
+    {
+      "carrier": "TAM",
+      "year": 2015,
+      "month": 7,
+      "flights": 21906,
+      "bag_per_pax": 12.238,
+      "pct_flights_zero_bag": 0.03,
+      "median_flight_bag_per_pax": 12.28,
+      "p90_p10_spread": 7.88,
+      "pct_bag_multiple_of_10": 10.0
+    },
+    {
+      "carrier": "TAM",
+      "year": 2015,
+      "month": 9,
+      "flights": 18746,
+      "bag_per_pax": 11.138,
+      "pct_flights_zero_bag": 0.04,
+      "median_flight_bag_per_pax": 11.01,
+      "p90_p10_spread": 8.58,
+      "pct_bag_multiple_of_10": 9.8
+    },
+    {
+      "carrier": "TAM",
+      "year": 2015,
+      "month": 10,
+      "flights": 19163,
+      "bag_per_pax": 11.195,
+      "pct_flights_zero_bag": 0.04,
+      "median_flight_bag_per_pax": 11.1,
+      "p90_p10_spread": 8.36,
+      "pct_bag_multiple_of_10": 10.6
+    },
+    {
+      "carrier": "TAM",
+      "year": 2015,
+      "month": 11,
+      "flights": 18310,
+      "bag_per_pax": 11.093,
+      "pct_flights_zero_bag": 0.04,
+      "median_flight_bag_per_pax": 11.02,
+      "p90_p10_spread": 8.67,
+      "pct_bag_multiple_of_10": 9.9
+    },
+    {
+      "carrier": "TAM",
+      "year": 2015,
+      "month": 12,
+      "flights": 19193,
+      "bag_per_pax": 12.267,
+      "pct_flights_zero_bag": 0.08,
+      "median_flight_bag_per_pax": 12.39,
+      "p90_p10_spread": 8.86,
+      "pct_bag_multiple_of_10": 10.3
+    },
+    {
+      "carrier": "TAM",
+      "year": 2016,
+      "month": 1,
+      "flights": 19710,
+      "bag_per_pax": 13.0,
+      "pct_flights_zero_bag": 0.02,
+      "median_flight_bag_per_pax": 13.01,
+      "p90_p10_spread": 8.04,
+      "pct_bag_multiple_of_10": 10.1
+    },
+    {
+      "carrier": "TAM",
+      "year": 2016,
+      "month": 3,
+      "flights": 17809,
+      "bag_per_pax": 10.595,
+      "pct_flights_zero_bag": 0.03,
+      "median_flight_bag_per_pax": 10.44,
+      "p90_p10_spread": 8.91,
+      "pct_bag_multiple_of_10": 10.6
+    },
+    {
+      "carrier": "TAM",
+      "year": 2016,
+      "month": 4,
+      "flights": 16635,
+      "bag_per_pax": 10.523,
+      "pct_flights_zero_bag": 0.03,
+      "median_flight_bag_per_pax": 10.43,
+      "p90_p10_spread": 8.63,
+      "pct_bag_multiple_of_10": 10.6
+    },
+    {
+      "carrier": "TAM",
+      "year": 2016,
+      "month": 5,
+      "flights": 16572,
+      "bag_per_pax": 10.844,
+      "pct_flights_zero_bag": 0.03,
+      "median_flight_bag_per_pax": 10.83,
+      "p90_p10_spread": 8.52,
+      "pct_bag_multiple_of_10": 9.8
+    },
+    {
+      "carrier": "TAM",
+      "year": 2016,
+      "month": 6,
+      "flights": 16379,
+      "bag_per_pax": 11.08,
+      "pct_flights_zero_bag": 0.04,
+      "median_flight_bag_per_pax": 11.03,
+      "p90_p10_spread": 9.05,
+      "pct_bag_multiple_of_10": 10.1
+    },
+    {
+      "carrier": "TAM",
+      "year": 2016,
+      "month": 7,
+      "flights": 18369,
+      "bag_per_pax": 12.035,
+      "pct_flights_zero_bag": 0.0,
+      "median_flight_bag_per_pax": 12.12,
+      "p90_p10_spread": 7.75,
+      "pct_bag_multiple_of_10": 10.1
+    },
+    {
+      "carrier": "TAM",
+      "year": 2016,
+      "month": 8,
+      "flights": 17727,
+      "bag_per_pax": 11.262,
+      "pct_flights_zero_bag": 0.07,
+      "median_flight_bag_per_pax": 11.16,
+      "p90_p10_spread": 8.71,
+      "pct_bag_multiple_of_10": 10.6
+    },
+    {
+      "carrier": "TAM",
+      "year": 2016,
+      "month": 9,
+      "flights": 16367,
+      "bag_per_pax": 10.969,
+      "pct_flights_zero_bag": 0.03,
+      "median_flight_bag_per_pax": 10.91,
+      "p90_p10_spread": 8.64,
+      "pct_bag_multiple_of_10": 10.3
+    },
+    {
+      "carrier": "TAM",
+      "year": 2016,
+      "month": 10,
+      "flights": 16920,
+      "bag_per_pax": 11.066,
+      "pct_flights_zero_bag": 0.03,
+      "median_flight_bag_per_pax": 11.04,
+      "p90_p10_spread": 8.2,
+      "pct_bag_multiple_of_10": 10.0
+    },
+    {
+      "carrier": "TAM",
+      "year": 2016,
+      "month": 11,
+      "flights": 16312,
+      "bag_per_pax": 10.858,
+      "pct_flights_zero_bag": 0.0,
+      "median_flight_bag_per_pax": 10.76,
+      "p90_p10_spread": 8.5,
+      "pct_bag_multiple_of_10": 10.0
+    },
+    {
+      "carrier": "TAM",
+      "year": 2016,
+      "month": 12,
+      "flights": 17423,
+      "bag_per_pax": 12.012,
+      "pct_flights_zero_bag": 0.02,
+      "median_flight_bag_per_pax": 12.05,
+      "p90_p10_spread": 8.36,
+      "pct_bag_multiple_of_10": 10.2
+    },
+    {
+      "carrier": "TAM",
+      "year": 2017,
+      "month": 1,
+      "flights": 17574,
+      "bag_per_pax": 12.685,
+      "pct_flights_zero_bag": 0.03,
+      "median_flight_bag_per_pax": 12.59,
+      "p90_p10_spread": 7.41,
+      "pct_bag_multiple_of_10": 10.1
+    },
+    {
+      "carrier": "TAM",
+      "year": 2017,
+      "month": 2,
+      "flights": 14880,
+      "bag_per_pax": 11.265,
+      "pct_flights_zero_bag": 0.05,
+      "median_flight_bag_per_pax": 11.12,
+      "p90_p10_spread": 8.78,
+      "pct_bag_multiple_of_10": 10.7
+    },
+    {
+      "carrier": "TAM",
+      "year": 2017,
+      "month": 3,
+      "flights": 17057,
+      "bag_per_pax": 10.35,
+      "pct_flights_zero_bag": 0.02,
+      "median_flight_bag_per_pax": 10.19,
+      "p90_p10_spread": 9.15,
+      "pct_bag_multiple_of_10": 9.8
+    },
+    {
+      "carrier": "TAM",
+      "year": 2017,
+      "month": 4,
+      "flights": 15477,
+      "bag_per_pax": 10.126,
+      "pct_flights_zero_bag": 0.05,
+      "median_flight_bag_per_pax": 9.94,
+      "p90_p10_spread": 8.24,
+      "pct_bag_multiple_of_10": 10.1
+    },
+    {
+      "carrier": "TAM",
+      "year": 2017,
+      "month": 5,
+      "flights": 16079,
+      "bag_per_pax": 9.992,
+      "pct_flights_zero_bag": 0.02,
+      "median_flight_bag_per_pax": 9.74,
+      "p90_p10_spread": 8.66,
+      "pct_bag_multiple_of_10": 11.5
+    },
+    {
+      "carrier": "TAM",
+      "year": 2017,
+      "month": 6,
+      "flights": 15309,
+      "bag_per_pax": 10.269,
+      "pct_flights_zero_bag": 0.01,
+      "median_flight_bag_per_pax": 10.06,
+      "p90_p10_spread": 8.81,
+      "pct_bag_multiple_of_10": 10.2
+    },
+    {
+      "carrier": "TAM",
+      "year": 2017,
+      "month": 7,
+      "flights": 17573,
+      "bag_per_pax": 10.764,
+      "pct_flights_zero_bag": 0.02,
+      "median_flight_bag_per_pax": 10.65,
+      "p90_p10_spread": 7.63,
+      "pct_bag_multiple_of_10": 10.2
+    },
+    {
+      "carrier": "TAM",
+      "year": 2017,
+      "month": 8,
+      "flights": 17297,
+      "bag_per_pax": 9.303,
+      "pct_flights_zero_bag": 0.01,
+      "median_flight_bag_per_pax": 8.91,
+      "p90_p10_spread": 8.88,
+      "pct_bag_multiple_of_10": 10.5
+    },
+    {
+      "carrier": "TAM",
+      "year": 2017,
+      "month": 9,
+      "flights": 16217,
+      "bag_per_pax": 8.861,
+      "pct_flights_zero_bag": 0.04,
+      "median_flight_bag_per_pax": 8.47,
+      "p90_p10_spread": 8.2,
+      "pct_bag_multiple_of_10": 10.3
+    },
+    {
+      "carrier": "TAM",
+      "year": 2017,
+      "month": 10,
+      "flights": 16866,
+      "bag_per_pax": 8.752,
+      "pct_flights_zero_bag": 0.04,
+      "median_flight_bag_per_pax": 8.41,
+      "p90_p10_spread": 8.42,
+      "pct_bag_multiple_of_10": 10.5
+    },
+    {
+      "carrier": "TAM",
+      "year": 2017,
+      "month": 11,
+      "flights": 16549,
+      "bag_per_pax": 8.665,
+      "pct_flights_zero_bag": 0.09,
+      "median_flight_bag_per_pax": 8.2,
+      "p90_p10_spread": 8.56,
+      "pct_bag_multiple_of_10": 10.6
+    },
+    {
+      "carrier": "TAM",
+      "year": 2017,
+      "month": 12,
+      "flights": 17444,
+      "bag_per_pax": 9.564,
+      "pct_flights_zero_bag": 0.05,
+      "median_flight_bag_per_pax": 9.32,
+      "p90_p10_spread": 8.63,
+      "pct_bag_multiple_of_10": 10.2
+    },
+    {
+      "carrier": "TAM",
+      "year": 2018,
+      "month": 1,
+      "flights": 17910,
+      "bag_per_pax": 10.356,
+      "pct_flights_zero_bag": 0.01,
+      "median_flight_bag_per_pax": 10.12,
+      "p90_p10_spread": 8.22,
+      "pct_bag_multiple_of_10": 10.1
+    },
+    {
+      "carrier": "TAM",
+      "year": 2018,
+      "month": 2,
+      "flights": 15402,
+      "bag_per_pax": 9.272,
+      "pct_flights_zero_bag": 0.0,
+      "median_flight_bag_per_pax": 8.77,
+      "p90_p10_spread": 8.83,
+      "pct_bag_multiple_of_10": 10.1
+    },
+    {
+      "carrier": "TAM",
+      "year": 2018,
+      "month": 3,
+      "flights": 17078,
+      "bag_per_pax": 8.072,
+      "pct_flights_zero_bag": 0.02,
+      "median_flight_bag_per_pax": 7.61,
+      "p90_p10_spread": 8.69,
+      "pct_bag_multiple_of_10": 10.7
+    },
+    {
+      "carrier": "TAM",
+      "year": 2018,
+      "month": 4,
+      "flights": 16036,
+      "bag_per_pax": 7.828,
+      "pct_flights_zero_bag": 0.06,
+      "median_flight_bag_per_pax": 7.26,
+      "p90_p10_spread": 8.4,
+      "pct_bag_multiple_of_10": 10.1
+    },
+    {
+      "carrier": "TAM",
+      "year": 2018,
+      "month": 5,
+      "flights": 16975,
+      "bag_per_pax": 7.65,
+      "pct_flights_zero_bag": 0.14,
+      "median_flight_bag_per_pax": 7.08,
+      "p90_p10_spread": 8.52,
+      "pct_bag_multiple_of_10": 10.2
+    },
+    {
+      "carrier": "TAM",
+      "year": 2018,
+      "month": 6,
+      "flights": 16069,
+      "bag_per_pax": 7.868,
+      "pct_flights_zero_bag": 0.06,
+      "median_flight_bag_per_pax": 7.31,
+      "p90_p10_spread": 8.83,
+      "pct_bag_multiple_of_10": 9.7
+    },
+    {
+      "carrier": "TAM",
+      "year": 2018,
+      "month": 8,
+      "flights": 17385,
+      "bag_per_pax": 7.844,
+      "pct_flights_zero_bag": 0.06,
+      "median_flight_bag_per_pax": 7.32,
+      "p90_p10_spread": 8.81,
+      "pct_bag_multiple_of_10": 9.7
+    },
+    {
+      "carrier": "TAM",
+      "year": 2018,
+      "month": 9,
+      "flights": 16595,
+      "bag_per_pax": 7.472,
+      "pct_flights_zero_bag": 0.04,
+      "median_flight_bag_per_pax": 6.94,
+      "p90_p10_spread": 8.34,
+      "pct_bag_multiple_of_10": 10.4
+    },
+    {
+      "carrier": "TAM",
+      "year": 2018,
+      "month": 10,
+      "flights": 17297,
+      "bag_per_pax": 7.558,
+      "pct_flights_zero_bag": 0.01,
+      "median_flight_bag_per_pax": 7.0,
+      "p90_p10_spread": 8.38,
+      "pct_bag_multiple_of_10": 10.2
+    },
+    {
+      "carrier": "TAM",
+      "year": 2018,
+      "month": 11,
+      "flights": 16686,
+      "bag_per_pax": 7.651,
+      "pct_flights_zero_bag": 0.01,
+      "median_flight_bag_per_pax": 7.15,
+      "p90_p10_spread": 8.12,
+      "pct_bag_multiple_of_10": 10.5
+    },
+    {
+      "carrier": "TAM",
+      "year": 2018,
+      "month": 12,
+      "flights": 17297,
+      "bag_per_pax": 8.637,
+      "pct_flights_zero_bag": 0.05,
+      "median_flight_bag_per_pax": 8.28,
+      "p90_p10_spread": 8.39,
+      "pct_bag_multiple_of_10": 9.7
+    },
+    {
+      "carrier": "TAM",
+      "year": 2019,
+      "month": 1,
+      "flights": 18067,
+      "bag_per_pax": 8.723,
+      "pct_flights_zero_bag": 0.16,
+      "median_flight_bag_per_pax": 8.32,
+      "p90_p10_spread": 8.55,
+      "pct_bag_multiple_of_10": 10.4
+    },
+    {
+      "carrier": "TAM",
+      "year": 2019,
+      "month": 2,
+      "flights": 15519,
+      "bag_per_pax": 7.563,
+      "pct_flights_zero_bag": 0.01,
+      "median_flight_bag_per_pax": 6.93,
+      "p90_p10_spread": 8.72,
+      "pct_bag_multiple_of_10": 9.9
+    },
+    {
+      "carrier": "TAM",
+      "year": 2019,
+      "month": 3,
+      "flights": 16564,
+      "bag_per_pax": 7.117,
+      "pct_flights_zero_bag": 0.01,
+      "median_flight_bag_per_pax": 6.51,
+      "p90_p10_spread": 8.3,
+      "pct_bag_multiple_of_10": 10.1
+    },
+    {
+      "carrier": "TAM",
+      "year": 2019,
+      "month": 4,
+      "flights": 16185,
+      "bag_per_pax": 6.551,
+      "pct_flights_zero_bag": 0.01,
+      "median_flight_bag_per_pax": 5.93,
+      "p90_p10_spread": 7.89,
+      "pct_bag_multiple_of_10": 10.2
+    },
+    {
+      "carrier": "TAM",
+      "year": 2019,
+      "month": 5,
+      "flights": 17270,
+      "bag_per_pax": 6.221,
+      "pct_flights_zero_bag": 9.15,
+      "median_flight_bag_per_pax": 5.81,
+      "p90_p10_spread": 9.51,
+      "pct_bag_multiple_of_10": 18.2
+    },
+    {
+      "carrier": "TAM",
+      "year": 2019,
+      "month": 6,
+      "flights": 16588,
+      "bag_per_pax": 7.084,
+      "pct_flights_zero_bag": 0.02,
+      "median_flight_bag_per_pax": 6.49,
+      "p90_p10_spread": 8.14,
+      "pct_bag_multiple_of_10": 9.9
+    },
+    {
+      "carrier": "TAM",
+      "year": 2019,
+      "month": 7,
+      "flights": 19343,
+      "bag_per_pax": 7.473,
+      "pct_flights_zero_bag": 0.01,
+      "median_flight_bag_per_pax": 7.03,
+      "p90_p10_spread": 7.46,
+      "pct_bag_multiple_of_10": 10.2
+    },
+    {
+      "carrier": "TAM",
+      "year": 2019,
+      "month": 8,
+      "flights": 19102,
+      "bag_per_pax": 7.067,
+      "pct_flights_zero_bag": 0.01,
+      "median_flight_bag_per_pax": 6.54,
+      "p90_p10_spread": 8.15,
+      "pct_bag_multiple_of_10": 10.1
+    },
+    {
+      "carrier": "TAM",
+      "year": 2019,
+      "month": 9,
+      "flights": 18960,
+      "bag_per_pax": 6.601,
+      "pct_flights_zero_bag": 0.01,
+      "median_flight_bag_per_pax": 6.05,
+      "p90_p10_spread": 7.54,
+      "pct_bag_multiple_of_10": 10.4
+    },
+    {
+      "carrier": "TAM",
+      "year": 2019,
+      "month": 10,
+      "flights": 19973,
+      "bag_per_pax": 6.4,
+      "pct_flights_zero_bag": 0.01,
+      "median_flight_bag_per_pax": 5.9,
+      "p90_p10_spread": 7.28,
+      "pct_bag_multiple_of_10": 10.1
+    },
+    {
+      "carrier": "TAM",
+      "year": 2019,
+      "month": 11,
+      "flights": 19894,
+      "bag_per_pax": 6.337,
+      "pct_flights_zero_bag": 0.03,
+      "median_flight_bag_per_pax": 5.85,
+      "p90_p10_spread": 7.38,
+      "pct_bag_multiple_of_10": 10.0
+    },
+    {
+      "carrier": "TAM",
+      "year": 2019,
+      "month": 12,
+      "flights": 21355,
+      "bag_per_pax": 7.29,
+      "pct_flights_zero_bag": 0.01,
+      "median_flight_bag_per_pax": 6.9,
+      "p90_p10_spread": 7.76,
+      "pct_bag_multiple_of_10": 9.9
+    },
+    {
+      "carrier": "TAM",
+      "year": 2020,
+      "month": 1,
+      "flights": 21634,
+      "bag_per_pax": 7.443,
+      "pct_flights_zero_bag": 0.04,
+      "median_flight_bag_per_pax": 7.04,
+      "p90_p10_spread": 7.5,
+      "pct_bag_multiple_of_10": 9.6
+    },
+    {
+      "carrier": "TAM",
+      "year": 2020,
+      "month": 2,
+      "flights": 19204,
+      "bag_per_pax": 6.534,
+      "pct_flights_zero_bag": 0.07,
+      "median_flight_bag_per_pax": 6.06,
+      "p90_p10_spread": 7.42,
+      "pct_bag_multiple_of_10": 10.4
+    },
+    {
+      "carrier": "TAM",
+      "year": 2020,
+      "month": 3,
+      "flights": 14738,
+      "bag_per_pax": 6.532,
+      "pct_flights_zero_bag": 0.1,
+      "median_flight_bag_per_pax": 6.15,
+      "p90_p10_spread": 7.8,
+      "pct_bag_multiple_of_10": 10.3
+    },
+    {
+      "carrier": "TAM",
+      "year": 2020,
+      "month": 4,
+      "flights": 1045,
+      "bag_per_pax": 9.033,
+      "pct_flights_zero_bag": 0.86,
+      "median_flight_bag_per_pax": 8.82,
+      "p90_p10_spread": 8.2,
+      "pct_bag_multiple_of_10": 13.2
+    },
+    {
+      "carrier": "TAM",
+      "year": 2020,
+      "month": 5,
+      "flights": 1096,
+      "bag_per_pax": 9.018,
+      "pct_flights_zero_bag": 0.0,
+      "median_flight_bag_per_pax": 8.75,
+      "p90_p10_spread": 7.93,
+      "pct_bag_multiple_of_10": 9.6
+    },
+    {
+      "carrier": "TAM",
+      "year": 2020,
+      "month": 6,
+      "flights": 1818,
+      "bag_per_pax": 8.787,
+      "pct_flights_zero_bag": 0.0,
+      "median_flight_bag_per_pax": 8.49,
+      "p90_p10_spread": 9.45,
+      "pct_bag_multiple_of_10": 9.8
+    },
+    {
+      "carrier": "TAM",
+      "year": 2020,
+      "month": 7,
+      "flights": 3372,
+      "bag_per_pax": 7.84,
+      "pct_flights_zero_bag": 0.03,
+      "median_flight_bag_per_pax": 7.43,
+      "p90_p10_spread": 8.56,
+      "pct_bag_multiple_of_10": 9.8
+    },
+    {
+      "carrier": "TAM",
+      "year": 2020,
+      "month": 9,
+      "flights": 6984,
+      "bag_per_pax": 6.363,
+      "pct_flights_zero_bag": 0.62,
+      "median_flight_bag_per_pax": 6.12,
+      "p90_p10_spread": 5.85,
+      "pct_bag_multiple_of_10": 10.6
+    },
+    {
+      "carrier": "TAM",
+      "year": 2020,
+      "month": 10,
+      "flights": 8814,
+      "bag_per_pax": 6.146,
+      "pct_flights_zero_bag": 0.54,
+      "median_flight_bag_per_pax": 5.88,
+      "p90_p10_spread": 5.97,
+      "pct_bag_multiple_of_10": 10.0
+    },
+    {
+      "carrier": "TAM",
+      "year": 2020,
+      "month": 11,
+      "flights": 10150,
+      "bag_per_pax": 6.166,
+      "pct_flights_zero_bag": 1.34,
+      "median_flight_bag_per_pax": 5.67,
+      "p90_p10_spread": 7.0,
+      "pct_bag_multiple_of_10": 11.3
+    },
+    {
+      "carrier": "TAM",
+      "year": 2020,
+      "month": 12,
+      "flights": 11547,
+      "bag_per_pax": 6.949,
+      "pct_flights_zero_bag": 0.28,
+      "median_flight_bag_per_pax": 6.37,
+      "p90_p10_spread": 7.33,
+      "pct_bag_multiple_of_10": 10.2
+    },
+    {
+      "carrier": "TAM",
+      "year": 2021,
+      "month": 1,
+      "flights": 12497,
+      "bag_per_pax": 6.614,
+      "pct_flights_zero_bag": 0.0,
+      "median_flight_bag_per_pax": 6.36,
+      "p90_p10_spread": 5.87,
+      "pct_bag_multiple_of_10": 10.1
+    },
+    {
+      "carrier": "TAM",
+      "year": 2021,
+      "month": 2,
+      "flights": 9810,
+      "bag_per_pax": 5.902,
+      "pct_flights_zero_bag": 0.04,
+      "median_flight_bag_per_pax": 5.65,
+      "p90_p10_spread": 5.93,
+      "pct_bag_multiple_of_10": 10.3
+    },
+    {
+      "carrier": "TAM",
+      "year": 2021,
+      "month": 3,
+      "flights": 7971,
+      "bag_per_pax": 6.097,
+      "pct_flights_zero_bag": 0.0,
+      "median_flight_bag_per_pax": 5.75,
+      "p90_p10_spread": 6.62,
+      "pct_bag_multiple_of_10": 9.8
+    },
+    {
+      "carrier": "TAM",
+      "year": 2021,
+      "month": 4,
+      "flights": 5555,
+      "bag_per_pax": 5.983,
+      "pct_flights_zero_bag": 0.05,
+      "median_flight_bag_per_pax": 5.65,
+      "p90_p10_spread": 5.77,
+      "pct_bag_multiple_of_10": 10.8
+    },
+    {
+      "carrier": "TAM",
+      "year": 2021,
+      "month": 5,
+      "flights": 7733,
+      "bag_per_pax": 5.902,
+      "pct_flights_zero_bag": 0.04,
+      "median_flight_bag_per_pax": 5.6,
+      "p90_p10_spread": 5.69,
+      "pct_bag_multiple_of_10": 9.9
+    },
+    {
+      "carrier": "TAM",
+      "year": 2021,
+      "month": 6,
+      "flights": 9344,
+      "bag_per_pax": 6.005,
+      "pct_flights_zero_bag": 0.0,
+      "median_flight_bag_per_pax": 5.64,
+      "p90_p10_spread": 5.63,
+      "pct_bag_multiple_of_10": 9.8
+    },
+    {
+      "carrier": "TAM",
+      "year": 2021,
+      "month": 7,
+      "flights": 12867,
+      "bag_per_pax": 6.167,
+      "pct_flights_zero_bag": 0.0,
+      "median_flight_bag_per_pax": 5.78,
+      "p90_p10_spread": 5.66,
+      "pct_bag_multiple_of_10": 9.8
+    },
+    {
+      "carrier": "TAM",
+      "year": 2021,
+      "month": 8,
+      "flights": 12979,
+      "bag_per_pax": 5.949,
+      "pct_flights_zero_bag": 0.01,
+      "median_flight_bag_per_pax": 5.57,
+      "p90_p10_spread": 5.92,
+      "pct_bag_multiple_of_10": 9.9
+    },
+    {
+      "carrier": "TAM",
+      "year": 2021,
+      "month": 9,
+      "flights": 14047,
+      "bag_per_pax": 5.593,
+      "pct_flights_zero_bag": 0.11,
+      "median_flight_bag_per_pax": 5.3,
+      "p90_p10_spread": 5.56,
+      "pct_bag_multiple_of_10": 10.4
+    },
+    {
+      "carrier": "TAM",
+      "year": 2021,
+      "month": 10,
+      "flights": 14941,
+      "bag_per_pax": 5.725,
+      "pct_flights_zero_bag": 0.06,
+      "median_flight_bag_per_pax": 5.44,
+      "p90_p10_spread": 5.62,
+      "pct_bag_multiple_of_10": 10.3
+    },
+    {
+      "carrier": "TAM",
+      "year": 2021,
+      "month": 11,
+      "flights": 16327,
+      "bag_per_pax": 5.673,
+      "pct_flights_zero_bag": 0.02,
+      "median_flight_bag_per_pax": 5.32,
+      "p90_p10_spread": 5.98,
+      "pct_bag_multiple_of_10": 10.6
+    },
+    {
+      "carrier": "TAM",
+      "year": 2021,
+      "month": 12,
+      "flights": 18163,
+      "bag_per_pax": 6.235,
+      "pct_flights_zero_bag": 0.07,
+      "median_flight_bag_per_pax": 5.85,
+      "p90_p10_spread": 6.32,
+      "pct_bag_multiple_of_10": 9.9
+    },
+    {
+      "carrier": "TAM",
+      "year": 2022,
+      "month": 1,
+      "flights": 17244,
+      "bag_per_pax": 6.482,
+      "pct_flights_zero_bag": 0.01,
+      "median_flight_bag_per_pax": 6.05,
+      "p90_p10_spread": 6.26,
+      "pct_bag_multiple_of_10": 10.1
+    },
+    {
+      "carrier": "TAM",
+      "year": 2022,
+      "month": 2,
+      "flights": 13745,
+      "bag_per_pax": 5.739,
+      "pct_flights_zero_bag": 0.01,
+      "median_flight_bag_per_pax": 5.24,
+      "p90_p10_spread": 6.45,
+      "pct_bag_multiple_of_10": 10.0
+    },
+    {
+      "carrier": "TAM",
+      "year": 2022,
+      "month": 3,
+      "flights": 15077,
+      "bag_per_pax": 5.372,
+      "pct_flights_zero_bag": 0.02,
+      "median_flight_bag_per_pax": 4.86,
+      "p90_p10_spread": 6.11,
+      "pct_bag_multiple_of_10": 10.0
+    },
+    {
+      "carrier": "TAM",
+      "year": 2022,
+      "month": 4,
+      "flights": 15029,
+      "bag_per_pax": 5.307,
+      "pct_flights_zero_bag": 0.01,
+      "median_flight_bag_per_pax": 4.71,
+      "p90_p10_spread": 6.35,
+      "pct_bag_multiple_of_10": 10.2
+    },
+    {
+      "carrier": "TAM",
+      "year": 2022,
+      "month": 5,
+      "flights": 16490,
+      "bag_per_pax": 5.492,
+      "pct_flights_zero_bag": 0.03,
+      "median_flight_bag_per_pax": 4.83,
+      "p90_p10_spread": 6.76,
+      "pct_bag_multiple_of_10": 10.3
+    },
+    {
+      "carrier": "TAM",
+      "year": 2022,
+      "month": 6,
+      "flights": 16256,
+      "bag_per_pax": 5.861,
+      "pct_flights_zero_bag": 0.04,
+      "median_flight_bag_per_pax": 5.28,
+      "p90_p10_spread": 6.97,
+      "pct_bag_multiple_of_10": 10.3
+    },
+    {
+      "carrier": "TAM",
+      "year": 2022,
+      "month": 7,
+      "flights": 19486,
+      "bag_per_pax": 5.845,
+      "pct_flights_zero_bag": 0.02,
+      "median_flight_bag_per_pax": 5.39,
+      "p90_p10_spread": 6.29,
+      "pct_bag_multiple_of_10": 10.3
+    },
+    {
+      "carrier": "TAM",
+      "year": 2022,
+      "month": 8,
+      "flights": 19202,
+      "bag_per_pax": 5.475,
+      "pct_flights_zero_bag": 0.02,
+      "median_flight_bag_per_pax": 4.98,
+      "p90_p10_spread": 6.31,
+      "pct_bag_multiple_of_10": 9.8
+    },
+    {
+      "carrier": "TAM",
+      "year": 2022,
+      "month": 9,
+      "flights": 18520,
+      "bag_per_pax": 5.386,
+      "pct_flights_zero_bag": 0.05,
+      "median_flight_bag_per_pax": 4.87,
+      "p90_p10_spread": 5.99,
+      "pct_bag_multiple_of_10": 10.1
+    },
+    {
+      "carrier": "TAM",
+      "year": 2022,
+      "month": 10,
+      "flights": 18663,
+      "bag_per_pax": 5.391,
+      "pct_flights_zero_bag": 0.05,
+      "median_flight_bag_per_pax": 4.83,
+      "p90_p10_spread": 6.06,
+      "pct_bag_multiple_of_10": 10.3
+    },
+    {
+      "carrier": "TAM",
+      "year": 2022,
+      "month": 11,
+      "flights": 19206,
+      "bag_per_pax": 5.458,
+      "pct_flights_zero_bag": 0.03,
+      "median_flight_bag_per_pax": 4.86,
+      "p90_p10_spread": 6.2,
+      "pct_bag_multiple_of_10": 10.0
+    },
+    {
+      "carrier": "TAM",
+      "year": 2022,
+      "month": 12,
+      "flights": 20134,
+      "bag_per_pax": 6.076,
+      "pct_flights_zero_bag": 0.03,
+      "median_flight_bag_per_pax": 5.46,
+      "p90_p10_spread": 6.69,
+      "pct_bag_multiple_of_10": 10.1
+    }
+  ],
+  "route_dispersion_by_year": [
+    {
+      "carrier": "AZU",
+      "year": 2015,
+      "routes": 271,
+      "mean": 10.87,
+      "between_route_std": 2.03,
+      "p10": 8.29,
+      "p90": 13.34
+    },
+    {
+      "carrier": "AZU",
+      "year": 2016,
+      "routes": 252,
+      "mean": 10.96,
+      "between_route_std": 1.81,
+      "p10": 8.5,
+      "p90": 13.39
+    },
+    {
+      "carrier": "AZU",
+      "year": 2017,
+      "routes": 263,
+      "mean": 9.94,
+      "between_route_std": 1.78,
+      "p10": 7.66,
+      "p90": 12.32
+    },
+    {
+      "carrier": "AZU",
+      "year": 2018,
+      "routes": 262,
+      "mean": 8.21,
+      "between_route_std": 1.62,
+      "p10": 6.07,
+      "p90": 10.32
+    },
+    {
+      "carrier": "AZU",
+      "year": 2019,
+      "routes": 298,
+      "mean": 7.64,
+      "between_route_std": 1.67,
+      "p10": 5.57,
+      "p90": 9.72
+    },
+    {
+      "carrier": "AZU",
+      "year": 2020,
+      "routes": 192,
+      "mean": 8.2,
+      "between_route_std": 1.61,
+      "p10": 6.15,
+      "p90": 10.1
+    },
+    {
+      "carrier": "AZU",
+      "year": 2021,
+      "routes": 256,
+      "mean": 8.05,
+      "between_route_std": 1.59,
+      "p10": 6.01,
+      "p90": 9.9
+    },
+    {
+      "carrier": "AZU",
+      "year": 2022,
+      "routes": 305,
+      "mean": 8.0,
+      "between_route_std": 1.53,
+      "p10": 5.99,
+      "p90": 9.86
+    },
+    {
+      "carrier": "GLO",
+      "year": 2015,
+      "routes": 302,
+      "mean": 12.02,
+      "between_route_std": 2.06,
+      "p10": 9.39,
+      "p90": 14.61
+    },
+    {
+      "carrier": "GLO",
+      "year": 2016,
+      "routes": 278,
+      "mean": 12.12,
+      "between_route_std": 2.09,
+      "p10": 9.54,
+      "p90": 14.51
+    },
+    {
+      "carrier": "GLO",
+      "year": 2017,
+      "routes": 269,
+      "mean": 10.78,
+      "between_route_std": 2.18,
+      "p10": 7.97,
+      "p90": 13.06
+    },
+    {
+      "carrier": "GLO",
+      "year": 2018,
+      "routes": 257,
+      "mean": 9.29,
+      "between_route_std": 2.25,
+      "p10": 6.51,
+      "p90": 12.0
+    },
+    {
+      "carrier": "GLO",
+      "year": 2019,
+      "routes": 264,
+      "mean": 6.14,
+      "between_route_std": 1.85,
+      "p10": 3.58,
+      "p90": 8.55
+    },
+    {
+      "carrier": "GLO",
+      "year": 2020,
+      "routes": 225,
+      "mean": 3.94,
+      "between_route_std": 0.9,
+      "p10": 2.76,
+      "p90": 4.9
+    },
+    {
+      "carrier": "GLO",
+      "year": 2021,
+      "routes": 224,
+      "mean": 5.98,
+      "between_route_std": 1.03,
+      "p10": 4.66,
+      "p90": 7.15
+    },
+    {
+      "carrier": "GLO",
+      "year": 2022,
+      "routes": 259,
+      "mean": 8.42,
+      "between_route_std": 1.78,
+      "p10": 6.22,
+      "p90": 10.68
+    },
+    {
+      "carrier": "TAM",
+      "year": 2015,
+      "routes": 236,
+      "mean": 12.18,
+      "between_route_std": 2.09,
+      "p10": 9.1,
+      "p90": 14.64
+    },
+    {
+      "carrier": "TAM",
+      "year": 2016,
+      "routes": 222,
+      "mean": 11.94,
+      "between_route_std": 1.96,
+      "p10": 9.2,
+      "p90": 14.19
+    },
+    {
+      "carrier": "TAM",
+      "year": 2017,
+      "routes": 214,
+      "mean": 10.43,
+      "between_route_std": 2.1,
+      "p10": 7.86,
+      "p90": 12.9
+    },
+    {
+      "carrier": "TAM",
+      "year": 2018,
+      "routes": 223,
+      "mean": 8.6,
+      "between_route_std": 2.17,
+      "p10": 5.95,
+      "p90": 11.44
+    },
+    {
+      "carrier": "TAM",
+      "year": 2019,
+      "routes": 206,
+      "mean": 7.34,
+      "between_route_std": 2.14,
+      "p10": 4.8,
+      "p90": 10.12
+    },
+    {
+      "carrier": "TAM",
+      "year": 2020,
+      "routes": 171,
+      "mean": 6.81,
+      "between_route_std": 1.92,
+      "p10": 4.53,
+      "p90": 9.02
+    },
+    {
+      "carrier": "TAM",
+      "year": 2021,
+      "routes": 186,
+      "mean": 6.05,
+      "between_route_std": 1.61,
+      "p10": 3.96,
+      "p90": 7.97
+    },
+    {
+      "carrier": "TAM",
+      "year": 2022,
+      "routes": 247,
+      "mean": 5.58,
+      "between_route_std": 1.6,
+      "p10": 3.74,
+      "p90": 7.78
+    }
+  ],
+  "month_to_month_route_persistence": [
+    {
+      "carrier": "AZU",
+      "year": 2015,
+      "pairs": 2356,
+      "spearman": 0.912
+    },
+    {
+      "carrier": "AZU",
+      "year": 2016,
+      "pairs": 2375,
+      "spearman": 0.926
+    },
+    {
+      "carrier": "AZU",
+      "year": 2017,
+      "pairs": 2845,
+      "spearman": 0.904
+    },
+    {
+      "carrier": "AZU",
+      "year": 2018,
+      "pairs": 2465,
+      "spearman": 0.891
+    },
+    {
+      "carrier": "AZU",
+      "year": 2019,
+      "pairs": 3179,
+      "spearman": 0.886
+    },
+    {
+      "carrier": "AZU",
+      "year": 2020,
+      "pairs": 1465,
+      "spearman": 0.832
+    },
+    {
+      "carrier": "AZU",
+      "year": 2021,
+      "pairs": 2679,
+      "spearman": 0.876
+    },
+    {
+      "carrier": "AZU",
+      "year": 2022,
+      "pairs": 3126,
+      "spearman": 0.87
+    },
+    {
+      "carrier": "GLO",
+      "year": 2015,
+      "pairs": 2619,
+      "spearman": 0.889
+    },
+    {
+      "carrier": "GLO",
+      "year": 2016,
+      "pairs": 2625,
+      "spearman": 0.905
+    },
+    {
+      "carrier": "GLO",
+      "year": 2017,
+      "pairs": 3170,
+      "spearman": 0.918
+    },
+    {
+      "carrier": "GLO",
+      "year": 2018,
+      "pairs": 2536,
+      "spearman": 0.914
+    },
+    {
+      "carrier": "GLO",
+      "year": 2019,
+      "pairs": 3000,
+      "spearman": 0.879
+    },
+    {
+      "carrier": "GLO",
+      "year": 2020,
+      "pairs": 1479,
+      "spearman": 0.842
+    },
+    {
+      "carrier": "GLO",
+      "year": 2021,
+      "pairs": 2217,
+      "spearman": 0.882
+    },
+    {
+      "carrier": "GLO",
+      "year": 2022,
+      "pairs": 2827,
+      "spearman": 0.836
+    },
+    {
+      "carrier": "TAM",
+      "year": 2015,
+      "pairs": 2093,
+      "spearman": 0.912
+    },
+    {
+      "carrier": "TAM",
+      "year": 2016,
+      "pairs": 2168,
+      "spearman": 0.909
+    },
+    {
+      "carrier": "TAM",
+      "year": 2017,
+      "pairs": 2519,
+      "spearman": 0.929
+    },
+    {
+      "carrier": "TAM",
+      "year": 2018,
+      "pairs": 2082,
+      "spearman": 0.926
+    },
+    {
+      "carrier": "TAM",
+      "year": 2019,
+      "pairs": 2363,
+      "spearman": 0.927
+    },
+    {
+      "carrier": "TAM",
+      "year": 2020,
+      "pairs": 1102,
+      "spearman": 0.922
+    },
+    {
+      "carrier": "TAM",
+      "year": 2021,
+      "pairs": 1881,
+      "spearman": 0.901
+    },
+    {
+      "carrier": "TAM",
+      "year": 2022,
+      "pairs": 2734,
+      "spearman": 0.93
+    }
+  ],
+  "gol_flights_by_source_file_month": [
+    {
+      "year": 2018,
+      "month": 1,
+      "files": 1,
+      "file_example": "GLOJAN18.txt",
+      "pct_no_file": 0.0,
+      "file_ids": 1
+    },
+    {
+      "year": 2018,
+      "month": 2,
+      "files": 1,
+      "file_example": "GLOFEV18.txt",
+      "pct_no_file": 0.0,
+      "file_ids": 1
+    },
+    {
+      "year": 2018,
+      "month": 3,
+      "files": 1,
+      "file_example": "GLOMAR18.txt",
+      "pct_no_file": 0.0,
+      "file_ids": 1
+    },
+    {
+      "year": 2018,
+      "month": 4,
+      "files": 1,
+      "file_example": "GLOABR18.txt",
+      "pct_no_file": 0.0,
+      "file_ids": 1
+    },
+    {
+      "year": 2018,
+      "month": 5,
+      "files": 1,
+      "file_example": "GLOMAI18.txt",
+      "pct_no_file": 0.0,
+      "file_ids": 1
+    },
+    {
+      "year": 2018,
+      "month": 6,
+      "files": 1,
+      "file_example": "GLOJUN18.txt",
+      "pct_no_file": 0.0,
+      "file_ids": 1
+    },
+    {
+      "year": 2018,
+      "month": 8,
+      "files": 1,
+      "file_example": "GLOAGO18.txt",
+      "pct_no_file": 0.0,
+      "file_ids": 1
+    },
+    {
+      "year": 2018,
+      "month": 9,
+      "files": 1,
+      "file_example": "GLOSET18.txt",
+      "pct_no_file": 0.0,
+      "file_ids": 1
+    },
+    {
+      "year": 2018,
+      "month": 10,
+      "files": 1,
+      "file_example": "GLOOUT18.txt",
+      "pct_no_file": 0.0,
+      "file_ids": 1
+    },
+    {
+      "year": 2018,
+      "month": 11,
+      "files": 1,
+      "file_example": "GLONOV18.txt",
+      "pct_no_file": 0.0,
+      "file_ids": 1
+    },
+    {
+      "year": 2018,
+      "month": 12,
+      "files": 1,
+      "file_example": "GLODEZ18.txt",
+      "pct_no_file": 0.0,
+      "file_ids": 1
+    },
+    {
+      "year": 2019,
+      "month": 1,
+      "files": 1,
+      "file_example": "GLOJAN19.txt",
+      "pct_no_file": 0.0,
+      "file_ids": 1
+    },
+    {
+      "year": 2019,
+      "month": 2,
+      "files": 1,
+      "file_example": "GLOFEV19.txt",
+      "pct_no_file": 0.0,
+      "file_ids": 1
+    },
+    {
+      "year": 2019,
+      "month": 3,
+      "files": 1,
+      "file_example": "GLOMAR19.txt",
+      "pct_no_file": 0.0,
+      "file_ids": 1
+    },
+    {
+      "year": 2019,
+      "month": 4,
+      "files": 1,
+      "file_example": "GLOABR19.txt",
+      "pct_no_file": 0.0,
+      "file_ids": 1
+    },
+    {
+      "year": 2019,
+      "month": 5,
+      "files": 1,
+      "file_example": "GLOMAI19.txt",
+      "pct_no_file": 0.0,
+      "file_ids": 1
+    },
+    {
+      "year": 2019,
+      "month": 6,
+      "files": 1,
+      "file_example": "GLOJUN19.txt",
+      "pct_no_file": 0.0,
+      "file_ids": 1
+    },
+    {
+      "year": 2019,
+      "month": 7,
+      "files": 1,
+      "file_example": "GLOJUL19.txt",
+      "pct_no_file": 0.0,
+      "file_ids": 1
+    },
+    {
+      "year": 2019,
+      "month": 8,
+      "files": 1,
+      "file_example": "GLOAGO19.txt",
+      "pct_no_file": 0.0,
+      "file_ids": 1
+    },
+    {
+      "year": 2019,
+      "month": 9,
+      "files": 1,
+      "file_example": "GLOSET19.txt",
+      "pct_no_file": 0.0,
+      "file_ids": 1
+    },
+    {
+      "year": 2019,
+      "month": 10,
+      "files": 1,
+      "file_example": "GLOOUT19.txt",
+      "pct_no_file": 0.0,
+      "file_ids": 1
+    },
+    {
+      "year": 2019,
+      "month": 11,
+      "files": 1,
+      "file_example": "GLONOV19.txt",
+      "pct_no_file": 0.0,
+      "file_ids": 1
+    },
+    {
+      "year": 2019,
+      "month": 12,
+      "files": 1,
+      "file_example": "GLODEZ19.txt",
+      "pct_no_file": 0.0,
+      "file_ids": 1
+    },
+    {
+      "year": 2020,
+      "month": 1,
+      "files": 1,
+      "file_example": "GLO202001.zip",
+      "pct_no_file": 0.0,
+      "file_ids": 1
+    },
+    {
+      "year": 2020,
+      "month": 2,
+      "files": 1,
+      "file_example": "GLO202002.zip",
+      "pct_no_file": 0.0,
+      "file_ids": 1
+    },
+    {
+      "year": 2020,
+      "month": 3,
+      "files": 1,
+      "file_example": "GLO202003.zip",
+      "pct_no_file": 0.0,
+      "file_ids": 1
+    },
+    {
+      "year": 2020,
+      "month": 4,
+      "files": 1,
+      "file_example": "GLO202004.zip",
+      "pct_no_file": 0.0,
+      "file_ids": 1
+    },
+    {
+      "year": 2020,
+      "month": 5,
+      "files": 1,
+      "file_example": "GLO202005.zip",
+      "pct_no_file": 0.0,
+      "file_ids": 1
+    },
+    {
+      "year": 2020,
+      "month": 6,
+      "files": 1,
+      "file_example": "GLO202006.zip",
+      "pct_no_file": 0.0,
+      "file_ids": 1
+    },
+    {
+      "year": 2020,
+      "month": 7,
+      "files": 1,
+      "file_example": "GLO202007.zip",
+      "pct_no_file": 0.0,
+      "file_ids": 1
+    },
+    {
+      "year": 2020,
+      "month": 9,
+      "files": 1,
+      "file_example": "GLO202009.zip",
+      "pct_no_file": 0.0,
+      "file_ids": 1
+    },
+    {
+      "year": 2020,
+      "month": 10,
+      "files": 1,
+      "file_example": "GLO202010.zip",
+      "pct_no_file": 0.0,
+      "file_ids": 1
+    },
+    {
+      "year": 2020,
+      "month": 11,
+      "files": 1,
+      "file_example": "GLO202011.zip",
+      "pct_no_file": 0.0,
+      "file_ids": 1
+    },
+    {
+      "year": 2020,
+      "month": 12,
+      "files": 1,
+      "file_example": "GLO202012.zip",
+      "pct_no_file": 0.0,
+      "file_ids": 1
+    },
+    {
+      "year": 2021,
+      "month": 1,
+      "files": 1,
+      "file_example": "GLO202101.zip",
+      "pct_no_file": 0.0,
+      "file_ids": 1
+    },
+    {
+      "year": 2021,
+      "month": 2,
+      "files": 1,
+      "file_example": "GLO202102.zip",
+      "pct_no_file": 0.0,
+      "file_ids": 1
+    },
+    {
+      "year": 2021,
+      "month": 3,
+      "files": 1,
+      "file_example": "GLO202103.zip",
+      "pct_no_file": 0.0,
+      "file_ids": 1
+    },
+    {
+      "year": 2021,
+      "month": 4,
+      "files": 1,
+      "file_example": "GLO202104.zip",
+      "pct_no_file": 0.0,
+      "file_ids": 1
+    },
+    {
+      "year": 2021,
+      "month": 5,
+      "files": 1,
+      "file_example": "GLO202105.zip",
+      "pct_no_file": 0.0,
+      "file_ids": 1
+    },
+    {
+      "year": 2021,
+      "month": 6,
+      "files": 1,
+      "file_example": "GLO202106.zip",
+      "pct_no_file": 0.0,
+      "file_ids": 1
+    },
+    {
+      "year": 2021,
+      "month": 7,
+      "files": 1,
+      "file_example": "GLO202107.zip",
+      "pct_no_file": 0.0,
+      "file_ids": 1
+    },
+    {
+      "year": 2021,
+      "month": 8,
+      "files": 1,
+      "file_example": "GLO202108.zip",
+      "pct_no_file": 0.0,
+      "file_ids": 1
+    },
+    {
+      "year": 2021,
+      "month": 9,
+      "files": 1,
+      "file_example": "GLO202109.zip",
+      "pct_no_file": 0.0,
+      "file_ids": 1
+    },
+    {
+      "year": 2021,
+      "month": 10,
+      "files": 1,
+      "file_example": "GLO202110.zip",
+      "pct_no_file": 0.0,
+      "file_ids": 1
+    },
+    {
+      "year": 2021,
+      "month": 11,
+      "files": 1,
+      "file_example": "GLO202111.zip",
+      "pct_no_file": 0.0,
+      "file_ids": 1
+    },
+    {
+      "year": 2021,
+      "month": 12,
+      "files": 1,
+      "file_example": "GLO202112.zip",
+      "pct_no_file": 0.0,
+      "file_ids": 1
+    },
+    {
+      "year": 2022,
+      "month": 1,
+      "files": 1,
+      "file_example": "GLO202201.zip",
+      "pct_no_file": 0.0,
+      "file_ids": 1
+    },
+    {
+      "year": 2022,
+      "month": 2,
+      "files": 1,
+      "file_example": "GLO202202.zip",
+      "pct_no_file": 0.0,
+      "file_ids": 1
+    },
+    {
+      "year": 2022,
+      "month": 3,
+      "files": 1,
+      "file_example": "GLO202203.zip",
+      "pct_no_file": 0.0,
+      "file_ids": 1
+    },
+    {
+      "year": 2022,
+      "month": 4,
+      "files": 1,
+      "file_example": "GLO202204.zip",
+      "pct_no_file": 0.0,
+      "file_ids": 1
+    },
+    {
+      "year": 2022,
+      "month": 5,
+      "files": 1,
+      "file_example": "GLO202205.zip",
+      "pct_no_file": 0.0,
+      "file_ids": 1
+    },
+    {
+      "year": 2022,
+      "month": 6,
+      "files": 1,
+      "file_example": "GLO202206.zip",
+      "pct_no_file": 0.0,
+      "file_ids": 1
+    },
+    {
+      "year": 2022,
+      "month": 7,
+      "files": 1,
+      "file_example": "GLO202207.zip",
+      "pct_no_file": 0.0,
+      "file_ids": 1
+    },
+    {
+      "year": 2022,
+      "month": 8,
+      "files": 1,
+      "file_example": "GLO202208.zip",
+      "pct_no_file": 0.0,
+      "file_ids": 1
+    },
+    {
+      "year": 2022,
+      "month": 9,
+      "files": 1,
+      "file_example": "GLO202209.zip",
+      "pct_no_file": 0.0,
+      "file_ids": 1
+    },
+    {
+      "year": 2022,
+      "month": 10,
+      "files": 1,
+      "file_example": "GLO202210.zip",
+      "pct_no_file": 0.0,
+      "file_ids": 1
+    },
+    {
+      "year": 2022,
+      "month": 11,
+      "files": 1,
+      "file_example": "GLO202211.zip",
+      "pct_no_file": 0.0,
+      "file_ids": 1
+    },
+    {
+      "year": 2022,
+      "month": 12,
+      "files": 1,
+      "file_example": "GLO202212.zip",
+      "pct_no_file": 0.0,
+      "file_ids": 1
+    }
+  ],
+  "gol_weight_composition": [
+    {
+      "year": 2015,
+      "weight_per_pax": 88.6,
+      "cargo_per_pax": 2.64,
+      "free_per_pax": 11.15,
+      "excess_per_pax": 0.28
+    },
+    {
+      "year": 2016,
+      "weight_per_pax": 89.16,
+      "cargo_per_pax": 3.18,
+      "free_per_pax": 11.19,
+      "excess_per_pax": 0.249
+    },
+    {
+      "year": 2017,
+      "weight_per_pax": 88.22,
+      "cargo_per_pax": 3.37,
+      "free_per_pax": 10.05,
+      "excess_per_pax": 0.144
+    },
+    {
+      "year": 2018,
+      "weight_per_pax": 86.9,
+      "cargo_per_pax": 3.54,
+      "free_per_pax": 8.62,
+      "excess_per_pax": 0.047
+    },
+    {
+      "year": 2019,
+      "weight_per_pax": 83.65,
+      "cargo_per_pax": 2.93,
+      "free_per_pax": 5.9,
+      "excess_per_pax": 0.013
+    },
+    {
+      "year": 2020,
+      "weight_per_pax": 81.43,
+      "cargo_per_pax": 2.56,
+      "free_per_pax": 3.93,
+      "excess_per_pax": 0.0
+    },
+    {
+      "year": 2021,
+      "weight_per_pax": 82.98,
+      "cargo_per_pax": 2.28,
+      "free_per_pax": 5.82,
+      "excess_per_pax": 0.015
+    },
+    {
+      "year": 2022,
+      "weight_per_pax": 85.18,
+      "cargo_per_pax": 2.49,
+      "free_per_pax": 8.08,
+      "excess_per_pax": 0.034
+    }
+  ]
+}

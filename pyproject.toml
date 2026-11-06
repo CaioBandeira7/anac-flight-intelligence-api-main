@@ -25,6 +25,7 @@ dev = [
 
 [project.scripts]
 anac-ingest = "anac.cli:main"
+anac-features = "anac.features.cli:main"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/anac"]
@@ -57,6 +58,7 @@ select = ["E", "F", "I", "B", "UP", "SIM", "RUF", "PTH"]
 [tool.ruff.lint.per-file-ignores]
 # Long SQL strings and report prose read better unwrapped.
 "scripts/*" = ["E501", "RUF001"]
+"src/anac/serving/export.py" = ["E501"]
 
 [tool.mypy]
 python_version = "3.12"

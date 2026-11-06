@@ -10,8 +10,16 @@ from pathlib import Path
 
 from anac.config import IngestionConfig, load_config
 from anac.ingestion.pipeline import run_ingestion, run_status
+from anac.ingestion.supplements import (
+    compare_revisions,
+    load_supplement_config,
+    publish,
+    publish_evaluation,
+    supplement_status,
+)
 
 DEFAULT_CONFIG = Path("configs/ingestion.toml")
+SUPPLEMENT_CONFIG = Path("configs/supplements.toml")
 
 
 def _parser() -> argparse.ArgumentParser:
@@ -33,6 +41,11 @@ def _parser() -> argparse.ArgumentParser:
 
     status = commands.add_parser("status", help="show the progress of a run")
     status.add_argument("--output-root", type=Path)
+
+    supplements = commands.add_parser("supplements", help="official monthly ZIPs")
+    supplements.add_argument(
+        "action", choices=["status", "publish", "revisions", "publish-evaluation"]
+    )
     return parser
 
 
@@ -47,8 +60,30 @@ def _with_overrides(cfg: IngestionConfig, args: argparse.Namespace) -> Ingestion
     return dataclasses.replace(cfg, **changes)
 
 
+def _supplements(action: str) -> int:
+    cfg = load_supplement_config(SUPPLEMENT_CONFIG)
+    processed, interim = Path("data/processed"), Path("data/interim")
+    try:
+        result: object
+        if action == "status":
+            result = supplement_status(cfg)
+        elif action == "publish":
+            result = publish(cfg, processed, interim)
+        elif action == "revisions":
+            result = compare_revisions(cfg, processed)
+        else:
+            result = publish_evaluation(cfg, processed, interim)
+    except (RuntimeError, ValueError) as error:
+        print(f"error: {error}", file=sys.stderr)
+        return 2
+    print(json.dumps(result, indent=2, ensure_ascii=False, default=str))
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     args = _parser().parse_args(argv)
+    if args.command == "supplements":
+        return _supplements(args.action)
     cfg = _with_overrides(load_config(args.config), args)
     if args.command == "status":
         root = args.output_root or cfg.full_output_root
