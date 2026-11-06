@@ -158,7 +158,7 @@ export function MlStudioView() {
   return (
     <>
       <PageHeader title="ML Studio" description="Which method each module uses, and how it scored on held-out data." />
-      <p className="mb-5 rounded-xl border border-line bg-white/[0.03] px-4 py-3 text-[13px] leading-relaxed text-ink-2">
+      <p className="mb-5 rounded-xl border border-line bg-hover px-4 py-3 text-[13px] leading-relaxed text-ink-2">
         These are <strong className="font-medium text-ink">validation results for 2023</strong>, not current forecasts. No live
         predictions are shown, and the final test on 2024–2025 has not been run.
       </p>
@@ -302,7 +302,7 @@ function ChatMessage({ entry, onRetry }: { entry: ChatEntry; onRetry: () => void
     <div className="space-y-3">
       <p className="ml-auto w-fit max-w-[85%] whitespace-pre-wrap rounded-xl bg-blue/15 px-3.5 py-2.5 text-[13.5px] text-ink">{entry.question}</p>
       {entry.response ? (
-        <div className="max-w-[92%] rounded-xl border border-line bg-white/[0.03] px-3.5 py-3">
+        <div className="max-w-[92%] rounded-xl border border-line bg-hover px-3.5 py-3">
           <p className="whitespace-pre-wrap text-[13.5px] leading-relaxed text-ink-2">{entry.response.answer}</p>
           <SourceList response={entry.response} />
         </div>
@@ -423,7 +423,7 @@ export function AnalystView() {
               maxLength={500}
               aria-label="Question for the analyst"
               placeholder={available ? "Which route carried the most passengers?" : "Unavailable"}
-              className="min-w-0 flex-1 rounded-lg border border-line bg-white/[0.03] px-3 py-2 text-sm text-ink placeholder:text-muted focus:outline-none focus-visible:border-cyan disabled:cursor-not-allowed"
+              className="min-w-0 flex-1 rounded-lg border border-line bg-hover px-3 py-2 text-sm text-ink placeholder:text-muted focus:outline-none focus-visible:border-cyan disabled:cursor-not-allowed"
             />
             <button
               type="submit"

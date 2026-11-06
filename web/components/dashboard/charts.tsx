@@ -4,8 +4,9 @@ import { useId, useMemo, useRef, useState, type KeyboardEvent, type PointerEvent
 import { cn, formatCompact, formatNumber } from "@/lib/utils";
 
 /* Chart tokens — single blue series on the navy surface (validated: ≥3:1 vs surface). */
-const SERIES = "#3b82f6";
-const GRID = "rgba(148,163,184,0.12)";
+/* Chart tokens come from the theme (see globals.css: --chart-1, --grid). */
+const SERIES = "var(--chart-1)";
+const GRID = "var(--grid)";
 
 export function Sparkline({ values, className, label }: { values: number[]; className?: string; label: string }) {
   const id = useId();
@@ -21,12 +22,12 @@ export function Sparkline({ values, className, label }: { values: number[]; clas
     <svg viewBox="0 0 100 30" preserveAspectRatio="none" className={cn("h-9 w-full", className)} role="img" aria-label={label}>
       <defs>
         <linearGradient id={id} x1="0" x2="0" y1="0" y2="1">
-          <stop offset="0" stopColor={SERIES} stopOpacity="0.28" />
-          <stop offset="1" stopColor={SERIES} stopOpacity="0" />
+          <stop offset="0" style={{ stopColor: SERIES, stopOpacity: 0.28 }} />
+          <stop offset="1" style={{ stopColor: SERIES, stopOpacity: 0 }} />
         </linearGradient>
       </defs>
       <path d={area} fill={`url(#${id})`} />
-      <path d={line} fill="none" stroke={SERIES} strokeWidth={1.75} vectorEffect="non-scaling-stroke" strokeLinejoin="round" />
+      <path d={line} fill="none" style={{ stroke: SERIES }} strokeWidth={1.75} vectorEffect="non-scaling-stroke" strokeLinejoin="round" />
     </svg>
   );
 }
@@ -101,13 +102,13 @@ export function TrendChart({ data, valueLabel, height = 280 }: { data: Point[]; 
       >
         <defs>
           <linearGradient id={gradId} x1="0" x2="0" y1="0" y2="1">
-            <stop offset="0" stopColor={SERIES} stopOpacity="0.24" />
-            <stop offset="1" stopColor={SERIES} stopOpacity="0" />
+            <stop offset="0" style={{ stopColor: SERIES, stopOpacity: 0.24 }} />
+            <stop offset="1" style={{ stopColor: SERIES, stopOpacity: 0 }} />
           </linearGradient>
         </defs>
         {geo.ticks.map((t) => (
           <g key={t.v}>
-            <line x1={pad.l} x2={W - pad.r} y1={t.y} y2={t.y} stroke={GRID} />
+            <line x1={pad.l} x2={W - pad.r} y1={t.y} y2={t.y} style={{ stroke: GRID }} />
             <text x={pad.l - 10} y={t.y + 4} textAnchor="end" className="fill-muted text-[11px]">
               {formatCompact(t.v)}
             </text>
@@ -121,17 +122,17 @@ export function TrendChart({ data, valueLabel, height = 280 }: { data: Point[]; 
           ) : null,
         )}
         <path d={geo.area} fill={`url(#${gradId})`} />
-        <path d={geo.line} fill="none" stroke={SERIES} strokeWidth={2} strokeLinejoin="round" strokeLinecap="round" />
+        <path d={geo.line} fill="none" style={{ stroke: SERIES }} strokeWidth={2} strokeLinejoin="round" strokeLinecap="round" />
         {active !== null && a && (
           <g>
-            <line x1={geo.x(active)} x2={geo.x(active)} y1={pad.t} y2={H - pad.b} stroke="rgba(248,250,252,0.25)" />
-            <circle cx={geo.x(active)} cy={geo.y(a.value)} r={5} fill={SERIES} stroke="#111a2b" strokeWidth={2} />
+            <line x1={geo.x(active)} x2={geo.x(active)} y1={pad.t} y2={H - pad.b} style={{ stroke: "var(--line-strong)" }} />
+            <circle cx={geo.x(active)} cy={geo.y(a.value)} r={5} style={{ fill: SERIES, stroke: "var(--surface)" }} strokeWidth={2} />
           </g>
         )}
       </svg>
       {a && (
         <div
-          className="pointer-events-none absolute top-2 z-10 -translate-x-1/2 rounded-lg border border-line-strong bg-[#0b1322]/95 px-3 py-2 text-xs shadow-xl backdrop-blur"
+          className="pointer-events-none absolute top-2 z-10 -translate-x-1/2 rounded-lg border border-line-strong bg-tooltip text-ink px-3 py-2 text-xs shadow-xl backdrop-blur"
           style={{ left: `clamp(70px, ${tipLeftPct}%, calc(100% - 70px))` }}
           aria-hidden
         >
@@ -177,9 +178,9 @@ export function BarList({ items, valueFormat = formatCompact }: { items: { label
             </span>
             <span className="tabular-nums text-ink-2">{valueFormat(it.value)}</span>
           </div>
-          <div className="h-1.5 overflow-hidden rounded-full bg-white/[0.05]">
+          <div className="h-1.5 overflow-hidden rounded-full bg-hover">
             <div
-              className="h-full rounded-full bg-blue transition-[width] duration-700 ease-out group-hover:bg-[#5b9bff]"
+              className="h-full rounded-full bg-chart-1 transition-[width,opacity] duration-700 ease-out group-hover:opacity-85"
               style={{ width: `${(it.value / max) * 100}%` }}
             />
           </div>

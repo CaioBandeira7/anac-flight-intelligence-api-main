@@ -17,6 +17,17 @@
   --ink-2: #cbd5e1;
   --muted: #94a3b8;
   --demo: #fbbf24;
+  --glass: rgba(9, 17, 33, 0.64);
+  --glass-strong: rgba(9, 17, 33, 0.82);
+  --hover: rgba(255, 255, 255, 0.05);
+  --chart-1: #3b82f6;
+  --chart-2: #22d3ee;
+  --grid: rgba(148, 163, 184, 0.12);
+  --tooltip: rgba(11, 19, 34, 0.95);
+  --success: #34d399;
+  --warning: #fbbf24;
+  --danger: #f87171;
+  --sky-veil: transparent;
 
   /* Sky palette */
   --sky-zenith: #2a6bc4;
@@ -45,7 +56,89 @@
   --radius: 0.875rem;
 }
 
+/* ─────────────────────────────────────────────────────────────
+   Platform theme (inside the product only: .app-theme).
+   DAY: flying above the clouds in daylight. NIGHT: a night flight.
+   Every dashboard colour comes from these tokens.
+   ───────────────────────────────────────────────────────────── */
+html[data-theme="day"] .app-theme {
+  --navy: #163f78; /* page fallback behind the sky */
+  --surface: #eaf1f9; /* solid surface: table heads, drawers */
+  --surface-2: #dde7f3;
+  --glass: rgba(234, 242, 251, 0.74);
+  --glass-strong: rgba(234, 242, 251, 0.88);
+  --line: rgba(11, 29, 56, 0.13);
+  --line-strong: rgba(11, 29, 56, 0.24);
+  --ink: #0b1d38;
+  --ink-2: #1f3658;
+  --muted: #4a5f7e;
+  --blue: #1d5fd1;
+  --cyan: #0b7f9e;
+  --demo: #9a5700;
+  --hover: rgba(11, 29, 56, 0.06);
+  --chart-1: #1d5fd1;
+  --chart-2: #0b7f9e;
+  --grid: rgba(11, 29, 56, 0.1);
+  --tooltip: rgba(255, 255, 255, 0.97);
+  --success: #0f7a4a;
+  --warning: #9a5700;
+  --danger: #b42318;
+  --sky-veil: rgba(10, 32, 70, 0.08);
+  --primary: var(--blue);
+  --primary-foreground: #ffffff;
+  --ring: #1d5fd1;
+  color-scheme: light;
+}
+html[data-theme="night"] .app-theme {
+  --navy: #050a16;
+  --surface: #0e1829;
+  --surface-2: #142038;
+  --glass: rgba(9, 17, 33, 0.64);
+  --glass-strong: rgba(9, 17, 33, 0.82);
+  --line: rgba(148, 163, 184, 0.16);
+  --line-strong: rgba(148, 163, 184, 0.28);
+  --ink: #f1f5fb;
+  --ink-2: #cbd5e1;
+  --muted: #94a3b8;
+  --blue: #4b8df8;
+  --cyan: #22d3ee;
+  --demo: #fbbf24;
+  --hover: rgba(255, 255, 255, 0.05);
+  --chart-1: #4b8df8;
+  --chart-2: #22d3ee;
+  --grid: rgba(148, 163, 184, 0.14);
+  --tooltip: rgba(11, 19, 34, 0.96);
+  --success: #34d399;
+  --warning: #fbbf24;
+  --danger: #f87171;
+  --sky-veil: rgba(2, 6, 16, 0.18);
+  --primary: var(--blue);
+  --primary-foreground: #ffffff;
+  --ring: #22d3ee;
+  color-scheme: dark;
+}
+.app-theme {
+  --foreground: var(--ink);
+  --muted-foreground: var(--muted);
+  --border: var(--line);
+  color: var(--ink);
+}
+.app-theme :focus-visible {
+  outline-color: var(--ring);
+}
+
 @theme inline {
+  --color-glass: var(--glass);
+  --color-glass-strong: var(--glass-strong);
+  --color-hover: var(--hover);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-grid: var(--grid);
+  --color-tooltip: var(--tooltip);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+
   --color-navy: var(--navy);
   --color-surface: var(--surface);
   --color-surface-2: var(--surface-2);

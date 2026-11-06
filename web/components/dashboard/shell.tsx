@@ -11,6 +11,8 @@ import { ARRIVAL_KEY } from "@/lib/motion/flight-path";
 import { useDataProvider } from "@/components/data-provider";
 import { NAV } from "./nav";
 import { DemoBadge } from "./ui";
+import { SkyBackground } from "./sky-background";
+import { ThemeToggle } from "./theme-toggle";
 
 export function DashboardShell({ children }: { children: ReactNode }) {
   const pathname = usePathname();
@@ -35,7 +37,8 @@ export function DashboardShell({ children }: { children: ReactNode }) {
         };
 
   return (
-    <div className="relative min-h-dvh bg-navy text-ink">
+    <div className="app-theme relative min-h-dvh bg-navy text-ink">
+      <SkyBackground />
       <a
         href="#content"
         className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[80] focus:rounded-lg focus:bg-ink focus:px-4 focus:py-2 focus:text-sm focus:text-navy"
@@ -47,21 +50,22 @@ export function DashboardShell({ children }: { children: ReactNode }) {
       {/* Desktop sidebar */}
       <motion.aside
         {...(reduce ? {} : { initial: { opacity: 0, x: -16 }, animate: { opacity: 1, x: 0 }, transition: { delay: 0.45, duration: 0.8, ease: [0.16, 1, 0.3, 1] } })}
-        className="fixed inset-y-0 left-0 z-30 hidden w-64 flex-col border-r border-line bg-[#0a1120]/90 backdrop-blur-xl lg:flex"
+        className="fixed inset-y-0 left-0 z-30 hidden w-64 flex-col border-r border-line bg-glass-strong backdrop-blur-2xl lg:flex"
       >
         <SidebarContent pathname={pathname} />
       </motion.aside>
 
       {/* Mobile top bar */}
-      <div className="sticky top-0 z-30 flex h-14 items-center justify-between border-b border-line bg-navy/85 px-4 backdrop-blur-xl lg:hidden">
+      <div className="sticky top-0 z-30 flex h-14 items-center justify-between border-b border-line bg-glass-strong px-4 backdrop-blur-2xl lg:hidden">
         <Brand />
+        <ThemeToggle className="ml-auto mr-2" />
         <button
           type="button"
           onClick={() => setOpen(true)}
           aria-label="Open navigation"
           aria-expanded={open}
           aria-controls="mobile-nav"
-          className="grid size-10 place-items-center rounded-lg text-ink-2 hover:bg-white/5"
+          className="grid size-10 place-items-center rounded-lg text-ink-2 hover:bg-hover"
         >
           <Menu className="size-5" />
         </button>
@@ -81,7 +85,7 @@ export function DashboardShell({ children }: { children: ReactNode }) {
               role="dialog"
               aria-modal="true"
               aria-label="Navigation"
-              className="fixed inset-y-0 left-0 z-50 flex w-72 flex-col border-r border-line bg-[#0a1120] lg:hidden"
+              className="fixed inset-y-0 left-0 z-50 flex w-72 flex-col border-r border-line bg-surface lg:hidden"
               initial={{ x: "-100%" }}
               animate={{ x: 0 }}
               exit={{ x: "-100%" }}
@@ -91,7 +95,7 @@ export function DashboardShell({ children }: { children: ReactNode }) {
                 type="button"
                 onClick={() => setOpen(false)}
                 aria-label="Close navigation"
-                className="absolute right-3 top-3 grid size-9 place-items-center rounded-lg text-ink-2 hover:bg-white/5"
+                className="absolute right-3 top-3 grid size-9 place-items-center rounded-lg text-ink-2 hover:bg-hover"
               >
                 <X className="size-5" />
               </button>
@@ -104,10 +108,13 @@ export function DashboardShell({ children }: { children: ReactNode }) {
       <div className="min-w-0 lg:pl-64">
         <motion.header
           {...enter(0)}
-          className="sticky top-0 z-20 hidden h-14 items-center justify-between border-b border-line bg-navy/80 px-8 backdrop-blur-xl lg:flex"
+          className="sticky top-0 z-20 hidden h-14 items-center justify-between border-b border-line bg-glass px-8 backdrop-blur-2xl lg:flex"
         >
           <Breadcrumb pathname={pathname} />
-          <SourceIndicator />
+          <div className="flex items-center gap-4">
+            <SourceIndicator />
+            <ThemeToggle />
+          </div>
         </motion.header>
         <motion.main id="content" {...enter(1)} className="mx-auto w-full max-w-[1400px] px-4 py-8 sm:px-6 lg:px-8 lg:py-10">
           {children}
@@ -149,7 +156,7 @@ function SidebarContent({ pathname, onNavigate }: { pathname: string; onNavigate
                   aria-current={active ? "page" : undefined}
                   className={cn(
                     "group relative flex items-center gap-3 rounded-lg px-3 py-2 text-[13.5px] transition-colors",
-                    active ? "bg-blue/12 text-ink" : "text-ink-2/80 hover:bg-white/[0.04] hover:text-ink",
+                    active ? "bg-blue/12 text-ink" : "text-ink-2/80 hover:bg-hover hover:text-ink",
                   )}
                 >
                   {active && (
@@ -167,7 +174,7 @@ function SidebarContent({ pathname, onNavigate }: { pathname: string; onNavigate
           })}
         </ul>
       </nav>
-      <div className="m-3 rounded-xl border border-line bg-surface/60 p-4">
+      <div className="m-3 rounded-xl border border-line bg-glass p-4">
         <SourceCard />
       </div>
     </>
@@ -198,7 +205,7 @@ function SourceIndicator() {
   return (
     <div className="flex items-center gap-3 text-xs text-muted">
       <span className="flex items-center gap-2">
-        <span className={cn("size-1.5 rounded-full", provider.kind === "DEMO" ? "bg-demo" : "bg-emerald-400")} aria-hidden />
+        <span className={cn("size-1.5 rounded-full", provider.kind === "DEMO" ? "bg-demo" : "bg-success")} aria-hidden />
         {provider.kind === "DEMO" ? "Demo mode" : "Live API"}
       </span>
       {provider.kind === "DEMO" && <DemoBadge />}

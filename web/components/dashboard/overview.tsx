@@ -107,7 +107,7 @@ function KpiCard({ kpi, demo }: { kpi: Kpi; demo: boolean }) {
   const value = kpi.unit === "ratio" ? formatPercent(kpi.value) : formatCompact(kpi.value);
   const up = (kpi.delta ?? 0) >= 0;
   return (
-    <div className="group rounded-2xl border border-line bg-surface/80 p-5 transition-colors hover:border-line-strong">
+    <div className="group rounded-2xl border border-line bg-glass backdrop-blur-xl p-5 transition-colors hover:border-line-strong">
       <div className="flex items-center justify-between">
         <p className="text-[13px] text-muted">{kpi.label}</p>
         {demo && <DemoBadge />}
@@ -136,7 +136,7 @@ function KpiCard({ kpi, demo }: { kpi: Kpi; demo: boolean }) {
 
 function KpiSkeleton() {
   return (
-    <div className="rounded-2xl border border-line bg-surface/80 p-5">
+    <div className="rounded-2xl border border-line bg-glass backdrop-blur-xl p-5">
       <Skeleton className="h-3.5 w-28" />
       <Skeleton className="mt-4 h-7 w-24" />
       <Skeleton className="mt-3 h-3 w-36" />
@@ -179,7 +179,7 @@ function ModelsCard({ state }: { state: ReturnType<typeof useResource<ModelCard[
           <ul className="divide-y divide-line">
             {state.data.filter((m) => m.selected !== false).map((m) => (
               <li key={m.id} className="flex items-center gap-4 py-3 first:pt-0">
-                <span className="grid size-9 shrink-0 place-items-center rounded-lg bg-white/[0.04] text-muted">
+                <span className="grid size-9 shrink-0 place-items-center rounded-lg bg-hover text-muted">
                   <CircleDashed className="size-4" aria-hidden />
                 </span>
                 <div className="min-w-0 flex-1">
@@ -195,7 +195,7 @@ function ModelsCard({ state }: { state: ReturnType<typeof useResource<ModelCard[
               </li>
             ))}
           </ul>
-          <p className="mt-4 rounded-lg bg-white/[0.03] px-3 py-2.5 text-xs leading-relaxed text-muted">
+          <p className="mt-4 rounded-lg bg-hover px-3 py-2.5 text-xs leading-relaxed text-muted">
             Metrics are validation results for 2023, not current forecasts. Details are in ML Studio.
           </p>
         </>

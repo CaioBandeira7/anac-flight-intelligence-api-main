@@ -2,6 +2,7 @@ import { AlertTriangle, Inbox, RotateCw } from "lucide-react";
 import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import { LiquidGlassCard } from "@/components/ui/liquid-weather-glass";
 
 export function DemoBadge({ className }: { className?: string }) {
   return (
@@ -33,7 +34,16 @@ export function Card({
   demo?: boolean;
 }) {
   return (
-    <section className={cn("min-w-0 rounded-2xl border border-line bg-surface/80 p-5 shadow-[0_1px_0_rgba(255,255,255,0.03)_inset] sm:p-6", className)}>
+    <LiquidGlassCard
+      as="section"
+      draggable={false}
+      distortion={false}
+      blurIntensity="xl"
+      borderRadius="20px"
+      shadowIntensity="xs"
+      glowIntensity="none"
+      className={cn("min-w-0 border border-line bg-glass p-5 sm:p-6", className)}
+    >
       {(title || action) && (
         <header className="mb-5 flex items-start justify-between gap-4">
           <div>
@@ -47,7 +57,7 @@ export function Card({
         </header>
       )}
       {children}
-    </section>
+    </LiquidGlassCard>
   );
 }
 
@@ -77,9 +87,9 @@ export function ErrorState({
   hint?: string;
 }) {
   return (
-    <div role="alert" className="flex flex-col items-start gap-4 rounded-2xl border border-red-400/25 bg-red-500/[0.06] p-6">
+    <div role="alert" className="flex flex-col items-start gap-4 rounded-2xl border border-danger/30 bg-glass p-6 backdrop-blur-xl">
       <div className="flex items-center gap-3 text-ink">
-        <AlertTriangle className="size-5 text-red-300" aria-hidden />
+        <AlertTriangle className="size-5 text-danger" aria-hidden />
         <p className="font-medium">Couldn&apos;t load this data</p>
       </div>
       <p className="text-sm text-muted">{error.message.replace(/\.$/, "")}. {hint}</p>
@@ -92,7 +102,7 @@ export function ErrorState({
 
 export function EmptyState({ message }: { message: string }) {
   return (
-    <div className="flex items-center gap-3 rounded-xl border border-dashed border-line px-4 py-6 text-sm text-muted">
+    <div className="flex items-center gap-3 rounded-xl border border-dashed border-line-strong bg-glass px-4 py-6 text-sm text-muted backdrop-blur-xl">
       <Inbox className="size-4 shrink-0" aria-hidden /> {message}
     </div>
   );
@@ -110,7 +120,7 @@ export function DataTable({
   alignRight?: number[];
 }) {
   return (
-    <div className="scrollbar-thin max-h-[520px] overflow-auto rounded-xl border border-line">
+    <div className="scrollbar-thin max-h-[520px] overflow-auto rounded-xl border border-line bg-glass-strong backdrop-blur-xl">
       <table className="w-full text-left text-[13px]">
         <caption className="sr-only">{caption}</caption>
         <thead className="sticky top-0 bg-surface text-xs text-muted">

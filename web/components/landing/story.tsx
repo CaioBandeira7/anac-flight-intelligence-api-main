@@ -1,12 +1,14 @@
 "use client";
 
 import { motion, useMotionValue, useReducedMotion, useScroll, useTransform, type MotionValue } from "framer-motion";
-import { useLayoutEffect, useMemo, useRef, useState, useEffect } from "react";
+import { useCallback, useLayoutEffect, useMemo, useRef, useState, useEffect } from "react";
+import Image from "next/image";
 import { BarChart3, BrainCircuit, Database, Plane, Route, TowerControl } from "lucide-react";
 import { ScrollFlyIn } from "@/components/ui/hero-section-3";
 import { seeded } from "@/lib/data/mock-provider";
 import { RouteNetwork } from "./route-network";
-import { GetStartedButton } from "./get-started-button";
+import LunarBoardingPass from "@/components/ui/lunar-boarding-pass";
+import { ticketCondensed, ticketDisplay, ticketMono } from "./ticket-fonts";
 import { useTakeoff } from "./takeoff-context";
 
 const USING_REAL_DATA = process.env.NEXT_PUBLIC_DATA_SOURCE?.toLowerCase() === "api";
@@ -59,12 +61,16 @@ export function DiscoverSkies() {
 
 /* ───────────────────────── 02 · Intelligence in motion ───────────────────────── */
 
+const IMG = "/images/flight-intelligence-five-images/flight-intelligence-assets/";
+
+// Each photo already carries the module's icon and number in its top corners,
+// so cards keep the photo's 4:3 frame (1200×900) and nothing is cropped away.
 const MODULES = [
-  { icon: TowerControl, title: "Airports Intelligence", body: "Movements, seasonality and capacity pressure for every aerodrome in the network." },
-  { icon: Route, title: "Routes Explorer", body: "Origin–destination flows, competition and load factor along each corridor." },
-  { icon: Plane, title: "Airlines Analytics", body: "Market share, fleet deployment and punctuality, carrier by carrier." },
-  { icon: BrainCircuit, title: "ML Studio", body: "Demand and occupancy models, with their evaluation on held-out data." },
-  { icon: Database, title: "Data & Methodology", body: "Sources, ingestion pipeline, feature engineering and model cards, documented." },
+  { icon: TowerControl, title: "Airports Intelligence", body: "Movements, seasonality and capacity pressure for every aerodrome in the network.", image: IMG + "01-airports-intelligence.webp", alt: "Control tower and terminal at dusk" },
+  { icon: Route, title: "Routes Explorer", body: "Origin–destination flows, competition and load factor along each corridor.", image: IMG + "02-routes-explorer.webp", alt: "Airliner wing above the clouds at sunset" },
+  { icon: Plane, title: "Airlines Analytics", body: "Market share, fleet deployment and punctuality, carrier by carrier.", image: IMG + "03-airlines-analytics.webp", alt: "Tail fin of a commercial jet" },
+  { icon: BrainCircuit, title: "ML Studio", body: "Demand and occupancy models, with their evaluation on held-out data.", image: IMG + "04-ml-studio.webp", alt: "Glowing neural-network surface" },
+  { icon: Database, title: "Data & Methodology", body: "Sources, ingestion pipeline, feature engineering and model cards, documented.", image: IMG + "05-data-methodology.webp", alt: "Analytics dashboard with charts and a map of Brazil" },
 ];
 
 export function IntelligenceInMotion() {
@@ -88,6 +94,7 @@ export function IntelligenceInMotion() {
   }, []);
 
   const x = useTransform(scrollYProgress, [0.08, 0.92], [0, -distance]);
+  const progress = useTransform(scrollYProgress, [0.08, 0.92], [0, 1]);
   const headOpacity = useTransform(scrollYProgress, [0, 0.12, 0.85, 1], [0, 1, 1, 0.4]);
 
   return (
@@ -110,22 +117,36 @@ export function IntelligenceInMotion() {
           {MODULES.map((m, i) => (
             <article
               key={m.title}
-              className="group relative flex h-[min(52vh,420px)] w-[min(78vw,360px)] shrink-0 flex-col justify-between overflow-hidden rounded-[28px] border border-white/20 bg-white/[0.09] p-7 shadow-[0_30px_80px_-30px_rgba(5,15,35,0.6)] backdrop-blur-xl"
+              className="group relative aspect-[4/3] w-[min(84vw,560px)] shrink-0 overflow-hidden rounded-[28px] border border-white/25 bg-[#0b1a33] shadow-[0_30px_80px_-30px_rgba(5,15,35,0.7)] sm:w-[min(70vw,560px)]"
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-white/[0.14] to-transparent" aria-hidden />
-              <div className="relative flex items-center justify-between">
-                <span className="grid size-12 place-items-center rounded-2xl bg-white/15 text-white">
-                  <m.icon className="size-6" strokeWidth={1.5} />
-                </span>
-                <span className="font-mono text-xs text-white/50">0{i + 1}</span>
-              </div>
-              <div className="relative">
-                <h3 className="text-2xl font-semibold tracking-[-0.02em] text-white">{m.title}</h3>
-                <p className="mt-3 text-[15px] leading-relaxed text-white/75">{m.body}</p>
+              <Image
+                src={m.image}
+                alt={m.alt}
+                fill
+                sizes="(max-width: 640px) 84vw, 560px"
+                className="object-cover transition-transform duration-[1200ms] ease-[var(--ease-out-expo)] group-hover:scale-[1.045] motion-reduce:transition-none"
+                priority={i < 2}
+              />
+              {/* Legibility: dark wash rising from the bottom */}
+              <div
+                aria-hidden
+                className="absolute inset-0 bg-gradient-to-t from-[#050b17]/95 via-[#050b17]/45 via-45% to-transparent to-75%"
+              />
+              <div className="absolute inset-x-0 bottom-0 p-6 sm:p-7">
+                <p className="sr-only">Module {String(i + 1).padStart(2, "0")}</p>
+                <h3 className="text-[clamp(1.3rem,2.2vw,1.65rem)] font-semibold tracking-[-0.02em] text-white">{m.title}</h3>
+                <p className="mt-2 max-w-[38ch] text-[14.5px] leading-relaxed text-white/85">{m.body}</p>
               </div>
             </article>
           ))}
         </motion.div>
+        {/* Navigation cue: the track is scroll-driven, so show how far along it is */}
+        <div className="mx-auto mt-8 flex w-full max-w-6xl items-center gap-4 px-6" aria-hidden>
+          <div className="h-px flex-1 overflow-hidden bg-white/20">
+            <motion.div className="h-full origin-left bg-white/80" style={{ scaleX: progress }} />
+          </div>
+          <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-white/60">Scroll · 05 modules</span>
+        </div>
       </div>
     </section>
   );
@@ -247,29 +268,84 @@ function Dot({ d, stage: src }: { d: DotDef; stage: MotionValue<number> }) {
   return <motion.circle cx={0} cy={0} style={{ x, y, fill }} r={r} />;
 }
 
-/* ───────────────────────── 04 · Explore the platform ───────────────────────── */
+/* ───────────────────────── 04 · Explore the platform: boarding pass ───────────────────────── */
+
+const TEAR_HOLD_MS = 1150; // stub falls away + BOARDED stamp lands before the takeoff starts
+const TEAR_HOLD_REDUCED_MS = 300;
 
 export function ExplorePlatform() {
-  const { start, phase } = useTakeoff();
+  const { start, phase, reduced } = useTakeoff();
+  const boarded = useRef(false);
+  const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => () => {
+    if (timer.current) clearTimeout(timer.current);
+  }, []);
+
+  // The torn stub is the way in: let the tear and the stamp play, then run the
+  // same takeoff the "Enter Flight Intelligence" button used (→ /dashboard).
+  const onTear = useCallback(
+    (torn: boolean) => {
+      if (!torn || boarded.current || phase !== "idle") return;
+      boarded.current = true;
+      timer.current = setTimeout(start, reduced ? TEAR_HOLD_REDUCED_MS : TEAR_HOLD_MS);
+    },
+    [phase, reduced, start],
+  );
+
   return (
-    <section aria-labelledby="explore-title" className="relative flex min-h-dvh items-center justify-center px-6 py-32">
-      <motion.div {...fadeUp} className="flex max-w-3xl flex-col items-center text-center">
+    <section aria-labelledby="explore-title" className="relative flex min-h-dvh items-center justify-center px-4 py-28 sm:px-6">
+      <motion.div {...fadeUp} className="flex w-full max-w-5xl flex-col items-center text-center">
         <Eyebrow index="04">Explore the platform</Eyebrow>
-        <h2
-          id="explore-title"
-          className="text-balance text-[clamp(2.6rem,6.4vw,5.5rem)] font-semibold leading-[0.95] tracking-[-0.04em] text-white"
-        >
-          Cleared for <span className="font-display font-normal italic">takeoff.</span>
+        <h2 id="explore-title" className="sr-only">
+          Your boarding pass to Flight Intelligence
         </h2>
-        <p className="mt-6 max-w-lg text-pretty text-lg text-white/75">
-          {USING_REAL_DATA
-            ? "Step inside Flight Intelligence: ANAC's flight records from 2000 to 2025, with every model's evaluation in plain view."
-            : "Step inside Flight Intelligence. This build runs on demonstration data, labelled as such on every screen."}
+        <p className="mb-10 max-w-lg text-pretty text-base text-white/75">
+          Tear off the stub to board. {USING_REAL_DATA ? "ANAC flight records from 2000 to 2025 are waiting inside." : "This build runs on demonstration data, labelled as such on every screen."}
         </p>
-        <div className="mt-11">
-          <GetStartedButton onLaunch={start} disabled={phase !== "idle"} label="Enter Flight Intelligence" tone="night" />
+        <div className={`w-full text-white ${ticketCondensed.variable} ${ticketMono.variable} ${ticketDisplay.variable}`}>
+          <LunarBoardingPass
+            defaultSide="back"
+            title="Board your next discovery"
+            tier="Explorer"
+            date="06 Nov '26"
+            welcome={"Welcome\naboard"}
+            eyebrow={"Your journey into\naviation intelligence"}
+            words={["Flight", "Intelligence"]}
+            notes={["Explorer pass · Intelligence access", "Intro → Flight Intelligence"]}
+            passenger="Explorer"
+            from="Intro"
+            to="Flight Intelligence"
+            craftLabel="Pass number"
+            craft="FI-3.0-EXP"
+            dateCode="06NOV26"
+            gate="FI"
+            group="A"
+            seat="01A"
+            boardingTime="NOW"
+            siteLabel="Class"
+            site="Intelligence access"
+            lat={-15.7939}
+            lon={-47.8828}
+            seq="SEQ 030 ANACFI  261106BSB"
+            featuring="Flight Intelligence · Explorer pass"
+            headline="Explorer"
+            stamp="Boarded"
+            sideLabels={["Explorer pass", "Boarding pass"]}
+            night="#0b1426"
+            starInk="#eef3fb"
+            paper="#d6dce6"
+            paperInk="#13213a"
+            stampColor="#2b5ea6"
+            fontCondensed={`var(--font-ticket-condensed), "Oswald", "Arial Narrow", sans-serif`}
+            fontMono={`var(--font-ticket-mono), "Courier Prime", "Courier New", monospace`}
+            fontDisplay={`var(--font-ticket-display), "Futura", "Century Gothic", sans-serif`}
+            lockTorn
+            detach
+            onTear={onTear}
+          />
         </div>
-        <p className="mt-16 flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.3em] text-white/40">
+        <p className="mt-12 flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.3em] text-white/45">
           <BarChart3 className="size-3.5" aria-hidden /> Data: {USING_REAL_DATA ? "ANAC open data" : "DEMO"} · Visuals on this page: illustrative
         </p>
       </motion.div>
