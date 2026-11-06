@@ -29,6 +29,8 @@ import * as React from "react"
  *  - `lockTorn`: once torn the stub cannot be reattached (the pass is used).
  *  - `detach`: a torn stub falls away from the ticket instead of hanging off it.
  *  - `craftLabel` / `siteLabel`: relabel two printed fields.
+ *  - `tearOnClick`: a click anywhere on the ticket tears the stub (no flip).
+ *  - `showSideSwitch`: hide the front/back switch under the ticket.
  */
 
 // #region pass
@@ -297,6 +299,10 @@ export type LunarBoardingPassProps = {
   craftLabel?: string
   /** Integration: label for the site field (original "Landing site"). */
   siteLabel?: string
+  /** Integration: a click anywhere on the ticket tears the stub instead of flipping it. */
+  tearOnClick?: boolean
+  /** Integration: show the front/back switch under the ticket (original: always). */
+  showSideSwitch?: boolean
   /** Largest tilt in degrees. `0` holds it flat. */
   tilt?: number
   /** The height follows the 1000 : 330 ticket. */
@@ -596,6 +602,8 @@ export default function LunarBoardingPass({
   detach = false,
   craftLabel = "Spacecraft number",
   siteLabel = "Landing site",
+  tearOnClick = false,
+  showSideSwitch = true,
   tilt = 6,
   maxWidth = 960,
   className = "",
@@ -868,7 +876,11 @@ export default function LunarBoardingPass({
         onPointerLeave={onLeave}
       >
         <div ref={tiltRef} className="lbp-tilt">
-          <div className="lbp-flip" style={{ transform: "rotateY(" + turns * 180 + "deg)" }} onClick={flip}>
+          <div
+            className="lbp-flip"
+            style={{ transform: "rotateY(" + turns * 180 + "deg)" }}
+            onClick={tearOnClick ? () => setTorn(true) : flip}
+          >
             {/* ---------------- front: VIP ---------------- */}
             <div className="lbp-face" aria-hidden={!front}>
               <div className="lbp-night">
@@ -1021,6 +1033,7 @@ export default function LunarBoardingPass({
         </div>
       </div>
 
+      {showSideSwitch && (
       <div className="mt-5 flex items-center justify-center gap-6" role="group" aria-label="Ticket side">
         {(["front", "back"] as Side[]).map((s, i) => (
           <button
@@ -1039,6 +1052,7 @@ export default function LunarBoardingPass({
           </button>
         ))}
       </div>
+      )}
       <p className="sr-only" aria-live="polite">
         {front
           ? tier + " pass. " + title + ", " + date + ". " + site + ", " + dms + "."

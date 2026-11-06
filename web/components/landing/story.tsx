@@ -63,8 +63,9 @@ export function DiscoverSkies() {
 
 const IMG = "/images/flight-intelligence-five-images/flight-intelligence-assets/";
 
-// Each photo already carries the module's icon and number in its top corners,
-// so cards keep the photo's 4:3 frame (1200×900) and nothing is cropped away.
+// The photos (1200×900) carry a low-res icon badge baked into their top strip.
+// Cards are 5:3 with the photo anchored to the bottom, which hides exactly that
+// strip (the top 180 px); the icon and number are drawn on top as crisp vectors.
 const MODULES = [
   { icon: TowerControl, title: "Airports Intelligence", body: "Movements, seasonality and capacity pressure for every aerodrome in the network.", image: IMG + "01-airports-intelligence.webp", alt: "Control tower and terminal at dusk" },
   { icon: Route, title: "Routes Explorer", body: "Origin–destination flows, competition and load factor along each corridor.", image: IMG + "02-routes-explorer.webp", alt: "Airliner wing above the clouds at sunset" },
@@ -117,25 +118,31 @@ export function IntelligenceInMotion() {
           {MODULES.map((m, i) => (
             <article
               key={m.title}
-              className="group relative aspect-[4/3] w-[min(84vw,560px)] shrink-0 overflow-hidden rounded-[28px] border border-white/25 bg-[#0b1a33] shadow-[0_30px_80px_-30px_rgba(5,15,35,0.7)] sm:w-[min(70vw,560px)]"
+              className="group relative aspect-[5/3] w-[min(86vw,600px)] shrink-0 overflow-hidden rounded-[28px] border border-white/25 bg-[#0b1a33] shadow-[0_30px_80px_-30px_rgba(5,15,35,0.7)] sm:w-[min(72vw,600px)]"
             >
               <Image
                 src={m.image}
                 alt={m.alt}
                 fill
-                sizes="(max-width: 640px) 84vw, 560px"
-                className="object-cover transition-transform duration-[1200ms] ease-[var(--ease-out-expo)] group-hover:scale-[1.045] motion-reduce:transition-none"
+                sizes="(max-width: 640px) 86vw, 600px"
+                className="origin-bottom object-cover object-bottom transition-transform duration-[1200ms] ease-[var(--ease-out-expo)] group-hover:scale-[1.045] motion-reduce:transition-none"
                 priority={i < 2}
               />
-              {/* Legibility: dark wash rising from the bottom */}
+              {/* Legibility: soft top shade for the badge, dark wash rising from the bottom */}
+              <div aria-hidden className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-[#050b17]/55 to-transparent" />
               <div
                 aria-hidden
                 className="absolute inset-0 bg-gradient-to-t from-[#050b17]/95 via-[#050b17]/45 via-45% to-transparent to-75%"
               />
+              <div className="absolute inset-x-0 top-0 flex items-start justify-between p-5 sm:p-6">
+                <span className="grid size-12 place-items-center rounded-2xl border border-white/20 bg-white/10 text-white shadow-[0_8px_24px_-8px_rgba(0,0,0,0.5)] backdrop-blur-md">
+                  <m.icon className="size-6" strokeWidth={1.5} aria-hidden />
+                </span>
+                <span className="font-mono text-sm tracking-[0.12em] text-white/85">{String(i + 1).padStart(2, "0")}</span>
+              </div>
               <div className="absolute inset-x-0 bottom-0 p-6 sm:p-7">
-                <p className="sr-only">Module {String(i + 1).padStart(2, "0")}</p>
                 <h3 className="text-[clamp(1.3rem,2.2vw,1.65rem)] font-semibold tracking-[-0.02em] text-white">{m.title}</h3>
-                <p className="mt-2 max-w-[38ch] text-[14.5px] leading-relaxed text-white/85">{m.body}</p>
+                <p className="mt-2 max-w-[42ch] text-[14.5px] leading-relaxed text-white/85">{m.body}</p>
               </div>
             </article>
           ))}
