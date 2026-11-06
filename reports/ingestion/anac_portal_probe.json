@@ -1,0 +1,1293 @@
+{
+  "probed_on": "2026-11-06",
+  "microdata_scripted_access": [
+    {
+      "month": "2015-08",
+      "url": "https://www.gov.br/anac/pt-br/assuntos/regulados/empresas-aereas/Instrucoes-para-a-elaboracao-e-apresentacao-das-demonstracoes-contabeis/envio-de-informacoes/basica/2015/basica2015-08.zip",
+      "script_status": 403
+    },
+    {
+      "month": "2016-02",
+      "url": "https://www.gov.br/anac/pt-br/assuntos/regulados/empresas-aereas/Instrucoes-para-a-elaboracao-e-apresentacao-das-demonstracoes-contabeis/envio-de-informacoes/basica/2016/basica2016-02.zip",
+      "script_status": 403
+    },
+    {
+      "month": "2018-07",
+      "url": "https://www.gov.br/anac/pt-br/assuntos/regulados/empresas-aereas/Instrucoes-para-a-elaboracao-e-apresentacao-das-demonstracoes-contabeis/envio-de-informacoes/basica/2018/basica2018-07.zip",
+      "script_status": 403
+    },
+    {
+      "month": "2020-08",
+      "url": "https://www.gov.br/anac/pt-br/assuntos/regulados/empresas-aereas/Instrucoes-para-a-elaboracao-e-apresentacao-das-demonstracoes-contabeis/envio-de-informacoes/basica/2020/basica2020-08.zip",
+      "script_status": 403
+    }
+  ],
+  "aggregate": {
+    "url": "https://sistemas.anac.gov.br/dadosabertos/Voos%20e%20opera%C3%A7%C3%B5es%20a%C3%A9reas/Dados%20Estat%C3%ADsticos%20do%20Transporte%20A%C3%A9reo/Dados_Estatisticos.csv",
+    "status": 200,
+    "bytes": 361057599,
+    "last_modified": "Fri, 06 Nov 2026 04:12:35 GMT"
+  },
+  "months": [
+    {
+      "month": "2015-08",
+      "carrier": "AZU",
+      "role": "gap",
+      "official": {
+        "rows": 809,
+        "paid_pax": 1672658.0,
+        "takeoffs": 22792.0,
+        "seats": 2345271.0,
+        "rpk": 1523681112.0,
+        "ask": 1933720479.0
+      }
+    },
+    {
+      "month": "2015-08",
+      "carrier": "GLO",
+      "role": "gap",
+      "official": {
+        "rows": 739,
+        "paid_pax": 2915658.0,
+        "takeoffs": 25856.0,
+        "seats": 4284246.0,
+        "rpk": 3055140578.0,
+        "ask": 4051755714.0
+      }
+    },
+    {
+      "month": "2015-08",
+      "carrier": "TAM",
+      "role": "gap",
+      "official": {
+        "rows": 528,
+        "paid_pax": 3094445.0,
+        "takeoffs": 22577.0,
+        "seats": 4008530.0,
+        "rpk": 5294473803.0,
+        "ask": 6374033891.0
+      }
+    },
+    {
+      "month": "2016-02",
+      "carrier": "AZU",
+      "role": "gap",
+      "official": {
+        "rows": 1062,
+        "paid_pax": 1509584.0,
+        "takeoffs": 21280.0,
+        "seats": 2205774.0,
+        "rpk": 1428720750.0,
+        "ask": 1928530237.0
+      }
+    },
+    {
+      "month": "2016-02",
+      "carrier": "GLO",
+      "role": "gap",
+      "official": {
+        "rows": 825,
+        "paid_pax": 2670702.0,
+        "takeoffs": 23487.0,
+        "seats": 3911468.0,
+        "rpk": 2888996812.0,
+        "ask": 3852848257.0
+      }
+    },
+    {
+      "month": "2016-02",
+      "carrier": "TAM",
+      "role": "gap",
+      "official": {
+        "rows": 569,
+        "paid_pax": 2692038.0,
+        "takeoffs": 19396.0,
+        "seats": 3468190.0,
+        "rpk": 4584735705.0,
+        "ask": 5596267127.0
+      }
+    },
+    {
+      "month": "2018-07",
+      "carrier": "AZU",
+      "role": "gap",
+      "official": {
+        "rows": 771,
+        "paid_pax": 2113061.0,
+        "takeoffs": 23433.0,
+        "seats": 2630643.0,
+        "rpk": 2377179589.0,
+        "ask": 2785212086.0
+      }
+    },
+    {
+      "month": "2018-07",
+      "carrier": "GLO",
+      "role": "gap",
+      "official": {
+        "rows": 766,
+        "paid_pax": 3339788.0,
+        "takeoffs": 23983.0,
+        "seats": 4196502.0,
+        "rpk": 3884646006.0,
+        "ask": 4791919314.0
+      }
+    },
+    {
+      "month": "2018-07",
+      "carrier": "TAM",
+      "role": "gap",
+      "official": {
+        "rows": 519,
+        "paid_pax": 3102967.0,
+        "takeoffs": 20438.0,
+        "seats": 3762837.0,
+        "rpk": 5569192425.0,
+        "ask": 6565716985.0
+      }
+    },
+    {
+      "month": "2020-08",
+      "carrier": "AZU",
+      "role": "gap",
+      "official": {
+        "rows": 422,
+        "paid_pax": 786687.0,
+        "takeoffs": 8358.0,
+        "seats": 1069575.0,
+        "rpk": 838707430.0,
+        "ask": 1110076808.0
+      }
+    },
+    {
+      "month": "2020-08",
+      "carrier": "GLO",
+      "role": "gap",
+      "official": {
+        "rows": 278,
+        "paid_pax": 779634.0,
+        "takeoffs": 5816.0,
+        "seats": 1021661.0,
+        "rpk": 990055558.0,
+        "ask": 1246559256.0
+      }
+    },
+    {
+      "month": "2020-08",
+      "carrier": "TAM",
+      "role": "gap",
+      "official": {
+        "rows": 226,
+        "paid_pax": 636999.0,
+        "takeoffs": 5494.0,
+        "seats": 899845.0,
+        "rpk": 936698317.0,
+        "ask": 1368601091.0
+      }
+    },
+    {
+      "month": "2015-07",
+      "carrier": "AZU",
+      "role": "control",
+      "official": {
+        "rows": 856,
+        "paid_pax": 1859526.0,
+        "takeoffs": 23312.0,
+        "seats": 2379232.0,
+        "rpk": 1746057947.0,
+        "ask": 2078786484.0
+      },
+      "ours": {
+        "paid_pax": 1953855,
+        "takeoffs": 23312,
+        "seats": 2379232,
+        "rpk": 1746057911.0,
+        "ask": 2078785772.0
+      },
+      "relative_difference": {
+        "paid_pax": 0.05073,
+        "takeoffs": 0.0,
+        "seats": 0.0,
+        "rpk": -0.0,
+        "ask": -0.0
+      }
+    },
+    {
+      "month": "2015-07",
+      "carrier": "GLO",
+      "role": "control",
+      "official": {
+        "rows": 869,
+        "paid_pax": 3548977.0,
+        "takeoffs": 28177.0,
+        "seats": 4676577.0,
+        "rpk": 3731914345.0,
+        "ask": 4508179833.0
+      },
+      "ours": {
+        "paid_pax": 3722342,
+        "takeoffs": 28177,
+        "seats": 4676577,
+        "rpk": 3731914345.0,
+        "ask": 4508179833.0
+      },
+      "relative_difference": {
+        "paid_pax": 0.04885,
+        "takeoffs": 0.0,
+        "seats": 0.0,
+        "rpk": 0.0,
+        "ask": 0.0
+      }
+    },
+    {
+      "month": "2015-07",
+      "carrier": "TAM",
+      "role": "control",
+      "official": {
+        "rows": 641,
+        "paid_pax": 3436908.0,
+        "takeoffs": 24545.0,
+        "seats": 4346984.0,
+        "rpk": 5748741790.0,
+        "ask": 6900953333.0
+      },
+      "ours": {
+        "paid_pax": 3505674,
+        "takeoffs": 24545,
+        "seats": 4346984,
+        "rpk": 5748741860.0,
+        "ask": 6900955111.0
+      },
+      "relative_difference": {
+        "paid_pax": 0.02001,
+        "takeoffs": 0.0,
+        "seats": 0.0,
+        "rpk": 0.0,
+        "ask": 0.0
+      }
+    },
+    {
+      "month": "2015-09",
+      "carrier": "AZU",
+      "role": "control",
+      "official": {
+        "rows": 894,
+        "paid_pax": 1703883.0,
+        "takeoffs": 23246.0,
+        "seats": 2377913.0,
+        "rpk": 1496434643.0,
+        "ask": 1916240176.0
+      },
+      "ours": {
+        "paid_pax": 1800279,
+        "takeoffs": 23246,
+        "seats": 2377913,
+        "rpk": 1496434623.0,
+        "ask": 1916239624.0
+      },
+      "relative_difference": {
+        "paid_pax": 0.05657,
+        "takeoffs": 0.0,
+        "seats": 0.0,
+        "rpk": -0.0,
+        "ask": -0.0
+      }
+    },
+    {
+      "month": "2015-09",
+      "carrier": "GLO",
+      "role": "control",
+      "official": {
+        "rows": 749,
+        "paid_pax": 2833545.0,
+        "takeoffs": 24899.0,
+        "seats": 4126833.0,
+        "rpk": 2879898813.0,
+        "ask": 3801984067.0
+      },
+      "ours": {
+        "paid_pax": 2973386,
+        "takeoffs": 24899,
+        "seats": 4126833,
+        "rpk": 2879898813.0,
+        "ask": 3801984067.0
+      },
+      "relative_difference": {
+        "paid_pax": 0.04935,
+        "takeoffs": 0.0,
+        "seats": 0.0,
+        "rpk": 0.0,
+        "ask": 0.0
+      }
+    },
+    {
+      "month": "2015-09",
+      "carrier": "TAM",
+      "role": "control",
+      "official": {
+        "rows": 539,
+        "paid_pax": 2935770.0,
+        "takeoffs": 21192.0,
+        "seats": 3788290.0,
+        "rpk": 4995291631.0,
+        "ask": 6037109077.0
+      },
+      "ours": {
+        "paid_pax": 2990262,
+        "takeoffs": 21192,
+        "seats": 3788290,
+        "rpk": 4995291441.0,
+        "ask": 6037110962.0
+      },
+      "relative_difference": {
+        "paid_pax": 0.01856,
+        "takeoffs": 0.0,
+        "seats": 0.0,
+        "rpk": -0.0,
+        "ask": 0.0
+      }
+    },
+    {
+      "month": "2016-01",
+      "carrier": "AZU",
+      "role": "control",
+      "official": {
+        "rows": 1125,
+        "paid_pax": 1877314.0,
+        "takeoffs": 24077.0,
+        "seats": 2511775.0,
+        "rpk": 1997261809.0,
+        "ask": 2429545281.0
+      },
+      "ours": {
+        "paid_pax": 1967060,
+        "takeoffs": 24077,
+        "seats": 2511775,
+        "rpk": 1997261875.0,
+        "ask": 2429544976.0
+      },
+      "relative_difference": {
+        "paid_pax": 0.04781,
+        "takeoffs": 0.0,
+        "seats": 0.0,
+        "rpk": 0.0,
+        "ask": -0.0
+      }
+    },
+    {
+      "month": "2016-01",
+      "carrier": "GLO",
+      "role": "control",
+      "official": {
+        "rows": 915,
+        "paid_pax": 3588718.0,
+        "takeoffs": 28849.0,
+        "seats": 4810346.0,
+        "rpk": 3954704741.0,
+        "ask": 4838193759.0
+      },
+      "ours": {
+        "paid_pax": 3735305,
+        "takeoffs": 28849,
+        "seats": 4810346,
+        "rpk": 3954704741.0,
+        "ask": 4838193755.0
+      },
+      "relative_difference": {
+        "paid_pax": 0.04085,
+        "takeoffs": 0.0,
+        "seats": 0.0,
+        "rpk": 0.0,
+        "ask": -0.0
+      }
+    },
+    {
+      "month": "2016-01",
+      "carrier": "TAM",
+      "role": "control",
+      "official": {
+        "rows": 585,
+        "paid_pax": 3234436.0,
+        "takeoffs": 22503.0,
+        "seats": 4025309.0,
+        "rpk": 5561379613.0,
+        "ask": 6580210729.0
+      },
+      "ours": {
+        "paid_pax": 3279880,
+        "takeoffs": 22503,
+        "seats": 4025309,
+        "rpk": 5561379688.0,
+        "ask": 6580211877.0
+      },
+      "relative_difference": {
+        "paid_pax": 0.01405,
+        "takeoffs": 0.0,
+        "seats": 0.0,
+        "rpk": 0.0,
+        "ask": 0.0
+      }
+    },
+    {
+      "month": "2016-03",
+      "carrier": "AZU",
+      "role": "control",
+      "official": {
+        "rows": 822,
+        "paid_pax": 1637340.0,
+        "takeoffs": 22273.0,
+        "seats": 2295553.0,
+        "rpk": 1423308087.0,
+        "ask": 1857994640.0
+      },
+      "ours": {
+        "paid_pax": 1708521,
+        "takeoffs": 22273,
+        "seats": 2295553,
+        "rpk": 1423308097.0,
+        "ask": 1857994384.0
+      },
+      "relative_difference": {
+        "paid_pax": 0.04347,
+        "takeoffs": 0.0,
+        "seats": 0.0,
+        "rpk": 0.0,
+        "ask": -0.0
+      }
+    },
+    {
+      "month": "2016-03",
+      "carrier": "GLO",
+      "role": "control",
+      "official": {
+        "rows": 667,
+        "paid_pax": 2466602.0,
+        "takeoffs": 22303.0,
+        "seats": 3722341.0,
+        "rpk": 2634709892.0,
+        "ask": 3650776280.0
+      },
+      "ours": {
+        "paid_pax": 2523976,
+        "takeoffs": 22303,
+        "seats": 3722341,
+        "rpk": 2634709892.0,
+        "ask": 3650776289.0
+      },
+      "relative_difference": {
+        "paid_pax": 0.02326,
+        "takeoffs": 0.0,
+        "seats": 0.0,
+        "rpk": 0.0,
+        "ask": 0.0
+      }
+    },
+    {
+      "month": "2016-03",
+      "carrier": "TAM",
+      "role": "control",
+      "official": {
+        "rows": 596,
+        "paid_pax": 2772537.0,
+        "takeoffs": 20206.0,
+        "seats": 3619671.0,
+        "rpk": 4549597532.0,
+        "ask": 5701573548.0
+      },
+      "ours": {
+        "paid_pax": 2810896,
+        "takeoffs": 20206,
+        "seats": 3619671,
+        "rpk": 4549597606.0,
+        "ask": 5701574003.0
+      },
+      "relative_difference": {
+        "paid_pax": 0.01384,
+        "takeoffs": 0.0,
+        "seats": 0.0,
+        "rpk": 0.0,
+        "ask": 0.0
+      }
+    },
+    {
+      "month": "2018-06",
+      "carrier": "AZU",
+      "role": "control",
+      "official": {
+        "rows": 770,
+        "paid_pax": 1773138.0,
+        "takeoffs": 21439.0,
+        "seats": 2398270.0,
+        "rpk": 1925992836.0,
+        "ask": 2441412949.0
+      },
+      "ours": {
+        "paid_pax": 1816266,
+        "takeoffs": 21439,
+        "seats": 2398270,
+        "rpk": 1925992830.0,
+        "ask": 2441413141.0
+      },
+      "relative_difference": {
+        "paid_pax": 0.02432,
+        "takeoffs": 0.0,
+        "seats": 0.0,
+        "rpk": -0.0,
+        "ask": 0.0
+      }
+    },
+    {
+      "month": "2018-06",
+      "carrier": "GLO",
+      "role": "control",
+      "official": {
+        "rows": 522,
+        "paid_pax": 2506308.0,
+        "takeoffs": 19081.0,
+        "seats": 3330378.0,
+        "rpk": 2814565469.0,
+        "ask": 3640254198.0
+      },
+      "ours": {
+        "paid_pax": 2524232,
+        "takeoffs": 19081,
+        "seats": 3330378,
+        "rpk": 2814565473.0,
+        "ask": 3640254194.0
+      },
+      "relative_difference": {
+        "paid_pax": 0.00715,
+        "takeoffs": 0.0,
+        "seats": 0.0,
+        "rpk": 0.0,
+        "ask": -0.0
+      }
+    },
+    {
+      "month": "2018-06",
+      "carrier": "TAM",
+      "role": "control",
+      "official": {
+        "rows": 451,
+        "paid_pax": 2531317.0,
+        "takeoffs": 18411.0,
+        "seats": 3398836.0,
+        "rpk": 4591512118.0,
+        "ask": 5821547329.0
+      },
+      "ours": {
+        "paid_pax": 2546076,
+        "takeoffs": 18411,
+        "seats": 3398836,
+        "rpk": 4591512106.0,
+        "ask": 5821548272.0
+      },
+      "relative_difference": {
+        "paid_pax": 0.00583,
+        "takeoffs": 0.0,
+        "seats": 0.0,
+        "rpk": -0.0,
+        "ask": 0.0
+      }
+    },
+    {
+      "month": "2018-08",
+      "carrier": "AZU",
+      "role": "control",
+      "official": {
+        "rows": 716,
+        "paid_pax": 1951166.0,
+        "takeoffs": 22382.0,
+        "seats": 2514071.0,
+        "rpk": 2116441987.0,
+        "ask": 2569463012.0
+      },
+      "ours": {
+        "paid_pax": 2001228,
+        "takeoffs": 22382,
+        "seats": 2514071,
+        "rpk": 2116441983.0,
+        "ask": 2569463156.0
+      },
+      "relative_difference": {
+        "paid_pax": 0.02566,
+        "takeoffs": 0.0,
+        "seats": 0.0,
+        "rpk": -0.0,
+        "ask": 0.0
+      }
+    },
+    {
+      "month": "2018-08",
+      "carrier": "GLO",
+      "role": "control",
+      "official": {
+        "rows": 489,
+        "paid_pax": 2675391.0,
+        "takeoffs": 20407.0,
+        "seats": 3563814.0,
+        "rpk": 2995607542.0,
+        "ask": 3903433056.0
+      },
+      "ours": {
+        "paid_pax": 2695712,
+        "takeoffs": 20407,
+        "seats": 3563814,
+        "rpk": 2995607542.0,
+        "ask": 3903433060.0
+      },
+      "relative_difference": {
+        "paid_pax": 0.0076,
+        "takeoffs": 0.0,
+        "seats": 0.0,
+        "rpk": 0.0,
+        "ask": 0.0
+      }
+    },
+    {
+      "month": "2018-08",
+      "carrier": "TAM",
+      "role": "control",
+      "official": {
+        "rows": 463,
+        "paid_pax": 2916890.0,
+        "takeoffs": 19977.0,
+        "seats": 3678884.0,
+        "rpk": 5206551166.0,
+        "ask": 6382125497.0
+      },
+      "ours": {
+        "paid_pax": 2933636,
+        "takeoffs": 19977,
+        "seats": 3678884,
+        "rpk": 5206551291.0,
+        "ask": 6382125808.0
+      },
+      "relative_difference": {
+        "paid_pax": 0.00574,
+        "takeoffs": 0.0,
+        "seats": 0.0,
+        "rpk": 0.0,
+        "ask": 0.0
+      }
+    },
+    {
+      "month": "2020-07",
+      "carrier": "AZU",
+      "role": "control",
+      "official": {
+        "rows": 333,
+        "paid_pax": 586651.0,
+        "takeoffs": 5897.0,
+        "seats": 762007.0,
+        "rpk": 663594368.0,
+        "ask": 833693444.0
+      },
+      "ours": {
+        "paid_pax": 595140,
+        "takeoffs": 5897,
+        "seats": 762007,
+        "rpk": 663594360.0,
+        "ask": 833693318.0
+      },
+      "relative_difference": {
+        "paid_pax": 0.01447,
+        "takeoffs": 0.0,
+        "seats": 0.0,
+        "rpk": -0.0,
+        "ask": -0.0
+      }
+    },
+    {
+      "month": "2020-07",
+      "carrier": "GLO",
+      "role": "control",
+      "official": {
+        "rows": 287,
+        "paid_pax": 675083.0,
+        "takeoffs": 5451.0,
+        "seats": 919264.0,
+        "rpk": 826912139.0,
+        "ask": 1058215081.0
+      },
+      "ours": {
+        "paid_pax": 693089,
+        "takeoffs": 5451,
+        "seats": 919264,
+        "rpk": 826912139.0,
+        "ask": 1058215081.0
+      },
+      "relative_difference": {
+        "paid_pax": 0.02667,
+        "takeoffs": 0.0,
+        "seats": 0.0,
+        "rpk": 0.0,
+        "ask": 0.0
+      }
+    },
+    {
+      "month": "2020-07",
+      "carrier": "TAM",
+      "role": "control",
+      "official": {
+        "rows": 195,
+        "paid_pax": 367907.0,
+        "takeoffs": 3595.0,
+        "seats": 579128.0,
+        "rpk": 581101039.0,
+        "ask": 911824838.0
+      },
+      "ours": {
+        "paid_pax": 369020,
+        "takeoffs": 3595,
+        "seats": 579128,
+        "rpk": 581101041.0,
+        "ask": 911824730.0
+      },
+      "relative_difference": {
+        "paid_pax": 0.00303,
+        "takeoffs": 0.0,
+        "seats": 0.0,
+        "rpk": 0.0,
+        "ask": -0.0
+      }
+    },
+    {
+      "month": "2020-09",
+      "carrier": "AZU",
+      "role": "control",
+      "official": {
+        "rows": 459,
+        "paid_pax": 959212.0,
+        "takeoffs": 9426.0,
+        "seats": 1223573.0,
+        "rpk": 1036836875.0,
+        "ask": 1292173669.0
+      },
+      "ours": {
+        "paid_pax": 972660,
+        "takeoffs": 9426,
+        "seats": 1223573,
+        "rpk": 1036836860.0,
+        "ask": 1292173525.0
+      },
+      "relative_difference": {
+        "paid_pax": 0.01402,
+        "takeoffs": 0.0,
+        "seats": 0.0,
+        "rpk": -0.0,
+        "ask": -0.0
+      }
+    },
+    {
+      "month": "2020-09",
+      "carrier": "GLO",
+      "role": "control",
+      "official": {
+        "rows": 380,
+        "paid_pax": 1117206.0,
+        "takeoffs": 8157.0,
+        "seats": 1422824.0,
+        "rpk": 1347009382.0,
+        "ask": 1686489091.0
+      },
+      "ours": {
+        "paid_pax": 1119379,
+        "takeoffs": 8157,
+        "seats": 1422824,
+        "rpk": 1347009382.0,
+        "ask": 1686489091.0
+      },
+      "relative_difference": {
+        "paid_pax": 0.00195,
+        "takeoffs": 0.0,
+        "seats": 0.0,
+        "rpk": 0.0,
+        "ask": 0.0
+      }
+    },
+    {
+      "month": "2020-09",
+      "carrier": "TAM",
+      "role": "control",
+      "official": {
+        "rows": 195,
+        "paid_pax": 971121.0,
+        "takeoffs": 7301.0,
+        "seats": 1219681.0,
+        "rpk": 1311864180.0,
+        "ask": 1760340704.0
+      },
+      "ours": {
+        "paid_pax": 971441,
+        "takeoffs": 7301,
+        "seats": 1219681,
+        "rpk": 1311864156.0,
+        "ask": 1760340766.0
+      },
+      "relative_difference": {
+        "paid_pax": 0.00033,
+        "takeoffs": 0.0,
+        "seats": 0.0,
+        "rpk": -0.0,
+        "ask": 0.0
+      }
+    },
+    {
+      "month": "2025-12",
+      "carrier": "AZU",
+      "role": "control",
+      "official": {
+        "rows": 828,
+        "paid_pax": 2746114.0,
+        "takeoffs": 23682.0,
+        "seats": 3275101.0,
+        "rpk": 3734723242.0,
+        "ask": 4321798553.0
+      },
+      "ours": {
+        "paid_pax": 2697451,
+        "takeoffs": 23115,
+        "seats": 3196632,
+        "rpk": 3644585037.0,
+        "ask": 4212779491.0
+      },
+      "relative_difference": {
+        "paid_pax": -0.01772,
+        "takeoffs": -0.02394,
+        "seats": -0.02396,
+        "rpk": -0.02414,
+        "ask": -0.02523
+      }
+    },
+    {
+      "month": "2025-12",
+      "carrier": "GLO",
+      "role": "control",
+      "official": {
+        "rows": 699,
+        "paid_pax": 3301879.0,
+        "takeoffs": 23042.0,
+        "seats": 3996497.0,
+        "rpk": 4049804773.0,
+        "ask": 4811274019.0
+      },
+      "ours": {
+        "paid_pax": 3328112,
+        "takeoffs": 23042,
+        "seats": 3996643,
+        "rpk": 4049804773.0,
+        "ask": 4811328715.0
+      },
+      "relative_difference": {
+        "paid_pax": 0.00794,
+        "takeoffs": 0.0,
+        "seats": 4e-05,
+        "rpk": 0.0,
+        "ask": 1e-05
+      }
+    },
+    {
+      "month": "2025-12",
+      "carrier": "TAM",
+      "role": "control",
+      "official": {
+        "rows": 544,
+        "paid_pax": 3965784.0,
+        "takeoffs": 25215.0,
+        "seats": 4734174.0,
+        "rpk": 7008264299.0,
+        "ask": 8165439585.0
+      },
+      "ours": {
+        "paid_pax": 3975377,
+        "takeoffs": 25215,
+        "seats": 4734174,
+        "rpk": 7008264299.0,
+        "ask": 8165439585.0
+      },
+      "relative_difference": {
+        "paid_pax": 0.00242,
+        "takeoffs": 0.0,
+        "seats": 0.0,
+        "rpk": 0.0,
+        "ask": 0.0
+      }
+    },
+    {
+      "month": "2026-01",
+      "carrier": "AZU",
+      "role": "recent",
+      "official": {
+        "rows": 818,
+        "paid_pax": 2829603.0,
+        "takeoffs": 24062.0,
+        "seats": 3355826.0,
+        "rpk": 3967444386.0,
+        "ask": 4504643219.0
+      }
+    },
+    {
+      "month": "2026-01",
+      "carrier": "GLO",
+      "role": "recent",
+      "official": {
+        "rows": 679,
+        "paid_pax": 3385405.0,
+        "takeoffs": 23774.0,
+        "seats": 4103369.0,
+        "rpk": 4418141221.0,
+        "ask": 5161675043.0
+      }
+    },
+    {
+      "month": "2026-01",
+      "carrier": "TAM",
+      "role": "recent",
+      "official": {
+        "rows": 495,
+        "paid_pax": 4087611.0,
+        "takeoffs": 26117.0,
+        "seats": 4893109.0,
+        "rpk": 7254252185.0,
+        "ask": 8371314712.0
+      }
+    },
+    {
+      "month": "2026-09",
+      "carrier": "AZU",
+      "role": "recent",
+      "official": {
+        "rows": 707,
+        "paid_pax": 2487749.0,
+        "takeoffs": 23242.0,
+        "seats": 3219242.0,
+        "rpk": 3145778288.0,
+        "ask": 3852015057.0
+      }
+    },
+    {
+      "month": "2026-09",
+      "carrier": "GLO",
+      "role": "recent",
+      "official": {
+        "rows": 595,
+        "paid_pax": 2927425.0,
+        "takeoffs": 21813.0,
+        "seats": 3757236.0,
+        "rpk": 3504949369.0,
+        "ask": 4371699863.0
+      }
+    },
+    {
+      "month": "2026-09",
+      "carrier": "TAM",
+      "role": "recent",
+      "official": {
+        "rows": 519,
+        "paid_pax": 3836392.0,
+        "takeoffs": 25566.0,
+        "seats": 4745529.0,
+        "rpk": 6808932515.0,
+        "ask": 8132478372.0
+      }
+    }
+  ],
+  "rsa_top_listing": [
+    {
+      "name": "2019/",
+      "detail": "12-Aug-2024 16:48                   -"
+    },
+    {
+      "name": "2020/",
+      "detail": "12-Aug-2024 17:01                   -"
+    },
+    {
+      "name": "2021/",
+      "detail": "12-Aug-2024 17:17                   -"
+    },
+    {
+      "name": "2022/",
+      "detail": "12-Aug-2024 16:20                   -"
+    },
+    {
+      "name": "2023/",
+      "detail": "12-Aug-2024 16:43                   -"
+    },
+    {
+      "name": "2024/",
+      "detail": "01-Nov-2024 01:00                   -"
+    },
+    {
+      "name": "2025/",
+      "detail": "05-Jan-2025 22:57                   -"
+    },
+    {
+      "name": "2026/",
+      "detail": "01-Nov-2026 01:00                   -"
+    }
+  ],
+  "rsa_2020_08_listing": [
+    {
+      "name": "registros_2020-08-01.csv",
+      "detail": "03-Aug-2020 14:00             8027851"
+    },
+    {
+      "name": "registros_2020-08-01.json",
+      "detail": "03-Aug-2020 14:00            14495939"
+    },
+    {
+      "name": "registros_2020-08-02.csv",
+      "detail": "04-Aug-2020 14:00             7966965"
+    },
+    {
+      "name": "registros_2020-08-02.json",
+      "detail": "04-Aug-2020 14:00            14383983"
+    },
+    {
+      "name": "registros_2020-08-03.csv",
+      "detail": "04-Aug-2020 14:00             7834027"
+    },
+    {
+      "name": "registros_2020-08-03.json",
+      "detail": "04-Aug-2020 14:00            14127525"
+    },
+    {
+      "name": "registros_2020-08-04.csv",
+      "detail": "04-Aug-2020 14:00             8693581"
+    },
+    {
+      "name": "registros_2020-08-04.json",
+      "detail": "04-Aug-2020 14:00            15600834"
+    },
+    {
+      "name": "registros_2020-08-05.csv",
+      "detail": "07-Aug-2020 15:51             8685035"
+    },
+    {
+      "name": "registros_2020-08-05.json",
+      "detail": "07-Aug-2020 15:51            15568818"
+    },
+    {
+      "name": "registros_2020-08-06.csv",
+      "detail": "08-Aug-2020 14:00             7597055"
+    },
+    {
+      "name": "registros_2020-08-06.json",
+      "detail": "08-Aug-2020 14:00            13620408"
+    },
+    {
+      "name": "registros_2020-08-07.csv",
+      "detail": "09-Aug-2020 14:00             7484895"
+    },
+    {
+      "name": "registros_2020-08-07.json",
+      "detail": "09-Aug-2020 14:00            13429238"
+    },
+    {
+      "name": "registros_2020-08-08.csv",
+      "detail": "10-Aug-2020 14:00             7461195"
+    },
+    {
+      "name": "registros_2020-08-08.json",
+      "detail": "10-Aug-2020 14:00            13383113"
+    },
+    {
+      "name": "registros_2020-08-09.csv",
+      "detail": "11-Aug-2020 14:00             7254322"
+    },
+    {
+      "name": "registros_2020-08-09.json",
+      "detail": "11-Aug-2020 14:00            12995790"
+    },
+    {
+      "name": "registros_2020-08-10.csv",
+      "detail": "12-Aug-2020 14:00             7186879"
+    },
+    {
+      "name": "registros_2020-08-10.json",
+      "detail": "12-Aug-2020 14:00            12872802"
+    },
+    {
+      "name": "registros_2020-08-11.csv",
+      "detail": "13-Aug-2020 14:00             7197069"
+    },
+    {
+      "name": "registros_2020-08-11.json",
+      "detail": "13-Aug-2020 14:00            12907832"
+    },
+    {
+      "name": "registros_2020-08-12.csv",
+      "detail": "14-Aug-2020 14:00             6927829"
+    },
+    {
+      "name": "registros_2020-08-12.json",
+      "detail": "14-Aug-2020 14:00            12658612"
+    },
+    {
+      "name": "registros_2020-08-13.csv",
+      "detail": "14-Aug-2020 14:00             7072190"
+    },
+    {
+      "name": "registros_2020-08-13.json",
+      "detail": "14-Aug-2020 14:00            12936173"
+    },
+    {
+      "name": "registros_2020-08-14.csv",
+      "detail": "14-Aug-2020 14:00             7310152"
+    },
+    {
+      "name": "registros_2020-08-14.json",
+      "detail": "14-Aug-2020 14:00            13380100"
+    },
+    {
+      "name": "registros_2020-08-15.csv",
+      "detail": "17-Aug-2020 14:00             7101258"
+    },
+    {
+      "name": "registros_2020-08-15.json",
+      "detail": "17-Aug-2020 14:00            13075986"
+    },
+    {
+      "name": "registros_2020-08-16.csv",
+      "detail": "18-Aug-2020 14:00             6957640"
+    },
+    {
+      "name": "registros_2020-08-16.json",
+      "detail": "18-Aug-2020 14:00            12808858"
+    },
+    {
+      "name": "registros_2020-08-17.csv",
+      "detail": "19-Aug-2020 14:00             6941106"
+    },
+    {
+      "name": "registros_2020-08-17.json",
+      "detail": "19-Aug-2020 14:00            12776099"
+    },
+    {
+      "name": "registros_2020-08-18.csv",
+      "detail": "20-Aug-2020 14:00             6013577"
+    },
+    {
+      "name": "registros_2020-08-18.json",
+      "detail": "20-Aug-2020 14:00            10951915"
+    },
+    {
+      "name": "registros_2020-08-19.csv",
+      "detail": "21-Aug-2020 14:00             6013518"
+    },
+    {
+      "name": "registros_2020-08-19.json",
+      "detail": "21-Aug-2020 14:00            10955296"
+    },
+    {
+      "name": "registros_2020-08-20.csv",
+      "detail": "22-Aug-2020 14:00             6112155"
+    },
+    {
+      "name": "registros_2020-08-20.json",
+      "detail": "22-Aug-2020 14:00            11147123"
+    },
+    {
+      "name": "registros_2020-08-21.csv",
+      "detail": "23-Aug-2020 14:00             6259375"
+    },
+    {
+      "name": "registros_2020-08-21.json",
+      "detail": "23-Aug-2020 14:00            11418543"
+    },
+    {
+      "name": "registros_2020-08-22.csv",
+      "detail": "24-Aug-2020 14:00             6026608"
+    },
+    {
+      "name": "registros_2020-08-22.json",
+      "detail": "24-Aug-2020 14:00            10987056"
+    },
+    {
+      "name": "registros_2020-08-23.csv",
+      "detail": "24-Aug-2020 14:00             5941056"
+    },
+    {
+      "name": "registros_2020-08-23.json",
+      "detail": "24-Aug-2020 14:00            10832849"
+    },
+    {
+      "name": "registros_2020-08-24.csv",
+      "detail": "24-Aug-2020 14:00             5909081"
+    },
+    {
+      "name": "registros_2020-08-24.json",
+      "detail": "24-Aug-2020 14:00            10774999"
+    },
+    {
+      "name": "registros_2020-08-25.csv",
+      "detail": "27-Aug-2020 14:00             6287514"
+    },
+    {
+      "name": "registros_2020-08-25.json",
+      "detail": "27-Aug-2020 14:00            11492222"
+    },
+    {
+      "name": "registros_2020-08-26.csv",
+      "detail": "28-Aug-2020 14:00             6085220"
+    },
+    {
+      "name": "registros_2020-08-26.json",
+      "detail": "28-Aug-2020 14:00            11122258"
+    },
+    {
+      "name": "registros_2020-08-27.csv",
+      "detail": "29-Aug-2020 14:00             6285003"
+    },
+    {
+      "name": "registros_2020-08-27.json",
+      "detail": "29-Aug-2020 14:00            11494541"
+    },
+    {
+      "name": "registros_2020-08-28.csv",
+      "detail": "30-Aug-2020 14:00             7169275"
+    },
+    {
+      "name": "registros_2020-08-28.json",
+      "detail": "30-Aug-2020 14:00            13167818"
+    },
+    {
+      "name": "registros_2020-08-29.csv",
+      "detail": "31-Aug-2020 14:00             6138928"
+    },
+    {
+      "name": "registros_2020-08-29.json",
+      "detail": "31-Aug-2020 14:00            11261516"
+    },
+    {
+      "name": "registros_2020-08-30.csv",
+      "detail": "31-Aug-2020 14:00             5957594"
+    },
+    {
+      "name": "registros_2020-08-30.json",
+      "detail": "31-Aug-2020 14:00            10935962"
+    },
+    {
+      "name": "registros_2020-08-31.csv",
+      "detail": "01-Sep-2020 14:00             5880213"
+    },
+    {
+      "name": "registros_2020-08-31.json",
+      "detail": "01-Sep-2020 14:00            10799586"
+    }
+  ],
+  "vra_2018_07_listing": [
+    {
+      "name": "VRA_20187.csv",
+      "detail": "12-Nov-2021 20:47            11651442"
+    },
+    {
+      "name": "VRA_20187.json",
+      "detail": "12-Nov-2021 20:47            32137465"
+    }
+  ],
+  "rsa_sample_head": "status 206: ï»¿Atualizado em: 2020-08-03\r\n\"CÃ³d  Empresa\";\"Empresa\";\"NÂº Voo\";\"Equip \";\"Seg\";\"Ter\";\"Qua\";\"Qui\";\"Sex\";\"SÃ¡b\";\"Dom\";\"Quant  Assentos\";\"NÂº SIROS\";\"SituaÃ§Ã£o SIROS\";\"Data Registro\";\"InÃ­cio OperaÃ§Ã£o\";\"Fim OperaÃ§Ã£o\";\"Natureza OperaÃ§Ã£o\";\"NÂº Etapa\";\"CÃ³d  Origem\";\"Arpt Origem\";\"CÃ³d Destino\";\"Arpt Destino\";\"HorÃ¡rio Partida\";\"HorÃ¡rio Chegada\";\"Tipo ServiÃ§o\";\"Objeto Transporte\";\"Codeshare\"\r\n\"AAL\";\"AMERICAN AIRLINES, INC.\";\"9715\";\"B772\";\"1\";\"2\";\"0\";\"4\";\"0\";\"0\";\"7\";\"288\";\"AAL-005680483\";\"Em OperaÃ§Ã£o\";\"2020-06-17 14:55:14\";\"2020-07-05\";\"2020-08-05\";\"INTERNACIONAL\";\"1\";\"KMIA\";\"MIAMI INTERNATIONAL AIRPORT (MIA) - MIAMI, FLORIDA - ESTADOS UNIDOS DA AMÃRICA\";\"SBGR\";\"GUARULHOS - GOVERNADOR ANDRÃ FRANCO MONTORO (GRU) - GUARULHOS - SP - BRASIL\";\"23:50\";\"08:40\";\"NÃO REGULAR DE CARGA\";\"CARGA\";\"\"\r\n\"AAL\";\"AMERICAN AIRLINES, INC.\";\"9716\";\"B772\";\"0\";\"2\";\"3\";\"4\";\"0\";\"6\";\"0\";\"0\";\"AAL-005680484\";\"Em OperaÃ§Ã£o\";\"2020-06-17 14:57:45\";\"2020-07-07\";\"2020-08-06\";\"INTERNACIONAL\";\"1\";\"SBGR\";\"GUARULHOS - GOVERNADOR ANDRÃ FRANCO MONTORO (GRU) - GUARULHOS - SP - BRASIL\";\"KMIA\";\"MIAMI INTERNATIONAL AIRPORT (MIA) - MIAMI, FLORIDA - ESTADOS UNIDOS DA AMÃRICA\";\"01:30\";\"10:35\";\"NÃO REGULAR DE CARGA\";\"CARGA\";\"\"\r\n\"AAL\";\"AMERICAN AIRLINES, INC.\";\"0930\";\"B772\";\"0\";\"2\";\"0\";\"0\";\"0\";\"6\";\"0\";\"288\";\"AAL-005790425\";\"A Operar\";\"2020-06-29 14:02:40\";\"2020-08-08\";\"2020-08-17\";\"INTERNACIONAL\";\"1\";\"SBGR\";\"GUAR",
+  "vra_sample_head": "status 206: ï»¿Atualizado em: 2021-11-12\r\n\"ICAO Empresa AÃ©rea\";\"NÃºmero Voo\";\"CÃ³digo AutorizaÃ§Ã£o (DI)\";\"CÃ³digo Tipo Linha\";\"ICAO AerÃ³dromo Origem\";\"ICAO AerÃ³dromo Destino\";\"Partida Prevista\";\"Partida Real\";\"Chegada Prevista\";\"Chegada Real\";\"SituaÃ§Ã£o Voo\";\"CÃ³digo Justificativa\"\r\n\"AZU\";\"5213\";\"0\";\"N\";\"SBCF\";\"SBSL\";\"01/07/2018 20:20\";\"01/07/2018 20:55\";\"01/07/2018 23:10\";\"01/07/2018 23:35\";\"REALIZADO\";\"RM\"\r\n\"AZU\";\"5213\";\"0\";\"N\";\"SBSL\";\"SBBE\";\"01/07/2018 23:45\";\"02/07/2018 00:03\";\"02/07/2018 00:55\";\"02/07/2018 01:05\";\"REALIZADO\";\"RM\"\r\n\"GLO\";\"1106\";\"0\";\"N\";\"SBGR\";\"SBLO\";\"01/07/2018 11:05\";\"01/07/2018 12:08\";\"01/07/2018 12:15\";\"01/07/2018 13:24\";\"REALIZADO\";\"RM\"\r\n\"GLO\";\"1109\";\"0\";\"N\";\"SBLO\";\"SBGR\";\"01/07/2018 12:45\";\"01/07/2018 13:52\";\"01/07/2018 14:05\";\"01/07/2018 14:53\";\"REALIZADO\";\"RM\"\r\n\"GLO\";\"1541\";\"0\";\"N\";\"SBSG\";\"SBGR\";\"01/07/2018 05:45\";\"01/07/2018 07:30\";\"01/07/2018 09:15\";\"01/07/2018 11:07\";\"REALIZADO\";\"RM\"\r\n\"GLO\";\"1549\";\"0\";\"N\";\"SBMO\";\"SBGR\";\"01/07/2018 15:45\";\"01/07/2018 16:07\";\"01/07/2018 18:40\";\"01/07/2018 19:16\";\"REALIZADO\";\"RM\"\r\n\"GLO\";\"1800\";\"0\";\"N\";\"SBGL\";\"SBMO\";\"01/07/2018 21:45\";\"01/07/2018 23:08\";\"02/07/2018 00:10\";\"02/07/2018 01:32\";\"REALIZADO\";\"RM\"\r\n\"GLO\";\"1816\";\"0\";\"N\";\"SBEG\";\"SBGL\";\"01/07/2018 07:15\";\"01/07/2018 10:27\";\"01/07/2018 11:15\";\"01/07/2018 14:27\";\"REALIZADO\";\"RM\"\r\n\"GLO\";\"1826\";\"0\";\"N\";\"SBBR\";\"SBSV\";\"01/07/2018 14:20\";\"01/07/2018 14:37\";\"01/07/2018 16:10\"",
+  "total_bytes_downloaded_by_probe": 33252252
+}

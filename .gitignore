@@ -5,3 +5,16 @@ __pycache__/
 *.joblib
 *.pt
 *.pth
+
+# Large artifacts that could otherwise appear outside data/
+models/
+*.parquet
+*.tmp-*
+
+# Tooling
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/

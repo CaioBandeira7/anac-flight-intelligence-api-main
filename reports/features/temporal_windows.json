@@ -1,0 +1,335 @@
+{
+  "windows": {
+    "long_train_2003_2022": {
+      "route_carrier_months": 398779,
+      "carriers": 197,
+      "routes": 7462,
+      "months": 236,
+      "flights": 16152754,
+      "route_months": 251709,
+      "airport_days": 1105097,
+      "airports": 1045,
+      "expected_months": 240,
+      "gap_months_inside": 4,
+      "pandemic_flights_share_pct": 5.0
+    },
+    "recent_train_2013_2022": {
+      "route_carrier_months": 191697,
+      "carriers": 160,
+      "routes": 5194,
+      "months": 116,
+      "flights": 8386185,
+      "route_months": 125488,
+      "airport_days": 543221,
+      "airports": 832,
+      "expected_months": 120,
+      "gap_months_inside": 4,
+      "pandemic_flights_share_pct": 9.6
+    },
+    "validation_2023": {
+      "route_carrier_months": 21087,
+      "carriers": 84,
+      "routes": 2107,
+      "months": 12,
+      "flights": 876687,
+      "route_months": 14815,
+      "airport_days": 63188,
+      "airports": 388,
+      "expected_months": 12,
+      "gap_months_inside": 0,
+      "pandemic_flights_share_pct": null
+    },
+    "test_2024_2025": {
+      "route_carrier_months": 42556,
+      "carriers": 87,
+      "routes": 2647,
+      "months": 24,
+      "flights": 1828350,
+      "route_months": 29451,
+      "airport_days": 123502,
+      "airports": 479,
+      "expected_months": 24,
+      "gap_months_inside": 0,
+      "pandemic_flights_share_pct": null
+    }
+  },
+  "recognition": [
+    {
+      "train": "long_train_2003_2022",
+      "target": "validation_2023",
+      "pct_flights_known_route": 99.88,
+      "pct_flights_known_carrier": 99.99,
+      "pct_flights_known_route_and_carrier": 98.21
+    },
+    {
+      "train": "long_train_2003_2022",
+      "target": "test_2024_2025",
+      "pct_flights_known_route": 99.09,
+      "pct_flights_known_carrier": 99.89,
+      "pct_flights_known_route_and_carrier": 96.26
+    },
+    {
+      "train": "recent_train_2013_2022",
+      "target": "validation_2023",
+      "pct_flights_known_route": 99.82,
+      "pct_flights_known_carrier": 99.99,
+      "pct_flights_known_route_and_carrier": 98.13
+    },
+    {
+      "train": "recent_train_2013_2022",
+      "target": "test_2024_2025",
+      "pct_flights_known_route": 98.95,
+      "pct_flights_known_carrier": 99.89,
+      "pct_flights_known_route_and_carrier": 95.96
+    },
+    {
+      "train": "history_2003_2012",
+      "target": "validation_2023",
+      "pct_flights_known_route": 92.85,
+      "pct_flights_known_carrier": 96.27,
+      "pct_flights_known_route_and_carrier": 76.72
+    },
+    {
+      "train": "history_2013_2019",
+      "target": "validation_2023",
+      "pct_flights_known_route": 98.08,
+      "pct_flights_known_carrier": 99.76,
+      "pct_flights_known_route_and_carrier": 93.48
+    },
+    {
+      "train": "history_2017_2022",
+      "target": "validation_2023",
+      "pct_flights_known_route": 99.71,
+      "pct_flights_known_carrier": 99.98,
+      "pct_flights_known_route_and_carrier": 98.01
+    },
+    {
+      "train": "history_2021_2022",
+      "target": "validation_2023",
+      "pct_flights_known_route": 99.19,
+      "pct_flights_known_carrier": 99.96,
+      "pct_flights_known_route_and_carrier": 97.35
+    }
+  ],
+  "target_months_with_lag_on_a_gap": [
+    {
+      "window": "long_train_2003_2022",
+      "lag_months": 1,
+      "target_months_hit": 4
+    },
+    {
+      "window": "long_train_2003_2022",
+      "lag_months": 2,
+      "target_months_hit": 4
+    },
+    {
+      "window": "long_train_2003_2022",
+      "lag_months": 3,
+      "target_months_hit": 4
+    },
+    {
+      "window": "long_train_2003_2022",
+      "lag_months": 6,
+      "target_months_hit": 4
+    },
+    {
+      "window": "long_train_2003_2022",
+      "lag_months": 12,
+      "target_months_hit": 4
+    },
+    {
+      "window": "long_train_2003_2022",
+      "lag_months": 24,
+      "target_months_hit": 4
+    },
+    {
+      "window": "recent_train_2013_2022",
+      "lag_months": 1,
+      "target_months_hit": 4
+    },
+    {
+      "window": "recent_train_2013_2022",
+      "lag_months": 2,
+      "target_months_hit": 4
+    },
+    {
+      "window": "recent_train_2013_2022",
+      "lag_months": 3,
+      "target_months_hit": 4
+    },
+    {
+      "window": "recent_train_2013_2022",
+      "lag_months": 6,
+      "target_months_hit": 4
+    },
+    {
+      "window": "recent_train_2013_2022",
+      "lag_months": 12,
+      "target_months_hit": 4
+    },
+    {
+      "window": "recent_train_2013_2022",
+      "lag_months": 24,
+      "target_months_hit": 4
+    },
+    {
+      "window": "validation_2023",
+      "lag_months": 1,
+      "target_months_hit": 0
+    },
+    {
+      "window": "validation_2023",
+      "lag_months": 2,
+      "target_months_hit": 0
+    },
+    {
+      "window": "validation_2023",
+      "lag_months": 3,
+      "target_months_hit": 0
+    },
+    {
+      "window": "validation_2023",
+      "lag_months": 6,
+      "target_months_hit": 0
+    },
+    {
+      "window": "validation_2023",
+      "lag_months": 12,
+      "target_months_hit": 0
+    },
+    {
+      "window": "validation_2023",
+      "lag_months": 24,
+      "target_months_hit": 0
+    },
+    {
+      "window": "test_2024_2025",
+      "lag_months": 1,
+      "target_months_hit": 0
+    },
+    {
+      "window": "test_2024_2025",
+      "lag_months": 2,
+      "target_months_hit": 0
+    },
+    {
+      "window": "test_2024_2025",
+      "lag_months": 3,
+      "target_months_hit": 0
+    },
+    {
+      "window": "test_2024_2025",
+      "lag_months": 6,
+      "target_months_hit": 0
+    },
+    {
+      "window": "test_2024_2025",
+      "lag_months": 12,
+      "target_months_hit": 0
+    },
+    {
+      "window": "test_2024_2025",
+      "lag_months": 24,
+      "target_months_hit": 0
+    }
+  ],
+  "airport_concentration_2013_2022": {
+    "airports": 832,
+    "pct_top_10": 59.9,
+    "pct_top_20": 76.4,
+    "pct_top_50": 90.9,
+    "pct_top_100": 97.0,
+    "airports_active_3000_days": 94
+  },
+  "route_carrier_depth_2013_2022": {
+    "pairs": 10884,
+    "pairs_12_months": 3123,
+    "pairs_36_months": 1784,
+    "seats_pct_12_months": 98.9,
+    "seats_pct_36_months": 94.6
+  },
+  "route_carrier_months_by_size_2013_2022": [
+    {
+      "seats_in_month": "1_under_500",
+      "route_carrier_months": 33489,
+      "pct_seats": 0.5
+    },
+    {
+      "seats_in_month": "2_500_2000",
+      "route_carrier_months": 29715,
+      "pct_seats": 2.6
+    },
+    {
+      "seats_in_month": "3_2000_10000",
+      "route_carrier_months": 86920,
+      "pct_seats": 35.6
+    },
+    {
+      "seats_in_month": "4_over_10000",
+      "route_carrier_months": 41573,
+      "pct_seats": 61.2
+    }
+  ],
+  "hourly_sparsity_top_airport_2019": [
+    {
+      "airport": "SBGR",
+      "active_airport_hours": 8723,
+      "pct_of_hours_active": 99.6,
+      "mean_departures_when_active": 15.9
+    },
+    {
+      "airport": "SBRF",
+      "active_airport_hours": 8134,
+      "pct_of_hours_active": 92.9,
+      "mean_departures_when_active": 4.4
+    },
+    {
+      "airport": "SBBR",
+      "active_airport_hours": 7774,
+      "pct_of_hours_active": 88.7,
+      "mean_departures_when_active": 7.8
+    },
+    {
+      "airport": "SBFZ",
+      "active_airport_hours": 7648,
+      "pct_of_hours_active": 87.3,
+      "mean_departures_when_active": 3.1
+    },
+    {
+      "airport": "SBKP",
+      "active_airport_hours": 7412,
+      "pct_of_hours_active": 84.6,
+      "mean_departures_when_active": 7.5
+    },
+    {
+      "airport": "SBPA",
+      "active_airport_hours": 7150,
+      "pct_of_hours_active": 81.6,
+      "mean_departures_when_active": 4.6
+    },
+    {
+      "airport": "SBEG",
+      "active_airport_hours": 6482,
+      "pct_of_hours_active": 74.0,
+      "mean_departures_when_active": 2.2
+    },
+    {
+      "airport": "SBSP",
+      "active_airport_hours": 6463,
+      "pct_of_hours_active": 73.8,
+      "mean_departures_when_active": 13.4
+    },
+    {
+      "airport": "SBUL",
+      "active_airport_hours": 3761,
+      "pct_of_hours_active": 42.9,
+      "mean_departures_when_active": 1.6
+    },
+    {
+      "airport": "SBPJ",
+      "active_airport_hours": 2592,
+      "pct_of_hours_active": 29.6,
+      "mean_departures_when_active": 1.2
+    }
+  ]
+}

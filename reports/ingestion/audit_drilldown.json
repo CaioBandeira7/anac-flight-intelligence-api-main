@@ -1,0 +1,1726 @@
+{
+  "gap_months": {
+    "rows_from_source_files_of_gap_months": [],
+    "departures_dated_in_gap_months": [
+      {
+        "departure_month": "2016-02",
+        "reference_month": "2016-01",
+        "rows": 59
+      },
+      {
+        "departure_month": "2015-08",
+        "reference_month": "2015-07",
+        "rows": 52
+      },
+      {
+        "departure_month": "2018-07",
+        "reference_month": "2018-06",
+        "rows": 38
+      },
+      {
+        "departure_month": "2020-08",
+        "reference_month": "2020-07",
+        "rows": 10
+      },
+      {
+        "departure_month": "2015-08",
+        "reference_month": "2015-09",
+        "rows": 9
+      },
+      {
+        "departure_month": "2018-07",
+        "reference_month": "2018-08",
+        "rows": 8
+      },
+      {
+        "departure_month": "2016-02",
+        "reference_month": "2016-03",
+        "rows": 8
+      },
+      {
+        "departure_month": "2016-02",
+        "reference_month": "2016-05",
+        "rows": 3
+      },
+      {
+        "departure_month": "2020-08",
+        "reference_month": "2020-09",
+        "rows": 2
+      },
+      {
+        "departure_month": "2018-07",
+        "reference_month": "2018-10",
+        "rows": 2
+      },
+      {
+        "departure_month": "2016-02",
+        "reference_month": "2016-04",
+        "rows": 2
+      },
+      {
+        "departure_month": "2015-08",
+        "reference_month": "2016-08",
+        "rows": 2
+      },
+      {
+        "departure_month": "2016-02",
+        "reference_month": "2017-02",
+        "rows": 2
+      },
+      {
+        "departure_month": "2016-02",
+        "reference_month": "2016-12",
+        "rows": 1
+      },
+      {
+        "departure_month": "2018-07",
+        "reference_month": "2019-07",
+        "rows": 1
+      },
+      {
+        "departure_month": "2018-07",
+        "reference_month": "2018-09",
+        "rows": 1
+      },
+      {
+        "departure_month": "2016-02",
+        "reference_month": "2016-07",
+        "rows": 1
+      },
+      {
+        "departure_month": "2015-08",
+        "reference_month": "2017-08",
+        "rows": 1
+      },
+      {
+        "departure_month": "2016-02",
+        "reference_month": "2016-08",
+        "rows": 1
+      }
+    ],
+    "neighbour_month_rows": [
+      {
+        "year": 2014,
+        "month": 8,
+        "rows": 92871,
+        "paid_pax": 10378109,
+        "days": 31
+      },
+      {
+        "year": 2015,
+        "month": 7,
+        "rows": 96013,
+        "paid_pax": 11394058,
+        "days": 31
+      },
+      {
+        "year": 2015,
+        "month": 9,
+        "rows": 88445,
+        "paid_pax": 9864742,
+        "days": 30
+      },
+      {
+        "year": 2016,
+        "month": 1,
+        "rows": 94862,
+        "paid_pax": 11333276,
+        "days": 31
+      },
+      {
+        "year": 2016,
+        "month": 3,
+        "rows": 83343,
+        "paid_pax": 9047891,
+        "days": 31
+      },
+      {
+        "year": 2017,
+        "month": 7,
+        "rows": 83627,
+        "paid_pax": 10527406,
+        "days": 31
+      },
+      {
+        "year": 2018,
+        "month": 6,
+        "rows": 77628,
+        "paid_pax": 9104894,
+        "days": 30
+      },
+      {
+        "year": 2018,
+        "month": 8,
+        "rows": 82442,
+        "paid_pax": 10057527,
+        "days": 31
+      },
+      {
+        "year": 2019,
+        "month": 8,
+        "rows": 79621,
+        "paid_pax": 10047159,
+        "days": 31
+      },
+      {
+        "year": 2020,
+        "month": 7,
+        "rows": 19367,
+        "paid_pax": 1736022,
+        "days": 31
+      },
+      {
+        "year": 2020,
+        "month": 9,
+        "rows": 30395,
+        "paid_pax": 3223151,
+        "days": 30
+      }
+    ]
+  },
+  "carrier_month_gaps": [
+    {
+      "carrier": "TAM",
+      "rows": 5972678,
+      "months": 308,
+      "first_month": "2000-01",
+      "last_month": "2025-12",
+      "months_missing_inside_range": 4
+    },
+    {
+      "carrier": "GLO",
+      "rows": 5193425,
+      "months": 296,
+      "first_month": "2001-01",
+      "last_month": "2025-12",
+      "months_missing_inside_range": 4
+    },
+    {
+      "carrier": "AZU",
+      "rows": 3581534,
+      "months": 201,
+      "first_month": "2008-12",
+      "last_month": "2025-12",
+      "months_missing_inside_range": 4
+    },
+    {
+      "carrier": "VRG",
+      "rows": 995433,
+      "months": 85,
+      "first_month": "2000-01",
+      "last_month": "2007-01",
+      "months_missing_inside_range": 0
+    },
+    {
+      "carrier": "ONE",
+      "rows": 752879,
+      "months": 193,
+      "first_month": "2003-01",
+      "last_month": "2019-04",
+      "months_missing_inside_range": 3
+    },
+    {
+      "carrier": "TIB",
+      "rows": 639868,
+      "months": 168,
+      "first_month": "2000-01",
+      "last_month": "2013-12",
+      "months_missing_inside_range": 0
+    },
+    {
+      "carrier": "VSP",
+      "rows": 382575,
+      "months": 59,
+      "first_month": "2000-01",
+      "last_month": "2004-11",
+      "months_missing_inside_range": 0
+    },
+    {
+      "carrier": "RSL",
+      "rows": 335479,
+      "months": 77,
+      "first_month": "2000-01",
+      "last_month": "2006-06",
+      "months_missing_inside_range": 1
+    },
+    {
+      "carrier": "PTB",
+      "rows": 322813,
+      "months": 272,
+      "first_month": "2000-01",
+      "last_month": "2025-03",
+      "months_missing_inside_range": 31
+    },
+    {
+      "carrier": "TTL",
+      "rows": 210634,
+      "months": 308,
+      "first_month": "2000-01",
+      "last_month": "2025-12",
+      "months_missing_inside_range": 4
+    },
+    {
+      "carrier": "WEB",
+      "rows": 192753,
+      "months": 91,
+      "first_month": "2005-07",
+      "last_month": "2013-04",
+      "months_missing_inside_range": 3
+    },
+    {
+      "carrier": "PTN",
+      "rows": 178894,
+      "months": 163,
+      "first_month": "2000-01",
+      "last_month": "2013-08",
+      "months_missing_inside_range": 1
+    },
+    {
+      "carrier": "NES",
+      "rows": 165529,
+      "months": 78,
+      "first_month": "2000-01",
+      "last_month": "2006-06",
+      "months_missing_inside_range": 0
+    },
+    {
+      "carrier": "AAL",
+      "rows": 159242,
+      "months": 306,
+      "first_month": "2000-01",
+      "last_month": "2025-12",
+      "months_missing_inside_range": 6
+    },
+    {
+      "carrier": "TAP",
+      "rows": 150165,
+      "months": 308,
+      "first_month": "2000-01",
+      "last_month": "2025-12",
+      "months_missing_inside_range": 4
+    },
+    {
+      "carrier": "ARG",
+      "rows": 143564,
+      "months": 302,
+      "first_month": "2000-01",
+      "last_month": "2025-12",
+      "months_missing_inside_range": 10
+    },
+    {
+      "carrier": "CMP",
+      "rows": 119797,
+      "months": 303,
+      "first_month": "2000-06",
+      "last_month": "2025-12",
+      "months_missing_inside_range": 4
+    },
+    {
+      "carrier": "VRN",
+      "rows": 110814,
+      "months": 30,
+      "first_month": "2006-12",
+      "last_month": "2009-05",
+      "months_missing_inside_range": 0
+    },
+    {
+      "carrier": "ACN",
+      "rows": 104545,
+      "months": 92,
+      "first_month": "2018-03",
+      "last_month": "2025-12",
+      "months_missing_inside_range": 2
+    }
+  ],
+  "null_versus_zero_by_carrier_nationality": [
+    {
+      "year": 2012,
+      "brazilian_carrier": false,
+      "rows": 85292,
+      "excess_null": 100.0,
+      "excess_zero": null,
+      "excess_positive": null,
+      "free_null": 100.0,
+      "free_zero": null,
+      "fuel_null": 100.0,
+      "fuel_zero": null
+    },
+    {
+      "year": 2012,
+      "brazilian_carrier": true,
+      "rows": 1018057,
+      "excess_null": 0.0,
+      "excess_zero": 69.47,
+      "excess_positive": 30.53,
+      "free_null": 0.0,
+      "free_zero": 1.53,
+      "fuel_null": 0.0,
+      "fuel_zero": 0.0
+    },
+    {
+      "year": 2012,
+      "brazilian_carrier": null,
+      "rows": 10,
+      "excess_null": 100.0,
+      "excess_zero": null,
+      "excess_positive": null,
+      "free_null": 100.0,
+      "free_zero": null,
+      "fuel_null": 100.0,
+      "fuel_zero": null
+    },
+    {
+      "year": 2013,
+      "brazilian_carrier": false,
+      "rows": 85039,
+      "excess_null": 100.0,
+      "excess_zero": null,
+      "excess_positive": null,
+      "free_null": 100.0,
+      "free_zero": null,
+      "fuel_null": 100.0,
+      "fuel_zero": null
+    },
+    {
+      "year": 2013,
+      "brazilian_carrier": true,
+      "rows": 974828,
+      "excess_null": 0.0,
+      "excess_zero": 69.4,
+      "excess_positive": 30.6,
+      "free_null": 0.0,
+      "free_zero": 1.5,
+      "fuel_null": 0.0,
+      "fuel_zero": 0.0
+    },
+    {
+      "year": 2013,
+      "brazilian_carrier": null,
+      "rows": 13,
+      "excess_null": 100.0,
+      "excess_zero": null,
+      "excess_positive": null,
+      "free_null": 100.0,
+      "free_zero": null,
+      "fuel_null": 100.0,
+      "fuel_zero": null
+    },
+    {
+      "year": 2014,
+      "brazilian_carrier": false,
+      "rows": 91555,
+      "excess_null": 98.9,
+      "excess_zero": 1.1,
+      "excess_positive": 0.0,
+      "free_null": 98.9,
+      "free_zero": 1.1,
+      "fuel_null": 98.9,
+      "fuel_zero": 1.1
+    },
+    {
+      "year": 2014,
+      "brazilian_carrier": true,
+      "rows": 969773,
+      "excess_null": 0.0,
+      "excess_zero": 37.53,
+      "excess_positive": 62.47,
+      "free_null": 0.0,
+      "free_zero": 0.58,
+      "fuel_null": 0.0,
+      "fuel_zero": 0.0
+    },
+    {
+      "year": 2014,
+      "brazilian_carrier": null,
+      "rows": 39,
+      "excess_null": 100.0,
+      "excess_zero": null,
+      "excess_positive": null,
+      "free_null": 100.0,
+      "free_zero": null,
+      "fuel_null": 100.0,
+      "fuel_zero": null
+    },
+    {
+      "year": 2015,
+      "brazilian_carrier": false,
+      "rows": 79826,
+      "excess_null": 98.86,
+      "excess_zero": 1.14,
+      "excess_positive": 0.0,
+      "free_null": 98.86,
+      "free_zero": 1.14,
+      "fuel_null": 98.39,
+      "fuel_zero": 1.61
+    },
+    {
+      "year": 2015,
+      "brazilian_carrier": true,
+      "rows": 887945,
+      "excess_null": 0.0,
+      "excess_zero": 25.24,
+      "excess_positive": 74.76,
+      "free_null": 0.0,
+      "free_zero": 0.54,
+      "fuel_null": 0.0,
+      "fuel_zero": 0.0
+    },
+    {
+      "year": 2015,
+      "brazilian_carrier": null,
+      "rows": 23,
+      "excess_null": 100.0,
+      "excess_zero": null,
+      "excess_positive": null,
+      "free_null": 100.0,
+      "free_zero": null,
+      "fuel_null": 100.0,
+      "fuel_zero": null
+    },
+    {
+      "year": 2016,
+      "brazilian_carrier": false,
+      "rows": 70063,
+      "excess_null": 98.72,
+      "excess_zero": 1.28,
+      "excess_positive": 0.0,
+      "free_null": 98.72,
+      "free_zero": 1.28,
+      "fuel_null": 98.14,
+      "fuel_zero": 1.86
+    },
+    {
+      "year": 2016,
+      "brazilian_carrier": true,
+      "rows": 787906,
+      "excess_null": 0.0,
+      "excess_zero": 27.25,
+      "excess_positive": 72.75,
+      "free_null": 0.0,
+      "free_zero": 0.43,
+      "fuel_null": 0.0,
+      "fuel_zero": 0.0
+    },
+    {
+      "year": 2016,
+      "brazilian_carrier": null,
+      "rows": 28,
+      "excess_null": 100.0,
+      "excess_zero": null,
+      "excess_positive": null,
+      "free_null": 100.0,
+      "free_zero": null,
+      "fuel_null": 100.0,
+      "fuel_zero": null
+    },
+    {
+      "year": 2017,
+      "brazilian_carrier": false,
+      "rows": 72320,
+      "excess_null": 98.6,
+      "excess_zero": 1.4,
+      "excess_positive": 0.0,
+      "free_null": 98.6,
+      "free_zero": 1.4,
+      "fuel_null": 98.12,
+      "fuel_zero": 1.88
+    },
+    {
+      "year": 2017,
+      "brazilian_carrier": true,
+      "rows": 841320,
+      "excess_null": 0.0,
+      "excess_zero": 42.26,
+      "excess_positive": 57.74,
+      "free_null": 0.0,
+      "free_zero": 0.5,
+      "fuel_null": 0.0,
+      "fuel_zero": 0.0
+    },
+    {
+      "year": 2017,
+      "brazilian_carrier": null,
+      "rows": 24,
+      "excess_null": 100.0,
+      "excess_zero": null,
+      "excess_positive": null,
+      "free_null": 100.0,
+      "free_zero": null,
+      "fuel_null": 100.0,
+      "fuel_zero": null
+    },
+    {
+      "year": 2018,
+      "brazilian_carrier": false,
+      "rows": 74862,
+      "excess_null": 97.79,
+      "excess_zero": 2.21,
+      "excess_positive": 0.0,
+      "free_null": 97.79,
+      "free_zero": 2.21,
+      "fuel_null": 97.05,
+      "fuel_zero": 2.95
+    },
+    {
+      "year": 2018,
+      "brazilian_carrier": true,
+      "rows": 779967,
+      "excess_null": 0.0,
+      "excess_zero": 47.62,
+      "excess_positive": 52.38,
+      "free_null": 0.0,
+      "free_zero": 0.41,
+      "fuel_null": 0.0,
+      "fuel_zero": 0.0
+    },
+    {
+      "year": 2018,
+      "brazilian_carrier": null,
+      "rows": 24,
+      "excess_null": 100.0,
+      "excess_zero": null,
+      "excess_positive": null,
+      "free_null": 100.0,
+      "free_zero": null,
+      "fuel_null": 100.0,
+      "fuel_zero": null
+    },
+    {
+      "year": 2019,
+      "brazilian_carrier": false,
+      "rows": 78910,
+      "excess_null": 96.86,
+      "excess_zero": 3.14,
+      "excess_positive": 0.0,
+      "free_null": 96.86,
+      "free_zero": 3.14,
+      "fuel_null": 95.94,
+      "fuel_zero": 4.06
+    },
+    {
+      "year": 2019,
+      "brazilian_carrier": true,
+      "rows": 843682,
+      "excess_null": 0.0,
+      "excess_zero": 64.45,
+      "excess_positive": 35.55,
+      "free_null": 0.0,
+      "free_zero": 2.25,
+      "fuel_null": 0.0,
+      "fuel_zero": 0.0
+    },
+    {
+      "year": 2019,
+      "brazilian_carrier": null,
+      "rows": 21,
+      "excess_null": 100.0,
+      "excess_zero": null,
+      "excess_positive": null,
+      "free_null": 100.0,
+      "free_zero": null,
+      "fuel_null": 100.0,
+      "fuel_zero": null
+    },
+    {
+      "year": 2020,
+      "brazilian_carrier": false,
+      "rows": 27305,
+      "excess_null": 0.01,
+      "excess_zero": 99.99,
+      "excess_positive": 0.0,
+      "free_null": 0.01,
+      "free_zero": 99.99,
+      "fuel_null": 0.0,
+      "fuel_zero": 100.0
+    },
+    {
+      "year": 2020,
+      "brazilian_carrier": true,
+      "rows": 384430,
+      "excess_null": 0.0,
+      "excess_zero": 69.62,
+      "excess_positive": 30.38,
+      "free_null": 0.0,
+      "free_zero": 1.03,
+      "fuel_null": 0.0,
+      "fuel_zero": 0.0
+    },
+    {
+      "year": 2020,
+      "brazilian_carrier": null,
+      "rows": 2,
+      "excess_null": 0.0,
+      "excess_zero": 100.0,
+      "excess_positive": 0.0,
+      "free_null": 0.0,
+      "free_zero": 100.0,
+      "fuel_null": 0.0,
+      "fuel_zero": 100.0
+    },
+    {
+      "year": 2021,
+      "brazilian_carrier": false,
+      "rows": 26296,
+      "excess_null": 0.0,
+      "excess_zero": 100.0,
+      "excess_positive": 0.0,
+      "free_null": 0.0,
+      "free_zero": 100.0,
+      "fuel_null": 0.0,
+      "fuel_zero": 100.0
+    },
+    {
+      "year": 2021,
+      "brazilian_carrier": true,
+      "rows": 532385,
+      "excess_null": 0.0,
+      "excess_zero": 58.29,
+      "excess_positive": 41.71,
+      "free_null": 0.0,
+      "free_zero": 0.58,
+      "fuel_null": 0.0,
+      "fuel_zero": 0.0
+    },
+    {
+      "year": 2022,
+      "brazilian_carrier": false,
+      "rows": 59099,
+      "excess_null": 0.01,
+      "excess_zero": 99.99,
+      "excess_positive": 0.0,
+      "free_null": 0.01,
+      "free_zero": 99.99,
+      "fuel_null": 0.0,
+      "fuel_zero": 100.0
+    },
+    {
+      "year": 2022,
+      "brazilian_carrier": true,
+      "rows": 732885,
+      "excess_null": 0.0,
+      "excess_zero": 56.28,
+      "excess_positive": 43.72,
+      "free_null": 0.0,
+      "free_zero": 1.28,
+      "fuel_null": 0.0,
+      "fuel_zero": 0.0
+    },
+    {
+      "year": 2023,
+      "brazilian_carrier": false,
+      "rows": 76399,
+      "excess_null": 0.0,
+      "excess_zero": 100.0,
+      "excess_positive": 0.0,
+      "free_null": 0.0,
+      "free_zero": 100.0,
+      "fuel_null": 0.0,
+      "fuel_zero": 100.0
+    },
+    {
+      "year": 2023,
+      "brazilian_carrier": true,
+      "rows": 801911,
+      "excess_null": 0.0,
+      "excess_zero": 58.91,
+      "excess_positive": 41.09,
+      "free_null": 0.0,
+      "free_zero": 1.49,
+      "fuel_null": 0.0,
+      "fuel_zero": 0.0
+    },
+    {
+      "year": 2024,
+      "brazilian_carrier": false,
+      "rows": 91146,
+      "excess_null": 0.0,
+      "excess_zero": 100.0,
+      "excess_positive": 0.0,
+      "free_null": 0.0,
+      "free_zero": 100.0,
+      "fuel_null": 0.0,
+      "fuel_zero": 100.0
+    },
+    {
+      "year": 2024,
+      "brazilian_carrier": true,
+      "rows": 806231,
+      "excess_null": 0.0,
+      "excess_zero": 58.51,
+      "excess_positive": 41.49,
+      "free_null": 0.0,
+      "free_zero": 1.02,
+      "fuel_null": 0.0,
+      "fuel_zero": 0.0
+    },
+    {
+      "year": 2025,
+      "brazilian_carrier": false,
+      "rows": 105632,
+      "excess_null": 0.0,
+      "excess_zero": 100.0,
+      "excess_positive": 0.0,
+      "free_null": 0.0,
+      "free_zero": 100.0,
+      "fuel_null": 0.0,
+      "fuel_zero": 100.0
+    },
+    {
+      "year": 2025,
+      "brazilian_carrier": true,
+      "rows": 831458,
+      "excess_null": 0.0,
+      "excess_zero": 65.52,
+      "excess_positive": 34.48,
+      "free_null": 0.0,
+      "free_zero": 1.15,
+      "fuel_null": 0.0,
+      "fuel_zero": 0.0
+    }
+  ],
+  "excess_positive_rate_major_carriers": [
+    {
+      "year": 2008,
+      "carrier": "AZU",
+      "rows": 236,
+      "positive_pct": 68.6,
+      "excess_kg_per_pax": 2.562,
+      "free_kg_per_pax": 9.12
+    },
+    {
+      "year": 2009,
+      "carrier": "AZU",
+      "rows": 23819,
+      "positive_pct": 64.3,
+      "excess_kg_per_pax": 0.807,
+      "free_kg_per_pax": 6.85
+    },
+    {
+      "year": 2010,
+      "carrier": "AZU",
+      "rows": 47214,
+      "positive_pct": 75.1,
+      "excess_kg_per_pax": 0.386,
+      "free_kg_per_pax": 21.96
+    },
+    {
+      "year": 2011,
+      "carrier": "AZU",
+      "rows": 91974,
+      "positive_pct": 68.4,
+      "excess_kg_per_pax": 0.38,
+      "free_kg_per_pax": 21.74
+    },
+    {
+      "year": 2012,
+      "carrier": "AZU",
+      "rows": 129970,
+      "positive_pct": 77.6,
+      "excess_kg_per_pax": 0.938,
+      "free_kg_per_pax": 15.97
+    },
+    {
+      "year": 2013,
+      "carrier": "AZU",
+      "rows": 174498,
+      "positive_pct": 98.3,
+      "excess_kg_per_pax": 1.758,
+      "free_kg_per_pax": 8.8
+    },
+    {
+      "year": 2014,
+      "carrier": "AZU",
+      "rows": 278286,
+      "positive_pct": 86.4,
+      "excess_kg_per_pax": 0.295,
+      "free_kg_per_pax": 10.06
+    },
+    {
+      "year": 2015,
+      "carrier": "AZU",
+      "rows": 253106,
+      "positive_pct": 85.4,
+      "excess_kg_per_pax": 0.268,
+      "free_kg_per_pax": 10.51
+    },
+    {
+      "year": 2016,
+      "carrier": "AZU",
+      "rows": 235711,
+      "positive_pct": 82.8,
+      "excess_kg_per_pax": 0.237,
+      "free_kg_per_pax": 10.84
+    },
+    {
+      "year": 2017,
+      "carrier": "AZU",
+      "rows": 254604,
+      "positive_pct": 78.4,
+      "excess_kg_per_pax": 0.197,
+      "free_kg_per_pax": 10.0
+    },
+    {
+      "year": 2018,
+      "carrier": "AZU",
+      "rows": 233947,
+      "positive_pct": 77.6,
+      "excess_kg_per_pax": 0.225,
+      "free_kg_per_pax": 8.63
+    },
+    {
+      "year": 2019,
+      "carrier": "AZU",
+      "rows": 286112,
+      "positive_pct": 77.9,
+      "excess_kg_per_pax": 0.232,
+      "free_kg_per_pax": 8.02
+    },
+    {
+      "year": 2020,
+      "carrier": "AZU",
+      "rows": 136786,
+      "positive_pct": 85.4,
+      "excess_kg_per_pax": 0.305,
+      "free_kg_per_pax": 8.38
+    },
+    {
+      "year": 2021,
+      "carrier": "AZU",
+      "rows": 223850,
+      "positive_pct": 87.5,
+      "excess_kg_per_pax": 0.283,
+      "free_kg_per_pax": 7.85
+    },
+    {
+      "year": 2022,
+      "carrier": "AZU",
+      "rows": 273920,
+      "positive_pct": 86.0,
+      "excess_kg_per_pax": 0.282,
+      "free_kg_per_pax": 8.07
+    },
+    {
+      "year": 2023,
+      "carrier": "AZU",
+      "rows": 285497,
+      "positive_pct": 85.4,
+      "excess_kg_per_pax": 0.281,
+      "free_kg_per_pax": 7.83
+    },
+    {
+      "year": 2024,
+      "carrier": "AZU",
+      "rows": 294386,
+      "positive_pct": 86.7,
+      "excess_kg_per_pax": 0.284,
+      "free_kg_per_pax": 7.77
+    },
+    {
+      "year": 2025,
+      "carrier": "AZU",
+      "rows": 289870,
+      "positive_pct": 72.6,
+      "excess_kg_per_pax": 0.258,
+      "free_kg_per_pax": 7.62
+    },
+    {
+      "year": 2008,
+      "carrier": "GLO",
+      "rows": 216522,
+      "positive_pct": 9.0,
+      "excess_kg_per_pax": 0.313,
+      "free_kg_per_pax": 13.82
+    },
+    {
+      "year": 2009,
+      "carrier": "GLO",
+      "rows": 260520,
+      "positive_pct": 36.1,
+      "excess_kg_per_pax": 0.429,
+      "free_kg_per_pax": 14.33
+    },
+    {
+      "year": 2010,
+      "carrier": "GLO",
+      "rows": 297707,
+      "positive_pct": 67.4,
+      "excess_kg_per_pax": 0.6,
+      "free_kg_per_pax": 13.15
+    },
+    {
+      "year": 2011,
+      "carrier": "GLO",
+      "rows": 314039,
+      "positive_pct": 74.2,
+      "excess_kg_per_pax": 0.694,
+      "free_kg_per_pax": 12.8
+    },
+    {
+      "year": 2012,
+      "carrier": "GLO",
+      "rows": 306146,
+      "positive_pct": 53.2,
+      "excess_kg_per_pax": 0.325,
+      "free_kg_per_pax": 12.08
+    },
+    {
+      "year": 2013,
+      "carrier": "GLO",
+      "rows": 317860,
+      "positive_pct": 10.0,
+      "excess_kg_per_pax": 0.027,
+      "free_kg_per_pax": 11.66
+    },
+    {
+      "year": 2014,
+      "carrier": "GLO",
+      "rows": 319234,
+      "positive_pct": 53.4,
+      "excess_kg_per_pax": 0.351,
+      "free_kg_per_pax": 11.58
+    },
+    {
+      "year": 2015,
+      "carrier": "GLO",
+      "rows": 291424,
+      "positive_pct": 70.9,
+      "excess_kg_per_pax": 0.284,
+      "free_kg_per_pax": 11.39
+    },
+    {
+      "year": 2016,
+      "carrier": "GLO",
+      "rows": 239486,
+      "positive_pct": 67.8,
+      "excess_kg_per_pax": 0.255,
+      "free_kg_per_pax": 11.42
+    },
+    {
+      "year": 2017,
+      "carrier": "GLO",
+      "rows": 251890,
+      "positive_pct": 59.6,
+      "excess_kg_per_pax": 0.149,
+      "free_kg_per_pax": 10.31
+    },
+    {
+      "year": 2018,
+      "carrier": "GLO",
+      "rows": 227470,
+      "positive_pct": 49.4,
+      "excess_kg_per_pax": 0.048,
+      "free_kg_per_pax": 8.93
+    },
+    {
+      "year": 2019,
+      "carrier": "GLO",
+      "rows": 260843,
+      "positive_pct": 24.4,
+      "excess_kg_per_pax": 0.013,
+      "free_kg_per_pax": 6.23
+    },
+    {
+      "year": 2020,
+      "carrier": "GLO",
+      "rows": 118799,
+      "positive_pct": 0.0,
+      "excess_kg_per_pax": 0.0,
+      "free_kg_per_pax": 3.99
+    },
+    {
+      "year": 2021,
+      "carrier": "GLO",
+      "rows": 134021,
+      "positive_pct": 19.5,
+      "excess_kg_per_pax": 0.016,
+      "free_kg_per_pax": 5.84
+    },
+    {
+      "year": 2022,
+      "carrier": "GLO",
+      "rows": 202045,
+      "positive_pct": 41.5,
+      "excess_kg_per_pax": 0.034,
+      "free_kg_per_pax": 8.29
+    },
+    {
+      "year": 2023,
+      "carrier": "GLO",
+      "rows": 222545,
+      "positive_pct": 38.0,
+      "excess_kg_per_pax": 0.029,
+      "free_kg_per_pax": 7.46
+    },
+    {
+      "year": 2024,
+      "carrier": "GLO",
+      "rows": 211078,
+      "positive_pct": 36.7,
+      "excess_kg_per_pax": 0.028,
+      "free_kg_per_pax": 7.25
+    },
+    {
+      "year": 2025,
+      "carrier": "GLO",
+      "rows": 237605,
+      "positive_pct": 31.4,
+      "excess_kg_per_pax": 0.026,
+      "free_kg_per_pax": 6.79
+    },
+    {
+      "year": 2008,
+      "carrier": "ONE",
+      "rows": 27005,
+      "positive_pct": 34.4,
+      "excess_kg_per_pax": 0.211,
+      "free_kg_per_pax": 12.1
+    },
+    {
+      "year": 2009,
+      "carrier": "ONE",
+      "rows": 27517,
+      "positive_pct": 51.4,
+      "excess_kg_per_pax": 0.323,
+      "free_kg_per_pax": 10.79
+    },
+    {
+      "year": 2010,
+      "carrier": "ONE",
+      "rows": 33063,
+      "positive_pct": 49.0,
+      "excess_kg_per_pax": 0.306,
+      "free_kg_per_pax": 10.36
+    },
+    {
+      "year": 2011,
+      "carrier": "ONE",
+      "rows": 40368,
+      "positive_pct": 54.3,
+      "excess_kg_per_pax": 0.304,
+      "free_kg_per_pax": 10.41
+    },
+    {
+      "year": 2012,
+      "carrier": "ONE",
+      "rows": 52196,
+      "positive_pct": 48.1,
+      "excess_kg_per_pax": 0.227,
+      "free_kg_per_pax": 10.44
+    },
+    {
+      "year": 2013,
+      "carrier": "ONE",
+      "rows": 60676,
+      "positive_pct": 37.6,
+      "excess_kg_per_pax": 0.163,
+      "free_kg_per_pax": 10.76
+    },
+    {
+      "year": 2014,
+      "carrier": "ONE",
+      "rows": 66611,
+      "positive_pct": 63.5,
+      "excess_kg_per_pax": 0.312,
+      "free_kg_per_pax": 10.6
+    },
+    {
+      "year": 2015,
+      "carrier": "ONE",
+      "rows": 64998,
+      "positive_pct": 71.1,
+      "excess_kg_per_pax": 0.293,
+      "free_kg_per_pax": 10.09
+    },
+    {
+      "year": 2016,
+      "carrier": "ONE",
+      "rows": 69435,
+      "positive_pct": 69.9,
+      "excess_kg_per_pax": 0.206,
+      "free_kg_per_pax": 10.18
+    },
+    {
+      "year": 2017,
+      "carrier": "ONE",
+      "rows": 86150,
+      "positive_pct": 61.7,
+      "excess_kg_per_pax": 0.11,
+      "free_kg_per_pax": 9.68
+    },
+    {
+      "year": 2018,
+      "carrier": "ONE",
+      "rows": 87065,
+      "positive_pct": 62.4,
+      "excess_kg_per_pax": 0.082,
+      "free_kg_per_pax": 8.95
+    },
+    {
+      "year": 2019,
+      "carrier": "ONE",
+      "rows": 25923,
+      "positive_pct": 51.8,
+      "excess_kg_per_pax": 0.059,
+      "free_kg_per_pax": 7.94
+    },
+    {
+      "year": 2008,
+      "carrier": "PTB",
+      "rows": 10393,
+      "positive_pct": 0.3,
+      "excess_kg_per_pax": 0.03,
+      "free_kg_per_pax": 12.35
+    },
+    {
+      "year": 2009,
+      "carrier": "PTB",
+      "rows": 18701,
+      "positive_pct": 4.1,
+      "excess_kg_per_pax": 0.044,
+      "free_kg_per_pax": 12.18
+    },
+    {
+      "year": 2010,
+      "carrier": "PTB",
+      "rows": 26664,
+      "positive_pct": 8.4,
+      "excess_kg_per_pax": 0.073,
+      "free_kg_per_pax": 12.29
+    },
+    {
+      "year": 2011,
+      "carrier": "PTB",
+      "rows": 29315,
+      "positive_pct": 8.8,
+      "excess_kg_per_pax": 0.067,
+      "free_kg_per_pax": 11.41
+    },
+    {
+      "year": 2012,
+      "carrier": "PTB",
+      "rows": 22953,
+      "positive_pct": 6.2,
+      "excess_kg_per_pax": 0.042,
+      "free_kg_per_pax": 11.02
+    },
+    {
+      "year": 2013,
+      "carrier": "PTB",
+      "rows": 18777,
+      "positive_pct": 2.8,
+      "excess_kg_per_pax": 0.021,
+      "free_kg_per_pax": 10.87
+    },
+    {
+      "year": 2014,
+      "carrier": "PTB",
+      "rows": 22271,
+      "positive_pct": 1.0,
+      "excess_kg_per_pax": 0.019,
+      "free_kg_per_pax": 10.78
+    },
+    {
+      "year": 2015,
+      "carrier": "PTB",
+      "rows": 24573,
+      "positive_pct": 0.7,
+      "excess_kg_per_pax": 0.006,
+      "free_kg_per_pax": 11.01
+    },
+    {
+      "year": 2016,
+      "carrier": "PTB",
+      "rows": 20267,
+      "positive_pct": 0.0,
+      "excess_kg_per_pax": 0.0,
+      "free_kg_per_pax": 11.08
+    },
+    {
+      "year": 2017,
+      "carrier": "PTB",
+      "rows": 16966,
+      "positive_pct": 0.0,
+      "excess_kg_per_pax": 0.0,
+      "free_kg_per_pax": 9.8
+    },
+    {
+      "year": 2018,
+      "carrier": "PTB",
+      "rows": 12598,
+      "positive_pct": 0.0,
+      "excess_kg_per_pax": 0.0,
+      "free_kg_per_pax": 8.42
+    },
+    {
+      "year": 2019,
+      "carrier": "PTB",
+      "rows": 12433,
+      "positive_pct": 0.0,
+      "excess_kg_per_pax": 0.0,
+      "free_kg_per_pax": 7.04
+    },
+    {
+      "year": 2020,
+      "carrier": "PTB",
+      "rows": 7948,
+      "positive_pct": 0.0,
+      "excess_kg_per_pax": 0.0,
+      "free_kg_per_pax": 6.97
+    },
+    {
+      "year": 2021,
+      "carrier": "PTB",
+      "rows": 10197,
+      "positive_pct": 0.0,
+      "excess_kg_per_pax": 0.001,
+      "free_kg_per_pax": 7.94
+    },
+    {
+      "year": 2022,
+      "carrier": "PTB",
+      "rows": 13372,
+      "positive_pct": 0.0,
+      "excess_kg_per_pax": 0.0,
+      "free_kg_per_pax": 6.5
+    },
+    {
+      "year": 2023,
+      "carrier": "PTB",
+      "rows": 16364,
+      "positive_pct": 0.0,
+      "excess_kg_per_pax": 0.0,
+      "free_kg_per_pax": 5.3
+    },
+    {
+      "year": 2024,
+      "carrier": "PTB",
+      "rows": 15294,
+      "positive_pct": 0.0,
+      "excess_kg_per_pax": 0.0,
+      "free_kg_per_pax": 5.15
+    },
+    {
+      "year": 2025,
+      "carrier": "PTB",
+      "rows": 1913,
+      "positive_pct": 0.0,
+      "excess_kg_per_pax": 0.0,
+      "free_kg_per_pax": 5.81
+    },
+    {
+      "year": 2008,
+      "carrier": "TAM",
+      "rows": 264091,
+      "positive_pct": 0.3,
+      "excess_kg_per_pax": 0.001,
+      "free_kg_per_pax": 14.15
+    },
+    {
+      "year": 2009,
+      "carrier": "TAM",
+      "rows": 277847,
+      "positive_pct": 0.4,
+      "excess_kg_per_pax": 0.001,
+      "free_kg_per_pax": 14.71
+    },
+    {
+      "year": 2010,
+      "carrier": "TAM",
+      "rows": 295703,
+      "positive_pct": 0.0,
+      "excess_kg_per_pax": 0.0,
+      "free_kg_per_pax": 14.02
+    },
+    {
+      "year": 2011,
+      "carrier": "TAM",
+      "rows": 305604,
+      "positive_pct": 0.0,
+      "excess_kg_per_pax": 0.0,
+      "free_kg_per_pax": 13.47
+    },
+    {
+      "year": 2012,
+      "carrier": "TAM",
+      "rows": 298751,
+      "positive_pct": 0.0,
+      "excess_kg_per_pax": 0.0,
+      "free_kg_per_pax": 13.67
+    },
+    {
+      "year": 2013,
+      "carrier": "TAM",
+      "rows": 278029,
+      "positive_pct": 0.0,
+      "excess_kg_per_pax": 0.0,
+      "free_kg_per_pax": 13.67
+    },
+    {
+      "year": 2014,
+      "carrier": "TAM",
+      "rows": 270173,
+      "positive_pct": 54.5,
+      "excess_kg_per_pax": 0.233,
+      "free_kg_per_pax": 12.85
+    },
+    {
+      "year": 2015,
+      "carrier": "TAM",
+      "rows": 240346,
+      "positive_pct": 78.9,
+      "excess_kg_per_pax": 0.255,
+      "free_kg_per_pax": 12.65
+    },
+    {
+      "year": 2016,
+      "carrier": "TAM",
+      "rows": 215750,
+      "positive_pct": 77.5,
+      "excess_kg_per_pax": 0.194,
+      "free_kg_per_pax": 12.5
+    },
+    {
+      "year": 2017,
+      "carrier": "TAM",
+      "rows": 225912,
+      "positive_pct": 36.7,
+      "excess_kg_per_pax": 0.067,
+      "free_kg_per_pax": 11.49
+    },
+    {
+      "year": 2018,
+      "carrier": "TAM",
+      "rows": 210681,
+      "positive_pct": 28.6,
+      "excess_kg_per_pax": 0.021,
+      "free_kg_per_pax": 9.99
+    },
+    {
+      "year": 2019,
+      "carrier": "TAM",
+      "rows": 246785,
+      "positive_pct": 0.0,
+      "excess_kg_per_pax": 0.0,
+      "free_kg_per_pax": 8.54
+    },
+    {
+      "year": 2020,
+      "carrier": "TAM",
+      "rows": 107876,
+      "positive_pct": 0.0,
+      "excess_kg_per_pax": 0.0,
+      "free_kg_per_pax": 7.83
+    },
+    {
+      "year": 2021,
+      "carrier": "TAM",
+      "rows": 146669,
+      "positive_pct": 0.0,
+      "excess_kg_per_pax": 0.0,
+      "free_kg_per_pax": 6.42
+    },
+    {
+      "year": 2022,
+      "carrier": "TAM",
+      "rows": 221236,
+      "positive_pct": 0.0,
+      "excess_kg_per_pax": 0.0,
+      "free_kg_per_pax": 6.56
+    },
+    {
+      "year": 2023,
+      "carrier": "TAM",
+      "rows": 255209,
+      "positive_pct": 0.0,
+      "excess_kg_per_pax": 0.0,
+      "free_kg_per_pax": 6.62
+    },
+    {
+      "year": 2024,
+      "carrier": "TAM",
+      "rows": 262450,
+      "positive_pct": 0.0,
+      "excess_kg_per_pax": 0.0,
+      "free_kg_per_pax": 7.63
+    },
+    {
+      "year": 2025,
+      "carrier": "TAM",
+      "rows": 285485,
+      "positive_pct": 0.0,
+      "excess_kg_per_pax": 0.0,
+      "free_kg_per_pax": 8.58
+    },
+    {
+      "year": 2008,
+      "carrier": "TIB",
+      "rows": 45316,
+      "positive_pct": 0.0,
+      "excess_kg_per_pax": 0.0,
+      "free_kg_per_pax": 10.51
+    },
+    {
+      "year": 2009,
+      "carrier": "TIB",
+      "rows": 58867,
+      "positive_pct": 0.0,
+      "excess_kg_per_pax": 0.0,
+      "free_kg_per_pax": 11.07
+    },
+    {
+      "year": 2010,
+      "carrier": "TIB",
+      "rows": 83935,
+      "positive_pct": 6.6,
+      "excess_kg_per_pax": 0.06,
+      "free_kg_per_pax": 10.74
+    },
+    {
+      "year": 2011,
+      "carrier": "TIB",
+      "rows": 111624,
+      "positive_pct": 5.7,
+      "excess_kg_per_pax": 0.037,
+      "free_kg_per_pax": 10.37
+    },
+    {
+      "year": 2012,
+      "carrier": "TIB",
+      "rows": 137569,
+      "positive_pct": 2.0,
+      "excess_kg_per_pax": 0.015,
+      "free_kg_per_pax": 10.64
+    },
+    {
+      "year": 2013,
+      "carrier": "TIB",
+      "rows": 101773,
+      "positive_pct": 64.3,
+      "excess_kg_per_pax": 1.096,
+      "free_kg_per_pax": 8.71
+    },
+    {
+      "year": 2008,
+      "carrier": "WEB",
+      "rows": 14680,
+      "positive_pct": 14.0,
+      "excess_kg_per_pax": 0.054,
+      "free_kg_per_pax": 12.58
+    },
+    {
+      "year": 2009,
+      "carrier": "WEB",
+      "rows": 30151,
+      "positive_pct": 24.8,
+      "excess_kg_per_pax": 0.1,
+      "free_kg_per_pax": 11.31
+    },
+    {
+      "year": 2010,
+      "carrier": "WEB",
+      "rows": 44008,
+      "positive_pct": 23.5,
+      "excess_kg_per_pax": 0.075,
+      "free_kg_per_pax": 10.68
+    },
+    {
+      "year": 2011,
+      "carrier": "WEB",
+      "rows": 51199,
+      "positive_pct": 39.9,
+      "excess_kg_per_pax": 0.169,
+      "free_kg_per_pax": 9.64
+    },
+    {
+      "year": 2012,
+      "carrier": "WEB",
+      "rows": 43595,
+      "positive_pct": 29.1,
+      "excess_kg_per_pax": 0.112,
+      "free_kg_per_pax": 8.82
+    }
+  ],
+  "who_reports_excess_2024": [
+    {
+      "carrier": "AZU",
+      "country": "BRASIL",
+      "rows": 294386,
+      "positive_pct": 86.7,
+      "free_kg_per_pax": 7.77
+    },
+    {
+      "carrier": "TAM",
+      "country": "BRASIL",
+      "rows": 262450,
+      "positive_pct": 0.0,
+      "free_kg_per_pax": 7.63
+    },
+    {
+      "carrier": "GLO",
+      "country": "BRASIL",
+      "rows": 211078,
+      "positive_pct": 36.7,
+      "free_kg_per_pax": 7.25
+    },
+    {
+      "carrier": "ACN",
+      "country": "BRASIL",
+      "rows": 17301,
+      "positive_pct": 10.4,
+      "free_kg_per_pax": 7.03
+    },
+    {
+      "carrier": "PTB",
+      "country": "BRASIL",
+      "rows": 15294,
+      "positive_pct": 0.0,
+      "free_kg_per_pax": 5.15
+    },
+    {
+      "carrier": "TAP",
+      "country": "PORTUGAL",
+      "rows": 9485,
+      "positive_pct": 0.0,
+      "free_kg_per_pax": 0.0
+    },
+    {
+      "carrier": "LAN",
+      "country": "CHILE",
+      "rows": 8815,
+      "positive_pct": 0.0,
+      "free_kg_per_pax": 0.0
+    },
+    {
+      "carrier": "CMP",
+      "country": "PANAMÁ",
+      "rows": 8125,
+      "positive_pct": 0.0,
+      "free_kg_per_pax": 0.0
+    },
+    {
+      "carrier": "ARG",
+      "country": "ARGENTINA",
+      "rows": 7513,
+      "positive_pct": 0.0,
+      "free_kg_per_pax": 0.0
+    },
+    {
+      "carrier": "SKU",
+      "country": "CHILE",
+      "rows": 4300,
+      "positive_pct": 0.0,
+      "free_kg_per_pax": 0.0
+    },
+    {
+      "carrier": "AAL",
+      "country": "ESTADOS UNIDOS DA AMÉRICA",
+      "rows": 4257,
+      "positive_pct": 0.0,
+      "free_kg_per_pax": 0.0
+    },
+    {
+      "carrier": "AVA",
+      "country": "COLÔMBIA",
+      "rows": 4083,
+      "positive_pct": 0.0,
+      "free_kg_per_pax": 0.0
+    },
+    {
+      "carrier": "PAM",
+      "country": "BRASIL",
+      "rows": 3814,
+      "positive_pct": 0.0,
+      "free_kg_per_pax": 5.84
+    },
+    {
+      "carrier": "UAL",
+      "country": "ESTADOS UNIDOS DA AMÉRICA",
+      "rows": 3637,
+      "positive_pct": 0.0,
+      "free_kg_per_pax": 0.0
+    },
+    {
+      "carrier": "JAT",
+      "country": "CHILE",
+      "rows": 3369,
+      "positive_pct": 0.0,
+      "free_kg_per_pax": 0.0
+    }
+  ],
+  "negative_values_by_column": {
+    "lt_combustivel": 95,
+    "kg_payload": 0,
+    "km_distancia": 0,
+    "nr_passag_pagos": 0,
+    "nr_passag_gratis": 0,
+    "kg_bagagem_livre": 0,
+    "kg_bagagem_excesso": 0,
+    "kg_carga_paga": 17,
+    "kg_carga_gratis": 9,
+    "kg_correio": 0,
+    "nr_horas_voadas": 0,
+    "kg_peso": 2,
+    "nr_ask": 0,
+    "nr_atk": 0,
+    "nr_rpk": 0,
+    "nr_rtk": 2,
+    "nr_assentos_ofertados": 0
+  },
+  "outliers": {
+    "departures_after_2025": 1,
+    "gap_over_1_year": 416,
+    "load_factor_over_1": 60260,
+    "load_factor_over_1_5": 12716,
+    "paid_pax_over_a380_max_cert": 18,
+    "seats_over_a380_max_cert": 220,
+    "excess_over_10_tonnes": 91
+  },
+  "model_ready_scope": {
+    "all_rows": 22120241,
+    "operated_unique": 22074908,
+    "passenger_scope": 21058526,
+    "load_factor_scope": 20938830,
+    "hourly_scope": 21038132
+  },
+  "raw_checks": [],
+  "raw_arrival_times_not_valid_clock": [
+    {
+      "hr_chegada_real": "24:00:00",
+      "nm_arquivo": "GLONOV01.txt",
+      "rows": 11
+    },
+    {
+      "hr_chegada_real": "24:00:00",
+      "nm_arquivo": "GLODEZ01.txt",
+      "rows": 4
+    },
+    {
+      "hr_chegada_real": "24:00:00",
+      "nm_arquivo": "SBAMAI11.txt",
+      "rows": 3
+    }
+  ],
+  "raw_invalid_arrival_times": [
+    {
+      "year": 2001,
+      "month": 11,
+      "carrier": "GLO",
+      "nm_arquivo": "GLONOV01.txt",
+      "rows": 11
+    },
+    {
+      "year": 2001,
+      "month": 12,
+      "carrier": "GLO",
+      "nm_arquivo": "GLODEZ01.txt",
+      "rows": 4
+    },
+    {
+      "year": 2011,
+      "month": 5,
+      "carrier": "SBA",
+      "nm_arquivo": "SBAMAI11.txt",
+      "rows": 3
+    }
+  ]
+}
