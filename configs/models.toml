@@ -1,0 +1,30 @@
+# One conservative configuration, fixed before seeing validation results. No hyperparameter search.
+
+[paths]
+output = "models/v1"
+reports = "reports/models"
+
+[training]
+# Early stopping uses the last stretch of training, so 2023 stays a clean evaluation.
+early_stopping_start = "2022-01"
+early_stopping_rounds = 50
+num_boost_round = 3000
+
+[lightgbm]
+objective = "l1"
+metric = "l1"
+learning_rate = 0.03
+num_leaves = 31
+min_data_in_leaf = 200
+feature_fraction = 0.8
+bagging_fraction = 0.8
+bagging_freq = 1
+lambda_l2 = 5.0
+cat_smooth = 20.0
+min_data_per_group = 200
+max_cat_threshold = 32
+seed = 42
+deterministic = true
+force_col_wise = true
+num_threads = 4
+verbosity = -1

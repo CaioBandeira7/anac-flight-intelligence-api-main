@@ -7,7 +7,7 @@ __pycache__/
 *.pth
 
 # Large artifacts that could otherwise appear outside data/
-models/
+/models/
 *.parquet
 *.tmp-*
 

@@ -279,6 +279,7 @@ def build_models(reports: Path) -> list[dict[str, Any]]:
                 "lastTrainedAt": evaluated_at,
             }
         )
+    cards.extend(_lightgbm_cards(reports.parent / "models"))
     cards.append(
         {
             "id": "module-c",
@@ -290,6 +291,37 @@ def build_models(reports: Path) -> list[dict[str, Any]]:
             "lastTrainedAt": None,
         }
     )
+    return cards
+
+
+def _lightgbm_cards(directory: Path) -> list[dict[str, Any]]:
+    """Trained models appear only when a real report exists, labelled with the split."""
+    cards = []
+    for module in CONTRACTS:
+        path = directory / f"module_{module}.json"
+        if not path.exists():
+            continue
+        report = json.loads(path.read_text(encoding="utf-8"))
+        metrics = []
+        for target, item in report["targets"].items():
+            metrics.append(
+                {
+                    "name": f"{item['metric']} ({target})",
+                    "value": item["lightgbm"]["value"],
+                    "evaluatedOn": report["evaluated_on"],
+                }
+            )
+        cards.append(
+            {
+                "id": f"lightgbm-{module}",
+                "name": f"LightGBM: {CONTRACTS[module].title}",
+                "task": ", ".join(report["targets"]),
+                "pipeline": "anac-models train",
+                "status": "available",
+                "metrics": metrics,
+                "lastTrainedAt": report["trained_at"],
+            }
+        )
     return cards
 
 
@@ -388,7 +420,11 @@ def export_all(cfg: FeatureConfig, airports_csv: Path, output: Path) -> dict[str
         "models.json": envelope(
             build_models(cfg.reports),
             generated_at,
-            "Baselines only. No forecasting model has been trained.",
+            (
+                "Metrics come from validation. The final test on 2024-2025 has not been run."
+                if (cfg.reports.parent / "models").exists()
+                else "Baselines only. No forecasting model has been trained."
+            ),
         ),
         "datasets.json": envelope(build_datasets(cfg.processed, version, rows), generated_at),
         "modules.json": envelope(
