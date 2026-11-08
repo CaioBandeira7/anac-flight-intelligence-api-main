@@ -2,9 +2,12 @@
 
 from __future__ import annotations
 
+from collections.abc import Sequence
+from datetime import date
+
 import polars as pl
 
-from anac.features.config import SealedTestError, TimeConfig
+from anac.features.config import SealedTestError, TimeConfig, parse_month
 
 TRAIN = "train"
 PURGED = "purged"
@@ -46,8 +49,19 @@ def withheld_from(time: TimeConfig, *, unseal_test: bool, reason: str | None = N
     return time.test_end + 1
 
 
+def exclude_unknown_targets(frame: pl.DataFrame, unknown_months: Sequence[str]) -> pl.DataFrame:
+    """A missing source month is unknown, even for an otherwise eligible inactive route."""
+    months = [parse_month(month) for month in unknown_months]
+    return frame.filter(~pl.col("target_month").is_in(months)) if months else frame
+
+
 def assert_no_sealed_targets(targets: pl.DataFrame, time: TimeConfig) -> None:
     if targets.is_empty():
         return
-    if targets.select((pl.col("target_month") >= time.test_start).any()).item():
+    if "target_date" in targets.columns:
+        year, month = divmod(time.test_start, 12)
+        sealed = pl.col("target_date") >= date(year, month + 1, 1)
+    else:
+        sealed = pl.col("target_month") >= time.test_start
+    if targets.select(sealed.any()).item():
         raise SealedTestError("targets of the test period are present in this frame")

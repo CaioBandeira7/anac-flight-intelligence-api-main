@@ -29,3 +29,20 @@ Modelling decisions and data versions, in order. Append, do not rewrite.
 12. **Model configuration.** One conservative LightGBM configuration, fixed before seeing validation, with early stopping on 2022 targets rather than on 2023. Frozen in `models/v1`, built from `flights`. The test period was not read.
 13. **Module A.** The LightGBM model did not beat the recent-weekday baseline on validation (difference -0.21 points, interval -0.84 to 0.35). Reported as such, not retuned.
 14. **AI Aviation Analyst validation.** Run against Groq with `openai/gpt-oss-120b`; reports are in `reports/agent/`. Cases 1 and 4 passed after fixes. In case 6, the answer's content was validated on Groq, but its status was fixed afterwards and validated offline with the recorded tool sequence, by decision of the project owner. Answers do not always follow the question's language, which is left for a later stage.
+
+
+## Corrective ML audit on the isolated codex/ml-audit-ifood branch
+
+- Preserve frozen v1 and its reported 2023 scores. Use saved selection predictions for
+  reconciliation; final boosters were refit using eligible 2023 labels and cannot rescore it.
+- Exclude globally missing target months before filling known route inactivity as zero.
+  v1 D fitting included 11,689 pax and 11,692 seats rows with unknown targets. Corrected real
+  training requires a new version and was not run. Its performance impact is not measured.
+- Baseline/model evaluation must reject sealed features and targets, regardless of split labels;
+  the daily guard follows TimeConfig instead of a hardcoded calendar year.
+- Average precision groups tied scores by threshold. Its old order dependence affected the
+  baseline slightly; WAPE/weighted MAE and the LightGBM artifacts are unchanged.
+- Display B signed error with actual-seat weights in percentage points, preserving the historical
+  relative bias field. Label residual population, clipping, sampled scatter and pooled examples.
+- Publish the new audit documentation and errata only on this branch; no merge, push, deploy,
+  model retraining or 2024–2025 scoring is part of this audit.

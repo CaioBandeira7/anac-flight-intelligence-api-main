@@ -231,7 +231,7 @@ export function Histogram({
             const x0 = x(edges[i]);
             const x1 = x(edges[i + 1]);
             const w = (x1 - x0) * (g.narrow ? 0.5 : 0.92);
-            return <rect key={`${g.name}-${i}`} x={x0 + (x1 - x0 - w) / 2} y={y(c)} width={w} height={H - pad.b - y(c)} style={{ fill: g.color, opacity: g.opacity ?? 1 }} />;
+            return <rect key={`${g.name}-${i}`} x={x0 + (x1 - x0 - w) / 2} y={y(c)} width={w} height={H - pad.b - y(c)} style={{ fill: g.color, opacity: g.opacity ?? 1 }}><title>{`${g.name}: ${xFormat(edges[i])} to ${xFormat(edges[i + 1])}; ${c} rows`}</title></rect>;
           }),
         )}
         <line x1={x(0)} x2={x(0)} y1={pad.t} y2={H - pad.b} style={{ stroke: "var(--ink)" }} strokeWidth={1} />
@@ -313,7 +313,7 @@ export function Scatter({
       ))}
       <line x1={sx(ticks[0])} y1={sy(ticks[0])} x2={sx(ticks[4])} y2={sy(ticks[4])} style={{ stroke: "var(--ink)" }} strokeDasharray="3 3" />
       {usable.map((p, i) => (
-        <circle key={i} cx={sx(p.actual)} cy={sy(p.model)} r={2.4} style={{ fill: SERIES_COLORS.model, opacity: 0.45 }} />
+        <circle key={i} cx={sx(p.actual)} cy={sy(p.model)} r={2.4} style={{ fill: SERIES_COLORS.model, opacity: 0.45 }}><title>{`Actual: ${format(p.actual)}; LightGBM: ${format(p.model)}`}</title></circle>
       ))}
       <text x={(W + pad.l) / 2} y={H - 2} textAnchor="middle" className="fill-muted text-[11px]">
         Actual

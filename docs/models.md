@@ -53,3 +53,19 @@ One agent over five fixed, read-only tools (`src/anac/agent/tools.py`): market o
 - **Endpoints:** `GET /v2/analyst/config`, `GET /v2/analyst/status` and `POST /v2/analyst/chat`. `config` only says whether a key is set and never contacts the provider. `status` lists the provider's models, so it is a real request: the dashboard calls it only when the user clicks "Check connection".
 - **Grounding:** sources are attached by the backend from the tools actually called. Every number in an answer must match a tool result, allowing for rounding, unit conversion and integers up to 12. An unmatched number triggers one correction, then a refusal.
 - **Limit of that check:** it verifies that a number exists in the tool results, not that it is attached to the right entity, so a model could still misattribute a real figure.
+
+
+## Corrective ML audit
+
+The current evidence and caveats are in [MODEL_CATALOG](ml/MODEL_CATALOG.md),
+[EXPERIMENT_RESULTS](ml/EXPERIMENT_RESULTS.md), [VISUALIZATION_CATALOG](ml/VISUALIZATION_CATALOG.md),
+[PREDICTION_GUIDE](ml/PREDICTION_GUIDE.md), [ML_ARCHITECTURE](ml/ML_ARCHITECTURE.md) and
+[INTERVIEW_GUIDE](ml/INTERVIEW_GUIDE.md).
+
+The original D loader treated globally missing target months as zero training labels.
+This is corrected for future runs, with regression tests; frozen v1 and its recorded 2023
+scores are unchanged. Those scores do not demonstrate performance of a corrected v2.
+B bias is now presented as signed seat-weighted occupancy error in points, distinct from
+the historical unweighted relative ratio. AP now handles equal scores by shared thresholds.
+Month-cluster CIs have 12 clusters and do not establish future predictive intervals.
+The test was not scored but is not completely blind (decision 3).

@@ -34,7 +34,7 @@ const PROBLEM: Record<TaskKey, { what: string; unit: string; entity: string }> =
     entity: "airport (ICAO)",
   },
   b: {
-    what: "Paid load factor of each route and carrier, 1, 3 and 6 months ahead. A unit is scored only if it flew in the target month.",
+    what: "Paid seat occupancy (paid passengers / seats) by route and carrier, 1, 3 and 6 months ahead. Only units operating in the target month are scored. This is not RPK / ASK.",
     unit: "Route × carrier × month",
     entity: "carrier",
   },
@@ -124,9 +124,21 @@ export function MlShowcase() {
           </div>
         </div>
         <p className="mt-3 text-xs leading-relaxed text-muted">
-          Reproducible from the repository: <code className="font-mono">research/ml-showcase/reproduce.py --refit</code> recomputes every metric and
-          refits the models in memory; <code className="font-mono">analysis.py</code> rebuilds this page&apos;s data.
+          Reproducible from the repository: <code className="font-mono">scripts/audit_ml.py --artifact-root PATH</code> checks saved 2023 predictions without refitting frozen models; <code className="font-mono">analysis.py</code> rebuilds this page&apos;s data.
         </p>
+        <details className="mt-4 rounded-lg border border-line p-3 text-xs leading-relaxed text-muted">
+          <summary className="cursor-pointer font-medium text-ink">How to read this evaluation</summary>
+          <ul className="mt-2 list-disc space-y-1 pl-4">
+            <li>Fitting: 2013–2021, with horizon-specific purging. Early stopping: 2022. Validation: 2023.</li>
+            <li>The 2024–2025 test was not scored. Annual totals were previously inspected, so it is not fully blind.</li>
+            <li>Scores come from selection-stage models. Frozen final boosters were refit on eligible 2023 history and must not be used to rescore this validation.</li>
+            <li>WAPE = total absolute error / total observed volume. 10% WAPE does not mean 90% accuracy. Occupancy MAE is weighted by seats and shown in percentage points.</li>
+            <li>95% intervals resample 12 target-month clusters, 2,000 draws. They are uncertainty estimates for these validation errors, not future prediction intervals.</li>
+            <li>Horizon means months from forecast origin to target; the source-data cutoff is two months before origin. A 1-month horizon therefore uses observations at least 3 reference months before the target.</li>
+            <li>Rows pool multiple horizons: repeated targets are separate forecast tasks, not additional independent passengers or flights.</li>
+            <li>Module C has no trained model. Module D describes carried demand and operated seats, not prices, unconstrained demand or commercial opportunity.</li>
+          </ul>
+        </details>
         <div className="mt-4">
           <MetricTabs options={TASKS} value={key} onChange={setKey} />
         </div>
@@ -144,6 +156,8 @@ function TaskView({ taskKey, task }: { taskKey: TaskKey; task: ShowcaseTask }) {
   const fmtTick = isRatio(taskKey) ? (n: number) => formatPercent(n, 0) : formatCompact;
   const fmtErr = (n: number) => formatError(task, n, 1);
   const problem = PROBLEM[taskKey];
+  const weightedBias = isRatio(taskKey) ? task.seat_weighted_bias : undefined;
+  const points = (n: number) => `${n > 0 ? "+" : ""}${(n * 100).toFixed(2)} pts`;
 
   const monthly = task.monthly.filter((m) => m.horizon === horizon);
   const series: Series[] = [
@@ -167,7 +181,11 @@ function TaskView({ taskKey, task }: { taskKey: TaskKey; task: ShowcaseTask }) {
             value={formatDifference(task, task.difference_vs_best_baseline.value)}
             sub={task.beats_best_baseline ? "Conclusive: interval excludes zero" : "Not conclusive: interval includes zero"}
           />
-          <StatTile label="Bias" value={formatPercent(task.bias.value)} sub={task.bias.value < 0 ? "Under-forecast of the actual total" : "Over-forecast of the actual total"} />
+          <StatTile
+            label={weightedBias ? "Bias, seat-weighted" : isRatio(taskKey) ? "Relative bias, unweighted" : "Bias"}
+            value={weightedBias ? points(weightedBias.value) : formatPercent(task.bias.value)}
+            sub={weightedBias ? "Signed occupancy error in percentage points" : task.bias.value < 0 ? "Under-forecast of the actual total" : "Over-forecast of the actual total"}
+          />
         </div>
         <ul className="mt-5 space-y-1.5 text-[13px] leading-relaxed text-ink-2">
           {findings(task).map((f) => (
@@ -179,6 +197,11 @@ function TaskView({ taskKey, task }: { taskKey: TaskKey; task: ShowcaseTask }) {
         </ul>
       </Card>
 
+      {taskKey.startsWith("d_") && (
+        <Card title="Historical v1 training caveat">
+          <p className="text-[13px] leading-relaxed text-ink-2">The audit found that four globally missing source months were treated as zero targets in v1 route training. The loader is corrected for future runs; frozen models and the 2023 scores shown here are unchanged. A new model version and fresh evaluation are required before adoption.</p>
+        </Card>
+      )}
       <Card
         title="Actual vs predicted, by target month"
         subtitle={isRatio(taskKey) ? "Seat-weighted load factor across all scored units" : `Total ${task.unit} across all scored units`}
@@ -192,6 +215,7 @@ function TaskView({ taskKey, task }: { taskKey: TaskKey; task: ShowcaseTask }) {
           tickFormat={fmtTick}
           tickEvery={1}
         />
+        <p className="mt-3 text-xs leading-relaxed text-muted">X: target month in 2023. Y: {isRatio(taskKey) ? "seat-weighted occupancy, using observed seats for every series" : task.unit}. This selector changes only this monthly chart. Aggregation can hide offsetting unit-level errors; the baseline here is the best overall baseline, which can differ from the best at one horizon.</p>
         <div className="mt-3">
           <Legend series={series} />
         </div>
@@ -201,15 +225,16 @@ function TaskView({ taskKey, task }: { taskKey: TaskKey; task: ShowcaseTask }) {
         <Card title="Error by horizon" subtitle="Lower is better. Every method is scored on the same rows.">
           <DataTable
             caption="Error by horizon"
-            columns={["Horizon", "LightGBM", ...baselineNames, "Bias"]}
+            columns={["Horizon", "LightGBM", ...baselineNames, isRatio(taskKey) ? "Seat-weighted bias (pts)" : "Bias"]}
             alignRight={Array.from({ length: baselineNames.length + 2 }, (_, i) => i + 1)}
             rows={task.by_horizon.map((h) => [
               `${h.horizon} mo`,
               fmtErr(h.model),
               ...baselineNames.map((n) => fmtErr(h.baselines[n])),
-              h.bias_model == null ? "—" : formatPercent(h.bias_model),
+              isRatio(taskKey) && h.seat_weighted_bias_model != null ? points(h.seat_weighted_bias_model) : h.bias_model == null ? "—" : formatPercent(h.bias_model),
             ])}
           />
+          <p className="mt-3 text-xs leading-relaxed text-muted">All other summaries pool horizons. A smaller point estimate alone does not establish an improvement; horizon-specific intervals are documented in the experiment results.</p>
         </Card>
         <Card title="Error by traffic volume" subtitle="Deciles of the unit's level known at the cutoff, never the target. 1 = smallest.">
           <LinesChart
@@ -225,11 +250,12 @@ function TaskView({ taskKey, task }: { taskKey: TaskKey; task: ShowcaseTask }) {
             zero
             tickEvery={1}
           />
+          <p className="mt-3 text-xs leading-relaxed text-muted">X: validation-sample decile of a historical feature. Y: prediction error, lower is better. Decile boundaries are descriptive and estimated on validation; they are not fixed production thresholds.</p>
         </Card>
       </div>
 
       <div className="grid gap-5 xl:grid-cols-2">
-        <Card title={`Largest units, by ${problem.entity}`} subtitle="Error on the 10 largest by volume in 2023">
+        <Card title={`Largest units, by ${problem.entity}`} subtitle="Pooled-horizon error on the 10 largest by observed 2023 volume; a retrospective ranking">
           <PairBars
             baselineName={task.best_baseline}
             format={fmtErr}
@@ -254,6 +280,10 @@ function TaskView({ taskKey, task }: { taskKey: TaskKey; task: ShowcaseTask }) {
               { name: "LightGBM", counts: res.model, color: SERIES_COLORS.model, opacity: 0.9, narrow: true },
             ]}
           />
+          <Legend series={[{name: "LightGBM", color: SERIES_COLORS.model}, {name: task.best_baseline, color: SERIES_COLORS.baseline}]} />
+          <p className="mt-3 text-xs leading-relaxed text-muted">
+            Y: unweighted validation-row count. Positive errors mean over-prediction. {formatNumber(res.rows)} of {formatNumber(task.rows)} rows are included; zero actual volumes are excluded for relative errors. Clipped tails accumulate in the outer bins, while the quantiles below use unclipped errors. This is not a future uncertainty band.
+          </p>
           <p className="mt-3 text-xs leading-relaxed text-muted">
             Median: LightGBM {resFormat(res.model_quantiles.p50)}, baseline {resFormat(res.baseline_quantiles.p50)}. 80% of LightGBM residuals fall between{" "}
             {resFormat(res.model_quantiles.p10)} and {resFormat(res.model_quantiles.p90)}.
@@ -264,19 +294,21 @@ function TaskView({ taskKey, task }: { taskKey: TaskKey; task: ShowcaseTask }) {
       <div className="grid gap-5 xl:grid-cols-2">
         <Card title="Actual vs predicted, row level" subtitle={`Random sample of ${task.scatter.length} validation rows, 1 month ahead${isRatio(taskKey) ? "" : ", log scale"}`}>
           <Scatter points={task.scatter} log={!isRatio(taskKey)} format={fmtTick} label={`${task.title}: actual against LightGBM prediction`} />
+          <p className="mt-3 text-xs leading-relaxed text-muted">X: observed {task.unit}. Y: LightGBM prediction. Below the diagonal means under-prediction. A fixed-seed sample is descriptive, not the data used to compute the headline score. Non-positive pairs are omitted on logarithmic axes.</p>
         </Card>
         <Card title="What the trees split on" subtitle="LightGBM gain importance of the selection model. Not SHAP, not a causal effect.">
           <BarList
             valueFormat={(n) => formatPercent(n, 1)}
             items={Object.entries(task.top_features_by_gain).map(([name, gain]) => ({ label: name, value: gain }))}
           />
+          <p className="mt-3 text-xs leading-relaxed text-muted">Bars show each feature&apos;s share of total training split gain. Only the top 10 are shown, so their shares need not sum to 100%. Correlated features can share or substitute importance; this is not held-out permutation importance or a driver of causal effects.</p>
         </Card>
       </div>
 
       {task.examples && (
         <Card
-          title="Representative hits and misses"
-          subtitle={`Best and worst of the largest units, 1 month ahead`}
+          title="Retrospective hits and misses"
+          subtitle={`Entities picked by pooled error among the ${taskKey === "a" ? "10 busiest airports" : "20 largest routes"}; lines show horizon 1 only. These are selected extremes, not representative samples.`}
           action={
             <MetricTabs
               options={[
@@ -321,7 +353,7 @@ function ExampleChart({
       <p className="mb-3 text-[13.5px] text-ink">
         <span className="font-medium">{example.entity}</span>
         <span className="ml-2 text-muted">
-          {task.metric} {formatError(task, example.model, 1)} (baseline {formatError(task, example.baseline, 1)})
+          Pooled {task.metric} {formatError(task, example.model, 1)} (baseline {formatError(task, example.baseline, 1)})
         </span>
       </p>
       <LinesChart

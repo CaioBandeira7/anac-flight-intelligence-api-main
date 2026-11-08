@@ -14,7 +14,26 @@ Reproduction, error analysis, figures and the technical report for the forecasti
 
 None of them writes to `data/`, `models/`, `reports/`, `src/` or the Parquet files. They import the project's own functions (`load_module_frame`, `compare`, `fit_selection_model`) so the metrics are computed exactly as in training. `--refit` retrains the selection models **in memory only**, to prove that the saved predictions are reproducible.
 
-## Run
+## Corrective audit
+
+The complete current audit is in [docs/ml](../../docs/ml/MODEL_CATALOG.md). It found a D
+missing-target imputation defect, corrected AP tie handling, clarified selection versus final
+boosters and added signed seat-weighted B bias. Frozen artifacts and primary 2023 scores are
+preserved. The existing in-memory refit result below is historical; after correcting the D
+loader it must not be claimed for the current code. See the interview and prediction guides.
+
+Current reproduction without training:
+
+```powershell
+.venv\Scripts\python scripts/audit_ml.py --artifact-root PATH
+.venv\Scripts\python scripts/build_ml_audit_docs.py
+```
+
+`PATH` contains the historical `models/v1` and `data/features/v1`. Outputs stay in this worktree.
+`analysis.py` includes already-exposed 2024–2025 aggregate EDA; it was not rerun in the audit.
+The PDF was rebuilt from corrected Markdown and existing figures, without reading those targets.
+
+## Original research commands (not executed by the corrective audit)
 
 ```powershell
 # repository root; needs the locally built data/features/v1, models/v1 and data/analytics/v1
@@ -26,7 +45,7 @@ None of them writes to `data/`, `models/`, `reports/`, `src/` or the Parquet fil
 
 The PDF is printed by headless Chrome or Edge from the HTML, with no network access.
 
-## Reproduction status (last run)
+## Historical reproduction status (before the loader correction)
 
 | Check | Result |
 |---|---|
@@ -37,6 +56,6 @@ The PDF is printed by headless Chrome or Edge from the HTML, with no network acc
 
 ## In the platform
 
-The dashboard's **ML Studio** (`/dashboard/ml-studio`) reads `web/public/ml/showcase.json`, which holds aggregates only plus a 400-row sample per task. It links to `web/public/ml/report.pdf`. Rerun `analysis.py` and `build_pdf.py` to refresh both.
+The dashboard's **ML Studio** (`/dashboard/ml-studio`) reads `web/public/ml/showcase.json`, which holds aggregates plus a bounded 400-pair validation sample per task. It links to `web/public/ml/report.pdf`. Rerun `analysis.py` and `build_pdf.py` to refresh both.
 
 Work that belongs to the backend (Codex) is listed in [HANDOFF_CODEX.md](HANDOFF_CODEX.md).

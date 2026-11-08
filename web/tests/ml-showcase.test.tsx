@@ -82,7 +82,7 @@ describe("ML Studio showcase", () => {
     fireEvent.click(screen.getByRole("tab", { name: "3 mo ahead" }));
     expect(screen.getByRole("tab", { name: "3 mo ahead" })).toHaveAttribute("aria-selected", "true");
     fireEvent.click(screen.getByRole("tab", { name: "Worst" }));
-    const card = screen.getByText("Representative hits and misses").closest("section") as HTMLElement;
+    const card = screen.getByText("Retrospective hits and misses").closest("section") as HTMLElement;
     expect(within(card).getByText(PAYLOAD.tasks.a.examples?.worst.entity as string)).toBeInTheDocument();
     // There is no form: the page shows verified out-of-sample predictions only.
     expect(screen.queryByRole("textbox")).not.toBeInTheDocument();
@@ -102,5 +102,38 @@ describe("ML Studio showcase", () => {
     render(<MlShowcase />);
     expect(await screen.findByRole("alert")).toHaveTextContent("could not be loaded");
     expect(screen.getByRole("button", { name: /retry/i })).toBeInTheDocument();
+  });
+});
+
+
+describe("audited methodological explanations", () => {
+  it("distinguishes selection validation, final refit, and the partially exposed test", async () => {
+    vi.stubGlobal("fetch", okFetch());
+    render(<MlShowcase />);
+    await screen.findByText("10.10%");
+    expect(screen.getByText(/not fully blind/)).toBeInTheDocument();
+    expect(screen.getByText(/selection-stage models/)).toBeInTheDocument();
+    expect(screen.getByText(/not future prediction intervals/)).toBeInTheDocument();
+    expect(screen.getByText(/not additional independent passengers or flights/)).toBeInTheDocument();
+  });
+
+  it("discloses v1 D missing targets without rewriting its historical validation score", async () => {
+    vi.stubGlobal("fetch", okFetch());
+    render(<MlShowcase />);
+    fireEvent.click(await screen.findByRole("tab", { name: "D · Route passengers" }));
+    expect(await screen.findByText("22.24%")).toBeInTheDocument();
+    expect(screen.getByText(/four globally missing source months were treated as zero targets/)).toBeInTheDocument();
+    expect(screen.getByText(/frozen models and the 2023 scores shown here are unchanged/)).toBeInTheDocument();
+  });
+
+  it("uses signed seat-weighted occupancy bias in points, not the historical relative ratio", async () => {
+    vi.stubGlobal("fetch", okFetch());
+    render(<MlShowcase />);
+    fireEvent.click(await screen.findByRole("tab", { name: "B · Seat occupancy" }));
+    expect(await screen.findByText("-0.05 pts")).toBeInTheDocument();
+    expect(screen.getByText("Bias, seat-weighted")).toBeInTheDocument();
+    expect(screen.getByText(/This is not RPK \/ ASK/)).toBeInTheDocument();
+    expect(PAYLOAD.tasks.b.seat_weighted_bias?.value).toBeLessThan(0);
+    expect(PAYLOAD.tasks.b.bias.value).toBeGreaterThan(0);
   });
 });

@@ -5194,8 +5194,8 @@
    }
   },
   "b": {
-   "title": "Model B: paid load factor by route and carrier",
-   "unit": "load factor",
+   "title": "Model B: paid seat occupancy by route and carrier",
+   "unit": "seat occupancy",
    "rows": 42369,
    "metric": "seat-weighted MAE",
    "lightgbm": {
@@ -5275,7 +5275,8 @@
       "Mean of the last 3 known months": 0.068225
      },
      "bias_model": 0.001591,
-     "bias_best_baseline": -0.022489
+     "bias_best_baseline": -0.022489,
+     "seat_weighted_bias_model": -0.0003609636414512955
     },
     {
      "horizon": 3,
@@ -5287,7 +5288,8 @@
       "Mean of the last 3 known months": 0.074166
      },
      "bias_model": 0.001029,
-     "bias_best_baseline": -0.022029
+     "bias_best_baseline": -0.022029,
+     "seat_weighted_bias_model": -0.0004060165001490541
     },
     {
      "horizon": 6,
@@ -5299,7 +5301,8 @@
       "Mean of the last 3 known months": 0.075653
      },
      "bias_model": -0.001544,
-     "bias_best_baseline": -0.022471
+     "bias_best_baseline": -0.022471,
+     "seat_weighted_bias_model": -0.0008031745625882337
     }
    ],
    "by_volume_decile": [
@@ -6046,6 +6049,14 @@
     "by_entity": "figures/b_by_entity.png",
     "error_by_month": "figures/b_error_by_month.png",
     "feature_gain": "figures/b_feature_gain.png"
+   },
+   "seat_weighted_bias": {
+    "value": -0.0005215167369813678,
+    "ci95": [
+     -0.010506319602747682,
+     0.009230852641249915
+    ],
+    "months": 12
    }
   },
   "d_pax": {
@@ -6239,7 +6250,7 @@
    ],
    "by_entity": [
     {
-     "entity": "SBRJ\u2192SBSP",
+     "entity": "SBRJ→SBSP",
      "volume": 5374623.0,
      "rows": 36,
      "model": 0.137244,
@@ -6247,7 +6258,7 @@
      "bias_model": -0.117433
     },
     {
-     "entity": "SBSP\u2192SBRJ",
+     "entity": "SBSP→SBRJ",
      "volume": 5213901.0,
      "rows": 36,
      "model": 0.133878,
@@ -6255,7 +6266,7 @@
      "bias_model": -0.127022
     },
     {
-     "entity": "SBBR\u2192SBSP",
+     "entity": "SBBR→SBSP",
      "volume": 3356118.0,
      "rows": 36,
      "model": 0.306984,
@@ -6263,7 +6274,7 @@
      "bias_model": -0.306984
     },
     {
-     "entity": "SBSP\u2192SBBR",
+     "entity": "SBSP→SBBR",
      "volume": 3349233.0,
      "rows": 36,
      "model": 0.290127,
@@ -6271,7 +6282,7 @@
      "bias_model": -0.289714
     },
     {
-     "entity": "SBSP\u2192SBPA",
+     "entity": "SBSP→SBPA",
      "volume": 3265863.0,
      "rows": 36,
      "model": 0.231805,
@@ -6279,7 +6290,7 @@
      "bias_model": -0.231796
     },
     {
-     "entity": "SBPA\u2192SBSP",
+     "entity": "SBPA→SBSP",
      "volume": 3238071.0,
      "rows": 36,
      "model": 0.252328,
@@ -6287,7 +6298,7 @@
      "bias_model": -0.252328
     },
     {
-     "entity": "SBCF\u2192SBSP",
+     "entity": "SBCF→SBSP",
      "volume": 2834310.0,
      "rows": 36,
      "model": 0.166649,
@@ -6295,7 +6306,7 @@
      "bias_model": -0.163522
     },
     {
-     "entity": "SBSP\u2192SBCF",
+     "entity": "SBSP→SBCF",
      "volume": 2831019.0,
      "rows": 36,
      "model": 0.169066,
@@ -6303,7 +6314,7 @@
      "bias_model": -0.163389
     },
     {
-     "entity": "SBGR\u2192SBRF",
+     "entity": "SBGR→SBRF",
      "volume": 2613822.0,
      "rows": 36,
      "model": 0.112429,
@@ -6311,7 +6322,7 @@
      "bias_model": -0.103053
     },
     {
-     "entity": "SBRF\u2192SBGR",
+     "entity": "SBRF→SBGR",
      "volume": 2584299.0,
      "rows": 36,
      "model": 0.093328,
@@ -6319,7 +6330,7 @@
      "bias_model": -0.076939
     },
     {
-     "entity": "SBGR\u2192SBPA",
+     "entity": "SBGR→SBPA",
      "volume": 2525652.0,
      "rows": 36,
      "model": 0.111974,
@@ -6327,7 +6338,7 @@
      "bias_model": -0.101824
     },
     {
-     "entity": "SBPA\u2192SBGR",
+     "entity": "SBPA→SBGR",
      "volume": 2492496.0,
      "rows": 36,
      "model": 0.119916,
@@ -6335,7 +6346,7 @@
      "bias_model": -0.119104
     },
     {
-     "entity": "SBSP\u2192SBSV",
+     "entity": "SBSP→SBSV",
      "volume": 2208927.0,
      "rows": 36,
      "model": 0.148284,
@@ -6343,7 +6354,7 @@
      "bias_model": -0.148284
     },
     {
-     "entity": "SBSV\u2192SBSP",
+     "entity": "SBSV→SBSP",
      "volume": 2184285.0,
      "rows": 36,
      "model": 0.142172,
@@ -6351,7 +6362,7 @@
      "bias_model": -0.129053
     },
     {
-     "entity": "SBSP\u2192SBCT",
+     "entity": "SBSP→SBCT",
      "volume": 2157657.0,
      "rows": 36,
      "model": 0.216718,
@@ -6359,7 +6370,7 @@
      "bias_model": -0.211058
     },
     {
-     "entity": "SBCT\u2192SBSP",
+     "entity": "SBCT→SBSP",
      "volume": 2130624.0,
      "rows": 36,
      "model": 0.21526,
@@ -6367,7 +6378,7 @@
      "bias_model": -0.207483
     },
     {
-     "entity": "SBCF\u2192SBGR",
+     "entity": "SBCF→SBGR",
      "volume": 2078307.0,
      "rows": 36,
      "model": 0.092187,
@@ -6375,7 +6386,7 @@
      "bias_model": -0.035159
     },
     {
-     "entity": "SBGR\u2192SBCF",
+     "entity": "SBGR→SBCF",
      "volume": 2047425.0,
      "rows": 36,
      "model": 0.100663,
@@ -6383,7 +6394,7 @@
      "bias_model": -0.0364
     },
     {
-     "entity": "SBSP\u2192SBFL",
+     "entity": "SBSP→SBFL",
      "volume": 1862643.0,
      "rows": 36,
      "model": 0.226824,
@@ -6391,7 +6402,7 @@
      "bias_model": -0.226824
     },
     {
-     "entity": "SBBR\u2192SBRJ",
+     "entity": "SBBR→SBRJ",
      "volume": 1839075.0,
      "rows": 36,
      "model": 0.207995,
@@ -6399,7 +6410,7 @@
      "bias_model": -0.013079
     },
     {
-     "entity": "SBFL\u2192SBSP",
+     "entity": "SBFL→SBSP",
      "volume": 1834275.0,
      "rows": 36,
      "model": 0.206147,
@@ -6407,7 +6418,7 @@
      "bias_model": -0.204409
     },
     {
-     "entity": "SBGR\u2192SBCT",
+     "entity": "SBGR→SBCT",
      "volume": 1822482.0,
      "rows": 36,
      "model": 0.072071,
@@ -6415,7 +6426,7 @@
      "bias_model": -0.033311
     },
     {
-     "entity": "SBCT\u2192SBGR",
+     "entity": "SBCT→SBGR",
      "volume": 1804269.0,
      "rows": 36,
      "model": 0.068545,
@@ -6423,7 +6434,7 @@
      "bias_model": -0.017709
     },
     {
-     "entity": "SBRJ\u2192SBBR",
+     "entity": "SBRJ→SBBR",
      "volume": 1799574.0,
      "rows": 36,
      "model": 0.208682,
@@ -6431,7 +6442,7 @@
      "bias_model": -0.046723
     },
     {
-     "entity": "SBBR\u2192SBGR",
+     "entity": "SBBR→SBGR",
      "volume": 1770564.0,
      "rows": 36,
      "model": 0.084095,
@@ -6933,7 +6944,7 @@
    },
    "examples": {
     "best": {
-     "entity": "SBCF\u2192SBGR",
+     "entity": "SBCF→SBGR",
      "model": 0.092187,
      "baseline": 0.138525,
      "points": [
@@ -7012,7 +7023,7 @@
      ]
     },
     "worst": {
-     "entity": "SBBR\u2192SBSP",
+     "entity": "SBBR→SBSP",
      "model": 0.306984,
      "baseline": 0.30769,
      "points": [
@@ -7283,7 +7294,7 @@
    ],
    "by_entity": [
     {
-     "entity": "SBRJ\u2192SBSP",
+     "entity": "SBRJ→SBSP",
      "volume": 7734642.0,
      "rows": 36,
      "model": 0.185242,
@@ -7291,7 +7302,7 @@
      "bias_model": -0.175903
     },
     {
-     "entity": "SBSP\u2192SBRJ",
+     "entity": "SBSP→SBRJ",
      "volume": 7688175.0,
      "rows": 36,
      "model": 0.194039,
@@ -7299,7 +7310,7 @@
      "bias_model": -0.19108
     },
     {
-     "entity": "SBSP\u2192SBBR",
+     "entity": "SBSP→SBBR",
      "volume": 4612623.0,
      "rows": 36,
      "model": 0.298969,
@@ -7307,7 +7318,7 @@
      "bias_model": -0.297481
     },
     {
-     "entity": "SBBR\u2192SBSP",
+     "entity": "SBBR→SBSP",
      "volume": 4588233.0,
      "rows": 36,
      "model": 0.298412,
@@ -7315,7 +7326,7 @@
      "bias_model": -0.295595
     },
     {
-     "entity": "SBSP\u2192SBPA",
+     "entity": "SBSP→SBPA",
      "volume": 4380348.0,
      "rows": 36,
      "model": 0.25625,
@@ -7323,7 +7334,7 @@
      "bias_model": -0.252759
     },
     {
-     "entity": "SBPA\u2192SBSP",
+     "entity": "SBPA→SBSP",
      "volume": 4373142.0,
      "rows": 36,
      "model": 0.263034,
@@ -7331,7 +7342,7 @@
      "bias_model": -0.260052
     },
     {
-     "entity": "SBSP\u2192SBCF",
+     "entity": "SBSP→SBCF",
      "volume": 3872961.0,
      "rows": 36,
      "model": 0.198454,
@@ -7339,7 +7350,7 @@
      "bias_model": -0.198454
     },
     {
-     "entity": "SBCF\u2192SBSP",
+     "entity": "SBCF→SBSP",
      "volume": 3867861.0,
      "rows": 36,
      "model": 0.193619,
@@ -7347,7 +7358,7 @@
      "bias_model": -0.193619
     },
     {
-     "entity": "SBGR\u2192SBPA",
+     "entity": "SBGR→SBPA",
      "volume": 3242088.0,
      "rows": 36,
      "model": 0.11436,
@@ -7355,7 +7366,7 @@
      "bias_model": -0.097702
     },
     {
-     "entity": "SBPA\u2192SBGR",
+     "entity": "SBPA→SBGR",
      "volume": 3213993.0,
      "rows": 36,
      "model": 0.116912,
@@ -7363,7 +7374,7 @@
      "bias_model": -0.094948
     },
     {
-     "entity": "SBSP\u2192SBCT",
+     "entity": "SBSP→SBCT",
      "volume": 3138009.0,
      "rows": 36,
      "model": 0.241363,
@@ -7371,7 +7382,7 @@
      "bias_model": -0.241363
     },
     {
-     "entity": "SBCT\u2192SBSP",
+     "entity": "SBCT→SBSP",
      "volume": 3109572.0,
      "rows": 36,
      "model": 0.232838,
@@ -7379,7 +7390,7 @@
      "bias_model": -0.232838
     },
     {
-     "entity": "SBGR\u2192SBRF",
+     "entity": "SBGR→SBRF",
      "volume": 3093147.0,
      "rows": 36,
      "model": 0.133618,
@@ -7387,7 +7398,7 @@
      "bias_model": -0.133127
     },
     {
-     "entity": "SBRF\u2192SBGR",
+     "entity": "SBRF→SBGR",
      "volume": 3072750.0,
      "rows": 36,
      "model": 0.119253,
@@ -7395,7 +7406,7 @@
      "bias_model": -0.117242
     },
     {
-     "entity": "SBCF\u2192SBGR",
+     "entity": "SBCF→SBGR",
      "volume": 2631864.0,
      "rows": 36,
      "model": 0.1061,
@@ -7403,7 +7414,7 @@
      "bias_model": -0.028938
     },
     {
-     "entity": "SBGR\u2192SBCF",
+     "entity": "SBGR→SBCF",
      "volume": 2611992.0,
      "rows": 36,
      "model": 0.110526,
@@ -7411,7 +7422,7 @@
      "bias_model": -0.04921
     },
     {
-     "entity": "SBSP\u2192SBSV",
+     "entity": "SBSP→SBSV",
      "volume": 2603340.0,
      "rows": 36,
      "model": 0.154359,
@@ -7419,7 +7430,7 @@
      "bias_model": -0.153195
     },
     {
-     "entity": "SBSV\u2192SBSP",
+     "entity": "SBSV→SBSP",
      "volume": 2586249.0,
      "rows": 36,
      "model": 0.163577,
@@ -7427,7 +7438,7 @@
      "bias_model": -0.153743
     },
     {
-     "entity": "SBSP\u2192SBFL",
+     "entity": "SBSP→SBFL",
      "volume": 2452896.0,
      "rows": 36,
      "model": 0.227848,
@@ -7435,7 +7446,7 @@
      "bias_model": -0.227848
     },
     {
-     "entity": "SBFL\u2192SBSP",
+     "entity": "SBFL→SBSP",
      "volume": 2415507.0,
      "rows": 36,
      "model": 0.213864,
@@ -7443,7 +7454,7 @@
      "bias_model": -0.213864
     },
     {
-     "entity": "SBBR\u2192SBRJ",
+     "entity": "SBBR→SBRJ",
      "volume": 2384682.0,
      "rows": 36,
      "model": 0.235862,
@@ -7451,7 +7462,7 @@
      "bias_model": -0.012815
     },
     {
-     "entity": "SBCT\u2192SBGR",
+     "entity": "SBCT→SBGR",
      "volume": 2375661.0,
      "rows": 36,
      "model": 0.063834,
@@ -7459,7 +7470,7 @@
      "bias_model": -0.024833
     },
     {
-     "entity": "SBGR\u2192SBCT",
+     "entity": "SBGR→SBCT",
      "volume": 2368983.0,
      "rows": 36,
      "model": 0.064338,
@@ -7467,7 +7478,7 @@
      "bias_model": -0.026873
     },
     {
-     "entity": "SBRJ\u2192SBBR",
+     "entity": "SBRJ→SBBR",
      "volume": 2342865.0,
      "rows": 36,
      "model": 0.249742,
@@ -7475,7 +7486,7 @@
      "bias_model": -0.036469
     },
     {
-     "entity": "SBBR\u2192SBGR",
+     "entity": "SBBR→SBGR",
      "volume": 2218383.0,
      "rows": 36,
      "model": 0.075925,

@@ -101,13 +101,21 @@ def average_precision(labels: list[bool], scores: list[float]) -> float | None:
     positives = sum(labels)
     if not positives:
         return None
+    # Average precision is a sum over distinct score thresholds, not arbitrary
+    # row order inside ties. Each tied group changes recall in a single step.
     ordered = sorted(zip(scores, labels, strict=True), key=lambda pair: -pair[0])
-    hits = 0
+    hits = seen = 0
     total = 0.0
-    for rank, (_, label) in enumerate(ordered, start=1):
-        if label:
-            hits += 1
-            total += hits / rank
+    index = 0
+    while index < len(ordered):
+        end = index + 1
+        while end < len(ordered) and ordered[end][0] == ordered[index][0]:
+            end += 1
+        group_hits = sum(label for _, label in ordered[index:end])
+        hits += group_hits
+        seen += end - index
+        total += group_hits * hits / seen
+        index = end
     return total / positives
 
 
