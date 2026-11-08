@@ -1,40 +1,25 @@
-# ANAC Flight Intelligence — portfolio summary (English)
+# ANAC Flight Intelligence — portfolio overview
 
-Cover: `assets/cover/cover-github-1280x640-en.jpg` · Deck: `presentation/anac-flight-intelligence-summary-en.pdf`
+[Live dashboard](https://anac-flight-intelligence-api-main.vercel.app/dashboard) · [English presentation](presentation/anac-flight-intelligence-presentation-en.pdf) · [Source repository](https://github.com/CaioBandeira7/anac-flight-intelligence-api-main)
 
-**Live:** [anac-flight-intelligence-api-main.vercel.app](https://anac-flight-intelligence-api-main.vercel.app) · **Code:** [github.com/CaioBandeira7/anac-flight-intelligence-api-main](https://github.com/CaioBandeira7/anac-flight-intelligence-api-main)
-
-## One line
-
-A data and machine-learning platform on Brazil's open aviation data (ANAC, 2000–2025): audited ingestion, an analytics dashboard, forecasting models tested honestly against baselines, and an AI analyst that answers only from the data and checks every number.
-
-## The problem
-
-ANAC publishes every Brazilian flight leg since 2000, about 20 GB of open data. Correct answers are hard to get from it. Flights, passenger flights and aircraft movements are different counts. Routes are directed. Load factor cannot be averaged. Four months are missing from the source and must never read as zero.
+An end-to-end platform that turns 22,120,241 ANAC aviation records (2000–2025) into traceable market analysis, temporal model evaluation and a tool-grounded AI analyst.
 
 ## What I built
 
-- **Data engineering:** 22,120,241 rows ingested into Parquet in 8 minutes with a 2.37 GB memory peak, none rejected, and re-read by an independent audit script that shares no code with the pipeline. Analytical star schema with 3 dimensions and 4 fact tables.
-- **Dashboard (Next.js 16, React 19, TypeScript):** market, airports, routes and airlines for any period. 2025: 131.6M paid passengers (+9.7% year over year), 976.4K flights, 82.1% load factor.
-- **Machine learning (LightGBM):** chronological splits, point-in-time features with a 2-month publication lag, and a strict adoption rule: a model must beat its best baseline with a 95% block-bootstrap interval excluding zero.
+- Audited, resumable ingestion of approximately 20 GB into monthly Parquet, with independent read-back and explicit line accounting. Historical run: 308 observed months and no rejected records; suspicious values remain flagged rather than silently corrected.
+- A seven-table analytical layer with directed routes, explicit passenger scopes and missing-month handling. FastAPI serves read-only data; Next.js provides market, airport, route and airline views.
+- Four LightGBM regressors compared with ten baseline references on saved 2023 selection-model predictions. A retains its baseline because the improvement is inconclusive. B records 6.06 pp seat-weighted MAE against 6.54 pp; D records 22.24% passenger and 22.40% seat WAPE against 25.31% and 25.73%.
+- A Groq tool-calling analyst with five fixed read-only tools, code-attached sources, heuristic numeric verification and per-process usage limits. Unsupported drafts receive one correction attempt and then a refusal.
+- Docker/Render backend and Next.js/Vercel frontend. Consolidated validation: 368 Python passed, 11 skipped; 91 frontend passed; lint, types and build passed.
 
-  | Task (2023 validation) | Model | Best baseline | Verdict |
-  |---|---|---|---|
-  | Daily movements, 50 busiest airports | WAPE 10.10% | 10.30% | Not conclusive, baseline kept |
-  | Load factor by route and carrier | MAE 6.06 pts | 6.54 pts | Better |
-  | Monthly passengers by route | WAPE 22.24% | 25.31% | Better; 18.7% vs 24.1% at 1 month |
+## Limits I can defend
 
-- **AI analyst (Groq, `openai/gpt-oss-120b`):** five fixed read-only tools, sources attached by code, a numeric verifier that refuses drafts with unsupported figures, the API key server-side only, and rate limits of 10 questions per visitor per hour and 200 per day.
-- **Deployment:** FastAPI in Docker on Render, dashboard on Vercel.
+The 2024–2025 holdout was partially exposed but not scored. Historical D training treated four globally missing months as zero; the loader is fixed, but v1 has not been retrained and its historical metrics do not measure the correction. D under-forecasts by approximately 12% and does not show a gain at every horizon. C is not trained. These results are validation, not future forecasts; no operational prediction endpoint exists.
 
-## Limits stated up front
+Seat occupancy is paid passengers/seats, not RPK/ASK. The verifier checks numeric membership, not guaranteed entity/metric attribution. Rate-limit counters are in memory per process. There are no fares or prices in the data.
 
-- The route-demand model under-forecasts by about 12% and is worse than the baseline at 6 months ahead.
-- The final 2024–2025 test is sealed and has not been run. Results are validation, not forecasts; no prediction endpoint exists.
-- The numeric verifier is heuristic: it checks that each figure belongs to the entity and metric it is attached to, but cannot guarantee every association.
+## Ownership and AI-assisted work
 
-## How it was built
+I directed the product scope, counting rules, methodological decisions and review. Claude Code and Codex implemented and reviewed work under written constraints, isolated branches and explicit human approvals. I do not claim a measured productivity improvement or commercial impact.
 
-With Claude Code and Codex working under written rules (`AGENTS.md`): separate ownership per directory, a contract-first API, no invented data, and every stage approved by me.
-
-**Stack:** Python 3.12 · Polars · DuckDB · Parquet · LightGBM · FastAPI · Docker · Render · Next.js 16 · React 19 · TypeScript · Tailwind 4 · Vercel · Groq
+[Evidence and reproducibility](VALIDATION.md) · [Technical case study](CASE_STUDY.md) · [Model catalog](../ml/en/MODEL_CATALOG.md)

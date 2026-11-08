@@ -1,0 +1,6 @@
+# Preserve document and image bytes; do not apply line-ending conversion or textual diffs.
+*.pdf binary
+*.pptx binary
+*.png binary
+*.jpg binary
+*.jpeg binary

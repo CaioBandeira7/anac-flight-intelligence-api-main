@@ -1,29 +1,18 @@
-# Descrição para currículo
+# CV-ready project description
 
-## Português (3 linhas)
+**ANAC Flight Intelligence** — Python, Polars, DuckDB, LightGBM, FastAPI, Next.js, Groq
+[Live application](https://anac-flight-intelligence-api-main.vercel.app/dashboard) · [GitHub](https://github.com/CaioBandeira7/anac-flight-intelligence-api-main)
 
-**ANAC Flight Intelligence** · Python, Polars, DuckDB, LightGBM, FastAPI, Next.js, Groq · [anac-flight-intelligence-api-main.vercel.app](https://anac-flight-intelligence-api-main.vercel.app)
-- Plataforma de dados e ML sobre 22,1 mi de registros de voo da ANAC (2000–2025): ingestão auditada em Parquet, esquema estrela, API somente leitura em Docker (Render) e dashboard Next.js (Vercel).
-- Modelos LightGBM validados contra baselines com IC 95%; na demanda por rota, WAPE de 18,7% vs 24,1% a 1 mês. Onde o ganho não foi conclusivo, o baseline foi mantido.
-- AI Analyst com LLM (Groq) restrito a ferramentas fixas, verificação numérica das respostas e limite de uso por visitante.
+- Directed development of an end-to-end aviation data platform over **22,120,241 ANAC records**, with audited Parquet ingestion, a seven-table analytical layer and a deployed FastAPI/Next.js application.
+- Evaluated **four LightGBM regressors against ten baseline references** using chronological validation; kept the airport baseline when its improvement was inconclusive and documented the route-model training limitation without claiming corrected-model performance.
+- Integrated a **tool-calling AI analyst** with fixed read-only tools, heuristic numeric verification and usage limits; validated the consolidated application with **368 Python tests passed (11 skipped) and 91 frontend tests passed**.
 
-## English (3 lines)
+## One-line version
 
-**ANAC Flight Intelligence** · Python, Polars, DuckDB, LightGBM, FastAPI, Next.js, Groq · [anac-flight-intelligence-api-main.vercel.app](https://anac-flight-intelligence-api-main.vercel.app)
-- Data and ML platform on 22.1M ANAC flight records (2000–2025): audited Parquet ingestion, star schema, read-only API in Docker (Render) and a Next.js dashboard (Vercel).
-- LightGBM models validated against baselines with 95% intervals; route demand WAPE 18.7% vs 24.1% one month ahead. Where the gain was not conclusive, the baseline was kept.
-- LLM analyst (Groq) restricted to fixed tools, with numeric verification of answers and per-visitor rate limits.
+Built an audited aviation data and ML portfolio with a deployed dashboard, honest temporal evaluation and a tool-grounded generative AI analyst.
 
-## Uma linha (formulários e perfil)
+## Interview disclosure
 
-Plataforma de dados, ML e IA generativa sobre a aviação brasileira, publicada e com cada número verificável.
+Implementation was AI-assisted with Claude Code and Codex under my direction, review and publication approval. Results are historical 2023 validation, not future forecasts. D has not been retrained after its loader correction; the holdout is partially exposed but unscored; C is not trained. No business-impact or model-accuracy percentage is inferred from WAPE.
 
-## Para o processo iFood GenAI Internship
-
-Pontos do projeto que conversam com uma vaga de IA generativa, todos verificáveis no repositório ou no site:
-
-- **LLM com ferramentas (tool calling):** o analista só acessa dados por 5 funções fixas e validadas (`src/anac/agent/tools.py`); argumentos fora do esquema são recusados.
-- **Controle de alucinação:** cada número da resposta é conferido contra o resultado da ferramenta que o originou (`src/anac/agent/verification.py`); rascunhos reprovados são reescritos uma vez e, se falharem de novo, recusados.
-- **Avaliação:** casos reais gravados e conferidos por um caminho independente (`docs/portfolio/ANALYST_DEMO.md`).
-- **Produção:** chave apenas no servidor, limite de 10 perguntas por hora por visitante e 200 por dia, 429 com `Retry-After`, IP do cliente lido do cabeçalho da borda (Cloudflare); um valor enviado pelo próprio visitante é bloqueado antes de chegar à API (testado em 2026-11-08).
-- **Honestidade metodológica no ML:** baseline mantido onde o modelo não vence; viés e horizontes ruins documentados.
+Use these bullets only where they accurately describe your role. Do not add credentials, employment or outcomes not evidenced here. [Full evidence](VALIDATION.md) · [Secondary Portuguese CV](pt-BR/CV.md).

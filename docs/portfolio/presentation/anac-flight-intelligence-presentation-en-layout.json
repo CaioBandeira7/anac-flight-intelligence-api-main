@@ -1,0 +1,1019 @@
+[
+  {
+    "slide": 1,
+    "text": "BRAZILIAN AVIATION · DATA, ML AND GENERATIVE AI",
+    "x": 42,
+    "y": 28,
+    "width": 870,
+    "height": 20,
+    "font_size": 10
+  },
+  {
+    "slide": 1,
+    "text": "ANAC Flight Intelligence",
+    "x": 42,
+    "y": 64,
+    "width": 876,
+    "height": 85,
+    "font_size": 30
+  },
+  {
+    "slide": 1,
+    "text": "Caio Bandeira · github.com/CaioBandeira7/anac-flight-intelligence-api-main",
+    "x": 42,
+    "y": 508,
+    "width": 820,
+    "height": 18,
+    "font_size": 8.5
+  },
+  {
+    "slide": 1,
+    "text": "01",
+    "x": 886,
+    "y": 506,
+    "width": 32,
+    "height": 22,
+    "font_size": 11
+  },
+  {
+    "slide": 1,
+    "text": "22,120,241 records.\nTraceable analysis.\nHonest model evaluation.",
+    "x": 42,
+    "y": 169,
+    "width": 440,
+    "height": 145,
+    "font_size": 27
+  },
+  {
+    "slide": 1,
+    "text": "Audited ingestion, an analytical dashboard and a tool-grounded AI analyst.",
+    "x": 42,
+    "y": 330,
+    "width": 430,
+    "height": 100,
+    "font_size": 18
+  },
+  {
+    "slide": 1,
+    "text": "anac-flight-intelligence-api-main.vercel.app",
+    "x": 42,
+    "y": 454,
+    "width": 860,
+    "height": 26,
+    "font_size": 14
+  },
+  {
+    "slide": 2,
+    "text": "01 / PROBLEM",
+    "x": 42,
+    "y": 28,
+    "width": 870,
+    "height": 20,
+    "font_size": 10
+  },
+  {
+    "slide": 2,
+    "text": "Correct numbers need explicit rules",
+    "x": 42,
+    "y": 64,
+    "width": 876,
+    "height": 85,
+    "font_size": 30
+  },
+  {
+    "slide": 2,
+    "text": "Sources: docs/ingestion.md · docs/analytics.md",
+    "x": 42,
+    "y": 508,
+    "width": 820,
+    "height": 18,
+    "font_size": 8.5
+  },
+  {
+    "slide": 2,
+    "text": "02",
+    "x": 886,
+    "y": 506,
+    "width": 32,
+    "height": 22,
+    "font_size": 11
+  },
+  {
+    "slide": 2,
+    "text": "Different counts",
+    "x": 42,
+    "y": 160,
+    "width": 405,
+    "height": 36,
+    "font_size": 18
+  },
+  {
+    "slide": 2,
+    "text": "Flights, passenger flights and airport movements are not interchangeable.",
+    "x": 42,
+    "y": 199,
+    "width": 405,
+    "height": 94,
+    "font_size": 16
+  },
+  {
+    "slide": 2,
+    "text": "Directed routes",
+    "x": 508,
+    "y": 160,
+    "width": 405,
+    "height": 36,
+    "font_size": 18
+  },
+  {
+    "slide": 2,
+    "text": "CGH → SDU and SDU → CGH are separate markets. Passengers count per leg.",
+    "x": 508,
+    "y": 199,
+    "width": 405,
+    "height": 94,
+    "font_size": 16
+  },
+  {
+    "slide": 2,
+    "text": "Different ratios",
+    "x": 42,
+    "y": 325,
+    "width": 405,
+    "height": 36,
+    "font_size": 18
+  },
+  {
+    "slide": 2,
+    "text": "Seat Occupancy = paid passengers / seats. Passenger Load Factor = RPK / ASK.",
+    "x": 42,
+    "y": 364,
+    "width": 405,
+    "height": 94,
+    "font_size": 16
+  },
+  {
+    "slide": 2,
+    "text": "Unknown is not zero",
+    "x": 508,
+    "y": 325,
+    "width": 405,
+    "height": 36,
+    "font_size": 18
+  },
+  {
+    "slide": 2,
+    "text": "Four globally absent months remain gaps. Partial annual totals need explicit labels.",
+    "x": 508,
+    "y": 364,
+    "width": 405,
+    "height": 94,
+    "font_size": 16
+  },
+  {
+    "slide": 3,
+    "text": "02 / DATA ENGINEERING",
+    "x": 42,
+    "y": 28,
+    "width": 870,
+    "height": 20,
+    "font_size": 10
+  },
+  {
+    "slide": 3,
+    "text": "An audited data foundation",
+    "x": 42,
+    "y": 64,
+    "width": 876,
+    "height": 85,
+    "font_size": 30
+  },
+  {
+    "slide": 3,
+    "text": "Sources: reports/ingestion/quality_report.json · reports/analytics/validation.json",
+    "x": 42,
+    "y": 508,
+    "width": 820,
+    "height": 18,
+    "font_size": 8.5
+  },
+  {
+    "slide": 3,
+    "text": "03",
+    "x": 886,
+    "y": 506,
+    "width": 32,
+    "height": 22,
+    "font_size": 11
+  },
+  {
+    "slide": 3,
+    "text": "22,120,241",
+    "x": 42,
+    "y": 160,
+    "width": 280,
+    "height": 60,
+    "font_size": 31
+  },
+  {
+    "slide": 3,
+    "text": "records processed",
+    "x": 42,
+    "y": 224,
+    "width": 280,
+    "height": 64,
+    "font_size": 16
+  },
+  {
+    "slide": 3,
+    "text": "308",
+    "x": 354,
+    "y": 160,
+    "width": 280,
+    "height": 60,
+    "font_size": 31
+  },
+  {
+    "slide": 3,
+    "text": "observed months / 312 calendar months",
+    "x": 354,
+    "y": 224,
+    "width": 280,
+    "height": 64,
+    "font_size": 16
+  },
+  {
+    "slide": 3,
+    "text": "7",
+    "x": 666,
+    "y": 160,
+    "width": 280,
+    "height": 60,
+    "font_size": 31
+  },
+  {
+    "slide": 3,
+    "text": "analytics tables: 3 dimensions + 4 facts",
+    "x": 666,
+    "y": 224,
+    "width": 280,
+    "height": 64,
+    "font_size": 16
+  },
+  {
+    "slide": 3,
+    "text": "Bounded chunks → validation flags → atomic Parquet publication → independent DuckDB read-back.",
+    "x": 62,
+    "y": 337,
+    "width": 832,
+    "height": 64,
+    "font_size": 19
+  },
+  {
+    "slide": 3,
+    "text": "Historical full-run evidence, not a new 20 GB rebuild for this presentation.",
+    "x": 62,
+    "y": 410,
+    "width": 832,
+    "height": 29,
+    "font_size": 13
+  },
+  {
+    "slide": 4,
+    "text": "03 / ARCHITECTURE",
+    "x": 42,
+    "y": 28,
+    "width": 870,
+    "height": 20,
+    "font_size": 10
+  },
+  {
+    "slide": 4,
+    "text": "One source, separate analytical paths",
+    "x": 42,
+    "y": 64,
+    "width": 876,
+    "height": 85,
+    "font_size": 30
+  },
+  {
+    "slide": 4,
+    "text": "Sources: docs/ml/en/ML_ARCHITECTURE.md · src/anac/ · web/",
+    "x": 42,
+    "y": 508,
+    "width": 820,
+    "height": 18,
+    "font_size": 8.5
+  },
+  {
+    "slide": 4,
+    "text": "04",
+    "x": 886,
+    "y": 506,
+    "width": 32,
+    "height": 22,
+    "font_size": 11
+  },
+  {
+    "slide": 4,
+    "text": "ANAC CSV",
+    "x": 54,
+    "y": 178,
+    "width": 140,
+    "height": 29,
+    "font_size": 17
+  },
+  {
+    "slide": 4,
+    "text": "~20 GB",
+    "x": 54,
+    "y": 212,
+    "width": 140,
+    "height": 26,
+    "font_size": 13
+  },
+  {
+    "slide": 4,
+    "text": "Parquet",
+    "x": 232,
+    "y": 178,
+    "width": 140,
+    "height": 29,
+    "font_size": 17
+  },
+  {
+    "slide": 4,
+    "text": "Audited flights",
+    "x": 232,
+    "y": 212,
+    "width": 140,
+    "height": 26,
+    "font_size": 13
+  },
+  {
+    "slide": 4,
+    "text": "Analytics",
+    "x": 410,
+    "y": 178,
+    "width": 140,
+    "height": 29,
+    "font_size": 17
+  },
+  {
+    "slide": 4,
+    "text": "Star schema",
+    "x": 410,
+    "y": 212,
+    "width": 140,
+    "height": 26,
+    "font_size": 13
+  },
+  {
+    "slide": 4,
+    "text": "FastAPI",
+    "x": 588,
+    "y": 178,
+    "width": 140,
+    "height": 29,
+    "font_size": 17
+  },
+  {
+    "slide": 4,
+    "text": "Docker / Render",
+    "x": 588,
+    "y": 212,
+    "width": 140,
+    "height": 26,
+    "font_size": 13
+  },
+  {
+    "slide": 4,
+    "text": "Next.js",
+    "x": 766,
+    "y": 178,
+    "width": 140,
+    "height": 29,
+    "font_size": 17
+  },
+  {
+    "slide": 4,
+    "text": "Vercel",
+    "x": 766,
+    "y": 212,
+    "width": 140,
+    "height": 26,
+    "font_size": 13
+  },
+  {
+    "slide": 4,
+    "text": "ML",
+    "x": 42,
+    "y": 291,
+    "width": 405,
+    "height": 36,
+    "font_size": 18
+  },
+  {
+    "slide": 4,
+    "text": "Point-in-time features → LightGBM / baselines → saved 2023 validation → static ML Studio.",
+    "x": 42,
+    "y": 330,
+    "width": 405,
+    "height": 94,
+    "font_size": 16
+  },
+  {
+    "slide": 4,
+    "text": "GenAI",
+    "x": 508,
+    "y": 291,
+    "width": 405,
+    "height": 36,
+    "font_size": 18
+  },
+  {
+    "slide": 4,
+    "text": "Five fixed tools → Groq → heuristic numeric verification → sourced answer. No unrestricted SQL.",
+    "x": 508,
+    "y": 330,
+    "width": 405,
+    "height": 94,
+    "font_size": 16
+  },
+  {
+    "slide": 4,
+    "text": "The API does not serve operational future predictions.",
+    "x": 42,
+    "y": 455,
+    "width": 876,
+    "height": 28,
+    "font_size": 16
+  },
+  {
+    "slide": 5,
+    "text": "04 / PRODUCT",
+    "x": 42,
+    "y": 28,
+    "width": 870,
+    "height": 20,
+    "font_size": 10
+  },
+  {
+    "slide": 5,
+    "text": "A dashboard built around definitions",
+    "x": 42,
+    "y": 64,
+    "width": 876,
+    "height": 85,
+    "font_size": 30
+  },
+  {
+    "slide": 5,
+    "text": "Real public screenshots, refreshed ML views 2026-11-08. Figures are historical, not live forecasts.",
+    "x": 42,
+    "y": 508,
+    "width": 820,
+    "height": 18,
+    "font_size": 8.5
+  },
+  {
+    "slide": 5,
+    "text": "05",
+    "x": 886,
+    "y": 506,
+    "width": 32,
+    "height": 22,
+    "font_size": 11
+  },
+  {
+    "slide": 5,
+    "text": "Market, airports, directed routes and airlines. Period filters, API/DEMO labels, loading/error states and missing-month warnings.",
+    "x": 42,
+    "y": 421,
+    "width": 876,
+    "height": 66,
+    "font_size": 18
+  },
+  {
+    "slide": 6,
+    "text": "05 / EXPERIMENT PROTOCOL",
+    "x": 42,
+    "y": 28,
+    "width": 870,
+    "height": 20,
+    "font_size": 10
+  },
+  {
+    "slide": 6,
+    "text": "Temporal evaluation, not future forecasts",
+    "x": 42,
+    "y": 64,
+    "width": 876,
+    "height": 85,
+    "font_size": 30
+  },
+  {
+    "slide": 6,
+    "text": "Sources: configs/models.toml · src/anac/models/train.py · audit.json",
+    "x": 42,
+    "y": 508,
+    "width": 820,
+    "height": 18,
+    "font_size": 8.5
+  },
+  {
+    "slide": 6,
+    "text": "06",
+    "x": 886,
+    "y": 506,
+    "width": 32,
+    "height": 22,
+    "font_size": 11
+  },
+  {
+    "slide": 6,
+    "text": "FIT / EARLY STOP",
+    "x": 42,
+    "y": 160,
+    "width": 425,
+    "height": 36,
+    "font_size": 18
+  },
+  {
+    "slide": 6,
+    "text": "Purged 2013–2021 fitting; 2022 early stopping. Two-month publication lag.",
+    "x": 42,
+    "y": 199,
+    "width": 425,
+    "height": 94,
+    "font_size": 16
+  },
+  {
+    "slide": 6,
+    "text": "VALIDATE / FREEZE",
+    "x": 493,
+    "y": 160,
+    "width": 425,
+    "height": 36,
+    "font_size": 18
+  },
+  {
+    "slide": 6,
+    "text": "Saved selection predictions evaluated on 2023. Final refit boosters include eligible 2023 history.",
+    "x": 493,
+    "y": 199,
+    "width": 425,
+    "height": 94,
+    "font_size": 16
+  },
+  {
+    "slide": 6,
+    "text": "2024–2025 holdout: partially exposed through earlier annual-total inspection; NOT scored. It is not fully blind.",
+    "x": 62,
+    "y": 346,
+    "width": 832,
+    "height": 84,
+    "font_size": 20
+  },
+  {
+    "slide": 6,
+    "text": "12 target-month clusters · 2,000 bootstrap draws · intervals describe metric uncertainty.",
+    "x": 42,
+    "y": 459,
+    "width": 876,
+    "height": 29,
+    "font_size": 13
+  },
+  {
+    "slide": 7,
+    "text": "06 / VERIFIED 2023 RESULTS",
+    "x": 42,
+    "y": 28,
+    "width": 870,
+    "height": 20,
+    "font_size": 10
+  },
+  {
+    "slide": 7,
+    "text": "Four regressors, ten baseline references",
+    "x": 42,
+    "y": 64,
+    "width": 876,
+    "height": 85,
+    "font_size": 30
+  },
+  {
+    "slide": 7,
+    "text": "Source: reports/models/module_{a,b,d}.json · errors rounded to two decimals; pp = percentage points.",
+    "x": 42,
+    "y": 508,
+    "width": 820,
+    "height": 18,
+    "font_size": 8.5
+  },
+  {
+    "slide": 7,
+    "text": "07",
+    "x": 886,
+    "y": 506,
+    "width": 32,
+    "height": 22,
+    "font_size": 11
+  },
+  {
+    "slide": 7,
+    "text": "Experiment",
+    "x": 52,
+    "y": 168,
+    "width": 250,
+    "height": 23,
+    "font_size": 13
+  },
+  {
+    "slide": 7,
+    "text": "LightGBM",
+    "x": 322,
+    "y": 168,
+    "width": 120,
+    "height": 23,
+    "font_size": 13
+  },
+  {
+    "slide": 7,
+    "text": "Best baseline",
+    "x": 462,
+    "y": 168,
+    "width": 130,
+    "height": 23,
+    "font_size": 13
+  },
+  {
+    "slide": 7,
+    "text": "Historical verdict",
+    "x": 612,
+    "y": 168,
+    "width": 296,
+    "height": 23,
+    "font_size": 13
+  },
+  {
+    "slide": 7,
+    "text": "A · Airport movements",
+    "x": 52,
+    "y": 211,
+    "width": 250,
+    "height": 35,
+    "font_size": 14
+  },
+  {
+    "slide": 7,
+    "text": "10.10%",
+    "x": 322,
+    "y": 211,
+    "width": 120,
+    "height": 35,
+    "font_size": 14
+  },
+  {
+    "slide": 7,
+    "text": "10.30%",
+    "x": 462,
+    "y": 211,
+    "width": 130,
+    "height": 35,
+    "font_size": 14
+  },
+  {
+    "slide": 7,
+    "text": "Inconclusive; baseline kept",
+    "x": 612,
+    "y": 211,
+    "width": 296,
+    "height": 35,
+    "font_size": 14
+  },
+  {
+    "slide": 7,
+    "text": "B · Seat occupancy",
+    "x": 52,
+    "y": 260,
+    "width": 250,
+    "height": 35,
+    "font_size": 14
+  },
+  {
+    "slide": 7,
+    "text": "6.06 pp",
+    "x": 322,
+    "y": 260,
+    "width": 120,
+    "height": 35,
+    "font_size": 14
+  },
+  {
+    "slide": 7,
+    "text": "6.54 pp",
+    "x": 462,
+    "y": 260,
+    "width": 130,
+    "height": 35,
+    "font_size": 14
+  },
+  {
+    "slide": 7,
+    "text": "Pooled CI favors model",
+    "x": 612,
+    "y": 260,
+    "width": 296,
+    "height": 35,
+    "font_size": 14
+  },
+  {
+    "slide": 7,
+    "text": "D · Passengers",
+    "x": 52,
+    "y": 309,
+    "width": 250,
+    "height": 35,
+    "font_size": 14
+  },
+  {
+    "slide": 7,
+    "text": "22.24%",
+    "x": 322,
+    "y": 309,
+    "width": 120,
+    "height": 35,
+    "font_size": 14
+  },
+  {
+    "slide": 7,
+    "text": "25.31%",
+    "x": 462,
+    "y": 309,
+    "width": 130,
+    "height": 35,
+    "font_size": 14
+  },
+  {
+    "slide": 7,
+    "text": "Historical result; see caveat",
+    "x": 612,
+    "y": 309,
+    "width": 296,
+    "height": 35,
+    "font_size": 14
+  },
+  {
+    "slide": 7,
+    "text": "D · Seats",
+    "x": 52,
+    "y": 358,
+    "width": 250,
+    "height": 35,
+    "font_size": 14
+  },
+  {
+    "slide": 7,
+    "text": "22.40%",
+    "x": 322,
+    "y": 358,
+    "width": 120,
+    "height": 35,
+    "font_size": 14
+  },
+  {
+    "slide": 7,
+    "text": "25.73%",
+    "x": 462,
+    "y": 358,
+    "width": 130,
+    "height": 35,
+    "font_size": 14
+  },
+  {
+    "slide": 7,
+    "text": "Historical result; see caveat",
+    "x": 612,
+    "y": 358,
+    "width": 296,
+    "height": 35,
+    "font_size": 14
+  },
+  {
+    "slide": 7,
+    "text": "A: difference 95% CI includes zero. WAPE ≠ accuracy.\nB: actual-seat-weighted MAE, not RPK/ASK error. C is NOT trained.",
+    "x": 42,
+    "y": 421,
+    "width": 876,
+    "height": 65,
+    "font_size": 17
+  },
+  {
+    "slide": 8,
+    "text": "07 / AUDIT FINDINGS",
+    "x": 42,
+    "y": 28,
+    "width": 870,
+    "height": 20,
+    "font_size": 10
+  },
+  {
+    "slide": 8,
+    "text": "The route-model caveat stays visible",
+    "x": 42,
+    "y": 64,
+    "width": 876,
+    "height": 85,
+    "font_size": 30
+  },
+  {
+    "slide": 8,
+    "text": "Sources: audit.json · docs/ml/en/EXPERIMENT_RESULTS.md. D historical scores are not corrected-model evidence.",
+    "x": 42,
+    "y": 508,
+    "width": 820,
+    "height": 18,
+    "font_size": 8.5
+  },
+  {
+    "slide": 8,
+    "text": "08",
+    "x": 886,
+    "y": 506,
+    "width": 32,
+    "height": 22,
+    "font_size": 11
+  },
+  {
+    "slide": 8,
+    "text": "Historical D training filled globally absent target months with zero. The loader is corrected; frozen v1 models have NOT been retrained.",
+    "x": 62,
+    "y": 175,
+    "width": 832,
+    "height": 78,
+    "font_size": 21
+  },
+  {
+    "slide": 8,
+    "text": "Impact not measured",
+    "x": 42,
+    "y": 295,
+    "width": 405,
+    "height": 36,
+    "font_size": 18
+  },
+  {
+    "slide": 8,
+    "text": "11,689 passenger and 11,692 seat fitting rows were affected. No causal performance improvement can be claimed.",
+    "x": 42,
+    "y": 334,
+    "width": 405,
+    "height": 94,
+    "font_size": 16
+  },
+  {
+    "slide": 8,
+    "text": "Horizon and bias limits",
+    "x": 508,
+    "y": 295,
+    "width": 405,
+    "height": 36,
+    "font_size": 18
+  },
+  {
+    "slide": 8,
+    "text": "About −12% aggregate bias. Six-month point errors are worse; paired intervals include zero.",
+    "x": 508,
+    "y": 334,
+    "width": 405,
+    "height": 94,
+    "font_size": 16
+  },
+  {
+    "slide": 8,
+    "text": "Corrected AP handles ties. Occupancy bias now uses seat weights and explicit units.",
+    "x": 42,
+    "y": 457,
+    "width": 876,
+    "height": 29,
+    "font_size": 14
+  },
+  {
+    "slide": 9,
+    "text": "08 / AI ANALYST",
+    "x": 42,
+    "y": 28,
+    "width": 870,
+    "height": 20,
+    "font_size": 10
+  },
+  {
+    "slide": 9,
+    "text": "Generative AI with controlled data access",
+    "x": 42,
+    "y": 64,
+    "width": 876,
+    "height": 85,
+    "font_size": 30
+  },
+  {
+    "slide": 9,
+    "text": "Source: historical live screenshot; src/anac/agent/ and src/anac/api/ratelimit.py. No new Groq call for this deck.",
+    "x": 42,
+    "y": 508,
+    "width": 820,
+    "height": 18,
+    "font_size": 8.5
+  },
+  {
+    "slide": 9,
+    "text": "09",
+    "x": 886,
+    "y": 506,
+    "width": 32,
+    "height": 22,
+    "font_size": 11
+  },
+  {
+    "slide": 9,
+    "text": "Five fixed read-only tools.\nSources attached by code.\nNumeric membership checks; not guaranteed semantic attribution.\nQuotas: 10/client/hour, 200/day by default, per-process memory.",
+    "x": 548,
+    "y": 161,
+    "width": 370,
+    "height": 282,
+    "font_size": 18
+  },
+  {
+    "slide": 9,
+    "text": "Server-side key · one corrective attempt before refusal · no fare data.",
+    "x": 42,
+    "y": 459,
+    "width": 876,
+    "height": 28,
+    "font_size": 14
+  },
+  {
+    "slide": 10,
+    "text": "09 / QUALITY, OWNERSHIP AND DEMO",
+    "x": 42,
+    "y": 28,
+    "width": 870,
+    "height": 20,
+    "font_size": 10
+  },
+  {
+    "slide": 10,
+    "text": "Verifiable delivery, ready to discuss",
+    "x": 42,
+    "y": 64,
+    "width": 876,
+    "height": 85,
+    "font_size": 30
+  },
+  {
+    "slide": 10,
+    "text": "Sources: docs/portfolio/VALIDATION.md · docs/ml/INTEGRATION.md",
+    "x": 42,
+    "y": 508,
+    "width": 820,
+    "height": 18,
+    "font_size": 8.5
+  },
+  {
+    "slide": 10,
+    "text": "10",
+    "x": 886,
+    "y": 506,
+    "width": 32,
+    "height": 22,
+    "font_size": 11
+  },
+  {
+    "slide": 10,
+    "text": "368 Python passed · 11 skipped\n91 frontend passed\n601 ML reconciliation checks",
+    "x": 42,
+    "y": 157,
+    "width": 876,
+    "height": 116,
+    "font_size": 27
+  },
+  {
+    "slide": 10,
+    "text": "Lint, types and production build passed. Skips require absent local data.\nDirected by Caio Bandeira; AI-assisted implementation with Claude Code and Codex. No measured commercial-impact claim.",
+    "x": 42,
+    "y": 293,
+    "width": 860,
+    "height": 104,
+    "font_size": 18
+  },
+  {
+    "slide": 10,
+    "text": "Live: anac-flight-intelligence-api-main.vercel.app\nGitHub: github.com/CaioBandeira7/anac-flight-intelligence-api-main",
+    "x": 42,
+    "y": 424,
+    "width": 876,
+    "height": 55,
+    "font_size": 14
+  }
+]

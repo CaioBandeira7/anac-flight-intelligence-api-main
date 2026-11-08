@@ -1,172 +1,153 @@
+<p align="center"><img src="docs/portfolio/assets/cover/cover-github-1280x640-en.jpg" alt="ANAC Flight Intelligence — Brazilian aviation data, machine learning and a grounded AI analyst" width="100%"></p>
+
 # ANAC Flight Intelligence
 
-A reproducible data and machine-learning platform built on ANAC's air transport microdata (Brazil, 2000-01 to 2025-12): an audited ingestion pipeline, a validated analytical layer, forecasting models compared honestly against baselines, a read-only API, a Next.js dashboard and an AI analyst that answers only from these data.
+**From 22,120,241 aviation records to traceable market analysis.** An end-to-end data and ML platform built on ANAC's open aviation microdata for Brazil, January 2000–December 2025. It combines audited ingestion, an analytical star schema, temporal model evaluation and an LLM analyst grounded in fixed data tools.
 
-**Current version: v3** (public deployment of the v2 data platform, with the rate-limited analyst). Version 1 is described under [History](#history-version-1). **Portfolio:** [caiobandeira7.github.io](https://caiobandeira7.github.io)
+[Live dashboard](https://anac-flight-intelligence-api-main.vercel.app/dashboard) · [ML Studio](https://anac-flight-intelligence-api-main.vercel.app/dashboard/ml-studio) · [AI Analyst](https://anac-flight-intelligence-api-main.vercel.app/dashboard/analyst) · [API documentation](https://anac-flight-intelligence-api-v2.onrender.com/docs)
 
-## Live
+[10-slide presentation — PDF](docs/portfolio/presentation/anac-flight-intelligence-presentation-en.pdf) · [Editable PowerPoint](docs/portfolio/presentation/anac-flight-intelligence-presentation-en.pptx) · [Case study](docs/portfolio/CASE_STUDY.md) · [Documentation](docs/README.md) · [Português](docs/portfolio/pt-BR/README.md)
 
-| | Address |
-|---|---|
-| Dashboard | [anac-flight-intelligence-api-main.vercel.app](https://anac-flight-intelligence-api-main.vercel.app) (Vercel) |
-| AI Analyst | [/dashboard/analyst](https://anac-flight-intelligence-api-main.vercel.app/dashboard/analyst) |
-| ML Studio | [/dashboard/ml-studio](https://anac-flight-intelligence-api-main.vercel.app/dashboard/ml-studio) |
-| API | [anac-flight-intelligence-api-v2.onrender.com](https://anac-flight-intelligence-api-v2.onrender.com/health) · [OpenAPI docs](https://anac-flight-intelligence-api-v2.onrender.com/docs) (Render, image `xuxutinha777/anac-flight-intelligence-api:v3`) |
+## See it in action
 
-The API runs on Render's free tier: after about 15 minutes without traffic it sleeps, and the first request can take up to a minute. The analyst answers at most 10 questions per visitor per hour and 200 in total per UTC day.
-
-## The problem
-
-ANAC publishes every Brazilian flight leg since 2000, about 20 GB of open data. Getting correct answers from it is hard: flights, passenger flights and aircraft movements are different counts, routes have a direction, load factor cannot be averaged, and four months are missing entirely. This platform does that work once, validates it, and shows every figure with its period, scope and unit.
-
-| Overview | ML Studio | AI Analyst in Action |
+| Market dashboard | ML Studio | AI Analyst |
 |---|---|---|
-| ![Overview](docs/portfolio/screenshots/overview-day.png) | ![ML Studio](docs/portfolio/screenshots/ml-studio-day.png) | ![Analyst](docs/portfolio/screenshots/analyst-in-action-day.png) |
-| ![Routes](docs/portfolio/screenshots/routes-day.png) | ![ML Studio, NIGHT theme](docs/portfolio/screenshots/ml-studio-night.png) | ![Mobile](docs/portfolio/screenshots/ml-studio-mobile-night.png) |
+| ![Real market overview with paid-passenger, flight and seat-occupancy KPIs](docs/portfolio/assets/screenshots/dashboard-overview-kpis.jpg) | ![Real audited ML Studio showing 2023 validation results](docs/portfolio/assets/screenshots/ml-studio-overview.jpg) | ![Previously recorded live Analyst answer to an airport ranking question](docs/portfolio/assets/screenshots/analyst-live-busiest-airports.jpg) |
 
-*Real screenshots of the running dashboard (DAY and NIGHT themes), captured in headless Chrome. More are in [docs/portfolio/screenshots](docs/portfolio/screenshots).*
+These are screenshots of the public application, not mockups. The Analyst image records a historical live answer; new answers depend on provider availability and usage limits. [Gallery and provenance](docs/portfolio/assets/README.md).
 
-## What it does
+## Why this project exists
 
-- **Market overview:** paid passengers, flights, seats offered and load factor for any period, compared with the same months a year earlier.
-- **Airports, routes and airlines:** rankings and monthly series with filters by period, airport (IATA or ICAO) and carrier. Routes are directed: CGH→SDU and SDU→CGH are separate.
-- **ML Studio:** how each forecasting method scored on 2023 validation data. No forecasts are served.
-- **AI Aviation Analyst:** questions in plain language, including rankings such as the busiest routes or airports, answered through a small set of fixed, read-only query tools, so it can only answer what those tools cover. Numbers in an answer are checked against the tool results. That check is heuristic: it confirms that each number appears in the results, but it does not guarantee that every association between numbers, entities, metrics and periods is correct.
+Open data does not automatically produce correct answers. Flights, passenger flights and airport movements are different counts. Routes have direction. Seat occupancy must be recomputed from passenger and seat totals. Four source months are missing and must remain unknown rather than become zero.
+
+The platform makes those definitions explicit and testable. It provides period and entity filters, airport and airline rankings, monthly series, model diagnostics and plain-language questions supported by a small set of read-only tools.
 
 ## Architecture
 
-```
-ANAC CSV (~20 GB, never modified)
-  → anac-ingest      Parquet dataset "flights", audited and resumable
-  → anac-features    point-in-time features, chronological splits
-  → anac-models      LightGBM, compared with baselines, frozen in models/v1
-  → anac-analytics   star schema: dim_month, dim_airport, dim_carrier and 4 fact tables
-  → anac-api         read-only FastAPI: /v2/* payloads and /v2/analytics/* queries
-  → web/             Next.js dashboard and the analyst
+```mermaid
+flowchart LR
+    CSV[ANAC CSV ~20 GB] --> ING[Chunked ingestion and validation]
+    ING --> PQ[Monthly Parquet flights]
+    PQ --> FE[Point-in-time features]
+    FE --> ML[LightGBM and baselines]
+    ML --> EV[Saved 2023 validation results]
+    EV --> ST[Static ML Studio payload and report]
+    PQ --> AN[Analytics: 3 dimensions and 4 facts]
+    AN --> API[FastAPI /v2/analytics/*]
+    PQ --> SP[Versioned serving payloads]
+    SP --> API
+    API --> WEB[Next.js dashboard on Vercel]
+    ST --> WEB
+    SP --> TOOLS[Five fixed read-only tools]
+    TOOLS <--> LLM[Groq tool-calling analyst]
+    LLM --> CHECK[Heuristic numeric verification]
+    CHECK --> API
 ```
 
-| Layer | Technology |
+The analytical and ML branches share audited source data but have different grains and scopes. The Analyst uses exported tools, not unrestricted SQL or the entire historical dataset. [Architecture and contracts](docs/ml/en/ML_ARCHITECTURE.md).
+
+| Layer | Technology and purpose |
 |---|---|
-| Data | Python 3.12, Polars, DuckDB |
-| Models | LightGBM, baselines, block-bootstrap intervals |
-| API | FastAPI, pydantic contracts mirrored in TypeScript |
-| Dashboard | Next.js 16, React 19, TypeScript, Tailwind 4 |
-| Analyst | Any OpenAI-compatible provider with tool calls (Groq by default); the key stays on the server |
-| Quality | pytest, ruff, mypy strict, Vitest |
+| Ingestion and storage | Python 3.12, Polars, Parquet; bounded chunks, resumable atomic publication |
+| Independent validation | DuckDB; line accounting, partition checks and analytical reconciliation |
+| ML | Four LightGBM regressors, ten baseline references; chronological splits and month-cluster bootstrap |
+| Backend | FastAPI, Pydantic, mirrored TypeScript contracts; Docker on Render |
+| Frontend | Next.js 16, React 19, TypeScript, Tailwind 4; DAY/NIGHT themes on Vercel |
+| Generative AI | Groq, OpenAI-compatible tool calling, fixed tools, numeric checks, server-side credentials |
+| Quality | pytest, Ruff, strict mypy, Vitest, Testing Library, TypeScript and production build |
 
-## Models (validation, 2023)
+## Data and verified scale
 
-These are validation results on 2023, data the models did not see during training. They are not forecasts: no model serves predictions in production, and the API has no prediction endpoint. A model is adopted only if it beats its best baseline with a 95% interval excluding zero. The final test on 2024–2025 has not been run.
+- **22,120,241 records**, **308 observed months** across a 312-month calendar; full ingestion and independent read-back are recorded in [the ingestion report](reports/ingestion/INGESTION_REPORT.md).
+- **Seven analytical tables:** three dimensions and four facts, reconciled across all observed months. [Validation evidence](reports/analytics/validation.json).
+- Missing months: **2015-08, 2016-02, 2018-07, 2020-08**. Partial years must not be treated as complete annual totals.
+- No ticket fares or prices. Paid passengers are counted per flight leg, not unique people. Only 320 of 1,180 airports have published coordinates.
+- **Seat Occupancy = paid passengers / seats. Passenger Load Factor = RPK / ASK.** They are distinct; the B experiment targets seat occupancy despite its legacy `load_factor` field name.
 
-| Module | Target | Selected method | Validation result |
-|---|---|---|---|
-| A | Flight movements by airport and day | Baseline: same weekday, recent 8 weeks | WAPE 10.30%. LightGBM's 10.10% is not a conclusive gain. |
-| B | Seat occupancy by route and carrier | LightGBM | Seat-weighted MAE 6.06 pts against 6.54 |
-| C | Checked baggage per passenger | Not trained | Provisional target |
-| D | Demand and capacity by route | LightGBM | WAPE 22.24% (passengers), 22.40% (seats) |
+## Machine learning: evidence before claims
 
-**Full study:** [How Predictable Is Brazilian Aviation?](research/ml-showcase/REPORT.md) ([PDF](research/ml-showcase/REPORT.pdf)): error analysis by horizon, volume, entity and month, residuals, gain importance and 37 figures. Every metric is reproduced from the saved artifacts, and an in-memory refit matches the saved predictions bit for bit (`research/ml-showcase/results/reproduction.json`). The 2024–2025 test was deliberately not run (report, Section 6.4). There is no prediction playground: the models need features computed from history, which a form cannot supply honestly.
+Saved predictions from selection-stage models are evaluated on **2023 validation**, with early stopping on 2022 and fitting on purged 2013–2021 history. Final frozen boosters were later refit on eligible 2023 labels and must not be used to rescore the same validation year.
 
-Known limitations are in [docs/models.md](docs/models.md). They include a bias of about −12% on module D and four absent months in the data (2015-08, 2016-02, 2018-07, 2020-08).
+| Experiment | LightGBM | Best baseline | Interpretation |
+|---|---:|---:|---|
+| A — daily airport movements | WAPE **10.10%** | **10.30%** | Difference CI includes zero; keep the recent-weekday baseline |
+| B — route/carrier seat occupancy | Seat-weighted MAE **6.06 pp** | **6.54 pp** | Aggregate validation difference CI excludes zero |
+| D — monthly route passengers | WAPE **22.24%** | **25.31%** | Historical aggregate gain; approximately −12% bias |
+| D — monthly route seats | WAPE **22.40%** | **25.73%** | Historical aggregate gain; not a gain at every horizon |
 
-## AI Analyst in Action
+The 95% intervals resample **12 target-month clusters**, with 2,000 draws. WAPE is total absolute error divided by total observed volume; 10% WAPE does not mean 90% accuracy. B uses observed seats as weights and reports errors in percentage points.
 
-Five real runs, recorded during the analyst's validation (Groq, `openai/gpt-oss-120b`), each re-checked against the analytical tables by a path that does not use the analyst's tools ([ANALYST_DEMO.md](docs/portfolio/ANALYST_DEMO.md), and `/dashboard/analyst#in-action` in the app):
+**Read these limitations with the scores:**
 
-| Case | Tool | Answer | Independent check |
-|---|---|---|---|
-| Market size and growth | `get_market_overview` | 131,593,763 paid passengers in 2025, +9.72% | ✅ both match. Two earlier drafts were refused by the verifier |
-| GRU vs CGH | `search_airports` ×2 | 287,291 and 186,664 movements | ✅ |
-| CGH → SDU | `search_routes` | 1,968,523 paid passengers, load factor 77% | ✅ (76.94%) |
-| Is module A a forecast? | `get_model_results` | 10.30% WAPE, validation 2023, "not current forecasts" | ✅ |
-| Prompt injection, invented price | none | Refused: no price data | ✅ no price column exists |
-| Passengers in 2019 | `get_data_coverage` | "Not available" | ❌ known gap: the tools cover only the latest 12 months |
+- A's improvement is statistically inconclusive; the baseline remains selected.
+- Historical D training filled globally missing target months with zero. The loader is corrected, but **v1 has not been retrained**. These scores do not measure the corrected training procedure, and the six-month point estimates are worse than their baselines.
+- The **2024–2025 holdout was partially exposed through historical inspection of annual totals, but has not been scored**. It is not fully blind.
+- **Module C is not trained.** Legacy neural-model scripts are archived, not independently validated current results.
+- These are historical validation results, **not future forecasts**. No operational prediction endpoint exists. Gain importance is not causal evidence, and bootstrap metric intervals are not future prediction bands.
 
-The analyst has no carrier tool, so airline market share is answered by the Airlines page instead.
+**Audit:** 601 checks reconciled saved results and verified hashes of 29 input files. **Visual documentation:** 26 web charts and 37 report figures, plus tables and KPIs. [Model catalog](docs/ml/en/MODEL_CATALOG.md) · [Experiment results](docs/ml/en/EXPERIMENT_RESULTS.md) · [Visualization catalog](docs/ml/en/VISUALIZATION_CATALOG.md) · [Technical report PDF](research/ml-showcase/REPORT.pdf).
 
-## What the data does not contain
+## The AI Analyst
 
-There are no ticket prices or fares. Passengers are counted per flight leg. Only 320 of 1,180 airports have published coordinates. Absent months are unknown, never zero. Details are in [docs/analytics.md](docs/analytics.md).
+Five fixed, read-only tools retrieve supported data; the backend attaches sources, periods and units. A numeric verifier checks whether figures appear in tool results, allows one corrective attempt, then refuses unsupported answers. **It does not guarantee the correct association between a number, entity and metric.** Historical tool coverage also limits which questions can be answered.
 
-## Business Intelligence — In Development
+The provider key stays on the server. The v3 chat has per-client and daily quotas (defaults: 10 questions/hour and 200/day); counters are **in memory per process**, reset on restart and are not shared across replicas. CORS is not authentication. [Recorded cases](docs/portfolio/ANALYST_DEMO.md) · [Deployment and limits](docs/DEPLOYMENT.md).
 
-A Power BI report of seven pages, built on a reproducible semantic model over the analytical tables in `data/analytics/v1`. It is not available yet.
+The demo API may need time to wake after inactivity. The app shows loading/error states. Recorded examples are available when the live provider is unavailable or rate-limited.
 
-- **Source:** the same analytical tables as the API, never edited or rebuilt by the report. Whether Power BI Desktop can read these Parquet files directly has not been verified yet.
-- **Reproducible:** the model, its relationships and its DAX measures are kept as text in `bi/`, so they can be reviewed and rebuilt from the repository. Data and large exports stay out of Git.
-- **Rules:** load factor is a ratio of sums, and absent months are shown as missing. Measures from different fact tables are combined only where their grain, relationships and filters are compatible: a visual sliced by carrier, for example, cannot use airport movements, which have no carrier. The relationships and measures it starts from are in [docs/analytics.md](docs/analytics.md#power-bi). They have not yet been tested inside Power BI.
-- **Labelling:** historical facts, derived indicators and inferences are kept apart and labelled. The report presents no forecasts, and no commercial conclusions the data cannot support.
+## Validation
 
-## Run locally (Windows PowerShell)
+The consolidated code passed **368 Python tests (11 skipped)** and **91 frontend tests**, including a local real-API integration run. Ruff lint/format, strict mypy, ESLint, TypeScript and the Next.js production build passed. Python skips require local raw CSV, feature panels or serving fixtures absent from the isolated checkout; they are not reported as successful tests.
+
+[Validation and reproducible checks](docs/portfolio/VALIDATION.md) · [Integration evidence](docs/ml/INTEGRATION.md). The portfolio revision changes documentation and presentation tooling; it does not retrain models or change the public API.
+
+## Run locally
+
+Use Python 3.12 and a Node version supported by the pinned Next.js version. Commands below use Windows PowerShell (`npm.cmd` avoids execution-policy issues).
 
 ```powershell
 py -3.12 -m venv .venv
 .venv\Scripts\python -m pip install -r requirements-lock.txt
 .venv\Scripts\python -m pip install -e . --no-deps
-.venv\Scripts\python -m pytest
-
-.venv\Scripts\anac-api                  # http://127.0.0.1:8000/docs
+.venv\Scripts\python -m pytest -q
 
 cd web
 npm.cmd ci
-npm.cmd run dev                         # http://localhost:3000
+$env:NEXT_PUBLIC_DATA_SOURCE = "mock"
+npm.cmd run dev
 ```
 
-Use `npm.cmd` rather than `npm` in PowerShell: if the execution policy blocks scripts, `npm` resolves to `npm.ps1` and fails, while `npm.cmd` runs either way.
-
-### Reproduce the experiments and demos
+Mock mode is explicitly labelled DEMO. For real API mode, set `NEXT_PUBLIC_DATA_SOURCE=api` and `NEXT_PUBLIC_API_URL` in `web/.env.local`; `.env.example` files document configuration. The API requires locally built serving/analytics data; those datasets and model files are **not distributed in Git**.
 
 ```powershell
-.venv\Scripts\python -m pip install -r research\ml-showcase\requirements.txt
-.venv\Scripts\python research\ml-showcase\reproduce.py --refit   # metrics, hashes, in-memory refit
-.venv\Scripts\python research\ml-showcase\analysis.py            # figures, tables, ML Studio payload
-.venv\Scripts\python research\ml-showcase\build_pdf.py           # technical report PDF
-.venv\Scripts\python research\analyst-demo\build_cases.py        # analyst cases, verified, no LLM call
+# From the repository root, after local data preparation:
+.venv\Scripts\anac-api
+# In a second terminal, web/:
+$env:NEXT_PUBLIC_DATA_SOURCE = "api"
+$env:NEXT_PUBLIC_API_URL = "http://127.0.0.1:8000"
+npm.cmd run dev
 ```
 
-To publish the API and dashboard, see [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md). The live deployment is listed under [Live](#live).
+The Analyst additionally needs a server-side provider key. Never put it in `NEXT_PUBLIC_*`, commit `.env`, or call a paid provider as part of routine tests. Tests use mocks.
 
-The API serves data built locally, which Git does not version. See [docs/ingestion.md](docs/ingestion.md), [docs/features.md](docs/features.md), [docs/models.md](docs/models.md) and [docs/analytics.md](docs/analytics.md) to rebuild it. The analyst needs `GROQ_API_KEY` in `.env` (see `.env.example`). The public chat is rate-limited per client and per day; the limits are listed in [DEPLOYMENT.md](docs/DEPLOYMENT.md#analyst-abuse-limits).
+### Reproduction boundaries
 
-## Documentation
+- Rebuild source data using [ingestion](docs/ingestion.md), [features](docs/features.md) and [analytics](docs/analytics.md) instructions. Obtain the ANAC CSV separately; a code-only clone cannot reproduce numerical artifacts without inputs.
+- To verify existing pre-test artifacts without refitting: `.venv\Scripts\python scripts/audit_ml.py --artifact-root PATH_TO_ARTIFACT_ROOT`. It expects `data/features/v1`, `models/v1` and the tracked reports. It checks only saved 2023 validation predictions.
+- The historical `reproduction.json` predates the D loader correction. **Do not present its old bit-identical refit claim as reproducibility of the corrected training.** A new real training run requires a new model version and separate evaluation.
+- Rebuild the English deck and charts with [portfolio tooling instructions](docs/portfolio/tools/README.md); these use tracked aggregate evidence and screenshots, not new predictions.
 
-| Document | Covers |
+## Explore the repository
+
+| Area | Start here |
 |---|---|
-| [ingestion.md](docs/ingestion.md) | Raw CSV to Parquet, audits, resuming |
-| [supplements.md](docs/supplements.md) | Recovering the four absent months from official ZIPs |
-| [features.md](docs/features.md) | Modules, features, leakage controls |
-| [models.md](docs/models.md) | Method, validation results, API, analyst |
-| [analytics.md](docs/analytics.md) | Tables, measures, coverage, Power BI, analytics API |
-| [decisions.md](docs/decisions.md) | Every methodological decision and why |
-| [AGENTS.md](AGENTS.md) | Rules for coding agents working on this repository |
-| [DEPLOYMENT.md](docs/DEPLOYMENT.md) | Environment variables, Docker files, deployment options and validation checklist |
-| [ML report](research/ml-showcase/REPORT.md) | Reproduction and error analysis of models A, B and D |
-| [Case study](docs/portfolio/CASE_STUDY.md) | How the platform was built with AI agents under human control |
-| [One-pager](docs/portfolio/ONE_PAGER.md) · [Demo script](docs/portfolio/DEMO_SCRIPT.md) | Portfolio summary and a 90-second video script |
+| Data pipeline | [Ingestion](docs/ingestion.md), [features](docs/features.md), [analytics contracts](docs/analytics.md) |
+| ML evidence in English | [Architecture](docs/ml/en/ML_ARCHITECTURE.md), [models](docs/ml/en/MODEL_CATALOG.md), [results](docs/ml/en/EXPERIMENT_RESULTS.md), [prediction guide](docs/ml/en/PREDICTION_GUIDE.md) |
+| Presentation | [10-slide English deck](docs/portfolio/presentation/anac-flight-intelligence-presentation-en.pdf), [case study](docs/portfolio/CASE_STUDY.md), [demo script](docs/portfolio/DEMO_SCRIPT_3MIN.md) |
+| Application materials | [LinkedIn](docs/portfolio/LINKEDIN_EN.md), [CV bullets](docs/portfolio/CV.md), [interview guide](docs/ml/en/INTERVIEW_GUIDE.md) |
+| Provenance and validation | [Decisions](docs/decisions.md), [data audits](reports/ingestion/INGESTION_REPORT.md), [portfolio validation](docs/portfolio/VALIDATION.md) |
+| Secondary Portuguese materials | [Português](docs/portfolio/pt-BR/README.md), [original detailed ML audit](docs/ml/MODEL_CATALOG.md) |
 
-## History: version 1
+Legacy `00_*.py`–`07_*.py` scripts remain unchanged for provenance. Their old prediction endpoints and metrics are not capabilities of the current application. The separate Power BI workstream is outside this release. No new model training or deployment is required for this documentation release.
 
-The first version (2018–2024 data) trained four neural and boosted models: a bidirectional LSTM for airport congestion, an FT-Transformer for seat occupancy, an MLP for a price-pressure index and a LightGBM and neural-network stack for excess baggage. It served them through a prediction endpoint, `POST /prever`, deployed on Railway, with a static `dashboard.html`. That endpoint and deployment belong to v1 and are not part of the current version.
-
-Its scripts are kept unchanged at the repository root (`00_verificar_dados.py` to `07_monitorar_drift.py`), along with `dashboard.html`, `docker-compose.yml`, `Dockerfile.bak` and `Procfile`.
-
-Version 2 was rebuilt from the raw data rather than extended:
-
-- **Price pressure:** the dataset contains no prices, so v2 drops it.
-- **Excess baggage:** this target measured which carriers report it, not what passengers carry. v2 replaces it with total checked baggage per passenger (module C, not trained yet). See [decisions.md](docs/decisions.md).
-- **Evaluation:** every result is now chronological and compared with a baseline.
-
-The v1 metrics were not re-validated under these rules.
-
-## Roadmap
-
-- Run the sealed 2024–2025 test once, without tuning
-- Recover the four absent months and retrain as `models/v2`
-- Power BI report and semantic model (in development)
-- Route map using the airports that have coordinates
-
-## Author
-
-Caio Bandeira, data scientist in Brasília. [Portfolio](https://caiobandeira7.github.io) · [LinkedIn](https://www.linkedin.com/in/caio-bandeira-cv) · [GitHub](https://github.com/CaioBandeira7)
-
-Data: ANAC open data, published under Brazil's access to information law.
+Built by **Caio Bandeira**, with Claude Code and Codex under written rules, human review and explicit publication approval. [AI-assisted development case study](docs/portfolio/CASE_STUDY.md).
