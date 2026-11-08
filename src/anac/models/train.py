@@ -24,7 +24,13 @@ from anac.evaluation.baselines import PREDICTIONS
 from anac.features.build import git_state
 from anac.features.config import FeatureConfig, SealedTestError, month_label, parse_month
 from anac.features.contracts import CONTRACTS, Source
-from anac.features.splits import PURGED, TRAIN, VALIDATION, assert_no_sealed_targets
+from anac.features.splits import (
+    PURGED,
+    TRAIN,
+    VALIDATION,
+    assert_no_sealed_targets,
+    exclude_unknown_targets,
+)
 from anac.ingestion.storage import read_json, sha256_file, write_json_atomic, write_parquet_atomic
 
 KEEP_TIMING = {"horizon", "distance", "distance_days"}
@@ -208,13 +214,12 @@ def load_module_frame(features_cfg: FeatureConfig, module: str) -> pl.DataFrame:
     directory = features_cfg.output / f"module_{module}"
     features = pl.read_parquet(directory / "features.parquet")
     targets = pl.read_parquet(directory / "targets.parquet")
-    if module == "a":
-        if targets.select((pl.col("target_date").dt.year() >= 2024).any()).item():
-            raise SealedTestError("targets of the test period are present")
-    else:
-        assert_no_sealed_targets(targets, features_cfg.time)
+    assert_no_sealed_targets(targets, features_cfg.time)
+    assert_no_sealed_targets(features, features_cfg.time)
     if features.filter(pl.col("split") == "test").height:
         raise SealedTestError("test rows are present in the features")
+    manifest = read_json(directory / "manifest.json")
+    features = exclude_unknown_targets(features, manifest.get("unknown_months", []))
     with_baselines = PREDICTIONS[module](features)
     if module == "a":
         return with_baselines.join(targets, on=["airport", "target_date"], how="inner")

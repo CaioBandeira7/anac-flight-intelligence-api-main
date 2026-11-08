@@ -15,7 +15,13 @@ from anac.evaluation import metrics as m
 from anac.features.build import git_state
 from anac.features.config import FeatureConfig, SealedTestError, month_label
 from anac.features.contracts import CONTRACTS
-from anac.features.splits import TEST, TRAIN, VALIDATION
+from anac.features.splits import (
+    TEST,
+    TRAIN,
+    VALIDATION,
+    assert_no_sealed_targets,
+    exclude_unknown_targets,
+)
 from anac.ingestion.storage import read_json, write_json_atomic, write_parquet_atomic
 
 TREND_LIMITS = (0.5, 2.0)
@@ -204,6 +210,9 @@ def evaluate_module(cfg: FeatureConfig, module: str, *, split: str = VALIDATION)
     manifest = read_json(directory / "manifest.json")
     features = pl.read_parquet(directory / "features.parquet")
     targets = pl.read_parquet(directory / "targets.parquet")
+    assert_no_sealed_targets(targets, cfg.time)
+    assert_no_sealed_targets(features, cfg.time)
+    features = exclude_unknown_targets(features, manifest.get("unknown_months", []))
     predicted = PREDICTIONS[module](features).filter(pl.col("split").is_in([TRAIN, split]))
 
     if module == "a":

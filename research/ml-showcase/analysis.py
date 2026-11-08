@@ -4,7 +4,7 @@
 
 Inputs (read-only): data/features/v1, data/analytics/v1, reports/models, models/v1.
 Outputs: research/ml-showcase/results/*.json, research/ml-showcase/figures/*.{png,svg},
-and web/public/ml/showcase.json (aggregates only, no row-level data).
+and web/public/ml/showcase.json (aggregates plus bounded validation samples).
 
 Segments use values known at the forecast cutoff (for example the unit's recent level),
 never the target itself, so grouping cannot leak the answer. Run reproduce.py first.
@@ -33,6 +33,7 @@ sys.path.insert(0, str(HERE))
 
 from reproduce import validation_frame  # noqa: E402
 
+from anac.evaluation.metrics import ratio_with_interval  # noqa: E402
 from anac.models.train import SPECS, model_columns  # noqa: E402
 
 FIG = HERE / "figures"
@@ -172,11 +173,11 @@ def tasks() -> list[dict[str, Any]]:
 
 TITLES = {
     "a": "Model A: daily aircraft movements, 50 busiest airports",
-    "b": "Model B: paid load factor by route and carrier",
+    "b": "Model B: paid seat occupancy by route and carrier",
     "d_pax": "Model D: monthly paid passengers by route",
     "d_seats": "Model D: monthly seats offered by route",
 }
-UNITS = {"a": "movements", "b": "load factor", "d_pax": "paid passengers", "d_seats": "seats"}
+UNITS = {"a": "movements", "b": "seat occupancy", "d_pax": "paid passengers", "d_seats": "seats"}
 
 
 # ------------------------------------------------------------ aggregations
@@ -233,6 +234,11 @@ def by_horizon(task: dict[str, Any]) -> list[dict[str, Any]]:
             )
             entry["mae_model"] = r(
                 float(np.mean(np.abs(part.get_column(task["model"]).to_numpy() - a))), 3
+            )
+        if task["metric"] == "wmae":
+            entry["seat_weighted_bias_model"] = float(
+                ((part.get_column(task["model"]) - part.get_column(task["target"]))
+                 * part.get_column("seats")).sum() / part.get_column("seats").sum()
             )
         rows.append(entry)
     return rows
@@ -991,6 +997,12 @@ def main() -> None:
             "rows_fit": rep["rows_fit"],
             "top_features_by_gain": rep["top_features_by_gain"],
         }
+        if task["metric"] == "wmae":
+            summary["seat_weighted_bias"] = ratio_with_interval(
+                task["frame"],
+                (pl.col(task["model"]) - pl.col(task["target"])) * pl.col("seats"),
+                pl.col("seats"),
+            )
         clean_res = {k: v for k, v in res.items() if not k.startswith("_")}
         readable_hz = [
             {**row, "baselines": {BASELINE_NAMES[n]: v for n, v in row["baselines"].items()}}
