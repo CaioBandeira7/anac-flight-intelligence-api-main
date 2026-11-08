@@ -10,6 +10,7 @@ __pycache__/
 /models/
 *.parquet
 *.tmp-*
+*.tar.gz
 
 # Tooling
 *.egg-info/
