@@ -1,98 +1,114 @@
-# ANAC Flight Intelligence API
+# ANAC Flight Intelligence
 
-Four machine-learning models behind one API, trained on 20 GB of open data from ANAC, Brazil's civil aviation agency (domestic and international flights, 2018–2024).
+A reproducible data and machine-learning platform built on ANAC's air transport microdata (Brazil, 2000-01 to 2025-12): an audited ingestion pipeline, a validated analytical layer, forecasting models compared honestly against baselines, a read-only API, a Next.js dashboard and an AI analyst that answers only from these data.
 
-Send a route, an airline and a date. Get back airport congestion, expected seat occupancy, price pressure and the probability of excess baggage.
+**Current version: v2.** Version 1 is described under [History](#history-version-1). **Portfolio:** [caiobandeira7.github.io](https://caiobandeira7.github.io)
 
-**Live API docs:** [anac-flight-intelligence-api-production.up.railway.app/docs](https://anac-flight-intelligence-api-production.up.railway.app/docs) · **Portfolio:** [caiobandeira7.github.io](https://caiobandeira7.github.io)
+## What it does
 
-## Models
+- **Market overview:** paid passengers, flights, seats offered and load factor for any period, compared with the same months a year earlier.
+- **Airports, routes and airlines:** rankings and monthly series with filters by period, airport (IATA or ICAO) and carrier. Routes are directed: CGH→SDU and SDU→CGH are separate.
+- **ML Studio:** how each forecasting method scored on 2023 validation data. No forecasts are served.
+- **AI Aviation Analyst:** questions in plain language, answered through a small set of fixed, read-only query tools, so it can only answer what those tools cover. Numbers in an answer are checked against the tool results. That check is heuristic: it confirms that each number appears in the results, but it does not guarantee that every association between numbers, entities, metrics and periods is correct.
 
-| Prediction | Architecture | Task | Metric |
+## Architecture
+
+```
+ANAC CSV (~20 GB, never modified)
+  → anac-ingest      Parquet dataset "flights", audited and resumable
+  → anac-features    point-in-time features, chronological splits
+  → anac-models      LightGBM, compared with baselines, frozen in models/v1
+  → anac-analytics   star schema: dim_month, dim_airport, dim_carrier and 4 fact tables
+  → anac-api         read-only FastAPI: /v2/* payloads and /v2/analytics/* queries
+  → web/             Next.js dashboard and the analyst
+```
+
+| Layer | Technology |
+|---|---|
+| Data | Python 3.12, Polars, DuckDB |
+| Models | LightGBM, baselines, block-bootstrap intervals |
+| API | FastAPI, pydantic contracts mirrored in TypeScript |
+| Dashboard | Next.js 16, React 19, TypeScript, Tailwind 4 |
+| Analyst | Any OpenAI-compatible provider with tool calls (Groq by default); the key stays on the server |
+| Quality | pytest, ruff, mypy strict, Vitest |
+
+## Models (validation, 2023)
+
+These are validation results on 2023, data the models did not see during training. They are not forecasts: no model serves predictions in production, and the API has no prediction endpoint. A model is adopted only if it beats its best baseline with a 95% interval excluding zero. The final test on 2024–2025 has not been run.
+
+| Module | Target | Selected method | Validation result |
 |---|---|---|---|
-| Airport congestion | Bidirectional LSTM with attention | Regression on hourly flow | MAE |
-| Seat occupancy | FT-Transformer | Multi-task: occupancy + overbooking | MAE, AUC |
-| Price pressure | MLP with categorical embeddings | Regression on a price index | MAE |
-| Excess baggage | LightGBM + neural network stack | Binary classification | AUC-ROC |
+| A | Flight movements by airport and day | Baseline: same weekday, recent 8 weeks | WAPE 10.30%. LightGBM's 10.10% is not a conclusive gain. |
+| B | Seat occupancy by route and carrier | LightGBM | Seat-weighted MAE 6.06 pts against 6.54 |
+| C | Checked baggage per passenger | Not trained | Provisional target |
+| D | Demand and capacity by route | LightGBM | WAPE 22.24% (passengers), 22.40% (seats) |
 
-## Example
+Known limitations are in [docs/models.md](docs/models.md). They include a bias of about −12% on module D and four absent months in the data (2015-08, 2016-02, 2018-07, 2020-08).
 
-```bash
-curl -X POST https://anac-flight-intelligence-api-production.up.railway.app/prever \
-  -H "Content-Type: application/json" \
-  -d '{
-    "aeroporto_origem": "GRU",
-    "aeroporto_destino": "GIG",
-    "empresa": "LATAM",
-    "data_voo": "2026-07-15",
-    "peso_bagagem_kg": 20.0
-  }'
+## What the data does not contain
+
+There are no ticket prices or fares. Passengers are counted per flight leg. Only 320 of 1,180 airports have published coordinates. Absent months are unknown, never zero. Details are in [docs/analytics.md](docs/analytics.md).
+
+## Business Intelligence — In Development
+
+A Power BI report of seven pages, built on a reproducible semantic model over the analytical tables in `data/analytics/v1`. It is not available yet.
+
+- **Source:** the same analytical tables as the API, never edited or rebuilt by the report. Whether Power BI Desktop can read these Parquet files directly has not been verified yet.
+- **Reproducible:** the model, its relationships and its DAX measures are kept as text in `bi/`, so they can be reviewed and rebuilt from the repository. Data and large exports stay out of Git.
+- **Rules:** load factor is a ratio of sums, and absent months are shown as missing. Measures from different fact tables are combined only where their grain, relationships and filters are compatible: a visual sliced by carrier, for example, cannot use airport movements, which have no carrier. The relationships and measures it starts from are in [docs/analytics.md](docs/analytics.md#power-bi). They have not yet been tested inside Power BI.
+- **Labelling:** historical facts, derived indicators and inferences are kept apart and labelled. The report presents no forecasts, and no commercial conclusions the data cannot support.
+
+## Run locally (Windows PowerShell)
+
+```powershell
+py -3.12 -m venv .venv
+.venv\Scripts\python -m pip install -r requirements-lock.txt
+.venv\Scripts\python -m pip install -e . --no-deps
+.venv\Scripts\python -m pytest
+
+.venv\Scripts\anac-api                  # http://127.0.0.1:8000/docs
+
+cd web
+npm.cmd ci
+npm.cmd run dev                         # http://localhost:3000
 ```
 
-```json
-{
-  "prob_aeroporto_cheio": 0.74,
-  "taxa_ocupacao_voo": 0.89,
-  "bucket_ocupacao": "lotado",
-  "pressao_preco": 0.638,
-  "recomendacao_preco": "premium",
-  "prob_excesso_bagagem": 0.038,
-  "recomendar_cobranca": false,
-  "justificativa_bagagem": "Baixo histórico de excesso nesta rota"
-}
-```
+Use `npm.cmd` rather than `npm` in PowerShell: if the execution policy blocks scripts, `npm` resolves to `npm.ps1` and fails, while `npm.cmd` runs either way.
 
-Other endpoints: `GET /health`, `GET /historico` (occupancy history by route), `GET /cache/stats`, `DELETE /cache`.
+The API serves data built locally, which Git does not version. See [docs/ingestion.md](docs/ingestion.md), [docs/features.md](docs/features.md), [docs/models.md](docs/models.md) and [docs/analytics.md](docs/analytics.md) to rebuild it. The analyst needs `GROQ_API_KEY` in `.env` (see `.env.example`).
 
-## Pipeline
+## Documentation
 
-| Step | Script | What it does |
-|---|---|---|
-| 0 | `00_verificar_dados.py` | Checks the raw ANAC files |
-| 1 | `01_ingestao.py` | Raw CSV (~20 GB) to Parquet with Polars |
-| 2 | `02_feature_engineering.py` | Feature tables for the four models |
-| 3 | `03_modelo_aeroporto.py` | Trains the LSTM (congestion) |
-| 4 | `04_modelo_assentos.py` | Trains the FT-Transformer (occupancy) |
-| 5 | `05_modelos_preco_bagagem.py` | Trains the MLP (pricing) and the LightGBM + NN stack (baggage) |
-| 6 | `06_api.py` | FastAPI inference server |
-| 7 | `07_monitorar_drift.py` | Monthly drift report for all four models |
+| Document | Covers |
+|---|---|
+| [ingestion.md](docs/ingestion.md) | Raw CSV to Parquet, audits, resuming |
+| [supplements.md](docs/supplements.md) | Recovering the four absent months from official ZIPs |
+| [features.md](docs/features.md) | Modules, features, leakage controls |
+| [models.md](docs/models.md) | Method, validation results, API, analyst |
+| [analytics.md](docs/analytics.md) | Tables, measures, coverage, Power BI, analytics API |
+| [decisions.md](docs/decisions.md) | Every methodological decision and why |
+| [AGENTS.md](AGENTS.md) | Rules for coding agents working on this repository |
 
-Data and trained models (`data/`, `models/`) are not versioned because of their size. Run steps 1–5 to rebuild them.
+## History: version 1
 
-## Engineering decisions
+The first version (2018–2024 data) trained four neural and boosted models: a bidirectional LSTM for airport congestion, an FT-Transformer for seat occupancy, an MLP for a price-pressure index and a LightGBM and neural-network stack for excess baggage. It served them through a prediction endpoint, `POST /prever`, deployed on Railway, with a static `dashboard.html`. That endpoint and deployment belong to v1 and are not part of the current version.
 
-- **FT-Transformer for tabular data:** chosen for seat occupancy because of the strong interactions between route, carrier and season.
-- **Multi-task learning:** occupancy and overbooking share one representation.
-- **Class imbalance:** stratified splits and `scale_pos_weight` for excess baggage.
-- **Route-aware inference:** historical stats looked up by route and carrier, with a three-level fallback when a route is rare.
-- **Demo mode:** if model files are missing at startup, the API switches to a lightweight path and keeps answering. `/health` reports which mode is active.
-- **Drift monitoring:** Population Stability Index on inputs plus MAE thresholds on outputs.
-- **Reproducibility:** fixed seed (42) in every training script.
+Its scripts are kept unchanged at the repository root (`00_verificar_dados.py` to `07_monitorar_drift.py`), along with `dashboard.html`, `docker-compose.yml`, `Dockerfile.bak` and `Procfile`.
 
-## Run locally
+Version 2 was rebuilt from the raw data rather than extended:
 
-```bash
-pip install -r requirements.txt
+- **Price pressure:** the dataset contains no prices, so v2 drops it.
+- **Excess baggage:** this target measured which carriers report it, not what passengers carry. v2 replaces it with total checked baggage per passenger (module C, not trained yet). See [decisions.md](docs/decisions.md).
+- **Evaluation:** every result is now chronological and compared with a baseline.
 
-# build data and models (once)
-python 01_ingestao.py
-python 02_feature_engineering.py
-python 03_modelo_aeroporto.py
-python 04_modelo_assentos.py
-python 05_modelos_preco_bagagem.py
-
-# start the API
-uvicorn 06_api:app --reload --port 8000
-```
-
-API docs at `http://localhost:8000/docs`. `dashboard.html` is a static analytics dashboard; `docker-compose.yml` serves it next to the API once a `Dockerfile` is in place (see `Dockerfile.bak`).
+The v1 metrics were not re-validated under these rules.
 
 ## Roadmap
 
-- [ ] Restore the Docker image with models pulled from storage at build time
-- [ ] Automated tests
-- [ ] CI/CD with GitHub Actions
-- [ ] Deploy on Azure
+- Run the sealed 2024–2025 test once, without tuning
+- Recover the four absent months and retrain as `models/v2`
+- Power BI report and semantic model (in development)
+- Route map using the airports that have coordinates
 
 ## Author
 
