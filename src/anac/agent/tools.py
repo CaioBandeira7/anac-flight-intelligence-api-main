@@ -81,6 +81,10 @@ class AnalystTools:
             raise ToolError(f"Invalid arguments for {name}: {fields}") from error
         return function(parsed)
 
+    def period(self) -> dict[str, str]:
+        """The latest 12 months covered, as {"from": "YYYY-MM", "to": "YYYY-MM"}."""
+        return self._period()
+
     def _period(self) -> dict[str, str]:
         period: dict[str, str] = self._store.get("/v2/overview")["data"]["period"]
         return period
@@ -261,7 +265,7 @@ TOOL_DEFINITIONS: list[dict[str, Any]] = [
         "type": "function",
         "function": {
             "name": "search_airports",
-            "description": "Brazilian public airports ranked by movements in the latest 12 months. Filter by code, name, city or state. Use it to find an airport's IATA code.",
+            "description": "Brazilian public airports ranked by movements (takeoffs plus landings) in the latest 12 months, largest first. Call without query for the busiest airports. Filter by code, name, city or state, also to find an airport's IATA code.",
             "parameters": {
                 "type": "object",
                 "properties": {
@@ -279,7 +283,7 @@ TOOL_DEFINITIONS: list[dict[str, Any]] = [
         "type": "function",
         "function": {
             "name": "search_routes",
-            "description": "The 200 busiest directed routes in the latest 12 months, with paid passengers and load factor. Filter by origin and destination IATA codes.",
+            "description": "The 200 busiest directed routes in the latest 12 months, ranked by paid passengers, largest first, with load factor. Call without filters for the busiest routes (a ranking). Filter by origin and/or destination IATA codes.",
             "parameters": {
                 "type": "object",
                 "properties": {

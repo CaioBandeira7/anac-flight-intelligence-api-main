@@ -2,7 +2,18 @@
 
 A reproducible data and machine-learning platform built on ANAC's air transport microdata (Brazil, 2000-01 to 2025-12): an audited ingestion pipeline, a validated analytical layer, forecasting models compared honestly against baselines, a read-only API, a Next.js dashboard and an AI analyst that answers only from these data.
 
-**Current version: v2.** Version 1 is described under [History](#history-version-1). **Portfolio:** [caiobandeira7.github.io](https://caiobandeira7.github.io)
+**Current version: v3** (public deployment of the v2 data platform, with the rate-limited analyst). Version 1 is described under [History](#history-version-1). **Portfolio:** [caiobandeira7.github.io](https://caiobandeira7.github.io)
+
+## Live
+
+| | Address |
+|---|---|
+| Dashboard | [anac-flight-intelligence-api-main.vercel.app](https://anac-flight-intelligence-api-main.vercel.app) (Vercel) |
+| AI Analyst | [/dashboard/analyst](https://anac-flight-intelligence-api-main.vercel.app/dashboard/analyst) |
+| ML Studio | [/dashboard/ml-studio](https://anac-flight-intelligence-api-main.vercel.app/dashboard/ml-studio) |
+| API | [anac-flight-intelligence-api-v2.onrender.com](https://anac-flight-intelligence-api-v2.onrender.com/health) · [OpenAPI docs](https://anac-flight-intelligence-api-v2.onrender.com/docs) (Render, image `xuxutinha777/anac-flight-intelligence-api:v3`) |
+
+The API runs on Render's free tier: after about 15 minutes without traffic it sleeps, and the first request can take up to a minute. The analyst answers at most 10 questions per visitor per hour and 200 in total per UTC day.
 
 ## The problem
 
@@ -20,7 +31,7 @@ ANAC publishes every Brazilian flight leg since 2000, about 20 GB of open data. 
 - **Market overview:** paid passengers, flights, seats offered and load factor for any period, compared with the same months a year earlier.
 - **Airports, routes and airlines:** rankings and monthly series with filters by period, airport (IATA or ICAO) and carrier. Routes are directed: CGH→SDU and SDU→CGH are separate.
 - **ML Studio:** how each forecasting method scored on 2023 validation data. No forecasts are served.
-- **AI Aviation Analyst:** questions in plain language, answered through a small set of fixed, read-only query tools, so it can only answer what those tools cover. Numbers in an answer are checked against the tool results. That check is heuristic: it confirms that each number appears in the results, but it does not guarantee that every association between numbers, entities, metrics and periods is correct.
+- **AI Aviation Analyst:** questions in plain language, including rankings such as the busiest routes or airports, answered through a small set of fixed, read-only query tools, so it can only answer what those tools cover. Numbers in an answer are checked against the tool results. That check is heuristic: it confirms that each number appears in the results, but it does not guarantee that every association between numbers, entities, metrics and periods is correct.
 
 ## Architecture
 
@@ -113,9 +124,9 @@ Use `npm.cmd` rather than `npm` in PowerShell: if the execution policy blocks sc
 .venv\Scripts\python research\analyst-demo\build_cases.py        # analyst cases, verified, no LLM call
 ```
 
-To publish the API and dashboard, see [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md). Nothing is deployed yet.
+To publish the API and dashboard, see [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md). The live deployment is listed under [Live](#live).
 
-The API serves data built locally, which Git does not version. See [docs/ingestion.md](docs/ingestion.md), [docs/features.md](docs/features.md), [docs/models.md](docs/models.md) and [docs/analytics.md](docs/analytics.md) to rebuild it. The analyst needs `GROQ_API_KEY` in `.env` (see `.env.example`).
+The API serves data built locally, which Git does not version. See [docs/ingestion.md](docs/ingestion.md), [docs/features.md](docs/features.md), [docs/models.md](docs/models.md) and [docs/analytics.md](docs/analytics.md) to rebuild it. The analyst needs `GROQ_API_KEY` in `.env` (see `.env.example`). The public chat is rate-limited per client and per day; the limits are listed in [DEPLOYMENT.md](docs/DEPLOYMENT.md#analyst-abuse-limits).
 
 ## Documentation
 

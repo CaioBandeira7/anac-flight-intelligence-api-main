@@ -75,6 +75,8 @@ select = ["E", "F", "I", "B", "UP", "SIM", "RUF", "PTH"]
 "src/anac/api/app.py" = ["E501"]
 "tests/test_agent.py" = ["E501", "RUF001"]
 "tests/test_api.py" = ["E501"]
+"tests/test_ratelimit.py" = ["E501"]
+"tests/test_analyst_rankings.py" = ["E501"]
 "tests/test_models.py" = ["E501"]
 
 [tool.mypy]

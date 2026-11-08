@@ -1,6 +1,23 @@
 # Deployment guide
 
-Two services: a read-only **API** (FastAPI, Python 3.12) and the **dashboard** (Next.js 16). Nothing has been published: no public URL exists yet, and this guide does not assume one. Replace `https://api.example` and `https://app.example` with the addresses your host gives you.
+Two services: a read-only **API** (FastAPI, Python 3.12) and the **dashboard** (Next.js 16). Below, `https://api.example` and `https://app.example` stand for the addresses your host gives you.
+
+## Current deployment
+
+| Service | Host | Address | Source |
+|---|---|---|---|
+| API | Render, free web service `anac-flight-intelligence-api:v2`, one instance | `https://anac-flight-intelligence-api-v2.onrender.com` | Docker Hub image `xuxutinha777/anac-flight-intelligence-api:v3`, built locally with the data |
+| Dashboard | Vercel, root directory `web` | `https://anac-flight-intelligence-api-main.vercel.app` | Git, `NEXT_PUBLIC_DATA_SOURCE=api`, `NEXT_PUBLIC_API_URL` set to the API |
+
+Render environment: `ANAC_API_HOST`, `ANAC_API_PORT`, `ANAC_CORS_ORIGINS` (the Vercel address), `GROQ_API_KEY` (secret) and `ANAC_CLIENT_IP_HEADER=cf-connecting-ip`. The analyst limits use their defaults.
+
+### Releasing a new API image
+
+```powershell
+.\deploy\publish-api.ps1 -Tag v4      # tests, lint, types, docker build and push
+```
+
+Then, in Render: **Settings → Image URL** → `docker.io/xuxutinha777/anac-flight-intelligence-api:v4` → **Save** and deploy. Environment variables are kept. To roll back, set the previous tag and deploy again.
 
 ## What each service needs
 
@@ -27,8 +44,34 @@ Because the data is not in Git, a host that builds from the repository cannot bu
 | `ANAC_ANALYTICS_DIR` | no | `data/analytics/v1` | Analytical tables |
 | `GROQ_API_KEY` | no | — | Enables the analyst. **Secret:** set it in the host's secret store, never in the image, the repository or a `NEXT_PUBLIC_*` variable |
 | `ANAC_LLM_PROVIDER`, `ANAC_LLM_BASE_URL`, `ANAC_LLM_MODEL`, `ANAC_LLM_API_KEY` | no | Groq, `openai/gpt-oss-120b` | Any OpenAI-compatible provider |
+| `ANAC_ANALYST_CLIENT_LIMIT` | no | `10` | Questions one client may ask per window. `0` turns it off |
+| `ANAC_ANALYST_CLIENT_WINDOW_SECONDS` | no | `3600` | Length of that sliding window |
+| `ANAC_ANALYST_DAILY_LIMIT` | no | `200` | Questions the whole server answers per UTC day. `0` turns it off |
+| `ANAC_CLIENT_IP_HEADER` | **yes on Render** | empty (TCP peer) | Header holding the real client address. Set `cf-connecting-ip` on Render; see below |
 
 Without a key, the analyst reports "not configured" and every other feature works. With a key, every question is a call to the provider, which may have usage limits or costs.
+
+### Analyst abuse limits
+
+`POST /v2/analyst/chat` is public and every accepted question can become paid calls to the provider (up to 4 tool rounds, 900 output tokens each). Besides the per-request bounds (question ≤ 500 characters, history ≤ 6 turns, 45 s timeout), two limits apply before the provider is contacted:
+
+- **Per client:** `ANAC_ANALYST_CLIENT_LIMIT` questions per sliding `ANAC_ANALYST_CLIENT_WINDOW_SECONDS`.
+- **Global:** `ANAC_ANALYST_DAILY_LIMIT` questions per UTC day, shared by everyone. It caps the worst-case daily cost even if many addresses are used.
+
+Past a limit the answer is `429` with `Retry-After` (seconds) and `detail = {"code": "rate_limited", "scope": "client" | "daily", "message": …}`. The provider is not called. A refused question consumes nothing, so one client cannot burn the daily quota by retrying; invalid requests (422) are not counted. Other endpoints are not limited.
+
+**Client address.** `X-Forwarded-For` is never read: Render's proxy appends to whatever the client sent, so a client can choose its first entry. Without `ANAC_CLIENT_IP_HEADER`, the API counts the TCP peer, which on Render is the platform's proxy: every visitor then shares one bucket (safe, but strict). On Render, set `ANAC_CLIENT_IP_HEADER=cf-connecting-ip`: Render sits behind Cloudflare, which overwrites that header with the address it saw. The value is used only if it parses as an IP address. If the service ever runs behind a host without such a header, leave it empty.
+
+**Limitations of the in-memory counters:**
+
+| Situation | Effect | Mitigation |
+|---|---|---|
+| Restart, redeploy, or a free instance spinning down | All counters reset to zero, so a client and the daily quota start over | Low daily limit; the provider's own quota still applies (its 429 is passed on) |
+| Several instances or workers | Each process counts separately: real limits are N × the configured ones | Keep one instance and one worker (the image runs one), or move the counters to a shared store such as Redis |
+| Many addresses (botnets, IPv6 ranges) | The per-client limit is evaded | The global daily limit still caps the total |
+| Clients behind one NAT | They share a bucket | Raise `ANAC_ANALYST_CLIENT_LIMIT` if needed |
+
+For a stronger guarantee, also set a spending or usage limit in the provider's console: it is the only cap that survives restarts and instances.
 
 ### Dashboard
 
@@ -95,5 +138,6 @@ Run after every deployment. The first five rows were verified locally, with `nex
 | Static files | `/ml/showcase.json`, `/ml/report.pdf` and `/analyst/cases.json` return 200 | ✅ |
 | Failure handling | Stop the API: pages show "Couldn't load this data" with Retry, and ML Studio still renders | ✅ |
 | Analyst | Open the chat: it reads `/v2/analyst/config` only. Asking a question calls the provider | Not run live in this round (no model call made) |
+| Analyst limits | Ask more than `ANAC_ANALYST_CLIENT_LIMIT` questions: the next answer is 429 with `Retry-After` | ✅ automated (`tests/test_ratelimit.py`) |
 | Docker images | `docker build` for both Dockerfiles | **Not run:** the Docker daemon was not running on the build machine |
 | Secrets | No key in the repository; `.env` and `web/.env.local` ignored; the Dockerfiles' allowlists exclude `.env` | ✅ scanned tracked and untracked files |

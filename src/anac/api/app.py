@@ -6,7 +6,7 @@ import os
 from pathlib import Path
 from typing import Any, Literal
 
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, ConfigDict, Field
 
@@ -14,6 +14,7 @@ from anac.agent.analyst import Analyst, AnalystAnswer
 from anac.agent.llm import LlmClient, LlmConfig, LlmError, LlmErrorCode, load_env_file
 from anac.agent.tools import AnalystTools
 from anac.api.analytics import build_router
+from anac.api.ratelimit import RateLimitConfig, RateLimiter, client_address
 from anac.api.schemas import (
     AirportStat,
     AnalystCatalog,
@@ -38,6 +39,10 @@ ERROR_RESPONSES = {
     LlmErrorCode.UNAVAILABLE: (503, "The model provider is unavailable right now."),
     LlmErrorCode.TIMEOUT: (504, "The model took too long to answer."),
     LlmErrorCode.BAD_OUTPUT: (502, "The model returned an unusable answer. Please try again."),
+}
+LIMIT_MESSAGES = {
+    "client": "Too many questions from this connection. Please wait before asking again.",
+    "daily": "The analyst reached its daily question limit. Please try again tomorrow.",
 }
 
 
@@ -86,6 +91,7 @@ def create_app(
     directory: Path | None = None,
     llm: LlmClient | None = None,
     analytics_dir: Path | None = None,
+    limiter: RateLimiter | None = None,
 ) -> FastAPI:
     load_env_file(Path(".env"))
     store = PayloadStore(directory or Path(os.environ.get("ANAC_SERVING_DIR", DEFAULT_DIRECTORY)))
@@ -150,6 +156,7 @@ def create_app(
 
     client = llm or LlmClient(LlmConfig.from_env())
     analyst = Analyst(client, AnalystTools(store))
+    limits = limiter or RateLimiter(RateLimitConfig.from_env())
 
     @app.get("/v2/analyst/config", tags=["analyst"])
     def analyst_config() -> AnalystConfig:
@@ -164,8 +171,21 @@ def create_app(
         return AnalystStatus.model_validate(analyst.status())
 
     @app.post("/v2/analyst/chat", tags=["analyst"])
-    def analyst_chat(request: ChatRequest) -> ChatResponse:
-        """Ask a question. Answers come only from fixed read-only tools over the exported data."""
+    def analyst_chat(request: ChatRequest, http: Request) -> ChatResponse:
+        """Ask a question. Answers come only from fixed read-only tools over the exported data.
+
+        Limited per client and per UTC day: past a limit the answer is 429 with Retry-After,
+        and the model provider is not called.
+        """
+        peer = http.client.host if http.client else None
+        decision = limits.check(client_address(peer, http.headers, limits.config))
+        if not decision.allowed:
+            scope = decision.scope or "client"
+            raise HTTPException(
+                status_code=429,
+                detail={"code": "rate_limited", "scope": scope, "message": LIMIT_MESSAGES[scope]},
+                headers={"Retry-After": str(decision.retry_after)},
+            )
         try:
             result: AnalystAnswer = analyst.ask(
                 request.question.strip(), [turn.model_dump() for turn in request.history]
