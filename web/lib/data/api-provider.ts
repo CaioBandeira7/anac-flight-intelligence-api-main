@@ -10,12 +10,27 @@
  *   GET /v2/datasets           → DatasetInfo[]
  *   GET /v2/modules            → ModuleDescription[]
  *   GET /v2/analyst/catalog    → AnalystCatalog
+ *   GET /v2/analytics/*        → filtered rankings and monthly series (docs/analytics.md)
  *
  * Responses may be a bare payload or an `{ data, meta }` envelope; both are
  * normalised here so components never change.
  */
 import {
   DataProviderError,
+  type AirportCatalog,
+  type AnalystConfig,
+  type CarrierCatalog,
+  type AirportQuery,
+  type AirportSeries,
+  type AirportsPage,
+  type CarrierQuery,
+  type CarrierSeries,
+  type CarriersPage,
+  type Coverage,
+  type PageQuery,
+  type RouteQuery,
+  type RouteSeries,
+  type RoutesPage,
   type AirportStat,
   type AnalystCatalog,
   type AnalystStatus,
@@ -53,29 +68,86 @@ export class ApiDataProvider implements FlightDataProvider {
     this.fetchImpl = opts.fetchImpl ?? ((...args) => fetch(...args));
   }
 
-  private async get<T>(path: string): Promise<Envelope<T>> {
+  /** `signal` lets a view cancel a request whose filters are no longer current. */
+  private async get<T>(path: string, signal?: AbortSignal): Promise<Envelope<T>> {
     const controller = new AbortController();
     const timer = setTimeout(() => controller.abort(), this.timeoutMs);
+    const cancel = () => controller.abort();
+    signal?.addEventListener("abort", cancel);
     const url = `${this.baseUrl}${path}`;
     try {
       const res = await this.fetchImpl(url, {
         headers: { Accept: "application/json" },
         signal: controller.signal,
       });
-      if (!res.ok) throw new DataProviderError(`Request failed (${res.status})`, res.status, path);
+      if (!res.ok) {
+        const body = (await res.json().catch(() => null)) as { detail?: unknown } | null;
+        const detail = typeof body?.detail === "string" ? body.detail : `Request failed (${res.status})`;
+        throw new DataProviderError(detail, res.status, path);
+      }
       const body: unknown = await res.json();
       return normalise<T>(body);
     } catch (err) {
       if (err instanceof DataProviderError) throw err;
+      if (signal?.aborted) throw new DataProviderError("Request cancelled", undefined, path, "cancelled");
       const aborted = err instanceof DOMException && err.name === "AbortError";
       throw new DataProviderError(aborted ? "Request timed out" : "Backend unreachable", undefined, path);
     } finally {
       clearTimeout(timer);
+      signal?.removeEventListener("abort", cancel);
     }
   }
 
   health() {
     return this.get<HealthStatus>("/health");
+  }
+
+  /** Coverage does not change while the app runs, so every view shares one request. */
+  getCoverage() {
+    return this.once<Coverage>("/v2/analytics/coverage");
+  }
+  private cached = new Map<string, Promise<Envelope<unknown>>>();
+
+  /** One request per app session for data that does not change while it runs. */
+  private once<T>(path: string): Promise<Envelope<T>> {
+    let pending = this.cached.get(path) as Promise<Envelope<T>> | undefined;
+    if (!pending) {
+      pending = this.get<T>(path).catch((err: unknown) => {
+        this.cached.delete(path);
+        throw err;
+      });
+      this.cached.set(path, pending);
+    }
+    return pending;
+  }
+
+  getAirportCatalog() {
+    return this.once<AirportCatalog>("/v2/analytics/airports/catalog");
+  }
+  getCarrierCatalog() {
+    return this.once<CarrierCatalog>("/v2/analytics/carriers/catalog");
+  }
+  getAnalystConfig(): Promise<AnalystConfig> {
+    return this.requestJson<AnalystConfig>("/v2/analyst/config", { method: "GET" }, this.timeoutMs);
+  }
+
+  getRouteRanking(query: RouteQuery & PageQuery, signal?: AbortSignal) {
+    return this.get<RoutesPage>(`/v2/analytics/routes${toQuery(query)}`, signal);
+  }
+  getRouteSeries(query: RouteQuery, signal?: AbortSignal) {
+    return this.get<RouteSeries>(`/v2/analytics/routes/monthly${toQuery(query)}`, signal);
+  }
+  getAirportRanking(query: AirportQuery & PageQuery, signal?: AbortSignal) {
+    return this.get<AirportsPage>(`/v2/analytics/airports${toQuery(query)}`, signal);
+  }
+  getAirportSeries(query: AirportQuery & { airport: string }, signal?: AbortSignal) {
+    return this.get<AirportSeries>(`/v2/analytics/airports/monthly${toQuery(query)}`, signal);
+  }
+  getCarrierRanking(query: CarrierQuery & PageQuery, signal?: AbortSignal) {
+    return this.get<CarriersPage>(`/v2/analytics/carriers${toQuery(query)}`, signal);
+  }
+  getCarrierSeries(query: CarrierQuery & { carrier: string }, signal?: AbortSignal) {
+    return this.get<CarrierSeries>(`/v2/analytics/carriers/monthly${toQuery(query)}`, signal);
   }
   getOverview() {
     return this.get<OverviewData>("/v2/overview");
@@ -134,6 +206,17 @@ export class ApiDataProvider implements FlightDataProvider {
       clearTimeout(timer);
     }
   }
+}
+
+/** Builds a query string, leaving out empty values. Values are encoded, never concatenated raw. */
+export function toQuery(params: object): string {
+  const search = new URLSearchParams();
+  for (const [key, value] of Object.entries(params)) {
+    if (value === undefined || value === null || value === "") continue;
+    search.set(key, String(value));
+  }
+  const text = search.toString();
+  return text ? `?${text}` : "";
 }
 
 function isEnvelope(x: unknown): x is { data: unknown; meta?: Partial<ResponseMeta> } {

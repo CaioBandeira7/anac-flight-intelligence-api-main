@@ -1,7 +1,9 @@
 import { fireEvent, render, screen, waitFor, within } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 import { DataProviderRoot } from "@/components/data-provider";
-import { AirportsView, AnalystView, MlStudioView, formatMetric } from "@/components/dashboard/data-views";
+import { MlStudioView, formatMetric } from "@/components/dashboard/data-views";
+import { AnalystView } from "@/components/dashboard/analyst";
+import { AirportsView } from "@/components/dashboard/analytics-views";
 import { ApiDataProvider, DataProviderError, MockDataProvider, type FlightDataProvider, type ModelCard } from "@/lib/data";
 
 const meta = { source: "API" as const, isDemo: false, generatedAt: "2026-11-06T00:00:00Z" };
@@ -23,13 +25,16 @@ describe("ML Studio", () => {
   it("marks the method in use per module and labels results as 2023 validation", async () => {
     withProvider({ getModels: () => Promise.resolve({ data: CARDS, meta }) }, <MlStudioView />);
     const moduleA = (await screen.findByText(/Module A/)).closest("section") as HTMLElement;
-    expect(within(moduleA).getByText("Baseline: same weekday, recent 8 weeks").parentElement).toHaveTextContent("In use");
-    expect(within(moduleA).getByText("LightGBM").parentElement).not.toHaveTextContent("In use");
+    expect(within(moduleA).getByText("Baseline: same weekday, recent 8 weeks").parentElement).toHaveTextContent("Selected method");
+    expect(within(moduleA).getByText("LightGBM").parentElement).not.toHaveTextContent("Selected method");
     const moduleB = screen.getByText(/Module B/).closest("section") as HTMLElement;
-    expect(within(moduleB).getByText("LightGBM").parentElement).toHaveTextContent("In use");
+    expect(within(moduleB).getByText("LightGBM").parentElement).toHaveTextContent("Selected method");
     expect(screen.getByText(/validation results for 2023/)).toBeInTheDocument();
     expect(screen.getByText(/not current forecasts/)).toBeInTheDocument();
     expect(screen.getByText(/Not trained/)).toBeInTheDocument();
+    // No module claims a forecast: each states that none is served.
+    expect(screen.getAllByText(/no\s+prediction endpoint/).length).toBe(3);
+    expect(within(moduleA).getByText(/2024–2025 has not been run/)).toBeInTheDocument();
   });
 
   it("formats metrics without changing their value", () => {
@@ -46,20 +51,23 @@ describe("ML Studio", () => {
 
 describe("data states", () => {
   it("shows an error with retry when the API fails", async () => {
-    withProvider({ getAirports: () => Promise.reject(new Error("Backend unreachable")) }, <AirportsView />);
+    withProvider({ getAirportRanking: () => Promise.reject(new Error("Backend unreachable")) }, <AirportsView />);
     expect(await screen.findByRole("alert")).toHaveTextContent("Backend unreachable");
     expect(screen.getByRole("button", { name: /retry/i })).toBeInTheDocument();
   });
 
   it("shows an empty state instead of an empty table", async () => {
-    withProvider({ getAirports: () => Promise.resolve({ data: [], meta }) }, <AirportsView />);
-    expect(await screen.findByText("No airport data was returned.")).toBeInTheDocument();
+    const empty = { period: { from: "2025-01", to: "2025-12" }, months_with_data: 12, absent_months: [], total: 0, limit: 25, offset: 0, airports: [] };
+    withProvider({ getAirportRanking: () => Promise.resolve({ data: empty, meta }) }, <AirportsView />);
+    expect(await screen.findByText(/This airport has no flights in this period/)).toBeInTheDocument();
     expect(screen.queryByRole("table")).not.toBeInTheDocument();
   });
 });
 
 describe("AI Aviation Analyst", () => {
-  const status = { available: true, provider: "groq", model: "m", reason: null };
+  const config = { configured: true, provider: "groq", model: "m" };
+  // Opening the chat must never contact the model provider: status is checked only on request.
+  const noStatus = () => Promise.reject(new Error("status must not be called"));
 
   it("stays disabled on demo data and generates no answers", async () => {
     withProvider({}, <AnalystView />);
@@ -77,7 +85,7 @@ describe("AI Aviation Analyst", () => {
         caveats: ["Only the 200 busiest routes are available."],
       }),
     );
-    withProvider({ getAnalystStatus: () => Promise.resolve(status), askAnalyst }, <AnalystView />);
+    withProvider({ kind: "API", getAnalystConfig: () => Promise.resolve(config), getAnalystStatus: noStatus, askAnalyst }, <AnalystView />);
     const input = await screen.findByRole("textbox", { name: /question/i });
     await waitFor(() => expect(input).toBeEnabled());
     fireEvent.change(input, { target: { value: "Busiest route?" } });
@@ -90,7 +98,7 @@ describe("AI Aviation Analyst", () => {
 
   it("shows a usage limit message with retry", async () => {
     const askAnalyst = vi.fn(() => Promise.reject(new DataProviderError("The free usage limit was reached", 429, "/v2/analyst/chat", "rate_limited")));
-    withProvider({ getAnalystStatus: () => Promise.resolve(status), askAnalyst }, <AnalystView />);
+    withProvider({ kind: "API", getAnalystConfig: () => Promise.resolve(config), getAnalystStatus: noStatus, askAnalyst }, <AnalystView />);
     const input = await screen.findByRole("textbox", { name: /question/i });
     await waitFor(() => expect(input).toBeEnabled());
     fireEvent.change(input, { target: { value: "Q" } });
@@ -101,7 +109,7 @@ describe("AI Aviation Analyst", () => {
 
   it("explains when the server has no key", async () => {
     withProvider(
-      { getAnalystStatus: () => Promise.resolve({ ...status, available: false, reason: "not_configured" }) },
+      { kind: "API", getAnalystConfig: () => Promise.resolve({ ...config, configured: false }), getAnalystStatus: noStatus },
       <AnalystView />,
     );
     expect(await screen.findByText(/not configured on the server/)).toBeInTheDocument();
@@ -146,9 +154,9 @@ describe.runIf(process.env.ANAC_API_URL)("live API", () => {
     render(<DataProviderRoot provider={api}><MlStudioView /></DataProviderRoot>);
     const moduleA = (await screen.findByText(/Module A/, undefined, { timeout: 20_000 })).closest("section") as HTMLElement;
     expect(within(moduleA).getByText("10.30%")).toBeInTheDocument();
-    expect(within(moduleA).getByText(/^Baseline:/).parentElement).toHaveTextContent("In use");
+    expect(within(moduleA).getByText(/^Baseline:/).parentElement).toHaveTextContent("Selected method");
     const moduleB = screen.getByText(/Module B/).closest("section") as HTMLElement;
-    expect(within(moduleB).getByText("LightGBM").parentElement).toHaveTextContent("In use");
+    expect(within(moduleB).getByText("LightGBM").parentElement).toHaveTextContent("Selected method");
     expect(within(moduleB).getByText("6.06 pts")).toBeInTheDocument();
   }, 30_000);
 });

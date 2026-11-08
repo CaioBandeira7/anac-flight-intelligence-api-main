@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { ModulePlaceholder } from "@/components/dashboard/module-placeholder";
+import { AirlinesView } from "@/components/dashboard/analytics-views";
 
 export const metadata: Metadata = { title: "Airlines Analytics" };
 
 export default function Page() {
-  return <ModulePlaceholder href="/dashboard/airlines" />;
+  return <AirlinesView />;
 }

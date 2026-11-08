@@ -357,6 +357,85 @@ def test_missing_tables_are_reported_not_invented(tmp_path: Path) -> None:
     assert app.get("/v2/analytics/coverage").status_code == 503
 
 
+def test_carrier_ranking_and_share_come_from_the_carrier_fact(
+    client: TestClient, built: tuple[FeatureConfig, Path]
+) -> None:
+    facts = table(built[1], "fact_carrier_month")
+    expected = facts.group_by("carrier").agg(pl.col("paid_passengers", "seats").sum())
+    market = int(facts.get_column("paid_passengers").sum())
+    data = client.get("/v2/analytics/carriers").json()["data"]
+    assert data["market_paid_passengers"] == market
+    assert data["total"] == expected.height
+    assert data["absent_months"] == ["2023-02"]
+    rows = {row["carrier"]: row for row in data["carriers"]}
+    for item in expected.to_dicts():
+        row = rows[item["carrier"]]
+        assert row["paid_passengers"] == item["paid_passengers"]
+        # Recomputed from sums, never averaged.
+        assert row["load_factor_paid"] == pytest.approx(item["paid_passengers"] / item["seats"])
+        assert row["market_share"] == pytest.approx(item["paid_passengers"] / market)
+    assert [row["carrier"] for row in data["carriers"]] == ["AZU", "GLO"]
+    assert sum(row["market_share"] for row in data["carriers"]) == pytest.approx(1)
+
+
+def test_carrier_filter_keeps_the_market_denominator(client: TestClient) -> None:
+    whole = client.get("/v2/analytics/carriers").json()["data"]
+    only = client.get("/v2/analytics/carriers", params={"carrier": "glo"}).json()["data"]
+    assert [row["carrier"] for row in only["carriers"]] == ["GLO"]
+    assert only["market_paid_passengers"] == whole["market_paid_passengers"]
+    assert only["carriers"][0]["market_share"] == whole["carriers"][1]["market_share"]
+    unknown = client.get("/v2/analytics/carriers", params={"carrier": "ZZZ"}).json()["data"]
+    assert unknown["carriers"] == []
+    assert unknown["total"] == 0
+
+
+def test_carrier_series_marks_absent_months_and_true_zeros(client: TestClient) -> None:
+    data = client.get("/v2/analytics/carriers/monthly", params={"carrier": "GLO"}).json()["data"]
+    assert data["carrier_found"] is True
+    assert data["absent_months"] == ["2023-02"]
+    points = {point["month"]: point for point in data["points"]}
+    assert set(points) == {"2023-01", "2023-03"}
+    january = points["2023-01"]
+    assert january["market_share"] == pytest.approx(
+        january["paid_passengers"] / january["market_paid_passengers"]
+    )
+    # GOL did not fly in March, a known month: a true zero with a zero share.
+    assert points["2023-03"]["paid_passengers"] == 0
+    assert points["2023-03"]["market_share"] == 0
+    missing = client.get("/v2/analytics/carriers/monthly", params={"carrier": "ZZZ"}).json()
+    assert missing["data"]["carrier_found"] is False
+    assert missing["data"]["points"] == []
+
+
+@pytest.mark.parametrize(
+    "params", [{"carrier": "G' OR 1=1"}, {"carrier": "GOLX"}, {"from": "2023-03", "to": "2023-01"}]
+)
+def test_bad_carrier_filters_are_rejected(client: TestClient, params: dict[str, object]) -> None:
+    assert client.get("/v2/analytics/carriers", params=params).status_code == 422
+    assert (
+        client.get(
+            "/v2/analytics/carriers/monthly", params={"carrier": "GLO", **params}
+        ).status_code
+        == 422
+    )
+
+
+def test_catalogs_list_every_code_busiest_first(
+    client: TestClient, built: tuple[FeatureConfig, Path]
+) -> None:
+    airports = client.get("/v2/analytics/airports/catalog").json()["data"]
+    assert airports["recent_period"]["to"] == "2023-03"
+    codes = [row["airport"] for row in airports["airports"]]
+    assert set(codes) == set(table(built[1], "dim_airport").get_column("airport"))
+    assert codes[0] == "SBGR"
+    assert airports["airports"][0]["iata"] == "GRU"
+    movements = [row["recent_movements"] for row in airports["airports"]]
+    assert movements == sorted(movements, reverse=True)
+    carriers = client.get("/v2/analytics/carriers/catalog").json()["data"]
+    assert [row["carrier"] for row in carriers["carriers"]] == ["AZU", "GLO"]
+    assert carriers["carriers"][0]["first_month"] == "2023-01"
+
+
 def test_rankings_keep_their_order_across_runs(client: TestClient) -> None:
     # Regression: a join after sorting shuffled the rows from one run to the next.
     for _ in range(5):

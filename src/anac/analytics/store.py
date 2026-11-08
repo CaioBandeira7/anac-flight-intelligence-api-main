@@ -248,6 +248,168 @@ class AnalyticsStore:
             "points": self._series_points(monthly, start, end) if resolved else [],
         }
 
+    def resolve_carrier(self, code: str | None) -> list[str] | None:
+        """ICAO or IATA to ICAO. None means no filter, and an empty list means an unknown code."""
+        if not code:
+            return None
+        wanted = code.strip().upper()
+        found = (
+            self._table("dim_carrier")
+            .filter((pl.col("carrier") == wanted) | (pl.col("iata") == wanted))
+            .select("carrier")
+            .collect()
+        )
+        return found.get_column("carrier").to_list()
+
+    def carriers(
+        self, carrier: str | None, first: str | None, last: str | None, limit: int, offset: int
+    ) -> dict[str, Any]:
+        """Totals per carrier in the period, ordered by paid passengers, with market share.
+
+        The share is over every carrier's paid passengers in the same period and scope.
+        """
+        start, end = self._period(first, last)
+        facts = self._table("fact_carrier_month").filter(pl.col("month").is_between(start, end))
+        market = int(facts.select(pl.col("paid_passengers").sum()).collect().item() or 0)
+        resolved = self.resolve_carrier(carrier)
+        if resolved is not None:
+            facts = facts.filter(pl.col("carrier").is_in(resolved))
+        grouped = (
+            facts.group_by("carrier")
+            .agg(
+                pl.col(
+                    "all_takeoffs",
+                    "passenger_takeoffs",
+                    "paid_passengers",
+                    "seats",
+                    "rpk",
+                    "ask",
+                    "international_paid_passengers",
+                ).sum(),
+                pl.col("month").n_unique().alias("months_operated"),
+            )
+            .with_columns(
+                pl.when(pl.col("seats") > 0)
+                .then(pl.col("paid_passengers") / pl.col("seats"))
+                .alias("load_factor_paid"),
+                (pl.col("paid_passengers") / market if market else pl.lit(None, pl.Float64)).alias(
+                    "market_share"
+                ),
+            )
+            .sort(["paid_passengers", "carrier"], descending=[True, False])
+            .collect()
+        )
+        names = self._table("dim_carrier").select("carrier", "iata", "name", "country")
+        page = (
+            grouped.slice(offset, limit)
+            .lazy()
+            .join(names, on="carrier", how="left", maintain_order="left")
+            .collect()
+        )
+        return {
+            **self._context(start, end),
+            "market_paid_passengers": market,
+            "total": grouped.height,
+            "limit": limit,
+            "offset": offset,
+            "carriers": page.to_dicts(),
+        }
+
+    def carrier_series(self, carrier: str, first: str | None, last: str | None) -> dict[str, Any]:
+        """Monthly totals of one carrier, with its share of each month's paid passengers."""
+        start, end = self._period(first, last)
+        resolved = self.resolve_carrier(carrier) or []
+        facts = self._table("fact_carrier_month").filter(pl.col("month").is_between(start, end))
+        market = facts.group_by("month").agg(
+            pl.col("paid_passengers").sum().alias("market_paid_passengers")
+        )
+        monthly = (
+            facts.filter(pl.col("carrier").is_in(resolved))
+            .group_by("month")
+            .agg(
+                pl.col(
+                    "all_takeoffs", "passenger_takeoffs", "paid_passengers", "seats", "rpk", "ask"
+                ).sum()
+            )
+            .collect()
+        )
+        points = self._series_points(monthly, start, end) if resolved else []
+        totals = {
+            _label(row["month"]): row["market_paid_passengers"]
+            for row in market.collect().to_dicts()
+        }
+        for point in points:
+            whole = totals.get(point["month"], 0)
+            point["market_paid_passengers"] = whole
+            point["market_share"] = point["paid_passengers"] / whole if whole else None
+        return {**self._context(start, end), "carrier_found": bool(resolved), "points": points}
+
+    def _recent(self) -> tuple[date, date]:
+        """The last 12 months of the dataset, used only to order suggestions by relevance."""
+        last = parse_period_month(self.manifest()["last_month"])
+        index = last.year * 12 + last.month - 1 - 11
+        return date(index // 12, index % 12 + 1, 1), last
+
+    def airport_catalog(self) -> dict[str, Any]:
+        """Every airport in the dimension, busiest first over the last 12 months."""
+        start, end = self._recent()
+        recent = (
+            self._table("fact_airport_month")
+            .filter(pl.col("month").is_between(start, end))
+            .group_by("airport")
+            .agg(pl.col("movements").sum().alias("recent_movements"))
+        )
+        rows = (
+            self._table("dim_airport")
+            .select("airport", "iata", "name", "city", "uf", "country", "first_month", "last_month")
+            .join(recent, on="airport", how="left")
+            .with_columns(pl.col("recent_movements").fill_null(0))
+            .sort(["recent_movements", "airport"], descending=[True, False])
+            .collect()
+        )
+        return {
+            "recent_period": {"from": _label(start), "to": _label(end)},
+            "airports": [
+                {
+                    **row,
+                    "first_month": _label(row["first_month"]),
+                    "last_month": _label(row["last_month"]),
+                }
+                for row in rows.to_dicts()
+            ],
+        }
+
+    def carrier_catalog(self) -> dict[str, Any]:
+        """Every carrier code in the dimension, largest first over the last 12 months."""
+        start, end = self._recent()
+        recent = (
+            self._table("fact_carrier_month")
+            .filter(pl.col("month").is_between(start, end))
+            .group_by("carrier")
+            .agg(pl.col("paid_passengers").sum().alias("recent_paid_passengers"))
+        )
+        rows = (
+            self._table("dim_carrier")
+            .select(
+                "carrier", "iata", "name", "country", "name_variants", "first_month", "last_month"
+            )
+            .join(recent, on="carrier", how="left")
+            .with_columns(pl.col("recent_paid_passengers").fill_null(0))
+            .sort(["recent_paid_passengers", "carrier"], descending=[True, False])
+            .collect()
+        )
+        return {
+            "recent_period": {"from": _label(start), "to": _label(end)},
+            "carriers": [
+                {
+                    **row,
+                    "first_month": _label(row["first_month"]),
+                    "last_month": _label(row["last_month"]),
+                }
+                for row in rows.to_dicts()
+            ],
+        }
+
     def coverage(self) -> dict[str, Any]:
         manifest = self.manifest()
         return {

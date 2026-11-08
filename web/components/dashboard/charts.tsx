@@ -8,15 +8,35 @@ import { cn, formatCompact, formatNumber } from "@/lib/utils";
 const SERIES = "var(--chart-1)";
 const GRID = "var(--grid)";
 
-export function Sparkline({ values, className, label }: { values: number[]; className?: string; label: string }) {
+/** Runs of consecutive known values. A `null` (month without data) breaks the line. */
+function segments(values: (number | null)[]): { start: number; values: number[] }[] {
+  const out: { start: number; values: number[] }[] = [];
+  values.forEach((v, i) => {
+    if (v === null) return;
+    const last = out[out.length - 1];
+    if (last && last.start + last.values.length === i) last.values.push(v);
+    else out.push({ start: i, values: [v] });
+  });
+  return out;
+}
+
+export function Sparkline({ values, className, label }: { values: (number | null)[]; className?: string; label: string }) {
   const id = useId();
   const { line, area } = useMemo(() => {
-    const min = Math.min(...values);
-    const max = Math.max(...values);
+    const known = values.filter((v): v is number => v !== null);
+    const min = Math.min(...known);
+    const max = Math.max(...known);
     const span = max - min || 1;
-    const pts = values.map((v, i) => [(i / (values.length - 1)) * 100, 28 - ((v - min) / span) * 24 - 2]);
-    const line = pts.map(([x, y], i) => `${i ? "L" : "M"}${x.toFixed(2)} ${y.toFixed(2)}`).join(" ");
-    return { line, area: `${line} L100 30 L0 30 Z` };
+    const x = (i: number) => (i / Math.max(1, values.length - 1)) * 100;
+    const y = (v: number) => 28 - ((v - min) / span) * 24 - 2;
+    let line = "";
+    let area = "";
+    for (const run of segments(values)) {
+      const path = run.values.map((v, k) => `${k ? "L" : "M"}${x(run.start + k).toFixed(2)} ${y(v).toFixed(2)}`).join(" ");
+      line += path;
+      area += `${path} L${x(run.start + run.values.length - 1).toFixed(2)} 30 L${x(run.start).toFixed(2)} 30 Z`;
+    }
+    return { line, area };
   }, [values]);
   return (
     <svg viewBox="0 0 100 30" preserveAspectRatio="none" className={cn("h-9 w-full", className)} role="img" aria-label={label}>
@@ -34,8 +54,19 @@ export function Sparkline({ values, className, label }: { values: number[]; clas
 
 interface Point {
   label: string;
-  value: number;
+  /** `null` is a month without data: drawn as a gap, never as zero. */
+  value: number | null;
 }
+
+/** Smallest "round" number at or above `value`, so small series and ratios get a readable scale. */
+function niceCeil(value: number) {
+  if (value <= 0) return 1;
+  const exp = 10 ** Math.floor(Math.log10(value));
+  const step = [1, 1.2, 1.5, 2, 2.5, 3, 4, 5, 6, 8, 10].find((s) => s * exp >= value) ?? 10;
+  return step * exp;
+}
+
+const NO_DATA = "No data for this month";
 
 const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 export const monthLabel = (ym: string) => {
@@ -47,7 +78,21 @@ export const monthLabel = (ym: string) => {
  * Area/line chart with crosshair + tooltip on hover, arrow-key navigation,
  * and a visually hidden data table for screen readers.
  */
-export function TrendChart({ data, valueLabel, height = 280 }: { data: Point[]; valueLabel: string; height?: number }) {
+export function TrendChart({
+  data,
+  valueLabel,
+  height = 280,
+  valueFormat = formatNumber,
+  tickFormat = formatCompact,
+}: {
+  data: Point[];
+  valueLabel: string;
+  height?: number;
+  /** Tooltip and screen-reader value. */
+  valueFormat?: (n: number) => string;
+  /** Y-axis labels. */
+  tickFormat?: (n: number) => string;
+}) {
   const W = 760;
   const H = height;
   const pad = { t: 16, r: 12, b: 28, l: 52 };
@@ -56,14 +101,24 @@ export function TrendChart({ data, valueLabel, height = 280 }: { data: Point[]; 
   const [active, setActive] = useState<number | null>(null);
 
   const geo = useMemo(() => {
-    const max = Math.max(...data.map((d) => d.value));
-    const niceMax = Math.ceil((max * 1.08) / 1_000_000) * 1_000_000 || 1;
+    const max = Math.max(0, ...data.map((d) => d.value ?? 0));
+    const niceMax = niceCeil(max * 1.08);
     const x = (i: number) => pad.l + (i / Math.max(1, data.length - 1)) * (W - pad.l - pad.r);
     const y = (v: number) => pad.t + (1 - v / niceMax) * (H - pad.t - pad.b);
-    const line = data.map((d, i) => `${i ? "L" : "M"}${x(i).toFixed(1)} ${y(d.value).toFixed(1)}`).join(" ");
-    const area = `${line} L${x(data.length - 1)} ${H - pad.b} L${x(0)} ${H - pad.b} Z`;
+    const runs = segments(data.map((d) => d.value));
+    let line = "";
+    let area = "";
+    for (const run of runs) {
+      const path = run.values.map((v, k) => `${k ? "L" : "M"}${x(run.start + k).toFixed(1)} ${y(v).toFixed(1)}`).join(" ");
+      line += path;
+      area += `${path} L${x(run.start + run.values.length - 1).toFixed(1)} ${H - pad.b} L${x(run.start).toFixed(1)} ${H - pad.b} Z`;
+    }
+    // A known month between two gaps has no line to sit on, so it is drawn as a dot.
+    const dots = runs.filter((run) => run.values.length === 1).map((run) => ({ cx: x(run.start), cy: y(run.values[0]) }));
+    const gaps = data.flatMap((d, i) => (d.value === null ? [x(i)] : []));
     const ticks = [0, 0.25, 0.5, 0.75, 1].map((k) => ({ v: niceMax * k, y: y(niceMax * k) }));
-    return { x, y, line, area, ticks };
+    const every = Math.max(1, Math.ceil(data.length / 8));
+    return { x, y, line, area, ticks, dots, gaps, every };
   }, [data, H, pad.b, pad.l, pad.r, pad.t]);
 
   const onMove = (e: PointerEvent<SVGSVGElement>) => {
@@ -110,12 +165,15 @@ export function TrendChart({ data, valueLabel, height = 280 }: { data: Point[]; 
           <g key={t.v}>
             <line x1={pad.l} x2={W - pad.r} y1={t.y} y2={t.y} style={{ stroke: GRID }} />
             <text x={pad.l - 10} y={t.y + 4} textAnchor="end" className="fill-muted text-[11px]">
-              {formatCompact(t.v)}
+              {tickFormat(t.v)}
             </text>
           </g>
         ))}
+        {geo.gaps.map((gx) => (
+          <line key={`gap-${gx}`} x1={gx} x2={gx} y1={pad.t} y2={H - pad.b} style={{ stroke: GRID }} strokeDasharray="3 4" />
+        ))}
         {data.map((d, i) =>
-          i % 3 === 0 ? (
+          i % geo.every === 0 ? (
             <text key={d.label} x={geo.x(i)} y={H - 8} textAnchor="middle" className="fill-muted text-[11px]">
               {d.label}
             </text>
@@ -123,10 +181,15 @@ export function TrendChart({ data, valueLabel, height = 280 }: { data: Point[]; 
         )}
         <path d={geo.area} fill={`url(#${gradId})`} />
         <path d={geo.line} fill="none" style={{ stroke: SERIES }} strokeWidth={2} strokeLinejoin="round" strokeLinecap="round" />
+        {geo.dots.map((dot) => (
+          <circle key={`dot-${dot.cx}`} cx={dot.cx} cy={dot.cy} r={2.5} style={{ fill: SERIES }} />
+        ))}
         {active !== null && a && (
           <g>
             <line x1={geo.x(active)} x2={geo.x(active)} y1={pad.t} y2={H - pad.b} style={{ stroke: "var(--line-strong)" }} />
-            <circle cx={geo.x(active)} cy={geo.y(a.value)} r={5} style={{ fill: SERIES, stroke: "var(--surface)" }} strokeWidth={2} />
+            {a.value !== null && (
+              <circle cx={geo.x(active)} cy={geo.y(a.value)} r={5} style={{ fill: SERIES, stroke: "var(--surface)" }} strokeWidth={2} />
+            )}
           </g>
         )}
       </svg>
@@ -137,11 +200,11 @@ export function TrendChart({ data, valueLabel, height = 280 }: { data: Point[]; 
           aria-hidden
         >
           <p className="text-muted">{a.label}</p>
-          <p className="mt-0.5 font-medium tabular-nums text-ink">{formatNumber(a.value)}</p>
+          <p className="mt-0.5 font-medium tabular-nums text-ink">{a.value === null ? NO_DATA : valueFormat(a.value)}</p>
         </div>
       )}
       <p className="sr-only" aria-live="polite">
-        {a ? `${a.label}: ${formatNumber(a.value)}` : ""}
+        {a ? `${a.label}: ${a.value === null ? NO_DATA : valueFormat(a.value)}` : ""}
       </p>
       <table className="sr-only">
         <caption>{valueLabel}</caption>
@@ -155,7 +218,7 @@ export function TrendChart({ data, valueLabel, height = 280 }: { data: Point[]; 
           {data.map((d) => (
             <tr key={d.label}>
               <td>{d.label}</td>
-              <td>{formatNumber(d.value)}</td>
+              <td>{d.value === null ? NO_DATA : valueFormat(d.value)}</td>
             </tr>
           ))}
         </tbody>

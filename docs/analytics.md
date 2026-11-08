@@ -99,7 +99,15 @@ GET only. Filters take ICAO or IATA codes and periods as `from` and `to` in `YYY
 | `/v2/analytics/routes/monthly` | `origin`, `destination`, `from`, `to` | Monthly totals for the selected direction |
 | `/v2/analytics/airports` | `airport`, `from`, `to`, `limit`, `offset` | Totals per airport, by movements |
 | `/v2/analytics/airports/monthly` | `airport` (required), `from`, `to` | Monthly totals of one airport |
+| `/v2/analytics/carriers` | `carrier`, `from`, `to`, `limit`, `offset` | Totals per carrier, by paid passengers, with market share |
+| `/v2/analytics/carriers/monthly` | `carrier` (required), `from`, `to` | Monthly totals and market share of one carrier |
+| `/v2/analytics/airports/catalog` | | Every airport code with names, busiest first over the last 12 months, for search |
+| `/v2/analytics/carriers/catalog` | | Every carrier code with its latest name, largest first over the last 12 months, for search |
 | `/v2/analytics/coverage` | | Period, absent months, table sizes and units |
+
+The catalogs are small (1,180 airports, 317 carriers) and are loaded once by the dashboard, which filters them locally. Carrier codes are never merged: "LATAM" finds `LAN` by its recorded name, not `TAM`.
+
+Carrier codes are ICAO (3) or IATA (2). Market share is the carrier's paid passengers over every carrier's paid passengers in the same period, in the passenger scope, domestic and international legs alike. A carrier filter does not change that denominator.
 
 In monthly series, absent months are listed and left out of `points`, while known months without flights appear as zeros.
 

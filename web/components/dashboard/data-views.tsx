@@ -1,17 +1,16 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState, type FormEvent, type ReactNode } from "react";
-import { Bot, CircleCheck, CircleDashed, Send } from "lucide-react";
+import { useCallback, type ReactNode } from "react";
+import { CircleCheck, CircleDashed } from "lucide-react";
 import { useDataProvider } from "@/components/data-provider";
 import { useResource, type Resource } from "@/hooks/use-resource";
-import type { AirportStat, AnalystStatus, ChatResponse, ChatTurn, DataProviderError, ModelCard, ModelMetric, RouteStat } from "@/lib/data/contracts";
-import { formatNumber, formatPercent } from "@/lib/utils";
+import type { ModelCard, ModelMetric } from "@/lib/data/contracts";
+import { formatPercent } from "@/lib/utils";
 import { navByHref } from "./nav";
-import { BarList } from "./charts";
 import { Card, DataTable, DemoBadge, EmptyState, ErrorState, PageHeader, Skeleton } from "./ui";
 
 /** One place for the three states every view must show. */
-function Loaded<T>({
+export function Loaded<T>({
   state,
   isEmpty,
   emptyMessage,
@@ -38,7 +37,7 @@ function Loaded<T>({
 
 const isEmptyList = (data: unknown[]) => data.length === 0;
 
-function Header({ href, state }: { href: string; state: Resource<unknown> }) {
+export function Header({ href, state }: { href: string; state: Resource<unknown> }) {
   const item = navByHref(href);
   return (
     <PageHeader
@@ -56,62 +55,6 @@ function Header({ href, state }: { href: string; state: Resource<unknown> }) {
   );
 }
 
-export function AirportsView() {
-  const provider = useDataProvider();
-  const state = useResource(useCallback(() => provider.getAirports(), [provider]));
-  return (
-    <>
-      <Header href="/dashboard/airports" state={state} />
-      <Card title="Airports by aircraft movements" subtitle="Takeoffs and landings, last 12 months in the dataset">
-        <Loaded state={state} isEmpty={isEmptyList} emptyMessage="No airport data was returned.">
-          {(airports: AirportStat[]) => (
-            <div className="grid gap-8 xl:grid-cols-[minmax(0,1fr)_minmax(0,1.4fr)]">
-              <BarList items={airports.slice(0, 12).map((a) => ({ label: a.iata, sub: `${a.city} · ${a.uf}`, value: a.movements }))} />
-              <DataTable
-                caption="All airports with published coordinates"
-                columns={["Code", "Airport", "City", "UF", "Movements"]}
-                alignRight={[4]}
-                rows={airports.map((a) => [a.iata, a.name, a.city, a.uf, formatNumber(a.movements)])}
-              />
-            </div>
-          )}
-        </Loaded>
-      </Card>
-    </>
-  );
-}
-
-export function RoutesView() {
-  const provider = useDataProvider();
-  const state = useResource(useCallback(() => provider.getRoutes(), [provider]));
-  return (
-    <>
-      <Header href="/dashboard/routes" state={state} />
-      <Card title="Busiest routes" subtitle="Paid passengers and load factor, last 12 months in the dataset">
-        <Loaded state={state} isEmpty={isEmptyList} emptyMessage="No route data was returned.">
-          {(routes: RouteStat[]) => (
-            <div className="grid gap-8 xl:grid-cols-[minmax(0,1fr)_minmax(0,1.4fr)]">
-              <BarList
-                items={routes.slice(0, 12).map((r) => ({
-                  label: `${r.origin} → ${r.destination}`,
-                  sub: `LF ${formatPercent(r.loadFactor, 0)}`,
-                  value: r.passengers,
-                }))}
-              />
-              <DataTable
-                caption="Routes by paid passengers"
-                columns={["Origin", "Destination", "Paid passengers", "Load factor"]}
-                alignRight={[2, 3]}
-                rows={routes.map((r) => [r.origin, r.destination, formatNumber(r.passengers), formatPercent(r.loadFactor)])}
-              />
-            </div>
-          )}
-        </Loaded>
-      </Card>
-    </>
-  );
-}
-
 export function formatMetric(metric: ModelMetric): string {
   if (metric.unit === "percent") return formatPercent(metric.value, 2);
   if (metric.unit === "points") return `${(metric.value * 100).toFixed(2)} pts`;
@@ -122,6 +65,7 @@ function MetricList({ card }: { card: ModelCard }) {
   if (!card.metrics?.length) return <p className="mt-3 text-xs text-muted">No metrics reported.</p>;
   return (
     <dl className="mt-3 space-y-2">
+      <p className="text-[11px] uppercase tracking-[0.12em] text-muted">Validation, 2023</p>
       {card.metrics.map((metric) => (
         <div key={metric.name} className="flex items-baseline justify-between gap-4 text-[13px]">
           <dt className="text-muted">{metric.name}</dt>
@@ -134,33 +78,89 @@ function MetricList({ card }: { card: ModelCard }) {
 }
 
 function ModelPanel({ card }: { card: ModelCard }) {
+  // The backend's note on a LightGBM card is its paired comparison with the best baseline.
+  const comparison = card.note && /against the baseline/.test(card.note);
   return (
     <div className={`rounded-xl border p-4 ${card.selected ? "border-cyan/40 bg-cyan/[0.04]" : "border-line"}`}>
       <div className="flex items-center justify-between gap-3">
         <p className="text-[13.5px] font-medium text-ink">{card.method ?? card.name}</p>
-        {card.selected && (
-          <span className="inline-flex shrink-0 items-center gap-1 text-[11px] text-cyan">
-            <CircleCheck className="size-3.5" aria-hidden /> In use
+        {card.selected ? (
+          <span className="inline-flex shrink-0 items-center gap-1 text-[11px] text-cyan" title="Chosen on validation. It does not mean forecasts are being produced.">
+            <CircleCheck className="size-3.5" aria-hidden /> Selected method
           </span>
+        ) : (
+          <span className="shrink-0 text-[11px] text-muted">Not selected</span>
         )}
       </div>
       <MetricList card={card} />
-      {card.note && <p className="mt-3 text-xs leading-relaxed text-muted">{card.note}</p>}
+      {card.note && (
+        <p className="mt-3 text-xs leading-relaxed text-muted">
+          <span className="text-ink-2">{comparison ? "Compared with the baseline: " : "Why: "}</span>
+          {card.note}
+        </p>
+      )}
     </div>
   );
 }
 
+const GLOSSARY: { term: string; text: string }[] = [
+  { term: "WAPE", text: "Weighted absolute percentage error: total absolute error divided by the total actual value. 10% means the errors add up to a tenth of what happened. Lower is better." },
+  { term: "MAE, seat-weighted", text: "Mean absolute error of the load factor, in percentage points, where routes with more seats weigh more. 6 pts means a predicted 80% was off by about 6 points on average." },
+  { term: "Percentage points (pts)", text: "The difference between two percentages: from 80% to 86% is 6 points, not 6%." },
+  { term: "95% interval", text: "The range the difference between two methods is likely to fall in, from a block bootstrap over the 12 validation months. If it includes zero, the gain is not conclusive." },
+  { term: "Baseline", text: "A simple rule, such as the same month last year. A model is only worth using if it beats it." },
+];
+
 const MODULE_ORDER = ["a", "b", "d", "c"];
+
+/** Known limitations, as recorded in docs/models.md. Text only: no metric is derived here. */
+const LIMITATIONS: Record<string, string[]> = {
+  a: ["LightGBM's lower WAPE is not conclusive: the 95% interval of its difference with the baseline includes zero. The baseline is therefore the selected method."],
+  b: [],
+  d: [
+    "Six months ahead, no better than the same month last year (intervals include zero).",
+    "Bias of about −12% on passengers and seats in 2023: training ends during the recovery.",
+  ],
+  c: ["The baggage target is provisional (see decisions 6–9 in docs/decisions.md)."],
+};
+
+const COMMON_LIMITATIONS = [
+  "The final test on 2024–2025 has not been run.",
+  "Training data still lacks four months (2015-08, 2016-02, 2018-07, 2020-08).",
+];
+
+function ModuleNotes({ module }: { module: string }) {
+  const notes = [...(LIMITATIONS[module] ?? []), ...(module === "c" ? [] : COMMON_LIMITATIONS)];
+  return (
+    <div className="mt-4 space-y-3 border-t border-line pt-4 text-xs leading-relaxed text-muted">
+      <p>
+        <span className="text-ink-2">Forecasts:</span> not available. The backend serves validation results only, with no
+        prediction endpoint.
+      </p>
+      {notes.length > 0 && (
+        <div>
+          <p className="text-ink-2">Limitations</p>
+          <ul className="mt-1 list-disc space-y-1 pl-4">
+            {notes.map((note) => (
+              <li key={note}>{note}</li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </div>
+  );
+}
 
 export function MlStudioView() {
   const provider = useDataProvider();
   const state = useResource(useCallback(() => provider.getModels(), [provider]));
   return (
     <>
-      <PageHeader title="ML Studio" description="Which method each module uses, and how it scored on held-out data." />
+      <PageHeader title="ML Studio" description="How each forecasting method scored on 2023 data it had not seen." />
       <p className="mb-5 rounded-xl border border-line bg-hover px-4 py-3 text-[13px] leading-relaxed text-ink-2">
-        These are <strong className="font-medium text-ink">validation results for 2023</strong>, not current forecasts. No live
-        predictions are shown, and the final test on 2024–2025 has not been run.
+        These are <strong className="font-medium text-ink">validation results for 2023</strong>, not current forecasts. No forecasts are
+        produced or served: <span className="text-ink">Selected method</span> is the one chosen on validation. The final test on 2024–2025 has not
+        been run.
       </p>
       <Loaded state={state} isEmpty={isEmptyList} emptyMessage="No models were reported.">
         {(cards: ModelCard[]) => (
@@ -181,6 +181,7 @@ export function MlStudioView() {
                       ),
                     )}
                   </div>
+                  <ModuleNotes module={module} />
                 </Card>
               );
             })}
@@ -193,6 +194,16 @@ export function MlStudioView() {
                   </p>
                 </Card>
               ))}
+            <Card title="How to read these numbers" className="xl:col-span-2">
+              <dl className="grid gap-4 text-[13px] leading-relaxed sm:grid-cols-2 xl:grid-cols-3">
+                {GLOSSARY.map((item) => (
+                  <div key={item.term}>
+                    <dt className="font-medium text-ink">{item.term}</dt>
+                    <dd className="mt-1 text-xs text-muted">{item.text}</dd>
+                  </div>
+                ))}
+              </dl>
+            </Card>
           </div>
         )}
       </Loaded>
@@ -227,7 +238,7 @@ export function MethodologyView() {
             )}
           </Loaded>
         </Card>
-        <Card title="What to keep in mind">
+        <Card title="What to keep in mind" className="scroll-mt-24" id="reading-the-data">
           <Loaded
             state={catalog}
             isEmpty={(data) => data.facts_that_must_accompany_answers.length === 0}
@@ -257,209 +268,6 @@ export function MethodologyView() {
                   String(item.features.length),
                 ])}
               />
-            )}
-          </Loaded>
-        </Card>
-      </div>
-    </>
-  );
-}
-
-const UNAVAILABLE_COPY: Record<string, string> = {
-  not_configured: "The analyst is not configured on the server: GROQ_API_KEY is missing.",
-  auth_failed: "The server could not authenticate with the model provider.",
-  rate_limited: "The free usage limit was reached. Please try again shortly.",
-  model_not_available: "The configured model is not available for this account.",
-  demo_mode: "The analyst only works with real data, and this build runs on demonstration data.",
-  timeout: "The model provider is taking too long to respond.",
-};
-
-interface ChatEntry {
-  question: string;
-  response?: ChatResponse;
-  error?: DataProviderError | Error;
-}
-
-function SourceList({ response }: { response: ChatResponse }) {
-  if (!response.sources.length && !response.caveats.length) return null;
-  return (
-    <div className="mt-3 space-y-1.5 border-t border-line pt-3 text-[11.5px] leading-relaxed text-muted">
-      {response.sources.map((source) => (
-        <p key={source.endpoint}>
-          <span className="text-ink-2">Source:</span> <code className="font-mono">{source.endpoint}</code>, dataset{" "}
-          <code className="font-mono">{source.dataset}</code>. Period: {source.period}. Unit: {source.unit}.
-        </p>
-      ))}
-      {response.caveats.map((caveat) => (
-        <p key={caveat}>{caveat}</p>
-      ))}
-    </div>
-  );
-}
-
-function ChatMessage({ entry, onRetry }: { entry: ChatEntry; onRetry: () => void }) {
-  return (
-    <div className="space-y-3">
-      <p className="ml-auto w-fit max-w-[85%] whitespace-pre-wrap rounded-xl bg-blue/15 px-3.5 py-2.5 text-[13.5px] text-ink">{entry.question}</p>
-      {entry.response ? (
-        <div className="max-w-[92%] rounded-xl border border-line bg-hover px-3.5 py-3">
-          <p className="whitespace-pre-wrap text-[13.5px] leading-relaxed text-ink-2">{entry.response.answer}</p>
-          <SourceList response={entry.response} />
-        </div>
-      ) : entry.error ? (
-        <ErrorState error={entry.error} onRetry={onRetry} hint="Please try again." />
-      ) : (
-        <div role="status" aria-label="The analyst is working" className="max-w-[70%] space-y-2 rounded-xl border border-line px-3.5 py-3">
-          <Skeleton className="h-3 w-5/6" />
-          <Skeleton className="h-3 w-2/3" />
-        </div>
-      )}
-    </div>
-  );
-}
-
-/** Chat over fixed read-only tools. The key lives on the server, and answers are plain text. */
-export function AnalystView() {
-  const provider = useDataProvider();
-  const catalog = useResource(useCallback(() => provider.getAnalystCatalog(), [provider]));
-  const [status, setStatus] = useState<AnalystStatus | "checking" | "error">("checking");
-  const [entries, setEntries] = useState<ChatEntry[]>([]);
-  const [draft, setDraft] = useState("");
-  const [checks, setChecks] = useState(0);
-  const end = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    let alive = true;
-    provider.getAnalystStatus().then(
-      (value) => alive && setStatus(value),
-      () => alive && setStatus("error"),
-    );
-    return () => {
-      alive = false;
-    };
-  }, [provider, checks]);
-
-  useEffect(() => {
-    end.current?.scrollIntoView?.({ behavior: "smooth", block: "nearest" });
-  }, [entries]);
-
-  const available = status !== "checking" && status !== "error" && status.available;
-  const busy = entries.some((entry) => !entry.response && !entry.error);
-
-  const ask = (question: string) => {
-    // The request runs once, here. State updaters can run twice in development.
-    const kept = entries.filter((entry) => entry.question !== question || !entry.error);
-    const history: ChatTurn[] = kept
-      .filter((entry) => entry.response?.status === "answered")
-      .slice(-3)
-      .flatMap((entry) => [
-        { role: "user" as const, content: entry.question.slice(0, 2000) },
-        { role: "assistant" as const, content: (entry.response as ChatResponse).answer.slice(0, 2000) },
-      ]);
-    setEntries([...kept, { question }]);
-    const settle = (result: Partial<ChatEntry>) =>
-      setEntries((list) => list.map((entry) => (entry.question === question && !entry.response ? { question, ...result } : entry)));
-    provider.askAnalyst(question, history).then(
-      (response) => settle({ response }),
-      (error: Error) => settle({ error }),
-    );
-  };
-
-  const submit = (event: FormEvent) => {
-    event.preventDefault();
-    const question = draft.trim();
-    if (!question || !available || busy) return;
-    setDraft("");
-    ask(question);
-  };
-
-  const unavailableMessage =
-    status === "error"
-      ? "The backend is not reachable. Check that the API is running."
-      : status !== "checking" && !status.available
-        ? (UNAVAILABLE_COPY[status.reason ?? ""] ?? "The model provider is unavailable right now.")
-        : null;
-
-  return (
-    <>
-      <Header href="/dashboard/analyst" state={catalog} />
-      <div className="grid gap-5 xl:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)]">
-        <Card
-          title="Ask the analyst"
-          action={
-            <span className="text-xs text-muted">
-              {status === "checking" ? "Checking…" : available ? `${(status as AnalystStatus).model}` : "Unavailable"}
-            </span>
-          }
-        >
-          <div aria-live="polite" className="scrollbar-thin max-h-[480px] min-h-48 space-y-5 overflow-y-auto">
-            {unavailableMessage && (
-              <div role="alert" className="flex items-start justify-between gap-3 rounded-xl border border-demo/30 bg-demo/10 px-3.5 py-3 text-[13px] text-ink-2">
-                <span>{unavailableMessage}</span>
-                <button type="button" onClick={() => setChecks((n) => n + 1)} className="shrink-0 text-xs text-cyan hover:underline">
-                  Check again
-                </button>
-              </div>
-            )}
-            {entries.length === 0 && !unavailableMessage && (
-              <div className="grid min-h-44 place-items-center rounded-xl border border-dashed border-line px-6 py-8 text-center">
-                <div>
-                  <Bot className="mx-auto size-7 text-muted" strokeWidth={1.5} aria-hidden />
-                  <p className="mt-3 text-sm text-ink-2">Ask about airports, routes, market totals or model results.</p>
-                  <p className="mt-1 text-xs text-muted">Answers come only from this project&apos;s data, with period, unit and source.</p>
-                </div>
-              </div>
-            )}
-            {entries.map((entry, index) => (
-              <ChatMessage key={`${index}-${entry.question}`} entry={entry} onRetry={() => ask(entry.question)} />
-            ))}
-            <div ref={end} />
-          </div>
-          <form className="mt-4 flex gap-2" onSubmit={submit}>
-            <input
-              value={draft}
-              onChange={(event) => setDraft(event.target.value)}
-              disabled={!available}
-              maxLength={500}
-              aria-label="Question for the analyst"
-              placeholder={available ? "Which route carried the most passengers?" : "Unavailable"}
-              className="min-w-0 flex-1 rounded-lg border border-line bg-hover px-3 py-2 text-sm text-ink placeholder:text-muted focus:outline-none focus-visible:border-cyan disabled:cursor-not-allowed"
-            />
-            <button
-              type="submit"
-              disabled={!available || busy || !draft.trim()}
-              aria-label="Send question"
-              className="grid size-9 shrink-0 place-items-center rounded-lg border border-line text-ink-2 transition-colors hover:border-line-strong disabled:cursor-not-allowed disabled:text-muted"
-            >
-              <Send className="size-4" aria-hidden />
-            </button>
-          </form>
-        </Card>
-        <Card title="What it can and cannot do">
-          <Loaded
-            state={catalog}
-            isEmpty={(data) => data.must_not_claim.length === 0 && data.tools.length === 0}
-            emptyMessage="The rules are served by the backend."
-          >
-            {(data) => (
-              <div className="space-y-5 text-[13px] leading-relaxed">
-                <div>
-                  <h3 className="mb-2 font-medium text-ink">It reads only</h3>
-                  <ul className="space-y-1 font-mono text-xs text-muted">
-                    {data.tools.map((tool) => (
-                      <li key={tool.endpoint}>{tool.endpoint}</li>
-                    ))}
-                  </ul>
-                </div>
-                <div>
-                  <h3 className="mb-2 font-medium text-ink">It must never claim</h3>
-                  <ul className="list-disc space-y-1.5 pl-4 text-ink-2">
-                    {data.must_not_claim.map((rule) => (
-                      <li key={rule}>{rule}</li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
             )}
           </Loaded>
         </Card>

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { RoutesView } from "@/components/dashboard/data-views";
+import { RoutesView } from "@/components/dashboard/analytics-views";
 
 export const metadata: Metadata = { title: "Routes Explorer" };
 

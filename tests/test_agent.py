@@ -453,6 +453,19 @@ def test_no_key_means_not_configured_without_any_request(
     assert app.post("/v2/analyst/chat", json={"question": "x"}).status_code == 503
 
 
+@pytest.mark.parametrize("key", [None, SECRET])
+def test_config_is_local_and_never_contacts_the_provider(tmp_path: Path, key: str | None) -> None:
+    def forbidden(_: httpx.Request) -> httpx.Response:
+        raise AssertionError("the config endpoint must not contact the model provider")
+
+    client = LlmClient(
+        LlmConfig("groq", "https://llm.test/v1", "m", key), httpx.MockTransport(forbidden)
+    )
+    response = TestClient(create_app(tmp_path, llm=client)).get("/v2/analyst/config")
+    assert response.json() == {"configured": key is not None, "provider": "groq", "model": "m"}
+    assert SECRET not in response.text
+
+
 def test_status_and_chat_work_and_never_expose_the_key(store: PayloadStore, tmp_path: Path) -> None:
     script = Script(tool_call("get_market_overview", {}), text("3 flights in 2025-01 to 2025-12."))
     app = TestClient(create_app(tmp_path, llm=script.client()))

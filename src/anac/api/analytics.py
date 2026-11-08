@@ -18,7 +18,9 @@ NOTE = (
     "have no data at all and are not zeros."
 )
 
+_CARRIER = r"^[A-Za-z0-9]{2,3}$"
 Airport = Annotated[str | None, Query(pattern=_CODE, description="ICAO or IATA code")]
+Carrier = Annotated[str | None, Query(pattern=_CARRIER, description="Carrier ICAO or IATA code")]
 FromMonth = Annotated[
     str | None, Query(alias="from", pattern=_MONTH, description="First month, YYYY-MM")
 ]
@@ -115,6 +117,102 @@ class AirportsData(Context):
 class AirportSeries(Context):
     airport_found: bool
     points: list[AirportPoint]
+
+
+class CarrierRow(BaseModel):
+    carrier: str
+    iata: str | None
+    name: str | None
+    country: str | None
+    months_operated: int
+    all_takeoffs: int
+    passenger_takeoffs: int
+    paid_passengers: int
+    seats: int
+    rpk: float
+    ask: float
+    international_paid_passengers: int
+    load_factor_paid: float | None
+    market_share: float | None
+
+
+class CarrierPoint(BaseModel):
+    month: str
+    all_takeoffs: int
+    passenger_takeoffs: int
+    paid_passengers: int
+    seats: int
+    rpk: float
+    ask: float
+    load_factor_paid: float | None
+    market_paid_passengers: int
+    market_share: float | None
+
+
+class CarriersData(Context):
+    market_paid_passengers: int
+    total: int
+    limit: int
+    offset: int
+    carriers: list[CarrierRow]
+
+
+class CarrierSeries(Context):
+    carrier_found: bool
+    points: list[CarrierPoint]
+
+
+class CarriersResponse(BaseModel):
+    data: CarriersData
+    meta: Meta
+
+
+class CarrierSeriesResponse(BaseModel):
+    data: CarrierSeries
+    meta: Meta
+
+
+class AirportEntry(BaseModel):
+    airport: str
+    iata: str | None
+    name: str | None
+    city: str | None
+    uf: str | None
+    country: str | None
+    first_month: str
+    last_month: str
+    recent_movements: int
+
+
+class CarrierEntry(BaseModel):
+    carrier: str
+    iata: str | None
+    name: str | None
+    country: str | None
+    name_variants: int
+    first_month: str
+    last_month: str
+    recent_paid_passengers: int
+
+
+class AirportCatalog(BaseModel):
+    recent_period: dict[str, str]
+    airports: list[AirportEntry]
+
+
+class CarrierCatalog(BaseModel):
+    recent_period: dict[str, str]
+    carriers: list[CarrierEntry]
+
+
+class AirportCatalogResponse(BaseModel):
+    data: AirportCatalog
+    meta: Meta
+
+
+class CarrierCatalogResponse(BaseModel):
+    data: CarrierCatalog
+    meta: Meta
 
 
 class Coverage(BaseModel):
@@ -226,6 +324,42 @@ def build_router(directory: Path) -> APIRouter:
         return AirportSeriesResponse.model_validate(
             respond(lambda: store.airport_series(airport, first, last))
         )
+
+    @router.get("/carriers")
+    def carriers(
+        carrier: Carrier = None,
+        first: FromMonth = None,
+        last: ToMonth = None,
+        limit: Limit = 50,
+        offset: Offset = 0,
+    ) -> CarriersResponse:
+        """Totals per carrier in the period, ordered by paid passengers, with market share."""
+        _check_period(first, last)
+        return CarriersResponse.model_validate(
+            respond(lambda: store.carriers(carrier, first, last, limit, offset))
+        )
+
+    @router.get("/carriers/monthly")
+    def carrier_series(
+        carrier: Annotated[str, Query(pattern=_CARRIER, description="ICAO or IATA code")],
+        first: FromMonth = None,
+        last: ToMonth = None,
+    ) -> CarrierSeriesResponse:
+        """Monthly totals and market share of one carrier. Absent months are listed, not filled."""
+        _check_period(first, last)
+        return CarrierSeriesResponse.model_validate(
+            respond(lambda: store.carrier_series(carrier, first, last))
+        )
+
+    @router.get("/airports/catalog")
+    def airport_catalog() -> AirportCatalogResponse:
+        """Every airport code with its names, for search. Ordered by movements in the last 12 months."""
+        return AirportCatalogResponse.model_validate(respond(store.airport_catalog))
+
+    @router.get("/carriers/catalog")
+    def carrier_catalog() -> CarrierCatalogResponse:
+        """Every carrier code with its latest name, for search. Ordered by recent paid passengers."""
+        return CarrierCatalogResponse.model_validate(respond(store.carrier_catalog))
 
     @router.get("/coverage")
     def coverage() -> CoverageResponse:

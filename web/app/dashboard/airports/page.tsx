@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { AirportsView } from "@/components/dashboard/data-views";
+import { AirportsView } from "@/components/dashboard/analytics-views";
 
 export const metadata: Metadata = { title: "Airports Intelligence" };
 

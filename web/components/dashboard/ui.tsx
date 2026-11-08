@@ -25,6 +25,7 @@ export function Card({
   children,
   className,
   demo,
+  id,
 }: {
   title?: ReactNode;
   subtitle?: ReactNode;
@@ -32,9 +33,12 @@ export function Card({
   children: ReactNode;
   className?: string;
   demo?: boolean;
+  /** Anchor for contextual links. */
+  id?: string;
 }) {
   return (
     <LiquidGlassCard
+      id={id}
       as="section"
       draggable={false}
       distortion={false}
@@ -115,8 +119,8 @@ export function DataTable({
   alignRight = [],
 }: {
   caption: string;
-  columns: string[];
-  rows: string[][];
+  columns: ReactNode[];
+  rows: ReactNode[][];
   alignRight?: number[];
 }) {
   return (
@@ -126,7 +130,7 @@ export function DataTable({
         <thead className="sticky top-0 bg-surface text-xs text-muted">
           <tr>
             {columns.map((column, index) => (
-              <th key={column} scope="col" className={cn("px-3 py-2.5 font-medium", alignRight.includes(index) && "text-right")}>
+              <th key={index} scope="col" className={cn("px-3 py-2.5 font-medium", alignRight.includes(index) && "text-right")}>
                 {column}
               </th>
             ))}

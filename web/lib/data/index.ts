@@ -3,6 +3,9 @@ import type { FlightDataProvider } from "./contracts";
 import { MockDataProvider } from "./mock-provider";
 
 export * from "./contracts";
+export * from "./periods";
+export * from "./search";
+export * from "./definitions";
 export { MockDataProvider } from "./mock-provider";
 export { ApiDataProvider } from "./api-provider";
 

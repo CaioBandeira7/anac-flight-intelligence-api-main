@@ -76,6 +76,12 @@ class AnalystStatus(BaseModel):
     reason: str | None
 
 
+class AnalystConfig(BaseModel):
+    configured: bool
+    provider: str
+    model: str
+
+
 def create_app(
     directory: Path | None = None,
     llm: LlmClient | None = None,
@@ -142,7 +148,16 @@ def create_app(
         build_router(analytics_dir or Path(os.environ.get("ANAC_ANALYTICS_DIR", DEFAULT_ANALYTICS)))
     )
 
-    analyst = Analyst(llm or LlmClient(LlmConfig.from_env()), AnalystTools(store))
+    client = llm or LlmClient(LlmConfig.from_env())
+    analyst = Analyst(client, AnalystTools(store))
+
+    @app.get("/v2/analyst/config", tags=["analyst"])
+    def analyst_config() -> AnalystConfig:
+        """Whether a key is configured. Local only: it never contacts the model provider."""
+        config = client.config
+        return AnalystConfig(
+            configured=bool(config.api_key), provider=config.provider, model=config.model
+        )
 
     @app.get("/v2/analyst/status", tags=["analyst"])
     def analyst_status() -> AnalystStatus:

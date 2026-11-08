@@ -6,64 +6,137 @@ import { useDataProvider } from "@/components/data-provider";
 import { useResource } from "@/hooks/use-resource";
 import { formatCompact, formatPercent } from "@/lib/utils";
 import { formatMetric } from "./data-views";
-import type { Kpi, ModelCard, ResponseMeta } from "@/lib/data/contracts";
+import {
+  comparePeriods,
+  comparisonShift,
+  formatPeriod,
+  relativeChange,
+  shiftMonth,
+  withGaps,
+  type Comparison,
+  type DefinitionKey,
+  type Coverage,
+  type Kpi,
+  type ModelCard,
+  type Period,
+  type ResponseMeta,
+  type RoutePoint,
+} from "@/lib/data";
+import Link from "next/link";
+import { CoverageGate, FilterBar, GapNotice, METHODOLOGY_HREF, Term, usePeriodParam } from "./analytics-controls";
+import { PeriodPicker } from "./period-picker";
 import { BarList, Sparkline, TrendChart, monthLabel } from "./charts";
 import { Card, DemoBadge, EmptyState, ErrorState, PageHeader, Skeleton } from "./ui";
 
 export function Overview() {
+  return <CoverageGate href="/dashboard">{(coverage) => <MarketOverview coverage={coverage} />}</CoverageGate>;
+}
+
+/** KPIs over the selected period, compared with the same calendar months a whole number of years earlier. */
+function buildKpis(points: RoutePoint[], period: Period): { kpis: KpiView[]; comparison: Comparison } {
+  const comparison = comparePeriods(points, period);
+  const { current, pairedCurrent: now, pairedPrevious: before } = comparison;
+  const trend = (value: (p: RoutePoint) => number | null) => withGaps(points, period, value).map((m) => m.value);
+  const change = (key: "paid_passengers" | "all_takeoffs" | "seats") => (now && before ? relativeChange(now[key], before[key]) : null);
+  const lfChange =
+    now?.load_factor_paid != null && before?.load_factor_paid != null ? now.load_factor_paid - before.load_factor_paid : null;
+  return {
+    comparison,
+    kpis: [
+      { id: "passengers", term: "paid_passengers", label: "Paid passengers", value: current.paid_passengers, unit: "count", delta: change("paid_passengers"), trend: trend((p) => p.paid_passengers) },
+      { id: "flights", term: "flights", label: "Flights", value: current.all_takeoffs, unit: "count", delta: change("all_takeoffs"), trend: trend((p) => p.all_takeoffs) },
+      { id: "seats", term: "seats", label: "Seats offered", value: current.seats, unit: "count", delta: change("seats"), trend: trend((p) => p.seats) },
+      { id: "load_factor", term: "load_factor", label: "Load factor", value: current.load_factor_paid ?? 0, unit: "ratio", delta: lfChange, deltaInPoints: true, trend: trend((p) => p.load_factor_paid) },
+    ],
+  };
+}
+
+function MarketOverview({ coverage }: { coverage: Coverage }) {
   const provider = useDataProvider();
-  const loadOverview = useCallback(() => provider.getOverview(), [provider]);
-  const loadModels = useCallback(() => provider.getModels(), [provider]);
-  const overview = useResource(loadOverview);
-  const models = useResource(loadModels);
+  const [period, setPeriod] = usePeriodParam(coverage);
+  // One request covers the selection and its comparison window.
+  const seriesFrom = shiftMonth(period.from, -comparisonShift(period));
+  const series = useResource(
+    useCallback(
+      (signal: AbortSignal) =>
+        provider.getRouteSeries({ from: seriesFrom < coverage.first_month ? coverage.first_month : seriesFrom, to: period.to }, signal),
+      [provider, seriesFrom, period.to, coverage.first_month],
+    ),
+  );
+  const routes = useResource(useCallback((signal: AbortSignal) => provider.getRouteRanking({ ...period, limit: 6 }, signal), [provider, period]));
+  const airports = useResource(useCallback((signal: AbortSignal) => provider.getAirportRanking({ ...period, limit: 8 }, signal), [provider, period]));
+  const models = useResource(useCallback(() => provider.getModels(), [provider]));
+
+  const built = series.status === "success" ? buildKpis(series.data.points, period) : null;
+  const demo = series.status === "success" && series.meta.isDemo;
+  const monthly = series.status === "success" ? series.data.points.filter((p) => p.month >= period.from && p.month <= period.to) : [];
+  const unpaired = built?.comparison.unpaired ?? [];
+  const previous = built?.comparison.previousPeriod;
+  const comparisonNote = !built
+    ? undefined
+    : !previous
+      ? "There are no earlier months with data to compare with, so no change is shown."
+      : unpaired.length > 0
+        ? `Changes compare only months with data on both sides: ${unpaired.join(", ")} had no counterpart and ${unpaired.length === 1 ? "is" : "are"} left out of the change.`
+        : undefined;
 
   return (
     <>
       <PageHeader
         title="Overview"
         description="Air transport in Brazil at a glance — traffic, routes, airports and the state of the models."
-        meta={overview.status === "success" ? <MetaLine meta={overview.meta} period={overview.data.period} /> : null}
+        meta={routes.status === "success" ? <MetaLine meta={routes.meta} period={routes.data.period} /> : null}
       />
+      <FilterBar>
+        <PeriodPicker coverage={coverage} value={period} onChange={setPeriod} />
+        <p className="mb-2 text-xs text-muted">
+          {previous && <>Changes vs. {formatPeriod(previous)}. </>}
+          <Link href={METHODOLOGY_HREF} className="text-cyan hover:underline">
+            How these are measured
+          </Link>
+        </p>
+      </FilterBar>
+      {series.status === "success" && (
+        <GapNotice context={{ ...series.data, period }} extra={comparisonNote} />
+      )}
 
-      {overview.status === "error" ? (
-        <ErrorState error={overview.error} onRetry={overview.retry} />
+      {series.status === "error" ? (
+        <ErrorState error={series.error} onRetry={series.retry} />
       ) : (
-        <div className="grid min-w-0 grid-cols-1 gap-5" aria-busy={overview.status === "loading"}>
+        <div className="grid min-w-0 grid-cols-1 gap-5" aria-busy={series.status === "loading"}>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
-            {overview.status === "loading"
+            {!built
               ? Array.from({ length: 4 }, (_, i) => <KpiSkeleton key={i} />)
-              : overview.data.kpis.map((k) => <KpiCard key={k.id} kpi={k} demo={overview.meta.isDemo} />)}
+              : built.kpis.map((k) => <KpiCard key={k.id} kpi={k} demo={demo} />)}
           </div>
 
           <div className="grid grid-cols-1 gap-5 xl:grid-cols-[minmax(0,1.75fr)_minmax(0,1fr)]">
-            <Card
-              title="Monthly passengers"
-              subtitle="All carriers, domestic and international legs"
-              demo={overview.status === "success" && overview.meta.isDemo}
-            >
-              {overview.status === "loading" ? (
+            <Card title="Monthly passengers" subtitle="Paid passengers per leg, all carriers, domestic and international" demo={demo}>
+              {series.status === "loading" ? (
                 <Skeleton className="h-[280px] w-full" />
-              ) : overview.data.monthly.length === 0 ? (
-                <EmptyState message="No monthly data was returned." />
+              ) : monthly.length === 0 ? (
+                <EmptyState message="No month in this period has data." />
               ) : (
                 <TrendChart
-                  valueLabel="Monthly passengers"
-                  data={overview.data.monthly.map((m) => ({ label: monthLabel(m.month), value: m.passengers }))}
+                  valueLabel="Monthly paid passengers"
+                  data={withGaps(monthly, period, (p) => p.paid_passengers).map((m) => ({ label: monthLabel(m.month), value: m.value }))}
                 />
               )}
             </Card>
 
-            <Card title="Top routes" subtitle="Passengers, last 12 months" demo={overview.status === "success" && overview.meta.isDemo}>
-              {overview.status === "loading" ? (
+            <Card title="Top routes" subtitle="Paid passengers in the period, by direction" demo={routes.status === "success" && routes.meta.isDemo}>
+              {routes.status === "loading" ? (
                 <ListSkeleton />
-              ) : overview.data.topRoutes.length === 0 ? (
+              ) : routes.status === "error" ? (
+                <ErrorState error={routes.error} onRetry={routes.retry} />
+              ) : routes.data.routes.length === 0 ? (
                 <EmptyState message="No route data was returned." />
               ) : (
                 <BarList
-                  items={overview.data.topRoutes.map((r) => ({
-                    label: `${r.origin} → ${r.destination}`,
-                    sub: `LF ${formatPercent(r.loadFactor, 0)}`,
-                    value: r.passengers,
+                  items={routes.data.routes.map((r) => ({
+                    label: `${r.origin_iata || r.origin} → ${r.destination_iata || r.destination}`,
+                    sub: r.load_factor_paid === null ? undefined : `LF ${formatPercent(r.load_factor_paid, 0)}`,
+                    value: r.paid_passengers,
                   }))}
                 />
               )}
@@ -71,14 +144,24 @@ export function Overview() {
           </div>
 
           <div className="grid grid-cols-1 gap-5 xl:grid-cols-[minmax(0,1fr)_minmax(0,1.25fr)]">
-            <Card title="Busiest airports" subtitle="Aircraft movements, last 12 months" demo={overview.status === "success" && overview.meta.isDemo}>
-              {overview.status === "loading" ? (
+            <Card
+              title={<Term term="movements">Busiest airports</Term>}
+              subtitle="Aircraft movements in the period, all operated legs"
+              demo={airports.status === "success" && airports.meta.isDemo}
+            >
+              {airports.status === "loading" ? (
                 <ListSkeleton />
-              ) : overview.data.topAirports.length === 0 ? (
+              ) : airports.status === "error" ? (
+                <ErrorState error={airports.error} onRetry={airports.retry} />
+              ) : airports.data.airports.length === 0 ? (
                 <EmptyState message="No airport data was returned." />
               ) : (
                 <BarList
-                  items={overview.data.topAirports.map((a) => ({ label: a.iata, sub: `${a.name} · ${a.uf}`, value: a.movements }))}
+                  items={airports.data.airports.map((a) => ({
+                    label: a.iata || a.airport,
+                    sub: [a.name, a.uf ?? a.country].filter(Boolean).join(" · "),
+                    value: a.movements,
+                  }))}
                 />
               )}
             </Card>
@@ -96,20 +179,26 @@ function MetaLine({ meta, period }: { meta: ResponseMeta; period: { from: string
     <div className="flex flex-wrap items-center gap-2 text-xs text-muted">
       {meta.isDemo && <DemoBadge />}
       <span>
-        {monthLabel(period.from)} – {monthLabel(period.to)}
+        {formatPeriod(period)}
       </span>
       {meta.note && <span className="hidden text-muted/70 md:inline">· {meta.note}</span>}
     </div>
   );
 }
 
-function KpiCard({ kpi, demo }: { kpi: Kpi; demo: boolean }) {
+/** A KPI as shown here: the load factor's change is in percentage points, the others are relative. */
+type KpiView = Omit<Kpi, "id"> & { id: string; deltaInPoints?: boolean; term: DefinitionKey };
+
+function KpiCard({ kpi, demo }: { kpi: KpiView; demo: boolean }) {
   const value = kpi.unit === "ratio" ? formatPercent(kpi.value) : formatCompact(kpi.value);
   const up = (kpi.delta ?? 0) >= 0;
+  const delta = kpi.delta == null ? "" : kpi.deltaInPoints ? `${(kpi.delta * 100).toFixed(1)} pts` : formatPercent(kpi.delta);
   return (
     <div className="group rounded-2xl border border-line bg-glass backdrop-blur-xl p-5 transition-colors hover:border-line-strong">
       <div className="flex items-center justify-between">
-        <p className="text-[13px] text-muted">{kpi.label}</p>
+        <p className="text-[13px] text-muted">
+          <Term term={kpi.term}>{kpi.label}</Term>
+        </p>
         {demo && <DemoBadge />}
       </div>
       <p className="mt-3 text-[28px] font-semibold tabular-nums tracking-[-0.02em] text-ink">{value}</p>
@@ -119,9 +208,9 @@ function KpiCard({ kpi, demo }: { kpi: Kpi; demo: boolean }) {
             {up ? <ArrowUpRight className="size-3.5" aria-hidden /> : <ArrowDownRight className="size-3.5" aria-hidden />}
             <span className="tabular-nums">
               {up ? "+" : ""}
-              {formatPercent(kpi.delta)}
+              {delta}
             </span>
-            <span className="text-muted">vs. previous 12 mo</span>
+            <span className="text-muted">vs. earlier period</span>
           </span>
         )}
       </div>
@@ -161,7 +250,7 @@ function ListSkeleton() {
 const STATUS_COPY: Record<ModelCard["status"], string> = {
   not_trained: "Awaiting training",
   training: "Training",
-  available: "Available",
+  available: "Validated on 2023",
   deprecated: "Deprecated",
 };
 
@@ -196,7 +285,10 @@ function ModelsCard({ state }: { state: ReturnType<typeof useResource<ModelCard[
             ))}
           </ul>
           <p className="mt-4 rounded-lg bg-hover px-3 py-2.5 text-xs leading-relaxed text-muted">
-            Metrics are validation results for 2023, not current forecasts. Details are in ML Studio.
+            Metrics are validation results for 2023, not current forecasts.{" "}
+            <Link href="/dashboard/ml-studio" className="text-cyan hover:underline">
+              Details in ML Studio
+            </Link>
           </p>
         </>
       )}

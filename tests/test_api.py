@@ -80,9 +80,19 @@ def test_api_is_read_only_and_documented(client: TestClient) -> None:
         "/v2/analytics/routes/monthly",
         "/v2/analytics/airports",
         "/v2/analytics/airports/monthly",
+        "/v2/analytics/airports/catalog",
+        "/v2/analytics/carriers",
+        "/v2/analytics/carriers/monthly",
+        "/v2/analytics/carriers/catalog",
         "/v2/analytics/coverage",
     }
-    assert set(paths) == {*ENDPOINTS, "/v2/analyst/status", "/v2/analyst/chat", *analytics}
+    assert set(paths) == {
+        *ENDPOINTS,
+        "/v2/analyst/config",
+        "/v2/analyst/status",
+        "/v2/analyst/chat",
+        *analytics,
+    }
     # The chat is the only POST, and it cannot write anything.
     assert all(
         set(methods) == {"get"} for path, methods in paths.items() if path != "/v2/analyst/chat"
