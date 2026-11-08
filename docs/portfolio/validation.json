@@ -1,0 +1,228 @@
+{
+  "status": "passed",
+  "date": "2026-11-08",
+  "source_base": "100e5093b8d574603c784306d5920de779a66241",
+  "check_count": 31,
+  "checks": [
+    {
+      "name": "local_markdown_links",
+      "passed": true,
+      "detail": {
+        "checked": 132,
+        "missing": []
+      }
+    },
+    {
+      "name": "image_integrity",
+      "passed": true,
+      "detail": {
+        "count": 30
+      }
+    },
+    {
+      "name": "en_pptx_zip_integrity",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "en_slide_count",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "en_pdf_pptx_text_parity",
+      "passed": true,
+      "detail": {
+        "slides": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      }
+    },
+    {
+      "name": "en_pdf_text_inside_page",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "en_required_numbers",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "english_required_disclosures",
+      "passed": true,
+      "detail": [
+        "partially exposed",
+        "not been retrained",
+        "inconclusive",
+        "not trained",
+        "not future forecasts",
+        "11 skipped"
+      ]
+    },
+    {
+      "name": "en_pdf_has_hyperlinks",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "pt_pptx_zip_integrity",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "pt_slide_count",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "pt_pdf_pptx_text_parity",
+      "passed": true,
+      "detail": {
+        "slides": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      }
+    },
+    {
+      "name": "pt_pdf_text_inside_page",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "pt_required_numbers",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "pt_pdf_has_hyperlinks",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "english_pdf_compatibility_alias",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "english_pptx_compatibility_alias",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "english_inventory_exact_ids",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "english_inventory_counts",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "historical_metric_a",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "historical_metric_b",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "historical_metric_d_pax",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "historical_metric_d_seats",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "production_and_audit_files_unchanged",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "credential_pattern_scan",
+      "passed": true,
+      "detail": {
+        "file_count": 524,
+        "paths": [],
+        "scope": "Current tracked/candidate files and token/private-key patterns; not complete history or a security certification."
+      }
+    },
+    {
+      "name": "public_get_link",
+      "passed": true,
+      "detail": {
+        "url": "https://anac-flight-intelligence-api-main.vercel.app/dashboard",
+        "status": 200
+      }
+    },
+    {
+      "name": "public_get_link",
+      "passed": true,
+      "detail": {
+        "url": "https://anac-flight-intelligence-api-main.vercel.app/dashboard/analyst",
+        "status": 200
+      }
+    },
+    {
+      "name": "public_get_link",
+      "passed": true,
+      "detail": {
+        "url": "https://anac-flight-intelligence-api-main.vercel.app/dashboard/ml-studio",
+        "status": 200
+      }
+    },
+    {
+      "name": "public_get_link",
+      "passed": true,
+      "detail": {
+        "url": "https://anac-flight-intelligence-api-v2.onrender.com/docs",
+        "status": 200
+      }
+    },
+    {
+      "name": "published_audited_file_/ml/showcase.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "published_audited_file_/ml/report.pdf",
+      "passed": true,
+      "detail": null
+    }
+  ],
+  "presentation_sha256": {
+    "docs/portfolio/presentation/anac-flight-intelligence-apresentacao.pdf": "fa3ca465f6cc29012b6a90255733ca94d6e50a9a15d7f95b3413d5202f4d980f",
+    "docs/portfolio/presentation/anac-flight-intelligence-apresentacao.pptx": "ecd65d2d9ddde02d600710e33aec295ed81c15512f0d6d9c913c0477060bd970",
+    "docs/portfolio/presentation/anac-flight-intelligence-presentation-en.pdf": "d69ac68b1f7e9adb6696d357d2fb45219b2f4cc2030dceb795707c6cb334b23c",
+    "docs/portfolio/presentation/anac-flight-intelligence-presentation-en.pptx": "05dd5c660ded0c1a1eae3ea6be25312f728f24d2323dd789d7276ea5a848c0ab",
+    "docs/portfolio/presentation/anac-flight-intelligence-summary-en.pdf": "d69ac68b1f7e9adb6696d357d2fb45219b2f4cc2030dceb795707c6cb334b23c",
+    "docs/portfolio/presentation/anac-flight-intelligence-summary-en.pptx": "05dd5c660ded0c1a1eae3ea6be25312f728f24d2323dd789d7276ea5a848c0ab"
+  },
+  "public_links_checked": true,
+  "provider_calls": false,
+  "models_retrained": false
+}

@@ -1,0 +1,143 @@
+{
+  "source": "https://anac-flight-intelligence-api-v2.onrender.com/v2/analytics/routes/monthly?from=2000-01&to=2025-12",
+  "retrieved_date": "2026-11-08",
+  "scope": "ANAC passenger-scope records, directed flight legs, all markets",
+  "absent_months": [
+    "2015-08",
+    "2016-02",
+    "2018-07",
+    "2020-08"
+  ],
+  "years": [
+    {
+      "year": 2000,
+      "paid_passengers": 44241313,
+      "observed_months": 12
+    },
+    {
+      "year": 2001,
+      "paid_passengers": 46210058,
+      "observed_months": 12
+    },
+    {
+      "year": 2002,
+      "paid_passengers": 45477067,
+      "observed_months": 12
+    },
+    {
+      "year": 2003,
+      "paid_passengers": 42785542,
+      "observed_months": 12
+    },
+    {
+      "year": 2004,
+      "paid_passengers": 46508195,
+      "observed_months": 12
+    },
+    {
+      "year": 2005,
+      "paid_passengers": 55340700,
+      "observed_months": 12
+    },
+    {
+      "year": 2006,
+      "paid_passengers": 60301724,
+      "observed_months": 12
+    },
+    {
+      "year": 2007,
+      "paid_passengers": 65542528,
+      "observed_months": 12
+    },
+    {
+      "year": 2008,
+      "paid_passengers": 69136889,
+      "observed_months": 12
+    },
+    {
+      "year": 2009,
+      "paid_passengers": 75805715,
+      "observed_months": 12
+    },
+    {
+      "year": 2010,
+      "paid_passengers": 91786042,
+      "observed_months": 12
+    },
+    {
+      "year": 2011,
+      "paid_passengers": 107204996,
+      "observed_months": 12
+    },
+    {
+      "year": 2012,
+      "paid_passengers": 114068363,
+      "observed_months": 12
+    },
+    {
+      "year": 2013,
+      "paid_passengers": 115078651,
+      "observed_months": 12
+    },
+    {
+      "year": 2014,
+      "paid_passengers": 122440050,
+      "observed_months": 12
+    },
+    {
+      "year": 2015,
+      "paid_passengers": 112084161,
+      "observed_months": 11
+    },
+    {
+      "year": 2016,
+      "paid_passengers": 102707260,
+      "observed_months": 11
+    },
+    {
+      "year": 2017,
+      "paid_passengers": 114319888,
+      "observed_months": 12
+    },
+    {
+      "year": 2018,
+      "paid_passengers": 108191714,
+      "observed_months": 11
+    },
+    {
+      "year": 2019,
+      "paid_passengers": 120692377,
+      "observed_months": 12
+    },
+    {
+      "year": 2020,
+      "paid_passengers": 49453767,
+      "observed_months": 11
+    },
+    {
+      "year": 2021,
+      "paid_passengers": 67772887,
+      "observed_months": 12
+    },
+    {
+      "year": 2022,
+      "paid_passengers": 98610803,
+      "observed_months": 12
+    },
+    {
+      "year": 2023,
+      "paid_passengers": 113739831,
+      "observed_months": 12
+    },
+    {
+      "year": 2024,
+      "paid_passengers": 119933691,
+      "observed_months": 12
+    },
+    {
+      "year": 2025,
+      "paid_passengers": 131593763,
+      "observed_months": 12
+    }
+  ]
+}
