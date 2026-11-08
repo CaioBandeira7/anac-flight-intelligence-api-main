@@ -1,0 +1,8112 @@
+{
+ "generated_from": "validation 2023 (origins 2022-11 to 2023-11), saved LightGBM predictions",
+ "tasks": {
+  "a": {
+   "title": "Model A: daily aircraft movements, 50 busiest airports",
+   "unit": "movements",
+   "rows": 36500,
+   "metric": "WAPE",
+   "lightgbm": {
+    "value": 0.10095354006630726,
+    "ci95": [
+     0.09153552645630834,
+     0.11097888839532824
+    ],
+    "months": 12
+   },
+   "baselines": {
+    "Same weekday a year ago": {
+     "value": 0.1600431780286839,
+     "ci95": [
+      0.144298031797103,
+      0.1773545591556727
+     ],
+     "months": 12
+    },
+    "Same weekday a year ago, with trend": {
+     "value": 0.15699105110640205,
+     "ci95": [
+      0.14630325364074814,
+      0.16791027140770168
+     ],
+     "months": 12
+    },
+    "Recent same weekday (8 weeks)": {
+     "value": 0.1030256582380125,
+     "ci95": [
+      0.09192403686687717,
+      0.11433860149376324
+     ],
+     "months": 12
+    }
+   },
+   "best_baseline": "Recent same weekday (8 weeks)",
+   "difference_vs_best_baseline": {
+    "value": -0.0020721181717052385,
+    "ci95": [
+     -0.008440248533917137,
+     0.003467612596436211
+    ],
+    "months": 12
+   },
+   "beats_best_baseline": false,
+   "bias": {
+    "value": -0.020051557331078215,
+    "ci95": [
+     -0.03799843817620899,
+     0.0011116316402585472
+    ],
+    "months": 12
+   },
+   "best_iteration": 98,
+   "rows_fit": 306068,
+   "top_features_by_gain": {
+    "cal_day_of_week": 0.3075,
+    "airport": 0.1779,
+    "cal_week_of_year": 0.0916,
+    "cal_is_weekend": 0.0686,
+    "cal_month": 0.067,
+    "hist_level_28": 0.0431,
+    "hist_yoy_56": 0.0414,
+    "hist_level_56": 0.0385,
+    "hist_lag_364": 0.0382,
+    "cal_is_school_vacation": 0.0336
+   },
+   "by_horizon": [
+    {
+     "horizon": 1,
+     "rows": 18250,
+     "model": 0.098742,
+     "baselines": {
+      "Same weekday a year ago": 0.160055,
+      "Same weekday a year ago, with trend": 0.142403,
+      "Recent same weekday (8 weeks)": 0.100919
+     },
+     "bias_model": -0.014044,
+     "bias_best_baseline": -0.004066,
+     "rmse_model": 18.448,
+     "rmse_best_baseline": 18.22,
+     "mae_model": 9.12
+    },
+    {
+     "horizon": 3,
+     "rows": 18250,
+     "model": 0.103165,
+     "baselines": {
+      "Same weekday a year ago": 0.160031,
+      "Same weekday a year ago, with trend": 0.17158,
+      "Recent same weekday (8 weeks)": 0.105132
+     },
+     "bias_model": -0.026059,
+     "bias_best_baseline": -0.01832,
+     "rmse_model": 19.186,
+     "rmse_best_baseline": 18.865,
+     "mae_model": 9.528
+    }
+   ],
+   "by_volume_decile": [
+    {
+     "decile": 1,
+     "rows": 3703,
+     "level_min": 8.64,
+     "level_max": 12.75,
+     "model": 0.206729,
+     "baseline": 0.192396
+    },
+    {
+     "decile": 2,
+     "rows": 3654,
+     "level_min": 12.84,
+     "level_max": 17.16,
+     "model": 0.192645,
+     "baseline": 0.200047
+    },
+    {
+     "decile": 3,
+     "rows": 3642,
+     "level_min": 17.2,
+     "level_max": 22.55,
+     "model": 0.140421,
+     "baseline": 0.147762
+    },
+    {
+     "decile": 4,
+     "rows": 3628,
+     "level_min": 22.61,
+     "level_max": 27.18,
+     "model": 0.129296,
+     "baseline": 0.135844
+    },
+    {
+     "decile": 5,
+     "rows": 3677,
+     "level_min": 27.29,
+     "level_max": 33.25,
+     "model": 0.150121,
+     "baseline": 0.14267
+    },
+    {
+     "decile": 6,
+     "rows": 3624,
+     "level_min": 33.38,
+     "level_max": 45.21,
+     "model": 0.140742,
+     "baseline": 0.138243
+    },
+    {
+     "decile": 7,
+     "rows": 3675,
+     "level_min": 45.34,
+     "level_max": 78.02,
+     "model": 0.123548,
+     "baseline": 0.141989
+    },
+    {
+     "decile": 8,
+     "rows": 3627,
+     "level_min": 78.04,
+     "level_max": 134.64,
+     "model": 0.130558,
+     "baseline": 0.146615
+    },
+    {
+     "decile": 9,
+     "rows": 3620,
+     "level_min": 135.41,
+     "level_max": 268.27,
+     "model": 0.075567,
+     "baseline": 0.086696
+    },
+    {
+     "decile": 10,
+     "rows": 3650,
+     "level_min": 278.82,
+     "level_max": 759.46,
+     "model": 0.084957,
+     "baseline": 0.078466
+    }
+   ],
+   "by_entity": [
+    {
+     "entity": "SBGR",
+     "volume": 525368.0,
+     "rows": 730,
+     "model": 0.041207,
+     "baseline": 0.055012,
+     "bias_model": 0.000636
+    },
+    {
+     "entity": "SBSP",
+     "volume": 371956.0,
+     "rows": 730,
+     "model": 0.097785,
+     "baseline": 0.085272,
+     "bias_model": -0.051228
+    },
+    {
+     "entity": "SBKP",
+     "volume": 247320.0,
+     "rows": 730,
+     "model": 0.062268,
+     "baseline": 0.063582,
+     "bias_model": 0.050188
+    },
+    {
+     "entity": "SBBR",
+     "volume": 221236.0,
+     "rows": 730,
+     "model": 0.080107,
+     "baseline": 0.065686,
+     "bias_model": -0.009275
+    },
+    {
+     "entity": "SBRJ",
+     "volume": 213418.0,
+     "rows": 730,
+     "model": 0.201622,
+     "baseline": 0.154836,
+     "bias_model": 0.013645
+    },
+    {
+     "entity": "SBCF",
+     "volume": 194134.0,
+     "rows": 730,
+     "model": 0.048072,
+     "baseline": 0.053062,
+     "bias_model": -0.013349
+    },
+    {
+     "entity": "SBRF",
+     "volume": 152400.0,
+     "rows": 730,
+     "model": 0.075832,
+     "baseline": 0.100971,
+     "bias_model": -0.04153
+    },
+    {
+     "entity": "SBPA",
+     "volume": 122120.0,
+     "rows": 730,
+     "model": 0.084221,
+     "baseline": 0.084133,
+     "bias_model": -0.029347
+    },
+    {
+     "entity": "SBSV",
+     "volume": 110438.0,
+     "rows": 730,
+     "model": 0.105303,
+     "baseline": 0.123518,
+     "bias_model": -0.062743
+    },
+    {
+     "entity": "SBCT",
+     "volume": 105754.0,
+     "rows": 730,
+     "model": 0.094243,
+     "baseline": 0.084708,
+     "bias_model": -0.01795
+    },
+    {
+     "entity": "SBGL",
+     "volume": 104394.0,
+     "rows": 730,
+     "model": 0.213941,
+     "baseline": 0.232451,
+     "bias_model": -0.186758
+    },
+    {
+     "entity": "SBFZ",
+     "volume": 78826.0,
+     "rows": 730,
+     "model": 0.084716,
+     "baseline": 0.131679,
+     "bias_model": 0.0313
+    },
+    {
+     "entity": "SBFL",
+     "volume": 61088.0,
+     "rows": 730,
+     "model": 0.125346,
+     "baseline": 0.149858,
+     "bias_model": -0.05998
+    },
+    {
+     "entity": "SBBE",
+     "volume": 59170.0,
+     "rows": 730,
+     "model": 0.086831,
+     "baseline": 0.089864,
+     "bias_model": -0.040588
+    },
+    {
+     "entity": "SBGO",
+     "volume": 56238.0,
+     "rows": 730,
+     "model": 0.080253,
+     "baseline": 0.084656,
+     "bias_model": 0.0099
+    },
+    {
+     "entity": "SBEG",
+     "volume": 55208.0,
+     "rows": 730,
+     "model": 0.092373,
+     "baseline": 0.093537,
+     "bias_model": 0.004109
+    },
+    {
+     "entity": "SBVT",
+     "volume": 55076.0,
+     "rows": 730,
+     "model": 0.118735,
+     "baseline": 0.111072,
+     "bias_model": -0.007526
+    },
+    {
+     "entity": "SBCY",
+     "volume": 46494.0,
+     "rows": 730,
+     "model": 0.115409,
+     "baseline": 0.133224,
+     "bias_model": 0.082188
+    },
+    {
+     "entity": "SBMO",
+     "volume": 35146.0,
+     "rows": 730,
+     "model": 0.133031,
+     "baseline": 0.158194,
+     "bias_model": -0.059996
+    },
+    {
+     "entity": "SBNF",
+     "volume": 33792.0,
+     "rows": 730,
+     "model": 0.106234,
+     "baseline": 0.122289,
+     "bias_model": -0.006586
+    },
+    {
+     "entity": "SBSG",
+     "volume": 33656.0,
+     "rows": 730,
+     "model": 0.148942,
+     "baseline": 0.168295,
+     "bias_model": -0.020954
+    },
+    {
+     "entity": "SBPS",
+     "volume": 29960.0,
+     "rows": 730,
+     "model": 0.250637,
+     "baseline": 0.280541,
+     "bias_model": -0.053309
+    },
+    {
+     "entity": "SCEL",
+     "volume": 28876.0,
+     "rows": 730,
+     "model": 0.166956,
+     "baseline": 0.210175,
+     "bias_model": -0.082991
+    },
+    {
+     "entity": "SBFI",
+     "volume": 28010.0,
+     "rows": 730,
+     "model": 0.163269,
+     "baseline": 0.161567,
+     "bias_model": -0.01607
+    },
+    {
+     "entity": "SABE",
+     "volume": 25254.0,
+     "rows": 730,
+     "model": 0.139043,
+     "baseline": 0.137755,
+     "bias_model": 0.010739
+    }
+   ],
+   "by_market": [],
+   "residuals": {
+    "unit": "relative error",
+    "edges": [
+     -1.0,
+     -0.95,
+     -0.9,
+     -0.85,
+     -0.8,
+     -0.75,
+     -0.7,
+     -0.65,
+     -0.6,
+     -0.55,
+     -0.5,
+     -0.45,
+     -0.4,
+     -0.35,
+     -0.3,
+     -0.25,
+     -0.2,
+     -0.15,
+     -0.1,
+     -0.05,
+     0.0,
+     0.05,
+     0.1,
+     0.15,
+     0.2,
+     0.25,
+     0.3,
+     0.35,
+     0.4,
+     0.45,
+     0.5,
+     0.55,
+     0.6,
+     0.65,
+     0.7,
+     0.75,
+     0.8,
+     0.85,
+     0.9,
+     0.95,
+     1.0
+    ],
+    "model": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     4,
+     8,
+     43,
+     91,
+     205,
+     464,
+     790,
+     1295,
+     1694,
+     2437,
+     3804,
+     4793,
+     5440,
+     4529,
+     3222,
+     2181,
+     1437,
+     1084,
+     730,
+     512,
+     417,
+     289,
+     207,
+     166,
+     100,
+     93,
+     97,
+     63,
+     52,
+     23,
+     23,
+     17,
+     188
+    ],
+    "baseline": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     1,
+     1,
+     4,
+     18,
+     36,
+     108,
+     238,
+     393,
+     700,
+     921,
+     1568,
+     2104,
+     3396,
+     4817,
+     5067,
+     4771,
+     3324,
+     2216,
+     1633,
+     1234,
+     974,
+     731,
+     455,
+     387,
+     254,
+     242,
+     142,
+     128,
+     92,
+     70,
+     100,
+     64,
+     39,
+     28,
+     242
+    ],
+    "rows": 36498,
+    "model_quantiles": {
+     "p10": -0.2261,
+     "p50": -0.0257,
+     "p90": 0.2172
+    },
+    "baseline_quantiles": {
+     "p10": -0.2083,
+     "p50": -0.0125,
+     "p90": 0.2611
+    }
+   },
+   "monthly": [
+    {
+     "horizon": 1,
+     "month": "2023-01",
+     "actual": 151075.0,
+     "model": 140947.7653,
+     "baseline": 134275.875,
+     "model_error": 0.106126,
+     "baseline_error": 0.137471
+    },
+    {
+     "horizon": 1,
+     "month": "2023-02",
+     "actual": 125966.0,
+     "model": 124898.9902,
+     "baseline": 124348.5,
+     "model_error": 0.084297,
+     "baseline_error": 0.09524
+    },
+    {
+     "horizon": 1,
+     "month": "2023-03",
+     "actual": 141324.0,
+     "model": 139394.6618,
+     "baseline": 144857.5,
+     "model_error": 0.07428,
+     "baseline_error": 0.06247
+    },
+    {
+     "horizon": 1,
+     "month": "2023-04",
+     "actual": 133320.0,
+     "model": 131648.3,
+     "baseline": 143382.875,
+     "model_error": 0.118038,
+     "baseline_error": 0.131547
+    },
+    {
+     "horizon": 1,
+     "month": "2023-05",
+     "actual": 142007.0,
+     "model": 135555.925,
+     "baseline": 146204.75,
+     "model_error": 0.104505,
+     "baseline_error": 0.099062
+    },
+    {
+     "horizon": 1,
+     "month": "2023-06",
+     "actual": 136217.0,
+     "model": 128185.3969,
+     "baseline": 135967.0,
+     "model_error": 0.108521,
+     "baseline_error": 0.091879
+    },
+    {
+     "horizon": 1,
+     "month": "2023-07",
+     "actual": 150573.0,
+     "model": 140695.0079,
+     "baseline": 138671.5,
+     "model_error": 0.08996,
+     "baseline_error": 0.097987
+    },
+    {
+     "horizon": 1,
+     "month": "2023-08",
+     "actual": 146966.0,
+     "model": 141877.8251,
+     "baseline": 140694.25,
+     "model_error": 0.068561,
+     "baseline_error": 0.071328
+    },
+    {
+     "horizon": 1,
+     "month": "2023-09",
+     "actual": 138229.0,
+     "model": 137180.2115,
+     "baseline": 135925.25,
+     "model_error": 0.076294,
+     "baseline_error": 0.077777
+    },
+    {
+     "horizon": 1,
+     "month": "2023-10",
+     "actual": 139314.0,
+     "model": 147147.5266,
+     "baseline": 146305.625,
+     "model_error": 0.10617,
+     "baseline_error": 0.098579
+    },
+    {
+     "horizon": 1,
+     "month": "2023-11",
+     "actual": 135825.0,
+     "model": 145266.6679,
+     "baseline": 144241.625,
+     "model_error": 0.121443,
+     "baseline_error": 0.111674
+    },
+    {
+     "horizon": 1,
+     "month": "2023-12",
+     "actual": 144837.0,
+     "model": 149181.0602,
+     "baseline": 143925.125,
+     "model_error": 0.127608,
+     "baseline_error": 0.134709
+    },
+    {
+     "horizon": 3,
+     "month": "2023-01",
+     "actual": 151075.0,
+     "model": 143147.9757,
+     "baseline": 136380.25,
+     "model_error": 0.099397,
+     "baseline_error": 0.122989
+    },
+    {
+     "horizon": 3,
+     "month": "2023-02",
+     "actual": 125966.0,
+     "model": 120223.8408,
+     "baseline": 119670.5,
+     "model_error": 0.101814,
+     "baseline_error": 0.117452
+    },
+    {
+     "horizon": 3,
+     "month": "2023-03",
+     "actual": 141324.0,
+     "model": 130857.2803,
+     "baseline": 134690.25,
+     "model_error": 0.101521,
+     "baseline_error": 0.08469
+    },
+    {
+     "horizon": 3,
+     "month": "2023-04",
+     "actual": 133309.0,
+     "model": 123692.6474,
+     "baseline": 132324.375,
+     "model_error": 0.12,
+     "baseline_error": 0.107284
+    },
+    {
+     "horizon": 3,
+     "month": "2023-05",
+     "actual": 141986.0,
+     "model": 134083.3233,
+     "baseline": 144443.75,
+     "model_error": 0.098309,
+     "baseline_error": 0.079559
+    },
+    {
+     "horizon": 3,
+     "month": "2023-06",
+     "actual": 136217.0,
+     "model": 134657.3159,
+     "baseline": 145000.125,
+     "model_error": 0.115393,
+     "baseline_error": 0.122566
+    },
+    {
+     "horizon": 3,
+     "month": "2023-07",
+     "actual": 150573.0,
+     "model": 145747.7082,
+     "baseline": 145119.5,
+     "model_error": 0.095946,
+     "baseline_error": 0.095676
+    },
+    {
+     "horizon": 3,
+     "month": "2023-08",
+     "actual": 146966.0,
+     "model": 144571.0503,
+     "baseline": 140388.25,
+     "model_error": 0.073012,
+     "baseline_error": 0.078722
+    },
+    {
+     "horizon": 3,
+     "month": "2023-09",
+     "actual": 138229.0,
+     "model": 136602.0636,
+     "baseline": 134513.0,
+     "model_error": 0.074955,
+     "baseline_error": 0.083345
+    },
+    {
+     "horizon": 3,
+     "month": "2023-10",
+     "actual": 139314.0,
+     "model": 141266.3283,
+     "baseline": 139873.5,
+     "model_error": 0.106352,
+     "baseline_error": 0.110651
+    },
+    {
+     "horizon": 3,
+     "month": "2023-11",
+     "actual": 135825.0,
+     "model": 137773.1486,
+     "baseline": 136714.625,
+     "model_error": 0.11715,
+     "baseline_error": 0.11974
+    },
+    {
+     "horizon": 3,
+     "month": "2023-12",
+     "actual": 144722.0,
+     "model": 148959.9913,
+     "baseline": 145508.875,
+     "model_error": 0.136511,
+     "baseline_error": 0.140873
+    }
+   ],
+   "figures": {
+    "monthly": "figures/a_actual_vs_predicted_monthly.png",
+    "scatter": "figures/a_scatter.png",
+    "residuals": "figures/a_residuals.png",
+    "by_horizon": "figures/a_by_horizon.png",
+    "by_volume": "figures/a_by_volume.png",
+    "by_entity": "figures/a_by_entity.png",
+    "error_by_month": "figures/a_error_by_month.png",
+    "feature_gain": "figures/a_feature_gain.png",
+    "examples": "figures/a_examples_daily.png"
+   },
+   "by_weekday": [
+    {
+     "weekday": "Mon",
+     "model": 0.098064,
+     "baseline": 0.094579
+    },
+    {
+     "weekday": "Tue",
+     "model": 0.096297,
+     "baseline": 0.097302
+    },
+    {
+     "weekday": "Wed",
+     "model": 0.093011,
+     "baseline": 0.091483
+    },
+    {
+     "weekday": "Thu",
+     "model": 0.0955,
+     "baseline": 0.094059
+    },
+    {
+     "weekday": "Fri",
+     "model": 0.107566,
+     "baseline": 0.107905
+    },
+    {
+     "weekday": "Sat",
+     "model": 0.116047,
+     "baseline": 0.124535
+    },
+    {
+     "weekday": "Sun",
+     "model": 0.102502,
+     "baseline": 0.115649
+    }
+   ],
+   "examples": {
+    "best": {
+     "entity": "SBGR",
+     "model": 0.041207,
+     "baseline": 0.055012,
+     "points": [
+      {
+       "date": "2023-01-01",
+       "actual": 581.0,
+       "model": 685.5,
+       "baseline": 623.9
+      },
+      {
+       "date": "2023-01-02",
+       "actual": 720.0,
+       "model": 732.5,
+       "baseline": 671.1
+      },
+      {
+       "date": "2023-01-03",
+       "actual": 763.0,
+       "model": 731.5,
+       "baseline": 675.1
+      },
+      {
+       "date": "2023-01-04",
+       "actual": 759.0,
+       "model": 731.5,
+       "baseline": 682.5
+      },
+      {
+       "date": "2023-01-05",
+       "actual": 752.0,
+       "model": 735.4,
+       "baseline": 676.9
+      },
+      {
+       "date": "2023-01-06",
+       "actual": 753.0,
+       "model": 739.3,
+       "baseline": 720.8
+      },
+      {
+       "date": "2023-01-07",
+       "actual": 715.0,
+       "model": 691.2,
+       "baseline": 621.1
+      },
+      {
+       "date": "2023-01-08",
+       "actual": 720.0,
+       "model": 687.6,
+       "baseline": 623.9
+      },
+      {
+       "date": "2023-01-09",
+       "actual": 725.0,
+       "model": 733.7,
+       "baseline": 671.1
+      },
+      {
+       "date": "2023-01-10",
+       "actual": 771.0,
+       "model": 731.5,
+       "baseline": 675.1
+      },
+      {
+       "date": "2023-01-11",
+       "actual": 741.0,
+       "model": 731.5,
+       "baseline": 682.5
+      },
+      {
+       "date": "2023-01-12",
+       "actual": 762.0,
+       "model": 735.4,
+       "baseline": 676.9
+      },
+      {
+       "date": "2023-01-13",
+       "actual": 755.0,
+       "model": 739.3,
+       "baseline": 720.8
+      },
+      {
+       "date": "2023-01-14",
+       "actual": 717.0,
+       "model": 691.2,
+       "baseline": 621.1
+      },
+      {
+       "date": "2023-01-15",
+       "actual": 708.0,
+       "model": 687.6,
+       "baseline": 623.9
+      },
+      {
+       "date": "2023-01-16",
+       "actual": 724.0,
+       "model": 733.7,
+       "baseline": 671.1
+      },
+      {
+       "date": "2023-01-17",
+       "actual": 774.0,
+       "model": 731.5,
+       "baseline": 675.1
+      },
+      {
+       "date": "2023-01-18",
+       "actual": 735.0,
+       "model": 731.5,
+       "baseline": 682.5
+      },
+      {
+       "date": "2023-01-19",
+       "actual": 746.0,
+       "model": 735.4,
+       "baseline": 676.9
+      },
+      {
+       "date": "2023-01-20",
+       "actual": 761.0,
+       "model": 739.3,
+       "baseline": 720.8
+      },
+      {
+       "date": "2023-01-21",
+       "actual": 714.0,
+       "model": 687.6,
+       "baseline": 621.1
+      },
+      {
+       "date": "2023-01-22",
+       "actual": 695.0,
+       "model": 687.6,
+       "baseline": 623.9
+      },
+      {
+       "date": "2023-01-23",
+       "actual": 719.0,
+       "model": 733.7,
+       "baseline": 671.1
+      },
+      {
+       "date": "2023-01-24",
+       "actual": 761.0,
+       "model": 731.5,
+       "baseline": 675.1
+      },
+      {
+       "date": "2023-01-25",
+       "actual": 741.0,
+       "model": 731.5,
+       "baseline": 682.5
+      },
+      {
+       "date": "2023-01-26",
+       "actual": 736.0,
+       "model": 735.4,
+       "baseline": 676.9
+      },
+      {
+       "date": "2023-01-27",
+       "actual": 753.0,
+       "model": 739.3,
+       "baseline": 720.8
+      },
+      {
+       "date": "2023-01-28",
+       "actual": 696.0,
+       "model": 691.2,
+       "baseline": 621.1
+      },
+      {
+       "date": "2023-01-29",
+       "actual": 712.0,
+       "model": 687.0,
+       "baseline": 623.9
+      },
+      {
+       "date": "2023-01-30",
+       "actual": 725.0,
+       "model": 733.0,
+       "baseline": 671.1
+      },
+      {
+       "date": "2023-01-31",
+       "actual": 736.0,
+       "model": 720.7,
+       "baseline": 675.1
+      },
+      {
+       "date": "2023-02-01",
+       "actual": 727.0,
+       "model": 711.0,
+       "baseline": 688.8
+      },
+      {
+       "date": "2023-02-02",
+       "actual": 738.0,
+       "model": 727.9,
+       "baseline": 694.1
+      },
+      {
+       "date": "2023-02-03",
+       "actual": 772.0,
+       "model": 732.0,
+       "baseline": 724.0
+      },
+      {
+       "date": "2023-02-04",
+       "actual": 667.0,
+       "model": 672.6,
+       "baseline": 634.2
+      },
+      {
+       "date": "2023-02-05",
+       "actual": 688.0,
+       "model": 672.0,
+       "baseline": 639.0
+      },
+      {
+       "date": "2023-02-06",
+       "actual": 728.0,
+       "model": 720.3,
+       "baseline": 666.0
+      },
+      {
+       "date": "2023-02-07",
+       "actual": 706.0,
+       "model": 715.4,
+       "baseline": 694.5
+      },
+      {
+       "date": "2023-02-08",
+       "actual": 740.0,
+       "model": 715.4,
+       "baseline": 688.8
+      },
+      {
+       "date": "2023-02-09",
+       "actual": 706.0,
+       "model": 727.9,
+       "baseline": 694.1
+      },
+      {
+       "date": "2023-02-10",
+       "actual": 753.0,
+       "model": 732.0,
+       "baseline": 724.0
+      },
+      {
+       "date": "2023-02-11",
+       "actual": 681.0,
+       "model": 664.2,
+       "baseline": 634.2
+      },
+      {
+       "date": "2023-02-12",
+       "actual": 690.0,
+       "model": 663.5,
+       "baseline": 639.0
+      },
+      {
+       "date": "2023-02-13",
+       "actual": 700.0,
+       "model": 717.4,
+       "baseline": 666.0
+      },
+      {
+       "date": "2023-02-14",
+       "actual": 750.0,
+       "model": 713.2,
+       "baseline": 694.5
+      },
+      {
+       "date": "2023-02-15",
+       "actual": 725.0,
+       "model": 713.2,
+       "baseline": 688.8
+      },
+      {
+       "date": "2023-02-16",
+       "actual": 694.0,
+       "model": 725.7,
+       "baseline": 694.1
+      },
+      {
+       "date": "2023-02-17",
+       "actual": 755.0,
+       "model": 730.5,
+       "baseline": 724.0
+      },
+      {
+       "date": "2023-02-18",
+       "actual": 632.0,
+       "model": 663.6,
+       "baseline": 634.2
+      },
+      {
+       "date": "2023-02-19",
+       "actual": 476.0,
+       "model": 628.7,
+       "baseline": 639.0
+      },
+      {
+       "date": "2023-02-20",
+       "actual": 495.0,
+       "model": 527.9,
+       "baseline": 666.0
+      },
+      {
+       "date": "2023-02-21",
+       "actual": 553.0,
+       "model": 618.7,
+       "baseline": 694.5
+      },
+      {
+       "date": "2023-02-22",
+       "actual": 650.0,
+       "model": 712.0,
+       "baseline": 688.8
+      },
+      {
+       "date": "2023-02-23",
+       "actual": 654.0,
+       "model": 725.7,
+       "baseline": 694.1
+      },
+      {
+       "date": "2023-02-24",
+       "actual": 666.0,
+       "model": 730.5,
+       "baseline": 724.0
+      },
+      {
+       "date": "2023-02-25",
+       "actual": 611.0,
+       "model": 662.6,
+       "baseline": 634.2
+      },
+      {
+       "date": "2023-02-26",
+       "actual": 636.0,
+       "model": 662.5,
+       "baseline": 639.0
+      },
+      {
+       "date": "2023-02-27",
+       "actual": 682.0,
+       "model": 714.9,
+       "baseline": 666.0
+      },
+      {
+       "date": "2023-02-28",
+       "actual": 685.0,
+       "model": 713.2,
+       "baseline": 694.5
+      },
+      {
+       "date": "2023-03-01",
+       "actual": 707.0,
+       "model": 729.2,
+       "baseline": 725.6
+      },
+      {
+       "date": "2023-03-02",
+       "actual": 710.0,
+       "model": 743.8,
+       "baseline": 737.8
+      },
+      {
+       "date": "2023-03-03",
+       "actual": 729.0,
+       "model": 749.7,
+       "baseline": 739.4
+      },
+      {
+       "date": "2023-03-04",
+       "actual": 640.0,
+       "model": 667.3,
+       "baseline": 660.6
+      },
+      {
+       "date": "2023-03-05",
+       "actual": 650.0,
+       "model": 667.2,
+       "baseline": 649.9
+      },
+      {
+       "date": "2023-03-06",
+       "actual": 693.0,
+       "model": 734.5,
+       "baseline": 690.6
+      },
+      {
+       "date": "2023-03-07",
+       "actual": 711.0,
+       "model": 727.6,
+       "baseline": 718.4
+      },
+      {
+       "date": "2023-03-08",
+       "actual": 675.0,
+       "model": 726.7,
+       "baseline": 725.6
+      },
+      {
+       "date": "2023-03-09",
+       "actual": 704.0,
+       "model": 743.0,
+       "baseline": 737.8
+      },
+      {
+       "date": "2023-03-10",
+       "actual": 733.0,
+       "model": 748.8,
+       "baseline": 739.4
+      },
+      {
+       "date": "2023-03-11",
+       "actual": 645.0,
+       "model": 664.9,
+       "baseline": 660.6
+      },
+      {
+       "date": "2023-03-12",
+       "actual": 627.0,
+       "model": 664.8,
+       "baseline": 649.9
+      },
+      {
+       "date": "2023-03-13",
+       "actual": 706.0,
+       "model": 733.6,
+       "baseline": 690.6
+      },
+      {
+       "date": "2023-03-14",
+       "actual": 724.0,
+       "model": 726.4,
+       "baseline": 718.4
+      },
+      {
+       "date": "2023-03-15",
+       "actual": 690.0,
+       "model": 726.4,
+       "baseline": 725.6
+      },
+      {
+       "date": "2023-03-16",
+       "actual": 702.0,
+       "model": 742.0,
+       "baseline": 737.8
+      },
+      {
+       "date": "2023-03-17",
+       "actual": 725.0,
+       "model": 747.9,
+       "baseline": 739.4
+      },
+      {
+       "date": "2023-03-18",
+       "actual": 639.0,
+       "model": 658.0,
+       "baseline": 660.6
+      },
+      {
+       "date": "2023-03-19",
+       "actual": 640.0,
+       "model": 659.4,
+       "baseline": 649.9
+      },
+      {
+       "date": "2023-03-20",
+       "actual": 676.0,
+       "model": 732.2,
+       "baseline": 690.6
+      },
+      {
+       "date": "2023-03-21",
+       "actual": 708.0,
+       "model": 725.0,
+       "baseline": 718.4
+      },
+      {
+       "date": "2023-03-22",
+       "actual": 687.0,
+       "model": 725.0,
+       "baseline": 725.6
+      },
+      {
+       "date": "2023-03-23",
+       "actual": 697.0,
+       "model": 740.6,
+       "baseline": 737.8
+      },
+      {
+       "date": "2023-03-24",
+       "actual": 712.0,
+       "model": 746.5,
+       "baseline": 739.4
+      },
+      {
+       "date": "2023-03-25",
+       "actual": 626.0,
+       "model": 654.7,
+       "baseline": 660.6
+      },
+      {
+       "date": "2023-03-26",
+       "actual": 645.0,
+       "model": 656.1,
+       "baseline": 649.9
+      },
+      {
+       "date": "2023-03-27",
+       "actual": 704.0,
+       "model": 731.3,
+       "baseline": 690.6
+      },
+      {
+       "date": "2023-03-28",
+       "actual": 720.0,
+       "model": 724.2,
+       "baseline": 718.4
+      },
+      {
+       "date": "2023-03-29",
+       "actual": 690.0,
+       "model": 724.2,
+       "baseline": 725.6
+      },
+      {
+       "date": "2023-03-30",
+       "actual": 762.0,
+       "model": 739.8,
+       "baseline": 737.8
+      },
+      {
+       "date": "2023-03-31",
+       "actual": 740.0,
+       "model": 745.7,
+       "baseline": 739.4
+      },
+      {
+       "date": "2023-04-01",
+       "actual": 679.0,
+       "model": 661.6,
+       "baseline": 686.8
+      },
+      {
+       "date": "2023-04-02",
+       "actual": 673.0,
+       "model": 662.8,
+       "baseline": 673.5
+      },
+      {
+       "date": "2023-04-03",
+       "actual": 703.0,
+       "model": 750.5,
+       "baseline": 724.1
+      },
+      {
+       "date": "2023-04-04",
+       "actual": 723.0,
+       "model": 743.1,
+       "baseline": 752.4
+      },
+      {
+       "date": "2023-04-05",
+       "actual": 735.0,
+       "model": 743.1,
+       "baseline": 746.6
+      },
+      {
+       "date": "2023-04-06",
+       "actual": 735.0,
+       "model": 756.5,
+       "baseline": 750.2
+      },
+      {
+       "date": "2023-04-07",
+       "actual": 668.0,
+       "model": 701.7,
+       "baseline": 755.1
+      },
+      {
+       "date": "2023-04-08",
+       "actual": 542.0,
+       "model": 630.6,
+       "baseline": 686.8
+      },
+      {
+       "date": "2023-04-09",
+       "actual": 654.0,
+       "model": 664.3,
+       "baseline": 673.5
+      },
+      {
+       "date": "2023-04-10",
+       "actual": 714.0,
+       "model": 749.5,
+       "baseline": 724.1
+      },
+      {
+       "date": "2023-04-11",
+       "actual": 720.0,
+       "model": 742.1,
+       "baseline": 752.4
+      },
+      {
+       "date": "2023-04-12",
+       "actual": 735.0,
+       "model": 742.1,
+       "baseline": 746.6
+      },
+      {
+       "date": "2023-04-13",
+       "actual": 723.0,
+       "model": 757.3,
+       "baseline": 750.2
+      },
+      {
+       "date": "2023-04-14",
+       "actual": 745.0,
+       "model": 763.3,
+       "baseline": 755.1
+      },
+      {
+       "date": "2023-04-15",
+       "actual": 670.0,
+       "model": 661.9,
+       "baseline": 686.8
+      },
+      {
+       "date": "2023-04-16",
+       "actual": 663.0,
+       "model": 663.2,
+       "baseline": 673.5
+      },
+      {
+       "date": "2023-04-17",
+       "actual": 713.0,
+       "model": 749.4,
+       "baseline": 724.1
+      },
+      {
+       "date": "2023-04-18",
+       "actual": 689.0,
+       "model": 742.0,
+       "baseline": 752.4
+      },
+      {
+       "date": "2023-04-19",
+       "actual": 738.0,
+       "model": 742.0,
+       "baseline": 746.6
+      },
+      {
+       "date": "2023-04-20",
+       "actual": 731.0,
+       "model": 756.4,
+       "baseline": 750.2
+      },
+      {
+       "date": "2023-04-21",
+       "actual": 626.0,
+       "model": 701.6,
+       "baseline": 755.1
+      },
+      {
+       "date": "2023-04-22",
+       "actual": 552.0,
+       "model": 629.5,
+       "baseline": 686.8
+      },
+      {
+       "date": "2023-04-23",
+       "actual": 652.0,
+       "model": 664.3,
+       "baseline": 673.5
+      },
+      {
+       "date": "2023-04-24",
+       "actual": 698.0,
+       "model": 749.4,
+       "baseline": 724.1
+      },
+      {
+       "date": "2023-04-25",
+       "actual": 734.0,
+       "model": 742.0,
+       "baseline": 752.4
+      },
+      {
+       "date": "2023-04-26",
+       "actual": 722.0,
+       "model": 742.0,
+       "baseline": 746.6
+      },
+      {
+       "date": "2023-04-27",
+       "actual": 729.0,
+       "model": 757.2,
+       "baseline": 750.2
+      },
+      {
+       "date": "2023-04-28",
+       "actual": 739.0,
+       "model": 763.3,
+       "baseline": 755.1
+      },
+      {
+       "date": "2023-04-29",
+       "actual": 621.0,
+       "model": 661.9,
+       "baseline": 686.8
+      },
+      {
+       "date": "2023-04-30",
+       "actual": 557.0,
+       "model": 636.9,
+       "baseline": 673.5
+      },
+      {
+       "date": "2023-05-01",
+       "actual": 693.0,
+       "model": 697.3,
+       "baseline": 687.2
+      },
+      {
+       "date": "2023-05-02",
+       "actual": 689.0,
+       "model": 702.3,
+       "baseline": 717.0
+      },
+      {
+       "date": "2023-05-03",
+       "actual": 730.0,
+       "model": 702.3,
+       "baseline": 727.2
+      },
+      {
+       "date": "2023-05-04",
+       "actual": 725.0,
+       "model": 716.7,
+       "baseline": 723.5
+      },
+      {
+       "date": "2023-05-05",
+       "actual": 745.0,
+       "model": 722.6,
+       "baseline": 746.0
+      },
+      {
+       "date": "2023-05-06",
+       "actual": 660.0,
+       "model": 643.3,
+       "baseline": 679.1
+      },
+      {
+       "date": "2023-05-07",
+       "actual": 672.0,
+       "model": 644.5,
+       "baseline": 665.6
+      },
+      {
+       "date": "2023-05-08",
+       "actual": 701.0,
+       "model": 709.5,
+       "baseline": 687.2
+      },
+      {
+       "date": "2023-05-09",
+       "actual": 723.0,
+       "model": 702.3,
+       "baseline": 717.0
+      },
+      {
+       "date": "2023-05-10",
+       "actual": 737.0,
+       "model": 702.3,
+       "baseline": 727.2
+      },
+      {
+       "date": "2023-05-11",
+       "actual": 734.0,
+       "model": 716.7,
+       "baseline": 723.5
+      },
+      {
+       "date": "2023-05-12",
+       "actual": 745.0,
+       "model": 722.6,
+       "baseline": 746.0
+      },
+      {
+       "date": "2023-05-13",
+       "actual": 663.0,
+       "model": 644.4,
+       "baseline": 679.1
+      },
+      {
+       "date": "2023-05-14",
+       "actual": 673.0,
+       "model": 644.5,
+       "baseline": 665.6
+      },
+      {
+       "date": "2023-05-15",
+       "actual": 714.0,
+       "model": 709.5,
+       "baseline": 687.2
+      },
+      {
+       "date": "2023-05-16",
+       "actual": 723.0,
+       "model": 702.3,
+       "baseline": 717.0
+      },
+      {
+       "date": "2023-05-17",
+       "actual": 731.0,
+       "model": 702.3,
+       "baseline": 727.2
+      },
+      {
+       "date": "2023-05-18",
+       "actual": 727.0,
+       "model": 716.7,
+       "baseline": 723.5
+      },
+      {
+       "date": "2023-05-19",
+       "actual": 736.0,
+       "model": 722.6,
+       "baseline": 746.0
+      },
+      {
+       "date": "2023-05-20",
+       "actual": 666.0,
+       "model": 644.4,
+       "baseline": 679.1
+      },
+      {
+       "date": "2023-05-21",
+       "actual": 681.0,
+       "model": 644.5,
+       "baseline": 665.6
+      },
+      {
+       "date": "2023-05-22",
+       "actual": 711.0,
+       "model": 728.7,
+       "baseline": 687.2
+      },
+      {
+       "date": "2023-05-23",
+       "actual": 719.0,
+       "model": 721.8,
+       "baseline": 717.0
+      },
+      {
+       "date": "2023-05-24",
+       "actual": 722.0,
+       "model": 721.8,
+       "baseline": 727.2
+      },
+      {
+       "date": "2023-05-25",
+       "actual": 730.0,
+       "model": 735.9,
+       "baseline": 723.5
+      },
+      {
+       "date": "2023-05-26",
+       "actual": 753.0,
+       "model": 742.2,
+       "baseline": 746.0
+      },
+      {
+       "date": "2023-05-27",
+       "actual": 665.0,
+       "model": 645.9,
+       "baseline": 679.1
+      },
+      {
+       "date": "2023-05-28",
+       "actual": 659.0,
+       "model": 644.5,
+       "baseline": 665.6
+      },
+      {
+       "date": "2023-05-29",
+       "actual": 706.0,
+       "model": 728.7,
+       "baseline": 687.2
+      },
+      {
+       "date": "2023-05-30",
+       "actual": 717.0,
+       "model": 721.8,
+       "baseline": 717.0
+      },
+      {
+       "date": "2023-05-31",
+       "actual": 722.0,
+       "model": 722.7,
+       "baseline": 727.2
+      },
+      {
+       "date": "2023-06-01",
+       "actual": 740.0,
+       "model": 712.9,
+       "baseline": 703.6
+      },
+      {
+       "date": "2023-06-02",
+       "actual": 756.0,
+       "model": 718.2,
+       "baseline": 726.6
+      },
+      {
+       "date": "2023-06-03",
+       "actual": 668.0,
+       "model": 619.7,
+       "baseline": 642.6
+      },
+      {
+       "date": "2023-06-04",
+       "actual": 669.0,
+       "model": 620.9,
+       "baseline": 631.5
+      },
+      {
+       "date": "2023-06-05",
+       "actual": 713.0,
+       "model": 706.8,
+       "baseline": 673.0
+      },
+      {
+       "date": "2023-06-06",
+       "actual": 703.0,
+       "model": 700.4,
+       "baseline": 694.6
+      },
+      {
+       "date": "2023-06-07",
+       "actual": 739.0,
+       "model": 700.4,
+       "baseline": 695.5
+      },
+      {
+       "date": "2023-06-08",
+       "actual": 677.0,
+       "model": 712.9,
+       "baseline": 703.6
+      },
+      {
+       "date": "2023-06-09",
+       "actual": 609.0,
+       "model": 719.4,
+       "baseline": 726.6
+      },
+      {
+       "date": "2023-06-10",
+       "actual": 563.0,
+       "model": 622.2,
+       "baseline": 642.6
+      },
+      {
+       "date": "2023-06-11",
+       "actual": 661.0,
+       "model": 621.9,
+       "baseline": 631.5
+      },
+      {
+       "date": "2023-06-12",
+       "actual": 724.0,
+       "model": 705.6,
+       "baseline": 673.0
+      },
+      {
+       "date": "2023-06-13",
+       "actual": 732.0,
+       "model": 700.4,
+       "baseline": 694.6
+      },
+      {
+       "date": "2023-06-14",
+       "actual": 723.0,
+       "model": 700.4,
+       "baseline": 695.5
+      },
+      {
+       "date": "2023-06-15",
+       "actual": 733.0,
+       "model": 714.0,
+       "baseline": 703.6
+      },
+      {
+       "date": "2023-06-16",
+       "actual": 764.0,
+       "model": 717.1,
+       "baseline": 726.6
+      },
+      {
+       "date": "2023-06-17",
+       "actual": 670.0,
+       "model": 624.4,
+       "baseline": 642.6
+      },
+      {
+       "date": "2023-06-18",
+       "actual": 688.0,
+       "model": 625.2,
+       "baseline": 631.5
+      },
+      {
+       "date": "2023-06-19",
+       "actual": 716.0,
+       "model": 706.8,
+       "baseline": 673.0
+      },
+      {
+       "date": "2023-06-20",
+       "actual": 716.0,
+       "model": 700.4,
+       "baseline": 694.6
+      },
+      {
+       "date": "2023-06-21",
+       "actual": 728.0,
+       "model": 700.4,
+       "baseline": 695.5
+      },
+      {
+       "date": "2023-06-22",
+       "actual": 746.0,
+       "model": 714.0,
+       "baseline": 703.6
+      },
+      {
+       "date": "2023-06-23",
+       "actual": 772.0,
+       "model": 719.4,
+       "baseline": 726.6
+      },
+      {
+       "date": "2023-06-24",
+       "actual": 685.0,
+       "model": 625.4,
+       "baseline": 642.6
+      },
+      {
+       "date": "2023-06-25",
+       "actual": 678.0,
+       "model": 625.2,
+       "baseline": 631.5
+      },
+      {
+       "date": "2023-06-26",
+       "actual": 716.0,
+       "model": 706.8,
+       "baseline": 673.0
+      },
+      {
+       "date": "2023-06-27",
+       "actual": 718.0,
+       "model": 700.4,
+       "baseline": 694.6
+      },
+      {
+       "date": "2023-06-28",
+       "actual": 737.0,
+       "model": 700.4,
+       "baseline": 695.5
+      },
+      {
+       "date": "2023-06-29",
+       "actual": 752.0,
+       "model": 714.8,
+       "baseline": 703.6
+      },
+      {
+       "date": "2023-06-30",
+       "actual": 761.0,
+       "model": 720.1,
+       "baseline": 726.6
+      },
+      {
+       "date": "2023-07-01",
+       "actual": 741.0,
+       "model": 687.5,
+       "baseline": 621.8
+      },
+      {
+       "date": "2023-07-02",
+       "actual": 724.0,
+       "model": 685.1,
+       "baseline": 638.9
+      },
+      {
+       "date": "2023-07-03",
+       "actual": 747.0,
+       "model": 704.7,
+       "baseline": 700.9
+      },
+      {
+       "date": "2023-07-04",
+       "actual": 776.0,
+       "model": 701.7,
+       "baseline": 716.1
+      },
+      {
+       "date": "2023-07-05",
+       "actual": 781.0,
+       "model": 701.7,
+       "baseline": 709.0
+      },
+      {
+       "date": "2023-07-06",
+       "actual": 795.0,
+       "model": 708.7,
+       "baseline": 722.9
+      },
+      {
+       "date": "2023-07-07",
+       "actual": 792.0,
+       "model": 714.2,
+       "baseline": 711.0
+      },
+      {
+       "date": "2023-07-08",
+       "actual": 766.0,
+       "model": 694.9,
+       "baseline": 621.8
+      },
+      {
+       "date": "2023-07-09",
+       "actual": 741.0,
+       "model": 692.5,
+       "baseline": 638.9
+      },
+      {
+       "date": "2023-07-10",
+       "actual": 758.0,
+       "model": 745.0,
+       "baseline": 700.9
+      },
+      {
+       "date": "2023-07-11",
+       "actual": 778.0,
+       "model": 742.3,
+       "baseline": 716.1
+      },
+      {
+       "date": "2023-07-12",
+       "actual": 784.0,
+       "model": 742.0,
+       "baseline": 709.0
+      },
+      {
+       "date": "2023-07-13",
+       "actual": 775.0,
+       "model": 751.6,
+       "baseline": 722.9
+      },
+      {
+       "date": "2023-07-14",
+       "actual": 807.0,
+       "model": 756.7,
+       "baseline": 711.0
+      },
+      {
+       "date": "2023-07-15",
+       "actual": 787.0,
+       "model": 694.9,
+       "baseline": 621.8
+      },
+      {
+       "date": "2023-07-16",
+       "actual": 730.0,
+       "model": 694.7,
+       "baseline": 638.9
+      },
+      {
+       "date": "2023-07-17",
+       "actual": 757.0,
+       "model": 748.7,
+       "baseline": 700.9
+      },
+      {
+       "date": "2023-07-18",
+       "actual": 784.0,
+       "model": 745.7,
+       "baseline": 716.1
+      },
+      {
+       "date": "2023-07-19",
+       "actual": 788.0,
+       "model": 745.7,
+       "baseline": 709.0
+      },
+      {
+       "date": "2023-07-20",
+       "actual": 785.0,
+       "model": 757.3,
+       "baseline": 722.9
+      },
+      {
+       "date": "2023-07-21",
+       "actual": 804.0,
+       "model": 762.3,
+       "baseline": 711.0
+      },
+      {
+       "date": "2023-07-22",
+       "actual": 764.0,
+       "model": 695.7,
+       "baseline": 621.8
+      },
+      {
+       "date": "2023-07-23",
+       "actual": 736.0,
+       "model": 694.1,
+       "baseline": 638.9
+      },
+      {
+       "date": "2023-07-24",
+       "actual": 748.0,
+       "model": 752.3,
+       "baseline": 700.9
+      },
+      {
+       "date": "2023-07-25",
+       "actual": 784.0,
+       "model": 749.3,
+       "baseline": 716.1
+      },
+      {
+       "date": "2023-07-26",
+       "actual": 776.0,
+       "model": 749.3,
+       "baseline": 709.0
+      },
+      {
+       "date": "2023-07-27",
+       "actual": 801.0,
+       "model": 760.9,
+       "baseline": 722.9
+      },
+      {
+       "date": "2023-07-28",
+       "actual": 798.0,
+       "model": 766.4,
+       "baseline": 711.0
+      },
+      {
+       "date": "2023-07-29",
+       "actual": 775.0,
+       "model": 695.7,
+       "baseline": 621.8
+      },
+      {
+       "date": "2023-07-30",
+       "actual": 730.0,
+       "model": 696.0,
+       "baseline": 638.9
+      },
+      {
+       "date": "2023-07-31",
+       "actual": 749.0,
+       "model": 739.6,
+       "baseline": 700.9
+      },
+      {
+       "date": "2023-08-01",
+       "actual": 786.0,
+       "model": 729.0,
+       "baseline": 714.2
+      },
+      {
+       "date": "2023-08-02",
+       "actual": 784.0,
+       "model": 729.0,
+       "baseline": 729.6
+      },
+      {
+       "date": "2023-08-03",
+       "actual": 791.0,
+       "model": 754.0,
+       "baseline": 729.2
+      },
+      {
+       "date": "2023-08-04",
+       "actual": 775.0,
+       "model": 760.4,
+       "baseline": 719.6
+      },
+      {
+       "date": "2023-08-05",
+       "actual": 746.0,
+       "model": 675.1,
+       "baseline": 629.9
+      },
+      {
+       "date": "2023-08-06",
+       "actual": 721.0,
+       "model": 676.8,
+       "baseline": 651.4
+      },
+      {
+       "date": "2023-08-07",
+       "actual": 726.0,
+       "model": 735.2,
+       "baseline": 706.2
+      },
+      {
+       "date": "2023-08-08",
+       "actual": 771.0,
+       "model": 729.0,
+       "baseline": 714.2
+      },
+      {
+       "date": "2023-08-09",
+       "actual": 778.0,
+       "model": 729.0,
+       "baseline": 729.6
+      },
+      {
+       "date": "2023-08-10",
+       "actual": 783.0,
+       "model": 754.0,
+       "baseline": 729.2
+      },
+      {
+       "date": "2023-08-11",
+       "actual": 779.0,
+       "model": 760.4,
+       "baseline": 719.6
+      },
+      {
+       "date": "2023-08-12",
+       "actual": 759.0,
+       "model": 675.1,
+       "baseline": 629.9
+      },
+      {
+       "date": "2023-08-13",
+       "actual": 719.0,
+       "model": 674.9,
+       "baseline": 651.4
+      },
+      {
+       "date": "2023-08-14",
+       "actual": 724.0,
+       "model": 735.2,
+       "baseline": 706.2
+      },
+      {
+       "date": "2023-08-15",
+       "actual": 751.0,
+       "model": 729.0,
+       "baseline": 714.2
+      },
+      {
+       "date": "2023-08-16",
+       "actual": 751.0,
+       "model": 729.0,
+       "baseline": 729.6
+      },
+      {
+       "date": "2023-08-17",
+       "actual": 754.0,
+       "model": 754.0,
+       "baseline": 729.2
+      },
+      {
+       "date": "2023-08-18",
+       "actual": 763.0,
+       "model": 760.4,
+       "baseline": 719.6
+      },
+      {
+       "date": "2023-08-19",
+       "actual": 736.0,
+       "model": 674.7,
+       "baseline": 629.9
+      },
+      {
+       "date": "2023-08-20",
+       "actual": 696.0,
+       "model": 674.5,
+       "baseline": 651.4
+      },
+      {
+       "date": "2023-08-21",
+       "actual": 719.0,
+       "model": 735.2,
+       "baseline": 706.2
+      },
+      {
+       "date": "2023-08-22",
+       "actual": 753.0,
+       "model": 729.0,
+       "baseline": 714.2
+      },
+      {
+       "date": "2023-08-23",
+       "actual": 733.0,
+       "model": 729.0,
+       "baseline": 729.6
+      },
+      {
+       "date": "2023-08-24",
+       "actual": 765.0,
+       "model": 754.0,
+       "baseline": 729.2
+      },
+      {
+       "date": "2023-08-25",
+       "actual": 769.0,
+       "model": 760.4,
+       "baseline": 719.6
+      },
+      {
+       "date": "2023-08-26",
+       "actual": 733.0,
+       "model": 675.1,
+       "baseline": 629.9
+      },
+      {
+       "date": "2023-08-27",
+       "actual": 695.0,
+       "model": 674.9,
+       "baseline": 651.4
+      },
+      {
+       "date": "2023-08-28",
+       "actual": 729.0,
+       "model": 735.2,
+       "baseline": 706.2
+      },
+      {
+       "date": "2023-08-29",
+       "actual": 751.0,
+       "model": 729.0,
+       "baseline": 714.2
+      },
+      {
+       "date": "2023-08-30",
+       "actual": 742.0,
+       "model": 729.0,
+       "baseline": 729.6
+      },
+      {
+       "date": "2023-08-31",
+       "actual": 751.0,
+       "model": 754.0,
+       "baseline": 729.2
+      },
+      {
+       "date": "2023-09-01",
+       "actual": 757.0,
+       "model": 772.2,
+       "baseline": 737.0
+      },
+      {
+       "date": "2023-09-02",
+       "actual": 715.0,
+       "model": 685.5,
+       "baseline": 655.0
+      },
+      {
+       "date": "2023-09-03",
+       "actual": 680.0,
+       "model": 685.0,
+       "baseline": 672.6
+      },
+      {
+       "date": "2023-09-04",
+       "actual": 721.0,
+       "model": 746.6,
+       "baseline": 712.6
+      },
+      {
+       "date": "2023-09-05",
+       "actual": 750.0,
+       "model": 740.3,
+       "baseline": 718.9
+      },
+      {
+       "date": "2023-09-06",
+       "actual": 741.0,
+       "model": 736.8,
+       "baseline": 729.9
+      },
+      {
+       "date": "2023-09-07",
+       "actual": 685.0,
+       "model": 701.2,
+       "baseline": 729.9
+      },
+      {
+       "date": "2023-09-08",
+       "actual": 641.0,
+       "model": 695.3,
+       "baseline": 737.0
+      },
+      {
+       "date": "2023-09-09",
+       "actual": 621.0,
+       "model": 683.6,
+       "baseline": 655.0
+      },
+      {
+       "date": "2023-09-10",
+       "actual": 679.0,
+       "model": 685.4,
+       "baseline": 672.6
+      },
+      {
+       "date": "2023-09-11",
+       "actual": 732.0,
+       "model": 746.6,
+       "baseline": 712.6
+      },
+      {
+       "date": "2023-09-12",
+       "actual": 751.0,
+       "model": 740.3,
+       "baseline": 718.9
+      },
+      {
+       "date": "2023-09-13",
+       "actual": 752.0,
+       "model": 740.3,
+       "baseline": 729.9
+      },
+      {
+       "date": "2023-09-14",
+       "actual": 749.0,
+       "model": 765.7,
+       "baseline": 729.9
+      },
+      {
+       "date": "2023-09-15",
+       "actual": 758.0,
+       "model": 772.2,
+       "baseline": 737.0
+      },
+      {
+       "date": "2023-09-16",
+       "actual": 739.0,
+       "model": 685.5,
+       "baseline": 655.0
+      },
+      {
+       "date": "2023-09-17",
+       "actual": 688.0,
+       "model": 685.4,
+       "baseline": 672.6
+      },
+      {
+       "date": "2023-09-18",
+       "actual": 729.0,
+       "model": 746.6,
+       "baseline": 712.6
+      },
+      {
+       "date": "2023-09-19",
+       "actual": 755.0,
+       "model": 740.3,
+       "baseline": 718.9
+      },
+      {
+       "date": "2023-09-20",
+       "actual": 749.0,
+       "model": 740.3,
+       "baseline": 729.9
+      },
+      {
+       "date": "2023-09-21",
+       "actual": 741.0,
+       "model": 765.7,
+       "baseline": 729.9
+      },
+      {
+       "date": "2023-09-22",
+       "actual": 744.0,
+       "model": 772.2,
+       "baseline": 737.0
+      },
+      {
+       "date": "2023-09-23",
+       "actual": 733.0,
+       "model": 685.5,
+       "baseline": 655.0
+      },
+      {
+       "date": "2023-09-24",
+       "actual": 689.0,
+       "model": 685.4,
+       "baseline": 672.6
+      },
+      {
+       "date": "2023-09-25",
+       "actual": 714.0,
+       "model": 746.6,
+       "baseline": 712.6
+      },
+      {
+       "date": "2023-09-26",
+       "actual": 756.0,
+       "model": 740.3,
+       "baseline": 718.9
+      },
+      {
+       "date": "2023-09-27",
+       "actual": 696.0,
+       "model": 740.3,
+       "baseline": 729.9
+      },
+      {
+       "date": "2023-09-28",
+       "actual": 775.0,
+       "model": 765.7,
+       "baseline": 729.9
+      },
+      {
+       "date": "2023-09-29",
+       "actual": 772.0,
+       "model": 772.2,
+       "baseline": 737.0
+      },
+      {
+       "date": "2023-09-30",
+       "actual": 703.0,
+       "model": 683.6,
+       "baseline": 655.0
+      },
+      {
+       "date": "2023-10-01",
+       "actual": 696.0,
+       "model": 714.1,
+       "baseline": 711.0
+      },
+      {
+       "date": "2023-10-02",
+       "actual": 735.0,
+       "model": 775.0,
+       "baseline": 739.4
+      },
+      {
+       "date": "2023-10-03",
+       "actual": 618.0,
+       "model": 769.6,
+       "baseline": 748.9
+      },
+      {
+       "date": "2023-10-04",
+       "actual": 702.0,
+       "model": 769.6,
+       "baseline": 757.0
+      },
+      {
+       "date": "2023-10-05",
+       "actual": 777.0,
+       "model": 794.3,
+       "baseline": 758.0
+      },
+      {
+       "date": "2023-10-06",
+       "actual": 788.0,
+       "model": 801.8,
+       "baseline": 763.4
+      },
+      {
+       "date": "2023-10-07",
+       "actual": 712.0,
+       "model": 714.3,
+       "baseline": 718.9
+      },
+      {
+       "date": "2023-10-08",
+       "actual": 680.0,
+       "model": 715.7,
+       "baseline": 711.0
+      },
+      {
+       "date": "2023-10-09",
+       "actual": 756.0,
+       "model": 774.2,
+       "baseline": 739.4
+      },
+      {
+       "date": "2023-10-10",
+       "actual": 755.0,
+       "model": 769.6,
+       "baseline": 748.9
+      },
+      {
+       "date": "2023-10-11",
+       "actual": 738.0,
+       "model": 766.7,
+       "baseline": 757.0
+      },
+      {
+       "date": "2023-10-12",
+       "actual": 693.0,
+       "model": 728.1,
+       "baseline": 758.0
+      },
+      {
+       "date": "2023-10-13",
+       "actual": 614.0,
+       "model": 721.1,
+       "baseline": 763.4
+      },
+      {
+       "date": "2023-10-14",
+       "actual": 633.0,
+       "model": 712.2,
+       "baseline": 718.9
+      },
+      {
+       "date": "2023-10-15",
+       "actual": 684.0,
+       "model": 716.1,
+       "baseline": 711.0
+      },
+      {
+       "date": "2023-10-16",
+       "actual": 705.0,
+       "model": 775.0,
+       "baseline": 739.4
+      },
+      {
+       "date": "2023-10-17",
+       "actual": 765.0,
+       "model": 769.6,
+       "baseline": 748.9
+      },
+      {
+       "date": "2023-10-18",
+       "actual": 755.0,
+       "model": 769.6,
+       "baseline": 757.0
+      },
+      {
+       "date": "2023-10-19",
+       "actual": 758.0,
+       "model": 794.3,
+       "baseline": 758.0
+      },
+      {
+       "date": "2023-10-20",
+       "actual": 766.0,
+       "model": 801.8,
+       "baseline": 763.4
+      },
+      {
+       "date": "2023-10-21",
+       "actual": 724.0,
+       "model": 714.3,
+       "baseline": 718.9
+      },
+      {
+       "date": "2023-10-22",
+       "actual": 691.0,
+       "model": 716.1,
+       "baseline": 711.0
+      },
+      {
+       "date": "2023-10-23",
+       "actual": 733.0,
+       "model": 775.0,
+       "baseline": 739.4
+      },
+      {
+       "date": "2023-10-24",
+       "actual": 734.0,
+       "model": 769.6,
+       "baseline": 748.9
+      },
+      {
+       "date": "2023-10-25",
+       "actual": 753.0,
+       "model": 769.6,
+       "baseline": 757.0
+      },
+      {
+       "date": "2023-10-26",
+       "actual": 756.0,
+       "model": 794.7,
+       "baseline": 758.0
+      },
+      {
+       "date": "2023-10-27",
+       "actual": 744.0,
+       "model": 802.2,
+       "baseline": 763.4
+      },
+      {
+       "date": "2023-10-28",
+       "actual": 742.0,
+       "model": 712.2,
+       "baseline": 718.9
+      },
+      {
+       "date": "2023-10-29",
+       "actual": 650.0,
+       "model": 716.1,
+       "baseline": 711.0
+      },
+      {
+       "date": "2023-10-30",
+       "actual": 723.0,
+       "model": 775.4,
+       "baseline": 739.4
+      },
+      {
+       "date": "2023-10-31",
+       "actual": 726.0,
+       "model": 770.0,
+       "baseline": 748.9
+      },
+      {
+       "date": "2023-11-01",
+       "actual": 742.0,
+       "model": 788.2,
+       "baseline": 767.0
+      },
+      {
+       "date": "2023-11-02",
+       "actual": 691.0,
+       "model": 749.8,
+       "baseline": 775.6
+      },
+      {
+       "date": "2023-11-03",
+       "actual": 622.0,
+       "model": 744.4,
+       "baseline": 785.9
+      },
+      {
+       "date": "2023-11-04",
+       "actual": 667.0,
+       "model": 719.9,
+       "baseline": 758.2
+      },
+      {
+       "date": "2023-11-05",
+       "actual": 686.0,
+       "model": 736.5,
+       "baseline": 721.0
+      },
+      {
+       "date": "2023-11-06",
+       "actual": 739.0,
+       "model": 798.7,
+       "baseline": 738.8
+      },
+      {
+       "date": "2023-11-07",
+       "actual": 741.0,
+       "model": 791.2,
+       "baseline": 769.8
+      },
+      {
+       "date": "2023-11-08",
+       "actual": 740.0,
+       "model": 791.2,
+       "baseline": 767.0
+      },
+      {
+       "date": "2023-11-09",
+       "actual": 741.0,
+       "model": 819.2,
+       "baseline": 775.6
+      },
+      {
+       "date": "2023-11-10",
+       "actual": 758.0,
+       "model": 827.4,
+       "baseline": 785.9
+      },
+      {
+       "date": "2023-11-11",
+       "actual": 735.0,
+       "model": 719.9,
+       "baseline": 758.2
+      },
+      {
+       "date": "2023-11-12",
+       "actual": 696.0,
+       "model": 734.4,
+       "baseline": 721.0
+      },
+      {
+       "date": "2023-11-13",
+       "actual": 711.0,
+       "model": 798.7,
+       "baseline": 738.8
+      },
+      {
+       "date": "2023-11-14",
+       "actual": 712.0,
+       "model": 788.2,
+       "baseline": 769.8
+      },
+      {
+       "date": "2023-11-15",
+       "actual": 703.0,
+       "model": 739.4,
+       "baseline": 767.0
+      },
+      {
+       "date": "2023-11-16",
+       "actual": 706.0,
+       "model": 783.2,
+       "baseline": 775.6
+      },
+      {
+       "date": "2023-11-17",
+       "actual": 753.0,
+       "model": 826.9,
+       "baseline": 785.9
+      },
+      {
+       "date": "2023-11-18",
+       "actual": 731.0,
+       "model": 719.9,
+       "baseline": 758.2
+      },
+      {
+       "date": "2023-11-19",
+       "actual": 697.0,
+       "model": 736.5,
+       "baseline": 721.0
+      },
+      {
+       "date": "2023-11-20",
+       "actual": 728.0,
+       "model": 798.7,
+       "baseline": 738.8
+      },
+      {
+       "date": "2023-11-21",
+       "actual": 735.0,
+       "model": 791.2,
+       "baseline": 769.8
+      },
+      {
+       "date": "2023-11-22",
+       "actual": 727.0,
+       "model": 791.2,
+       "baseline": 767.0
+      },
+      {
+       "date": "2023-11-23",
+       "actual": 751.0,
+       "model": 819.2,
+       "baseline": 775.6
+      },
+      {
+       "date": "2023-11-24",
+       "actual": 755.0,
+       "model": 826.9,
+       "baseline": 785.9
+      },
+      {
+       "date": "2023-11-25",
+       "actual": 721.0,
+       "model": 719.9,
+       "baseline": 758.2
+      },
+      {
+       "date": "2023-11-26",
+       "actual": 701.0,
+       "model": 736.5,
+       "baseline": 721.0
+      },
+      {
+       "date": "2023-11-27",
+       "actual": 704.0,
+       "model": 799.1,
+       "baseline": 738.8
+      },
+      {
+       "date": "2023-11-28",
+       "actual": 699.0,
+       "model": 792.0,
+       "baseline": 769.8
+      },
+      {
+       "date": "2023-11-29",
+       "actual": 776.0,
+       "model": 791.6,
+       "baseline": 767.0
+      },
+      {
+       "date": "2023-11-30",
+       "actual": 749.0,
+       "model": 820.1,
+       "baseline": 775.6
+      },
+      {
+       "date": "2023-12-01",
+       "actual": 754.0,
+       "model": 812.8,
+       "baseline": 747.9
+      },
+      {
+       "date": "2023-12-02",
+       "actual": 721.0,
+       "model": 739.1,
+       "baseline": 717.4
+      },
+      {
+       "date": "2023-12-03",
+       "actual": 724.0,
+       "model": 739.7,
+       "baseline": 695.9
+      },
+      {
+       "date": "2023-12-04",
+       "actual": 738.0,
+       "model": 797.7,
+       "baseline": 724.2
+      },
+      {
+       "date": "2023-12-05",
+       "actual": 746.0,
+       "model": 794.0,
+       "baseline": 754.8
+      },
+      {
+       "date": "2023-12-06",
+       "actual": 757.0,
+       "model": 793.4,
+       "baseline": 742.8
+      },
+      {
+       "date": "2023-12-07",
+       "actual": 761.0,
+       "model": 806.1,
+       "baseline": 750.4
+      },
+      {
+       "date": "2023-12-08",
+       "actual": 788.0,
+       "model": 813.7,
+       "baseline": 747.9
+      },
+      {
+       "date": "2023-12-09",
+       "actual": 729.0,
+       "model": 739.1,
+       "baseline": 717.4
+      },
+      {
+       "date": "2023-12-10",
+       "actual": 701.0,
+       "model": 739.7,
+       "baseline": 695.9
+      },
+      {
+       "date": "2023-12-11",
+       "actual": 767.0,
+       "model": 798.3,
+       "baseline": 724.2
+      },
+      {
+       "date": "2023-12-12",
+       "actual": 770.0,
+       "model": 794.6,
+       "baseline": 754.8
+      },
+      {
+       "date": "2023-12-13",
+       "actual": 782.0,
+       "model": 794.1,
+       "baseline": 742.8
+      },
+      {
+       "date": "2023-12-14",
+       "actual": 774.0,
+       "model": 806.8,
+       "baseline": 750.4
+      },
+      {
+       "date": "2023-12-15",
+       "actual": 775.0,
+       "model": 813.8,
+       "baseline": 747.9
+      },
+      {
+       "date": "2023-12-16",
+       "actual": 750.0,
+       "model": 748.8,
+       "baseline": 717.4
+      },
+      {
+       "date": "2023-12-17",
+       "actual": 725.0,
+       "model": 748.7,
+       "baseline": 695.9
+      },
+      {
+       "date": "2023-12-18",
+       "actual": 754.0,
+       "model": 799.2,
+       "baseline": 724.2
+      },
+      {
+       "date": "2023-12-19",
+       "actual": 766.0,
+       "model": 795.5,
+       "baseline": 754.8
+      },
+      {
+       "date": "2023-12-20",
+       "actual": 775.0,
+       "model": 795.5,
+       "baseline": 742.8
+      },
+      {
+       "date": "2023-12-21",
+       "actual": 780.0,
+       "model": 808.2,
+       "baseline": 750.4
+      },
+      {
+       "date": "2023-12-22",
+       "actual": 785.0,
+       "model": 815.2,
+       "baseline": 747.9
+      },
+      {
+       "date": "2023-12-23",
+       "actual": 752.0,
+       "model": 748.2,
+       "baseline": 717.4
+      },
+      {
+       "date": "2023-12-24",
+       "actual": 638.0,
+       "model": 710.6,
+       "baseline": 695.9
+      },
+      {
+       "date": "2023-12-25",
+       "actual": 641.0,
+       "model": 721.1,
+       "baseline": 724.2
+      },
+      {
+       "date": "2023-12-26",
+       "actual": 730.0,
+       "model": 793.9,
+       "baseline": 754.8
+      },
+      {
+       "date": "2023-12-27",
+       "actual": 774.0,
+       "model": 793.9,
+       "baseline": 742.8
+      },
+      {
+       "date": "2023-12-28",
+       "actual": 782.0,
+       "model": 806.6,
+       "baseline": 750.4
+      },
+      {
+       "date": "2023-12-29",
+       "actual": 774.0,
+       "model": 813.6,
+       "baseline": 747.9
+      },
+      {
+       "date": "2023-12-30",
+       "actual": 752.0,
+       "model": 744.0,
+       "baseline": 717.4
+      },
+      {
+       "date": "2023-12-31",
+       "actual": 628.0,
+       "model": 706.4,
+       "baseline": 695.9
+      }
+     ]
+    },
+    "worst": {
+     "entity": "SBRJ",
+     "model": 0.201622,
+     "baseline": 0.154836,
+     "points": [
+      {
+       "date": "2023-01-01",
+       "actual": 230.0,
+       "model": 274.4,
+       "baseline": 252.6
+      },
+      {
+       "date": "2023-01-02",
+       "actual": 338.0,
+       "model": 291.8,
+       "baseline": 321.4
+      },
+      {
+       "date": "2023-01-03",
+       "actual": 327.0,
+       "model": 291.1,
+       "baseline": 316.6
+      },
+      {
+       "date": "2023-01-04",
+       "actual": 333.0,
+       "model": 291.1,
+       "baseline": 302.8
+      },
+      {
+       "date": "2023-01-05",
+       "actual": 296.0,
+       "model": 291.4,
+       "baseline": 295.8
+      },
+      {
+       "date": "2023-01-06",
+       "actual": 279.0,
+       "model": 292.4,
+       "baseline": 314.6
+      },
+      {
+       "date": "2023-01-07",
+       "actual": 190.0,
+       "model": 246.3,
+       "baseline": 198.8
+      },
+      {
+       "date": "2023-01-08",
+       "actual": 280.0,
+       "model": 268.7,
+       "baseline": 252.6
+      },
+      {
+       "date": "2023-01-09",
+       "actual": 311.0,
+       "model": 292.6,
+       "baseline": 321.4
+      },
+      {
+       "date": "2023-01-10",
+       "actual": 317.0,
+       "model": 291.4,
+       "baseline": 316.6
+      },
+      {
+       "date": "2023-01-11",
+       "actual": 323.0,
+       "model": 291.5,
+       "baseline": 302.8
+      },
+      {
+       "date": "2023-01-12",
+       "actual": 341.0,
+       "model": 291.9,
+       "baseline": 295.8
+      },
+      {
+       "date": "2023-01-13",
+       "actual": 336.0,
+       "model": 292.9,
+       "baseline": 314.6
+      },
+      {
+       "date": "2023-01-14",
+       "actual": 226.0,
+       "model": 246.3,
+       "baseline": 198.8
+      },
+      {
+       "date": "2023-01-15",
+       "actual": 274.0,
+       "model": 268.7,
+       "baseline": 252.6
+      },
+      {
+       "date": "2023-01-16",
+       "actual": 338.0,
+       "model": 292.6,
+       "baseline": 321.4
+      },
+      {
+       "date": "2023-01-17",
+       "actual": 337.0,
+       "model": 291.4,
+       "baseline": 316.6
+      },
+      {
+       "date": "2023-01-18",
+       "actual": 343.0,
+       "model": 291.4,
+       "baseline": 302.8
+      },
+      {
+       "date": "2023-01-19",
+       "actual": 341.0,
+       "model": 291.8,
+       "baseline": 295.8
+      },
+      {
+       "date": "2023-01-20",
+       "actual": 328.0,
+       "model": 292.8,
+       "baseline": 314.6
+      },
+      {
+       "date": "2023-01-21",
+       "actual": 231.0,
+       "model": 246.3,
+       "baseline": 198.8
+      },
+      {
+       "date": "2023-01-22",
+       "actual": 278.0,
+       "model": 268.7,
+       "baseline": 252.6
+      },
+      {
+       "date": "2023-01-23",
+       "actual": 328.0,
+       "model": 292.6,
+       "baseline": 321.4
+      },
+      {
+       "date": "2023-01-24",
+       "actual": 333.0,
+       "model": 291.4,
+       "baseline": 316.6
+      },
+      {
+       "date": "2023-01-25",
+       "actual": 331.0,
+       "model": 291.4,
+       "baseline": 302.8
+      },
+      {
+       "date": "2023-01-26",
+       "actual": 334.0,
+       "model": 291.8,
+       "baseline": 295.8
+      },
+      {
+       "date": "2023-01-27",
+       "actual": 342.0,
+       "model": 292.8,
+       "baseline": 314.6
+      },
+      {
+       "date": "2023-01-28",
+       "actual": 230.0,
+       "model": 246.3,
+       "baseline": 198.8
+      },
+      {
+       "date": "2023-01-29",
+       "actual": 267.0,
+       "model": 268.7,
+       "baseline": 252.6
+      },
+      {
+       "date": "2023-01-30",
+       "actual": 342.0,
+       "model": 292.7,
+       "baseline": 321.4
+      },
+      {
+       "date": "2023-01-31",
+       "actual": 333.0,
+       "model": 291.4,
+       "baseline": 316.6
+      },
+      {
+       "date": "2023-02-01",
+       "actual": 339.0,
+       "model": 300.7,
+       "baseline": 320.4
+      },
+      {
+       "date": "2023-02-02",
+       "actual": 335.0,
+       "model": 303.2,
+       "baseline": 331.1
+      },
+      {
+       "date": "2023-02-03",
+       "actual": 333.0,
+       "model": 304.4,
+       "baseline": 336.4
+      },
+      {
+       "date": "2023-02-04",
+       "actual": 221.0,
+       "model": 252.8,
+       "baseline": 212.8
+      },
+      {
+       "date": "2023-02-05",
+       "actual": 275.0,
+       "model": 276.5,
+       "baseline": 258.6
+      },
+      {
+       "date": "2023-02-06",
+       "actual": 336.0,
+       "model": 304.0,
+       "baseline": 316.6
+      },
+      {
+       "date": "2023-02-07",
+       "actual": 258.0,
+       "model": 302.7,
+       "baseline": 306.2
+      },
+      {
+       "date": "2023-02-08",
+       "actual": 327.0,
+       "model": 302.7,
+       "baseline": 320.4
+      },
+      {
+       "date": "2023-02-09",
+       "actual": 343.0,
+       "model": 303.2,
+       "baseline": 331.1
+      },
+      {
+       "date": "2023-02-10",
+       "actual": 330.0,
+       "model": 304.5,
+       "baseline": 336.4
+      },
+      {
+       "date": "2023-02-11",
+       "actual": 216.0,
+       "model": 252.1,
+       "baseline": 212.8
+      },
+      {
+       "date": "2023-02-12",
+       "actual": 276.0,
+       "model": 275.7,
+       "baseline": 258.6
+      },
+      {
+       "date": "2023-02-13",
+       "actual": 329.0,
+       "model": 304.2,
+       "baseline": 316.6
+      },
+      {
+       "date": "2023-02-14",
+       "actual": 325.0,
+       "model": 302.8,
+       "baseline": 306.2
+      },
+      {
+       "date": "2023-02-15",
+       "actual": 288.0,
+       "model": 302.7,
+       "baseline": 320.4
+      },
+      {
+       "date": "2023-02-16",
+       "actual": 343.0,
+       "model": 303.3,
+       "baseline": 331.1
+      },
+      {
+       "date": "2023-02-17",
+       "actual": 343.0,
+       "model": 304.5,
+       "baseline": 336.4
+      },
+      {
+       "date": "2023-02-18",
+       "actual": 195.0,
+       "model": 252.1,
+       "baseline": 212.8
+      },
+      {
+       "date": "2023-02-19",
+       "actual": 208.0,
+       "model": 259.8,
+       "baseline": 258.6
+      },
+      {
+       "date": "2023-02-20",
+       "actual": 251.0,
+       "model": 224.2,
+       "baseline": 316.6
+      },
+      {
+       "date": "2023-02-21",
+       "actual": 262.0,
+       "model": 245.7,
+       "baseline": 306.2
+      },
+      {
+       "date": "2023-02-22",
+       "actual": 338.0,
+       "model": 302.1,
+       "baseline": 320.4
+      },
+      {
+       "date": "2023-02-23",
+       "actual": 321.0,
+       "model": 303.2,
+       "baseline": 331.1
+      },
+      {
+       "date": "2023-02-24",
+       "actual": 325.0,
+       "model": 304.5,
+       "baseline": 336.4
+      },
+      {
+       "date": "2023-02-25",
+       "actual": 217.0,
+       "model": 251.8,
+       "baseline": 212.8
+      },
+      {
+       "date": "2023-02-26",
+       "actual": 275.0,
+       "model": 275.1,
+       "baseline": 258.6
+      },
+      {
+       "date": "2023-02-27",
+       "actual": 335.0,
+       "model": 302.9,
+       "baseline": 316.6
+      },
+      {
+       "date": "2023-02-28",
+       "actual": 327.0,
+       "model": 301.8,
+       "baseline": 306.2
+      },
+      {
+       "date": "2023-03-01",
+       "actual": 341.0,
+       "model": 300.1,
+       "baseline": 326.6
+      },
+      {
+       "date": "2023-03-02",
+       "actual": 352.0,
+       "model": 299.9,
+       "baseline": 343.8
+      },
+      {
+       "date": "2023-03-03",
+       "actual": 340.0,
+       "model": 298.3,
+       "baseline": 335.6
+      },
+      {
+       "date": "2023-03-04",
+       "actual": 216.0,
+       "model": 231.2,
+       "baseline": 213.6
+      },
+      {
+       "date": "2023-03-05",
+       "actual": 278.0,
+       "model": 256.8,
+       "baseline": 268.4
+      },
+      {
+       "date": "2023-03-06",
+       "actual": 348.0,
+       "model": 299.8,
+       "baseline": 326.0
+      },
+      {
+       "date": "2023-03-07",
+       "actual": 344.0,
+       "model": 297.6,
+       "baseline": 319.6
+      },
+      {
+       "date": "2023-03-08",
+       "actual": 334.0,
+       "model": 297.6,
+       "baseline": 326.6
+      },
+      {
+       "date": "2023-03-09",
+       "actual": 342.0,
+       "model": 299.1,
+       "baseline": 343.8
+      },
+      {
+       "date": "2023-03-10",
+       "actual": 337.0,
+       "model": 302.6,
+       "baseline": 335.6
+      },
+      {
+       "date": "2023-03-11",
+       "actual": 214.0,
+       "model": 231.2,
+       "baseline": 213.6
+      },
+      {
+       "date": "2023-03-12",
+       "actual": 279.0,
+       "model": 256.8,
+       "baseline": 268.4
+      },
+      {
+       "date": "2023-03-13",
+       "actual": 331.0,
+       "model": 302.1,
+       "baseline": 326.0
+      },
+      {
+       "date": "2023-03-14",
+       "actual": 338.0,
+       "model": 298.0,
+       "baseline": 319.6
+      },
+      {
+       "date": "2023-03-15",
+       "actual": 336.0,
+       "model": 297.7,
+       "baseline": 326.6
+      },
+      {
+       "date": "2023-03-16",
+       "actual": 341.0,
+       "model": 299.4,
+       "baseline": 343.8
+      },
+      {
+       "date": "2023-03-17",
+       "actual": 340.0,
+       "model": 302.6,
+       "baseline": 335.6
+      },
+      {
+       "date": "2023-03-18",
+       "actual": 212.0,
+       "model": 230.1,
+       "baseline": 213.6
+      },
+      {
+       "date": "2023-03-19",
+       "actual": 278.0,
+       "model": 255.6,
+       "baseline": 268.4
+      },
+      {
+       "date": "2023-03-20",
+       "actual": 343.0,
+       "model": 284.3,
+       "baseline": 326.0
+      },
+      {
+       "date": "2023-03-21",
+       "actual": 332.0,
+       "model": 279.3,
+       "baseline": 319.6
+      },
+      {
+       "date": "2023-03-22",
+       "actual": 329.0,
+       "model": 279.3,
+       "baseline": 326.6
+      },
+      {
+       "date": "2023-03-23",
+       "actual": 348.0,
+       "model": 282.8,
+       "baseline": 343.8
+      },
+      {
+       "date": "2023-03-24",
+       "actual": 350.0,
+       "model": 284.8,
+       "baseline": 335.6
+      },
+      {
+       "date": "2023-03-25",
+       "actual": 218.0,
+       "model": 227.8,
+       "baseline": 213.6
+      },
+      {
+       "date": "2023-03-26",
+       "actual": 277.0,
+       "model": 254.8,
+       "baseline": 268.4
+      },
+      {
+       "date": "2023-03-27",
+       "actual": 366.0,
+       "model": 285.5,
+       "baseline": 326.0
+      },
+      {
+       "date": "2023-03-28",
+       "actual": 366.0,
+       "model": 282.7,
+       "baseline": 319.6
+      },
+      {
+       "date": "2023-03-29",
+       "actual": 360.0,
+       "model": 280.7,
+       "baseline": 326.6
+      },
+      {
+       "date": "2023-03-30",
+       "actual": 349.0,
+       "model": 283.0,
+       "baseline": 343.8
+      },
+      {
+       "date": "2023-03-31",
+       "actual": 342.0,
+       "model": 283.5,
+       "baseline": 335.6
+      },
+      {
+       "date": "2023-04-01",
+       "actual": 230.0,
+       "model": 246.7,
+       "baseline": 211.5
+      },
+      {
+       "date": "2023-04-02",
+       "actual": 289.0,
+       "model": 272.0,
+       "baseline": 264.6
+      },
+      {
+       "date": "2023-04-03",
+       "actual": 371.0,
+       "model": 272.8,
+       "baseline": 331.4
+      },
+      {
+       "date": "2023-04-04",
+       "actual": 359.0,
+       "model": 270.1,
+       "baseline": 317.4
+      },
+      {
+       "date": "2023-04-05",
+       "actual": 366.0,
+       "model": 267.6,
+       "baseline": 323.4
+      },
+      {
+       "date": "2023-04-06",
+       "actual": 366.0,
+       "model": 271.0,
+       "baseline": 334.6
+      },
+      {
+       "date": "2023-04-07",
+       "actual": 259.0,
+       "model": 242.6,
+       "baseline": 323.6
+      },
+      {
+       "date": "2023-04-08",
+       "actual": 162.0,
+       "model": 239.7,
+       "baseline": 211.5
+      },
+      {
+       "date": "2023-04-09",
+       "actual": 251.0,
+       "model": 273.2,
+       "baseline": 264.6
+      },
+      {
+       "date": "2023-04-10",
+       "actual": 368.0,
+       "model": 272.8,
+       "baseline": 331.4
+      },
+      {
+       "date": "2023-04-11",
+       "actual": 362.0,
+       "model": 270.1,
+       "baseline": 317.4
+      },
+      {
+       "date": "2023-04-12",
+       "actual": 362.0,
+       "model": 270.1,
+       "baseline": 323.4
+      },
+      {
+       "date": "2023-04-13",
+       "actual": 360.0,
+       "model": 269.7,
+       "baseline": 334.6
+      },
+      {
+       "date": "2023-04-14",
+       "actual": 351.0,
+       "model": 267.5,
+       "baseline": 323.6
+      },
+      {
+       "date": "2023-04-15",
+       "actual": 225.0,
+       "model": 246.7,
+       "baseline": 211.5
+      },
+      {
+       "date": "2023-04-16",
+       "actual": 287.0,
+       "model": 272.0,
+       "baseline": 264.6
+      },
+      {
+       "date": "2023-04-17",
+       "actual": 355.0,
+       "model": 270.3,
+       "baseline": 331.4
+      },
+      {
+       "date": "2023-04-18",
+       "actual": 334.0,
+       "model": 267.5,
+       "baseline": 317.4
+      },
+      {
+       "date": "2023-04-19",
+       "actual": 356.0,
+       "model": 269.4,
+       "baseline": 323.4
+      },
+      {
+       "date": "2023-04-20",
+       "actual": 366.0,
+       "model": 269.0,
+       "baseline": 334.6
+      },
+      {
+       "date": "2023-04-21",
+       "actual": 263.0,
+       "model": 237.5,
+       "baseline": 323.6
+      },
+      {
+       "date": "2023-04-22",
+       "actual": 192.0,
+       "model": 239.7,
+       "baseline": 211.5
+      },
+      {
+       "date": "2023-04-23",
+       "actual": 275.0,
+       "model": 273.2,
+       "baseline": 264.6
+      },
+      {
+       "date": "2023-04-24",
+       "actual": 368.0,
+       "model": 272.8,
+       "baseline": 331.4
+      },
+      {
+       "date": "2023-04-25",
+       "actual": 364.0,
+       "model": 270.0,
+       "baseline": 317.4
+      },
+      {
+       "date": "2023-04-26",
+       "actual": 355.0,
+       "model": 267.5,
+       "baseline": 323.4
+      },
+      {
+       "date": "2023-04-27",
+       "actual": 362.0,
+       "model": 271.5,
+       "baseline": 334.6
+      },
+      {
+       "date": "2023-04-28",
+       "actual": 365.0,
+       "model": 273.2,
+       "baseline": 323.6
+      },
+      {
+       "date": "2023-04-29",
+       "actual": 211.0,
+       "model": 246.7,
+       "baseline": 211.5
+      },
+      {
+       "date": "2023-04-30",
+       "actual": 216.0,
+       "model": 261.0,
+       "baseline": 264.6
+      },
+      {
+       "date": "2023-05-01",
+       "actual": 330.0,
+       "model": 244.9,
+       "baseline": 321.2
+      },
+      {
+       "date": "2023-05-02",
+       "actual": 365.0,
+       "model": 265.6,
+       "baseline": 311.5
+      },
+      {
+       "date": "2023-05-03",
+       "actual": 364.0,
+       "model": 265.6,
+       "baseline": 327.8
+      },
+      {
+       "date": "2023-05-04",
+       "actual": 342.0,
+       "model": 268.2,
+       "baseline": 331.8
+      },
+      {
+       "date": "2023-05-05",
+       "actual": 366.0,
+       "model": 269.2,
+       "baseline": 327.0
+      },
+      {
+       "date": "2023-05-06",
+       "actual": 235.0,
+       "model": 246.1,
+       "baseline": 215.8
+      },
+      {
+       "date": "2023-05-07",
+       "actual": 286.0,
+       "model": 271.4,
+       "baseline": 266.6
+      },
+      {
+       "date": "2023-05-08",
+       "actual": 364.0,
+       "model": 268.9,
+       "baseline": 321.2
+      },
+      {
+       "date": "2023-05-09",
+       "actual": 363.0,
+       "model": 266.8,
+       "baseline": 311.5
+      },
+      {
+       "date": "2023-05-10",
+       "actual": 353.0,
+       "model": 264.4,
+       "baseline": 327.8
+      },
+      {
+       "date": "2023-05-11",
+       "actual": 362.0,
+       "model": 268.2,
+       "baseline": 331.8
+      },
+      {
+       "date": "2023-05-12",
+       "actual": 364.0,
+       "model": 269.2,
+       "baseline": 327.0
+      },
+      {
+       "date": "2023-05-13",
+       "actual": 236.0,
+       "model": 246.1,
+       "baseline": 215.8
+      },
+      {
+       "date": "2023-05-14",
+       "actual": 281.0,
+       "model": 272.0,
+       "baseline": 266.6
+      },
+      {
+       "date": "2023-05-15",
+       "actual": 360.0,
+       "model": 268.9,
+       "baseline": 321.2
+      },
+      {
+       "date": "2023-05-16",
+       "actual": 351.0,
+       "model": 266.8,
+       "baseline": 311.5
+      },
+      {
+       "date": "2023-05-17",
+       "actual": 356.0,
+       "model": 266.8,
+       "baseline": 327.8
+      },
+      {
+       "date": "2023-05-18",
+       "actual": 355.0,
+       "model": 268.2,
+       "baseline": 331.8
+      },
+      {
+       "date": "2023-05-19",
+       "actual": 355.0,
+       "model": 269.2,
+       "baseline": 327.0
+      },
+      {
+       "date": "2023-05-20",
+       "actual": 235.0,
+       "model": 246.1,
+       "baseline": 215.8
+      },
+      {
+       "date": "2023-05-21",
+       "actual": 290.0,
+       "model": 272.0,
+       "baseline": 266.6
+      },
+      {
+       "date": "2023-05-22",
+       "actual": 363.0,
+       "model": 276.9,
+       "baseline": 321.2
+      },
+      {
+       "date": "2023-05-23",
+       "actual": 359.0,
+       "model": 274.8,
+       "baseline": 311.5
+      },
+      {
+       "date": "2023-05-24",
+       "actual": 345.0,
+       "model": 274.8,
+       "baseline": 327.8
+      },
+      {
+       "date": "2023-05-25",
+       "actual": 360.0,
+       "model": 276.2,
+       "baseline": 331.8
+      },
+      {
+       "date": "2023-05-26",
+       "actual": 371.0,
+       "model": 277.2,
+       "baseline": 327.0
+      },
+      {
+       "date": "2023-05-27",
+       "actual": 235.0,
+       "model": 246.1,
+       "baseline": 215.8
+      },
+      {
+       "date": "2023-05-28",
+       "actual": 288.0,
+       "model": 271.4,
+       "baseline": 266.6
+      },
+      {
+       "date": "2023-05-29",
+       "actual": 352.0,
+       "model": 276.7,
+       "baseline": 321.2
+      },
+      {
+       "date": "2023-05-30",
+       "actual": 362.0,
+       "model": 272.1,
+       "baseline": 311.5
+      },
+      {
+       "date": "2023-05-31",
+       "actual": 344.0,
+       "model": 272.1,
+       "baseline": 327.8
+      },
+      {
+       "date": "2023-06-01",
+       "actual": 354.0,
+       "model": 279.1,
+       "baseline": 342.4
+      },
+      {
+       "date": "2023-06-02",
+       "actual": 360.0,
+       "model": 281.4,
+       "baseline": 338.4
+      },
+      {
+       "date": "2023-06-03",
+       "actual": 239.0,
+       "model": 251.0,
+       "baseline": 213.6
+      },
+      {
+       "date": "2023-06-04",
+       "actual": 281.0,
+       "model": 276.8,
+       "baseline": 268.2
+      },
+      {
+       "date": "2023-06-05",
+       "actual": 359.0,
+       "model": 282.4,
+       "baseline": 329.9
+      },
+      {
+       "date": "2023-06-06",
+       "actual": 343.0,
+       "model": 277.7,
+       "baseline": 319.0
+      },
+      {
+       "date": "2023-06-07",
+       "actual": 362.0,
+       "model": 277.7,
+       "baseline": 331.6
+      },
+      {
+       "date": "2023-06-08",
+       "actual": 279.0,
+       "model": 281.6,
+       "baseline": 342.4
+      },
+      {
+       "date": "2023-06-09",
+       "actual": 261.0,
+       "model": 282.7,
+       "baseline": 338.4
+      },
+      {
+       "date": "2023-06-10",
+       "actual": 187.0,
+       "model": 251.0,
+       "baseline": 213.6
+      },
+      {
+       "date": "2023-06-11",
+       "actual": 262.0,
+       "model": 276.8,
+       "baseline": 268.2
+      },
+      {
+       "date": "2023-06-12",
+       "actual": 353.0,
+       "model": 282.4,
+       "baseline": 329.9
+      },
+      {
+       "date": "2023-06-13",
+       "actual": 348.0,
+       "model": 277.7,
+       "baseline": 319.0
+      },
+      {
+       "date": "2023-06-14",
+       "actual": 343.0,
+       "model": 280.3,
+       "baseline": 331.6
+      },
+      {
+       "date": "2023-06-15",
+       "actual": 332.0,
+       "model": 275.9,
+       "baseline": 342.4
+      },
+      {
+       "date": "2023-06-16",
+       "actual": 326.0,
+       "model": 276.8,
+       "baseline": 338.4
+      },
+      {
+       "date": "2023-06-17",
+       "actual": 235.0,
+       "model": 251.0,
+       "baseline": 213.6
+      },
+      {
+       "date": "2023-06-18",
+       "actual": 281.0,
+       "model": 276.8,
+       "baseline": 268.2
+      },
+      {
+       "date": "2023-06-19",
+       "actual": 357.0,
+       "model": 282.4,
+       "baseline": 329.9
+      },
+      {
+       "date": "2023-06-20",
+       "actual": 354.0,
+       "model": 280.3,
+       "baseline": 319.0
+      },
+      {
+       "date": "2023-06-21",
+       "actual": 349.0,
+       "model": 277.7,
+       "baseline": 331.6
+      },
+      {
+       "date": "2023-06-22",
+       "actual": 357.0,
+       "model": 281.6,
+       "baseline": 342.4
+      },
+      {
+       "date": "2023-06-23",
+       "actual": 351.0,
+       "model": 282.7,
+       "baseline": 338.4
+      },
+      {
+       "date": "2023-06-24",
+       "actual": 236.0,
+       "model": 251.0,
+       "baseline": 213.6
+      },
+      {
+       "date": "2023-06-25",
+       "actual": 282.0,
+       "model": 276.8,
+       "baseline": 268.2
+      },
+      {
+       "date": "2023-06-26",
+       "actual": 350.0,
+       "model": 282.4,
+       "baseline": 329.9
+      },
+      {
+       "date": "2023-06-27",
+       "actual": 355.0,
+       "model": 280.0,
+       "baseline": 319.0
+      },
+      {
+       "date": "2023-06-28",
+       "actual": 355.0,
+       "model": 280.0,
+       "baseline": 331.6
+      },
+      {
+       "date": "2023-06-29",
+       "actual": 359.0,
+       "model": 281.4,
+       "baseline": 342.4
+      },
+      {
+       "date": "2023-06-30",
+       "actual": 355.0,
+       "model": 282.4,
+       "baseline": 338.4
+      },
+      {
+       "date": "2023-07-01",
+       "actual": 243.0,
+       "model": 241.1,
+       "baseline": 208.0
+      },
+      {
+       "date": "2023-07-02",
+       "actual": 285.0,
+       "model": 269.8,
+       "baseline": 269.0
+      },
+      {
+       "date": "2023-07-03",
+       "actual": 352.0,
+       "model": 292.2,
+       "baseline": 356.2
+      },
+      {
+       "date": "2023-07-04",
+       "actual": 355.0,
+       "model": 290.2,
+       "baseline": 349.9
+      },
+      {
+       "date": "2023-07-05",
+       "actual": 350.0,
+       "model": 290.2,
+       "baseline": 349.8
+      },
+      {
+       "date": "2023-07-06",
+       "actual": 366.0,
+       "model": 291.5,
+       "baseline": 354.2
+      },
+      {
+       "date": "2023-07-07",
+       "actual": 363.0,
+       "model": 292.7,
+       "baseline": 325.9
+      },
+      {
+       "date": "2023-07-08",
+       "actual": 242.0,
+       "model": 241.6,
+       "baseline": 208.0
+      },
+      {
+       "date": "2023-07-09",
+       "actual": 282.0,
+       "model": 270.3,
+       "baseline": 269.0
+      },
+      {
+       "date": "2023-07-10",
+       "actual": 363.0,
+       "model": 312.0,
+       "baseline": 356.2
+      },
+      {
+       "date": "2023-07-11",
+       "actual": 360.0,
+       "model": 309.9,
+       "baseline": 349.9
+      },
+      {
+       "date": "2023-07-12",
+       "actual": 343.0,
+       "model": 309.9,
+       "baseline": 349.8
+      },
+      {
+       "date": "2023-07-13",
+       "actual": 327.0,
+       "model": 311.4,
+       "baseline": 354.2
+      },
+      {
+       "date": "2023-07-14",
+       "actual": 352.0,
+       "model": 313.2,
+       "baseline": 325.9
+      },
+      {
+       "date": "2023-07-15",
+       "actual": 239.0,
+       "model": 241.6,
+       "baseline": 208.0
+      },
+      {
+       "date": "2023-07-16",
+       "actual": 288.0,
+       "model": 270.3,
+       "baseline": 269.0
+      },
+      {
+       "date": "2023-07-17",
+       "actual": 367.0,
+       "model": 314.8,
+       "baseline": 356.2
+      },
+      {
+       "date": "2023-07-18",
+       "actual": 363.0,
+       "model": 312.1,
+       "baseline": 349.9
+      },
+      {
+       "date": "2023-07-19",
+       "actual": 337.0,
+       "model": 312.1,
+       "baseline": 349.8
+      },
+      {
+       "date": "2023-07-20",
+       "actual": 365.0,
+       "model": 313.6,
+       "baseline": 354.2
+      },
+      {
+       "date": "2023-07-21",
+       "actual": 366.0,
+       "model": 316.3,
+       "baseline": 325.9
+      },
+      {
+       "date": "2023-07-22",
+       "actual": 240.0,
+       "model": 242.8,
+       "baseline": 208.0
+      },
+      {
+       "date": "2023-07-23",
+       "actual": 288.0,
+       "model": 272.1,
+       "baseline": 269.0
+      },
+      {
+       "date": "2023-07-24",
+       "actual": 362.0,
+       "model": 318.2,
+       "baseline": 356.2
+      },
+      {
+       "date": "2023-07-25",
+       "actual": 357.0,
+       "model": 315.5,
+       "baseline": 349.9
+      },
+      {
+       "date": "2023-07-26",
+       "actual": 350.0,
+       "model": 316.0,
+       "baseline": 349.8
+      },
+      {
+       "date": "2023-07-27",
+       "actual": 353.0,
+       "model": 316.8,
+       "baseline": 354.2
+      },
+      {
+       "date": "2023-07-28",
+       "actual": 352.0,
+       "model": 319.4,
+       "baseline": 325.9
+      },
+      {
+       "date": "2023-07-29",
+       "actual": 234.0,
+       "model": 242.8,
+       "baseline": 208.0
+      },
+      {
+       "date": "2023-07-30",
+       "actual": 284.0,
+       "model": 272.1,
+       "baseline": 269.0
+      },
+      {
+       "date": "2023-07-31",
+       "actual": 356.0,
+       "model": 326.7,
+       "baseline": 356.2
+      },
+      {
+       "date": "2023-08-01",
+       "actual": 356.0,
+       "model": 340.0,
+       "baseline": 357.5
+      },
+      {
+       "date": "2023-08-02",
+       "actual": 355.0,
+       "model": 340.0,
+       "baseline": 354.4
+      },
+      {
+       "date": "2023-08-03",
+       "actual": 307.0,
+       "model": 341.8,
+       "baseline": 359.1
+      },
+      {
+       "date": "2023-08-04",
+       "actual": 363.0,
+       "model": 344.7,
+       "baseline": 336.8
+      },
+      {
+       "date": "2023-08-05",
+       "actual": 242.0,
+       "model": 243.2,
+       "baseline": 216.4
+      },
+      {
+       "date": "2023-08-06",
+       "actual": 298.0,
+       "model": 277.1,
+       "baseline": 271.8
+      },
+      {
+       "date": "2023-08-07",
+       "actual": 366.0,
+       "model": 345.6,
+       "baseline": 357.5
+      },
+      {
+       "date": "2023-08-08",
+       "actual": 361.0,
+       "model": 342.7,
+       "baseline": 357.5
+      },
+      {
+       "date": "2023-08-09",
+       "actual": 360.0,
+       "model": 342.7,
+       "baseline": 354.4
+      },
+      {
+       "date": "2023-08-10",
+       "actual": 366.0,
+       "model": 342.5,
+       "baseline": 359.1
+      },
+      {
+       "date": "2023-08-11",
+       "actual": 352.0,
+       "model": 347.4,
+       "baseline": 336.8
+      },
+      {
+       "date": "2023-08-12",
+       "actual": 236.0,
+       "model": 243.2,
+       "baseline": 216.4
+      },
+      {
+       "date": "2023-08-13",
+       "actual": 283.0,
+       "model": 277.1,
+       "baseline": 271.8
+      },
+      {
+       "date": "2023-08-14",
+       "actual": 278.0,
+       "model": 346.0,
+       "baseline": 357.5
+      },
+      {
+       "date": "2023-08-15",
+       "actual": 368.0,
+       "model": 343.0,
+       "baseline": 357.5
+      },
+      {
+       "date": "2023-08-16",
+       "actual": 364.0,
+       "model": 343.1,
+       "baseline": 354.4
+      },
+      {
+       "date": "2023-08-17",
+       "actual": 351.0,
+       "model": 346.2,
+       "baseline": 359.1
+      },
+      {
+       "date": "2023-08-18",
+       "actual": 363.0,
+       "model": 347.7,
+       "baseline": 336.8
+      },
+      {
+       "date": "2023-08-19",
+       "actual": 246.0,
+       "model": 243.2,
+       "baseline": 216.4
+      },
+      {
+       "date": "2023-08-20",
+       "actual": 298.0,
+       "model": 276.5,
+       "baseline": 271.8
+      },
+      {
+       "date": "2023-08-21",
+       "actual": 361.0,
+       "model": 345.3,
+       "baseline": 357.5
+      },
+      {
+       "date": "2023-08-22",
+       "actual": 367.0,
+       "model": 343.0,
+       "baseline": 357.5
+      },
+      {
+       "date": "2023-08-23",
+       "actual": 361.0,
+       "model": 343.0,
+       "baseline": 354.4
+      },
+      {
+       "date": "2023-08-24",
+       "actual": 337.0,
+       "model": 346.2,
+       "baseline": 359.1
+      },
+      {
+       "date": "2023-08-25",
+       "actual": 350.0,
+       "model": 347.7,
+       "baseline": 336.8
+      },
+      {
+       "date": "2023-08-26",
+       "actual": 240.0,
+       "model": 243.2,
+       "baseline": 216.4
+      },
+      {
+       "date": "2023-08-27",
+       "actual": 279.0,
+       "model": 276.5,
+       "baseline": 271.8
+      },
+      {
+       "date": "2023-08-28",
+       "actual": 351.0,
+       "model": 346.3,
+       "baseline": 357.5
+      },
+      {
+       "date": "2023-08-29",
+       "actual": 358.0,
+       "model": 343.5,
+       "baseline": 357.5
+      },
+      {
+       "date": "2023-08-30",
+       "actual": 361.0,
+       "model": 344.1,
+       "baseline": 354.4
+      },
+      {
+       "date": "2023-08-31",
+       "actual": 361.0,
+       "model": 346.6,
+       "baseline": 359.1
+      },
+      {
+       "date": "2023-09-01",
+       "actual": 356.0,
+       "model": 348.7,
+       "baseline": 342.9
+      },
+      {
+       "date": "2023-09-02",
+       "actual": 250.0,
+       "model": 244.5,
+       "baseline": 229.8
+      },
+      {
+       "date": "2023-09-03",
+       "actual": 295.0,
+       "model": 278.5,
+       "baseline": 281.4
+      },
+      {
+       "date": "2023-09-04",
+       "actual": 363.0,
+       "model": 354.6,
+       "baseline": 357.2
+      },
+      {
+       "date": "2023-09-05",
+       "actual": 346.0,
+       "model": 352.4,
+       "baseline": 354.4
+      },
+      {
+       "date": "2023-09-06",
+       "actual": 355.0,
+       "model": 350.4,
+       "baseline": 350.9
+      },
+      {
+       "date": "2023-09-07",
+       "actual": 281.0,
+       "model": 316.5,
+       "baseline": 344.8
+      },
+      {
+       "date": "2023-09-08",
+       "actual": 273.0,
+       "model": 339.6,
+       "baseline": 342.9
+      },
+      {
+       "date": "2023-09-09",
+       "actual": 194.0,
+       "model": 244.5,
+       "baseline": 229.8
+      },
+      {
+       "date": "2023-09-10",
+       "actual": 268.0,
+       "model": 279.4,
+       "baseline": 281.4
+      },
+      {
+       "date": "2023-09-11",
+       "actual": 369.0,
+       "model": 356.0,
+       "baseline": 357.2
+      },
+      {
+       "date": "2023-09-12",
+       "actual": 357.0,
+       "model": 353.8,
+       "baseline": 354.4
+      },
+      {
+       "date": "2023-09-13",
+       "actual": 354.0,
+       "model": 353.8,
+       "baseline": 350.9
+      },
+      {
+       "date": "2023-09-14",
+       "actual": 352.0,
+       "model": 352.8,
+       "baseline": 344.8
+      },
+      {
+       "date": "2023-09-15",
+       "actual": 359.0,
+       "model": 357.6,
+       "baseline": 342.9
+      },
+      {
+       "date": "2023-09-16",
+       "actual": 244.0,
+       "model": 244.8,
+       "baseline": 229.8
+      },
+      {
+       "date": "2023-09-17",
+       "actual": 300.0,
+       "model": 278.8,
+       "baseline": 281.4
+      },
+      {
+       "date": "2023-09-18",
+       "actual": 360.0,
+       "model": 356.0,
+       "baseline": 357.2
+      },
+      {
+       "date": "2023-09-19",
+       "actual": 356.0,
+       "model": 353.8,
+       "baseline": 354.4
+      },
+      {
+       "date": "2023-09-20",
+       "actual": 373.0,
+       "model": 353.8,
+       "baseline": 350.9
+      },
+      {
+       "date": "2023-09-21",
+       "actual": 370.0,
+       "model": 356.2,
+       "baseline": 344.8
+      },
+      {
+       "date": "2023-09-22",
+       "actual": 353.0,
+       "model": 357.6,
+       "baseline": 342.9
+      },
+      {
+       "date": "2023-09-23",
+       "actual": 238.0,
+       "model": 244.8,
+       "baseline": 229.8
+      },
+      {
+       "date": "2023-09-24",
+       "actual": 295.0,
+       "model": 278.8,
+       "baseline": 281.4
+      },
+      {
+       "date": "2023-09-25",
+       "actual": 370.0,
+       "model": 356.0,
+       "baseline": 357.2
+      },
+      {
+       "date": "2023-09-26",
+       "actual": 356.0,
+       "model": 353.8,
+       "baseline": 354.4
+      },
+      {
+       "date": "2023-09-27",
+       "actual": 341.0,
+       "model": 351.8,
+       "baseline": 350.9
+      },
+      {
+       "date": "2023-09-28",
+       "actual": 344.0,
+       "model": 354.0,
+       "baseline": 344.8
+      },
+      {
+       "date": "2023-09-29",
+       "actual": 363.0,
+       "model": 357.6,
+       "baseline": 342.9
+      },
+      {
+       "date": "2023-09-30",
+       "actual": 243.0,
+       "model": 244.8,
+       "baseline": 229.8
+      },
+      {
+       "date": "2023-10-01",
+       "actual": 210.0,
+       "model": 278.3,
+       "baseline": 281.5
+      },
+      {
+       "date": "2023-10-02",
+       "actual": 286.0,
+       "model": 356.3,
+       "baseline": 357.5
+      },
+      {
+       "date": "2023-10-03",
+       "actual": 282.0,
+       "model": 353.3,
+       "baseline": 354.4
+      },
+      {
+       "date": "2023-10-04",
+       "actual": 264.0,
+       "model": 354.1,
+       "baseline": 348.6
+      },
+      {
+       "date": "2023-10-05",
+       "actual": 279.0,
+       "model": 356.5,
+       "baseline": 342.2
+      },
+      {
+       "date": "2023-10-06",
+       "actual": 282.0,
+       "model": 357.9,
+       "baseline": 340.8
+      },
+      {
+       "date": "2023-10-07",
+       "actual": 170.0,
+       "model": 244.4,
+       "baseline": 232.0
+      },
+      {
+       "date": "2023-10-08",
+       "actual": 205.0,
+       "model": 276.5,
+       "baseline": 281.5
+      },
+      {
+       "date": "2023-10-09",
+       "actual": 271.0,
+       "model": 355.5,
+       "baseline": 357.5
+      },
+      {
+       "date": "2023-10-10",
+       "actual": 289.0,
+       "model": 354.1,
+       "baseline": 354.4
+      },
+      {
+       "date": "2023-10-11",
+       "actual": 279.0,
+       "model": 351.3,
+       "baseline": 348.6
+      },
+      {
+       "date": "2023-10-12",
+       "actual": 209.0,
+       "model": 317.3,
+       "baseline": 342.2
+      },
+      {
+       "date": "2023-10-13",
+       "actual": 196.0,
+       "model": 340.5,
+       "baseline": 340.8
+      },
+      {
+       "date": "2023-10-14",
+       "actual": 87.0,
+       "model": 244.4,
+       "baseline": 232.0
+      },
+      {
+       "date": "2023-10-15",
+       "actual": 189.0,
+       "model": 279.2,
+       "baseline": 281.5
+      },
+      {
+       "date": "2023-10-16",
+       "actual": 290.0,
+       "model": 356.3,
+       "baseline": 357.5
+      },
+      {
+       "date": "2023-10-17",
+       "actual": 277.0,
+       "model": 354.1,
+       "baseline": 354.4
+      },
+      {
+       "date": "2023-10-18",
+       "actual": 275.0,
+       "model": 354.1,
+       "baseline": 348.6
+      },
+      {
+       "date": "2023-10-19",
+       "actual": 281.0,
+       "model": 356.5,
+       "baseline": 342.2
+      },
+      {
+       "date": "2023-10-20",
+       "actual": 280.0,
+       "model": 357.9,
+       "baseline": 340.8
+      },
+      {
+       "date": "2023-10-21",
+       "actual": 180.0,
+       "model": 244.4,
+       "baseline": 232.0
+      },
+      {
+       "date": "2023-10-22",
+       "actual": 208.0,
+       "model": 279.2,
+       "baseline": 281.5
+      },
+      {
+       "date": "2023-10-23",
+       "actual": 280.0,
+       "model": 356.3,
+       "baseline": 357.5
+      },
+      {
+       "date": "2023-10-24",
+       "actual": 280.0,
+       "model": 354.1,
+       "baseline": 354.4
+      },
+      {
+       "date": "2023-10-25",
+       "actual": 275.0,
+       "model": 354.1,
+       "baseline": 348.6
+      },
+      {
+       "date": "2023-10-26",
+       "actual": 272.0,
+       "model": 356.5,
+       "baseline": 342.2
+      },
+      {
+       "date": "2023-10-27",
+       "actual": 272.0,
+       "model": 357.9,
+       "baseline": 340.8
+      },
+      {
+       "date": "2023-10-28",
+       "actual": 174.0,
+       "model": 244.4,
+       "baseline": 232.0
+      },
+      {
+       "date": "2023-10-29",
+       "actual": 172.0,
+       "model": 279.2,
+       "baseline": 281.5
+      },
+      {
+       "date": "2023-10-30",
+       "actual": 248.0,
+       "model": 355.5,
+       "baseline": 357.5
+      },
+      {
+       "date": "2023-10-31",
+       "actual": 252.0,
+       "model": 351.1,
+       "baseline": 354.4
+      },
+      {
+       "date": "2023-11-01",
+       "actual": 250.0,
+       "model": 357.5,
+       "baseline": 353.9
+      },
+      {
+       "date": "2023-11-02",
+       "actual": 212.0,
+       "model": 322.5,
+       "baseline": 345.9
+      },
+      {
+       "date": "2023-11-03",
+       "actual": 195.0,
+       "model": 346.6,
+       "baseline": 357.6
+      },
+      {
+       "date": "2023-11-04",
+       "actual": 163.0,
+       "model": 248.7,
+       "baseline": 239.9
+      },
+      {
+       "date": "2023-11-05",
+       "actual": 185.0,
+       "model": 283.5,
+       "baseline": 287.5
+      },
+      {
+       "date": "2023-11-06",
+       "actual": 261.0,
+       "model": 362.6,
+       "baseline": 350.5
+      },
+      {
+       "date": "2023-11-07",
+       "actual": 254.0,
+       "model": 360.0,
+       "baseline": 361.2
+      },
+      {
+       "date": "2023-11-08",
+       "actual": 259.0,
+       "model": 360.0,
+       "baseline": 353.9
+      },
+      {
+       "date": "2023-11-09",
+       "actual": 259.0,
+       "model": 362.9,
+       "baseline": 345.9
+      },
+      {
+       "date": "2023-11-10",
+       "actual": 258.0,
+       "model": 363.8,
+       "baseline": 357.6
+      },
+      {
+       "date": "2023-11-11",
+       "actual": 162.0,
+       "model": 247.6,
+       "baseline": 239.9
+      },
+      {
+       "date": "2023-11-12",
+       "actual": 190.0,
+       "model": 280.9,
+       "baseline": 287.5
+      },
+      {
+       "date": "2023-11-13",
+       "actual": 245.0,
+       "model": 360.5,
+       "baseline": 350.5
+      },
+      {
+       "date": "2023-11-14",
+       "actual": 234.0,
+       "model": 358.9,
+       "baseline": 361.2
+      },
+      {
+       "date": "2023-11-15",
+       "actual": 236.0,
+       "model": 320.2,
+       "baseline": 353.9
+      },
+      {
+       "date": "2023-11-16",
+       "actual": 235.0,
+       "model": 359.1,
+       "baseline": 345.9
+      },
+      {
+       "date": "2023-11-17",
+       "actual": 248.0,
+       "model": 363.8,
+       "baseline": 357.6
+      },
+      {
+       "date": "2023-11-18",
+       "actual": 160.0,
+       "model": 248.7,
+       "baseline": 239.9
+      },
+      {
+       "date": "2023-11-19",
+       "actual": 188.0,
+       "model": 281.8,
+       "baseline": 287.5
+      },
+      {
+       "date": "2023-11-20",
+       "actual": 261.0,
+       "model": 362.2,
+       "baseline": 350.5
+      },
+      {
+       "date": "2023-11-21",
+       "actual": 260.0,
+       "model": 360.0,
+       "baseline": 361.2
+      },
+      {
+       "date": "2023-11-22",
+       "actual": 258.0,
+       "model": 360.0,
+       "baseline": 353.9
+      },
+      {
+       "date": "2023-11-23",
+       "actual": 247.0,
+       "model": 362.4,
+       "baseline": 345.9
+      },
+      {
+       "date": "2023-11-24",
+       "actual": 246.0,
+       "model": 364.3,
+       "baseline": 357.6
+      },
+      {
+       "date": "2023-11-25",
+       "actual": 162.0,
+       "model": 248.7,
+       "baseline": 239.9
+      },
+      {
+       "date": "2023-11-26",
+       "actual": 182.0,
+       "model": 281.8,
+       "baseline": 287.5
+      },
+      {
+       "date": "2023-11-27",
+       "actual": 260.0,
+       "model": 362.2,
+       "baseline": 350.5
+      },
+      {
+       "date": "2023-11-28",
+       "actual": 253.0,
+       "model": 360.0,
+       "baseline": 361.2
+      },
+      {
+       "date": "2023-11-29",
+       "actual": 245.0,
+       "model": 360.0,
+       "baseline": 353.9
+      },
+      {
+       "date": "2023-11-30",
+       "actual": 246.0,
+       "model": 362.4,
+       "baseline": 345.9
+      },
+      {
+       "date": "2023-12-01",
+       "actual": 219.0,
+       "model": 362.4,
+       "baseline": 346.1
+      },
+      {
+       "date": "2023-12-02",
+       "actual": 141.0,
+       "model": 254.2,
+       "baseline": 236.4
+      },
+      {
+       "date": "2023-12-03",
+       "actual": 157.0,
+       "model": 285.2,
+       "baseline": 289.5
+      },
+      {
+       "date": "2023-12-04",
+       "actual": 220.0,
+       "model": 360.8,
+       "baseline": 352.2
+      },
+      {
+       "date": "2023-12-05",
+       "actual": 216.0,
+       "model": 358.7,
+       "baseline": 358.6
+      },
+      {
+       "date": "2023-12-06",
+       "actual": 220.0,
+       "model": 358.7,
+       "baseline": 358.6
+      },
+      {
+       "date": "2023-12-07",
+       "actual": 214.0,
+       "model": 361.5,
+       "baseline": 345.2
+      },
+      {
+       "date": "2023-12-08",
+       "actual": 209.0,
+       "model": 362.4,
+       "baseline": 346.1
+      },
+      {
+       "date": "2023-12-09",
+       "actual": 143.0,
+       "model": 254.2,
+       "baseline": 236.4
+      },
+      {
+       "date": "2023-12-10",
+       "actual": 147.0,
+       "model": 285.2,
+       "baseline": 289.5
+      },
+      {
+       "date": "2023-12-11",
+       "actual": 207.0,
+       "model": 361.0,
+       "baseline": 352.2
+      },
+      {
+       "date": "2023-12-12",
+       "actual": 210.0,
+       "model": 357.2,
+       "baseline": 358.6
+      },
+      {
+       "date": "2023-12-13",
+       "actual": 212.0,
+       "model": 358.9,
+       "baseline": 358.6
+      },
+      {
+       "date": "2023-12-14",
+       "actual": 217.0,
+       "model": 361.2,
+       "baseline": 345.2
+      },
+      {
+       "date": "2023-12-15",
+       "actual": 218.0,
+       "model": 362.6,
+       "baseline": 346.1
+      },
+      {
+       "date": "2023-12-16",
+       "actual": 135.0,
+       "model": 255.4,
+       "baseline": 236.4
+      },
+      {
+       "date": "2023-12-17",
+       "actual": 151.0,
+       "model": 283.9,
+       "baseline": 289.5
+      },
+      {
+       "date": "2023-12-18",
+       "actual": 220.0,
+       "model": 361.0,
+       "baseline": 352.2
+      },
+      {
+       "date": "2023-12-19",
+       "actual": 212.0,
+       "model": 357.2,
+       "baseline": 358.6
+      },
+      {
+       "date": "2023-12-20",
+       "actual": 217.0,
+       "model": 357.2,
+       "baseline": 358.6
+      },
+      {
+       "date": "2023-12-21",
+       "actual": 208.0,
+       "model": 361.2,
+       "baseline": 345.2
+      },
+      {
+       "date": "2023-12-22",
+       "actual": 217.0,
+       "model": 361.2,
+       "baseline": 346.1
+      },
+      {
+       "date": "2023-12-23",
+       "actual": 124.0,
+       "model": 254.3,
+       "baseline": 236.4
+      },
+      {
+       "date": "2023-12-24",
+       "actual": 100.0,
+       "model": 267.9,
+       "baseline": 289.5
+      },
+      {
+       "date": "2023-12-25",
+       "actual": 158.0,
+       "model": 313.4,
+       "baseline": 352.2
+      },
+      {
+       "date": "2023-12-26",
+       "actual": 169.0,
+       "model": 349.8,
+       "baseline": 358.6
+      },
+      {
+       "date": "2023-12-27",
+       "actual": 172.0,
+       "model": 349.8,
+       "baseline": 358.6
+      },
+      {
+       "date": "2023-12-28",
+       "actual": 171.0,
+       "model": 352.1,
+       "baseline": 345.2
+      },
+      {
+       "date": "2023-12-29",
+       "actual": 177.0,
+       "model": 352.0,
+       "baseline": 346.1
+      },
+      {
+       "date": "2023-12-30",
+       "actual": 100.0,
+       "model": 254.3,
+       "baseline": 236.4
+      },
+      {
+       "date": "2023-12-31",
+       "actual": 103.0,
+       "model": 267.7,
+       "baseline": 289.5
+      }
+     ]
+    }
+   }
+  },
+  "b": {
+   "title": "Model B: paid seat occupancy by route and carrier",
+   "unit": "seat occupancy",
+   "rows": 42369,
+   "metric": "seat-weighted MAE",
+   "lightgbm": {
+    "value": 0.06058022524963083,
+    "ci95": [
+     0.05696962468107372,
+     0.06430929210408848
+    ],
+    "months": 12
+   },
+   "baselines": {
+    "Same month last year": {
+     "value": 0.06897145799697646,
+     "ci95": [
+      0.06505608291865328,
+      0.07296726615531801
+     ],
+     "months": 12
+    },
+    "Mean of the last 12 known months": {
+     "value": 0.065419953889521,
+     "ci95": [
+      0.061707883254241806,
+      0.06948925886429058
+     ],
+     "months": 12
+    },
+    "Mean of the last 3 known months": {
+     "value": 0.07265192382292908,
+     "ci95": [
+      0.06931301270041881,
+      0.07573330463279641
+     ],
+     "months": 12
+    }
+   },
+   "best_baseline": "Mean of the last 12 known months",
+   "difference_vs_best_baseline": {
+    "value": -0.004839728639890175,
+    "ci95": [
+     -0.009382302220348094,
+     -0.000438025521870591
+    ],
+    "months": 12
+   },
+   "beats_best_baseline": true,
+   "bias": {
+    "value": 0.0003880224987605245,
+    "ci95": [
+     -0.009140914357788486,
+     0.010187022496506826
+    ],
+    "months": 12
+   },
+   "best_iteration": 46,
+   "rows_fit": 366818,
+   "top_features_by_gain": {
+    "hist_lf_lag_12": 0.5153,
+    "hist_lf_lag_24": 0.0998,
+    "hist_lf_12": 0.0938,
+    "hist_lf_6": 0.0731,
+    "hist_lf_3": 0.0578,
+    "id_km": 0.0321,
+    "destination": 0.0312,
+    "origin": 0.0297,
+    "cal_is_school_vacation": 0.0166,
+    "cal_month": 0.0099
+   },
+   "by_horizon": [
+    {
+     "horizon": 1,
+     "rows": 14510,
+     "model": 0.059891,
+     "baselines": {
+      "Same month last year": 0.069227,
+      "Mean of the last 12 known months": 0.063298,
+      "Mean of the last 3 known months": 0.068225
+     },
+     "bias_model": 0.001591,
+     "bias_best_baseline": -0.022489,
+     "seat_weighted_bias_model": -0.0003609636414512955
+    },
+    {
+     "horizon": 3,
+     "rows": 14171,
+     "model": 0.060918,
+     "baselines": {
+      "Same month last year": 0.068948,
+      "Mean of the last 12 known months": 0.065553,
+      "Mean of the last 3 known months": 0.074166
+     },
+     "bias_model": 0.001029,
+     "bias_best_baseline": -0.022029,
+     "seat_weighted_bias_model": -0.0004060165001490541
+    },
+    {
+     "horizon": 6,
+     "rows": 13688,
+     "model": 0.060944,
+     "baselines": {
+      "Same month last year": 0.068733,
+      "Mean of the last 12 known months": 0.067459,
+      "Mean of the last 3 known months": 0.075653
+     },
+     "bias_model": -0.001544,
+     "bias_best_baseline": -0.022471,
+     "seat_weighted_bias_model": -0.0008031745625882337
+    }
+   ],
+   "by_volume_decile": [
+    {
+     "decile": 1,
+     "rows": 4237,
+     "level_min": 501.0,
+     "level_max": 1210.0,
+     "model": 0.092939,
+     "baseline": 0.105752
+    },
+    {
+     "decile": 2,
+     "rows": 4238,
+     "level_min": 1210.5,
+     "level_max": 2247.5,
+     "model": 0.08134,
+     "baseline": 0.088812
+    },
+    {
+     "decile": 3,
+     "rows": 4239,
+     "level_min": 2247.75,
+     "level_max": 3339.33,
+     "model": 0.073166,
+     "baseline": 0.080177
+    },
+    {
+     "decile": 4,
+     "rows": 4234,
+     "level_min": 3341.83,
+     "level_max": 4645.75,
+     "model": 0.070367,
+     "baseline": 0.075598
+    },
+    {
+     "decile": 5,
+     "rows": 4237,
+     "level_min": 4646.5,
+     "level_max": 5896.92,
+     "model": 0.066219,
+     "baseline": 0.072475
+    },
+    {
+     "decile": 6,
+     "rows": 4236,
+     "level_min": 5897.0,
+     "level_max": 7557.42,
+     "model": 0.063291,
+     "baseline": 0.065985
+    },
+    {
+     "decile": 7,
+     "rows": 4238,
+     "level_min": 7558.25,
+     "level_max": 9300.08,
+     "model": 0.063786,
+     "baseline": 0.063698
+    },
+    {
+     "decile": 8,
+     "rows": 4236,
+     "level_min": 9302.0,
+     "level_max": 12778.0,
+     "model": 0.059216,
+     "baseline": 0.057311
+    },
+    {
+     "decile": 9,
+     "rows": 4238,
+     "level_min": 12779.67,
+     "level_max": 18837.17,
+     "model": 0.057531,
+     "baseline": 0.061366
+    },
+    {
+     "decile": 10,
+     "rows": 4236,
+     "level_min": 18837.33,
+     "level_max": 95045.67,
+     "model": 0.053879,
+     "baseline": 0.062236
+    }
+   ],
+   "by_entity": [
+    {
+     "entity": "TAM",
+     "volume": 138536580.0,
+     "rows": 10147,
+     "model": 0.061538,
+     "baseline": 0.071278,
+     "bias_model": -0.002803
+    },
+    {
+     "entity": "GLO",
+     "volume": 110896962.0,
+     "rows": 10541,
+     "model": 0.056059,
+     "baseline": 0.062021,
+     "bias_model": -0.002762
+    },
+    {
+     "entity": "AZU",
+     "volume": 106849386.0,
+     "rows": 14476,
+     "model": 0.0586,
+     "baseline": 0.062293,
+     "bias_model": 0.011781
+    },
+    {
+     "entity": "TAP",
+     "volume": 6900974.0,
+     "rows": 931,
+     "model": 0.069947,
+     "baseline": 0.065005,
+     "bias_model": 0.003678
+    },
+    {
+     "entity": "LAN",
+     "volume": 3838645.0,
+     "rows": 264,
+     "model": 0.066805,
+     "baseline": 0.053593,
+     "bias_model": -0.059212
+    },
+    {
+     "entity": "CMP",
+     "volume": 3761040.0,
+     "rows": 432,
+     "model": 0.061738,
+     "baseline": 0.043995,
+     "bias_model": -0.037348
+    },
+    {
+     "entity": "ARG",
+     "volume": 3429186.0,
+     "rows": 624,
+     "model": 0.061645,
+     "baseline": 0.072283,
+     "bias_model": -0.033016
+    },
+    {
+     "entity": "AAL",
+     "volume": 3127536.0,
+     "rows": 304,
+     "model": 0.072303,
+     "baseline": 0.045173,
+     "bias_model": -0.069224
+    },
+    {
+     "entity": "UAL",
+     "volume": 2436091.0,
+     "rows": 311,
+     "model": 0.066812,
+     "baseline": 0.055262,
+     "bias_model": -0.051091
+    },
+    {
+     "entity": "AFR",
+     "volume": 2406618.0,
+     "rows": 216,
+     "model": 0.072304,
+     "baseline": 0.035899,
+     "bias_model": -0.065354
+    },
+    {
+     "entity": "AVA",
+     "volume": 1748768.0,
+     "rows": 172,
+     "model": 0.05807,
+     "baseline": 0.054424,
+     "bias_model": -0.038106
+    },
+    {
+     "entity": "DAL",
+     "volume": 1662537.0,
+     "rows": 146,
+     "model": 0.051869,
+     "baseline": 0.062739,
+     "bias_model": -0.008599
+    },
+    {
+     "entity": "UAE",
+     "volume": 1652123.0,
+     "rows": 173,
+     "model": 0.088873,
+     "baseline": 0.08039,
+     "bias_model": -0.038655
+    },
+    {
+     "entity": "ACA",
+     "volume": 1572834.0,
+     "rows": 216,
+     "model": 0.07042,
+     "baseline": 0.079986,
+     "bias_model": -0.018971
+    },
+    {
+     "entity": "SKU",
+     "volume": 1563819.0,
+     "rows": 214,
+     "model": 0.052376,
+     "baseline": 0.055674,
+     "bias_model": -0.017736
+    },
+    {
+     "entity": "QTR",
+     "volume": 1542120.0,
+     "rows": 72,
+     "model": 0.074473,
+     "baseline": 0.087267,
+     "bias_model": -0.008267
+    },
+    {
+     "entity": "PTB",
+     "volume": 1536724.0,
+     "rows": 767,
+     "model": 0.124694,
+     "baseline": 0.137717,
+     "bias_model": 0.049613
+    },
+    {
+     "entity": "KLM",
+     "volume": 1495929.0,
+     "rows": 144,
+     "model": 0.071975,
+     "baseline": 0.055417,
+     "bias_model": -0.067852
+    },
+    {
+     "entity": "FBZ",
+     "volume": 1488348.0,
+     "rows": 186,
+     "model": 0.046093,
+     "baseline": 0.051932,
+     "bias_model": 0.000842
+    },
+    {
+     "entity": "THY",
+     "volume": 1349175.0,
+     "rows": 144,
+     "model": 0.070184,
+     "baseline": 0.066916,
+     "bias_model": 0.002899
+    },
+    {
+     "entity": "BAW",
+     "volume": 1169505.0,
+     "rows": 162,
+     "model": 0.075417,
+     "baseline": 0.061195,
+     "bias_model": -0.064645
+    },
+    {
+     "entity": "ETH",
+     "volume": 1167114.0,
+     "rows": 144,
+     "model": 0.102946,
+     "baseline": 0.080268,
+     "bias_model": 0.065967
+    },
+    {
+     "entity": "DLH",
+     "volume": 1061520.0,
+     "rows": 132,
+     "model": 0.067979,
+     "baseline": 0.043473,
+     "bias_model": -0.057794
+    },
+    {
+     "entity": "ITY",
+     "volume": 964194.0,
+     "rows": 69,
+     "model": 0.07518,
+     "baseline": 0.051771,
+     "bias_model": 0.067672
+    },
+    {
+     "entity": "SWR",
+     "volume": 898041.0,
+     "rows": 144,
+     "model": 0.094263,
+     "baseline": 0.069281,
+     "bias_model": -0.054015
+    }
+   ],
+   "by_market": [
+    {
+     "market": "Domestic",
+     "rows": 33479,
+     "model": 0.058343,
+     "baseline": 0.065512
+    },
+    {
+     "market": "International",
+     "rows": 8890,
+     "model": 0.071229,
+     "baseline": 0.06498
+    }
+   ],
+   "residuals": {
+    "unit": "percentage points",
+    "edges": [
+     -30.0,
+     -28.0,
+     -26.0,
+     -24.0,
+     -22.0,
+     -20.0,
+     -18.0,
+     -16.0,
+     -14.0,
+     -12.0,
+     -10.0,
+     -8.0,
+     -6.0,
+     -4.0,
+     -2.0,
+     0.0,
+     2.0,
+     4.0,
+     6.0,
+     8.0,
+     10.0,
+     12.0,
+     14.0,
+     16.0,
+     18.0,
+     20.0,
+     22.0,
+     24.0,
+     26.0,
+     28.0,
+     30.0
+    ],
+    "model": [
+     11,
+     20,
+     27,
+     39,
+     68,
+     150,
+     260,
+     567,
+     1185,
+     2123,
+     3105,
+     3980,
+     4244,
+     4144,
+     4058,
+     3679,
+     3009,
+     2508,
+     2052,
+     1687,
+     1282,
+     996,
+     773,
+     558,
+     399,
+     261,
+     255,
+     186,
+     131,
+     612
+    ],
+    "baseline": [
+     209,
+     96,
+     131,
+     217,
+     337,
+     481,
+     808,
+     1134,
+     1682,
+     2262,
+     2866,
+     3510,
+     3958,
+     4208,
+     3978,
+     3542,
+     2839,
+     2457,
+     1850,
+     1456,
+     1243,
+     883,
+     593,
+     413,
+     302,
+     216,
+     166,
+     112,
+     87,
+     333
+    ],
+    "rows": 42369,
+    "model_quantiles": {
+     "p10": -10.1604,
+     "p50": -1.3659,
+     "p90": 11.854
+    },
+    "baseline_quantiles": {
+     "p10": -12.921,
+     "p50": -2.3309,
+     "p90": 10.1597
+    }
+   },
+   "monthly": [
+    {
+     "horizon": 1,
+     "month": "2023-01",
+     "actual": 0.8011,
+     "model": 0.8067,
+     "baseline": 0.7894,
+     "model_error": 0.070905,
+     "baseline_error": 0.07087
+    },
+    {
+     "horizon": 1,
+     "month": "2023-02",
+     "actual": 0.774,
+     "model": 0.7907,
+     "baseline": 0.7858,
+     "model_error": 0.072782,
+     "baseline_error": 0.065093
+    },
+    {
+     "horizon": 1,
+     "month": "2023-03",
+     "actual": 0.7717,
+     "model": 0.7855,
+     "baseline": 0.7786,
+     "model_error": 0.062158,
+     "baseline_error": 0.052186
+    },
+    {
+     "horizon": 1,
+     "month": "2023-04",
+     "actual": 0.7665,
+     "model": 0.79,
+     "baseline": 0.7794,
+     "model_error": 0.062075,
+     "baseline_error": 0.053986
+    },
+    {
+     "horizon": 1,
+     "month": "2023-05",
+     "actual": 0.7574,
+     "model": 0.7858,
+     "baseline": 0.7794,
+     "model_error": 0.064033,
+     "baseline_error": 0.059747
+    },
+    {
+     "horizon": 1,
+     "month": "2023-06",
+     "actual": 0.7756,
+     "model": 0.7847,
+     "baseline": 0.7776,
+     "model_error": 0.060245,
+     "baseline_error": 0.060182
+    },
+    {
+     "horizon": 1,
+     "month": "2023-07",
+     "actual": 0.8197,
+     "model": 0.8041,
+     "baseline": 0.7767,
+     "model_error": 0.057836,
+     "baseline_error": 0.068572
+    },
+    {
+     "horizon": 1,
+     "month": "2023-08",
+     "actual": 0.8179,
+     "model": 0.7917,
+     "baseline": 0.7745,
+     "model_error": 0.05263,
+     "baseline_error": 0.063416
+    },
+    {
+     "horizon": 1,
+     "month": "2023-09",
+     "actual": 0.8087,
+     "model": 0.7929,
+     "baseline": 0.7779,
+     "model_error": 0.050656,
+     "baseline_error": 0.056821
+    },
+    {
+     "horizon": 1,
+     "month": "2023-10",
+     "actual": 0.8197,
+     "model": 0.7989,
+     "baseline": 0.7819,
+     "model_error": 0.052099,
+     "baseline_error": 0.063326
+    },
+    {
+     "horizon": 1,
+     "month": "2023-11",
+     "actual": 0.8203,
+     "model": 0.8035,
+     "baseline": 0.7853,
+     "model_error": 0.057913,
+     "baseline_error": 0.072154
+    },
+    {
+     "horizon": 1,
+     "month": "2023-12",
+     "actual": 0.806,
+     "model": 0.8051,
+     "baseline": 0.788,
+     "model_error": 0.05676,
+     "baseline_error": 0.072032
+    },
+    {
+     "horizon": 3,
+     "month": "2023-01",
+     "actual": 0.8015,
+     "model": 0.8067,
+     "baseline": 0.7909,
+     "model_error": 0.071191,
+     "baseline_error": 0.074535
+    },
+    {
+     "horizon": 3,
+     "month": "2023-02",
+     "actual": 0.7741,
+     "model": 0.7917,
+     "baseline": 0.7906,
+     "model_error": 0.073895,
+     "baseline_error": 0.070092
+    },
+    {
+     "horizon": 3,
+     "month": "2023-03",
+     "actual": 0.7721,
+     "model": 0.7874,
+     "baseline": 0.7864,
+     "model_error": 0.063589,
+     "baseline_error": 0.056345
+    },
+    {
+     "horizon": 3,
+     "month": "2023-04",
+     "actual": 0.7665,
+     "model": 0.7918,
+     "baseline": 0.7848,
+     "model_error": 0.063904,
+     "baseline_error": 0.056832
+    },
+    {
+     "horizon": 3,
+     "month": "2023-05",
+     "actual": 0.7578,
+     "model": 0.7869,
+     "baseline": 0.7794,
+     "model_error": 0.065611,
+     "baseline_error": 0.060347
+    },
+    {
+     "horizon": 3,
+     "month": "2023-06",
+     "actual": 0.777,
+     "model": 0.787,
+     "baseline": 0.7799,
+     "model_error": 0.059466,
+     "baseline_error": 0.059923
+    },
+    {
+     "horizon": 3,
+     "month": "2023-07",
+     "actual": 0.8204,
+     "model": 0.8065,
+     "baseline": 0.7809,
+     "model_error": 0.057654,
+     "baseline_error": 0.066398
+    },
+    {
+     "horizon": 3,
+     "month": "2023-08",
+     "actual": 0.8181,
+     "model": 0.7944,
+     "baseline": 0.7776,
+     "model_error": 0.052897,
+     "baseline_error": 0.062305
+    },
+    {
+     "horizon": 3,
+     "month": "2023-09",
+     "actual": 0.809,
+     "model": 0.7933,
+     "baseline": 0.7763,
+     "model_error": 0.051367,
+     "baseline_error": 0.058133
+    },
+    {
+     "horizon": 3,
+     "month": "2023-10",
+     "actual": 0.8199,
+     "model": 0.7958,
+     "baseline": 0.7766,
+     "model_error": 0.054245,
+     "baseline_error": 0.068536
+    },
+    {
+     "horizon": 3,
+     "month": "2023-11",
+     "actual": 0.8204,
+     "model": 0.799,
+     "baseline": 0.7804,
+     "model_error": 0.061337,
+     "baseline_error": 0.07728
+    },
+    {
+     "horizon": 3,
+     "month": "2023-12",
+     "actual": 0.8066,
+     "model": 0.8024,
+     "baseline": 0.7853,
+     "model_error": 0.057302,
+     "baseline_error": 0.075351
+    },
+    {
+     "horizon": 6,
+     "month": "2023-01",
+     "actual": 0.8028,
+     "model": 0.8049,
+     "baseline": 0.788,
+     "model_error": 0.071724,
+     "baseline_error": 0.080932
+    },
+    {
+     "horizon": 6,
+     "month": "2023-02",
+     "actual": 0.775,
+     "model": 0.7869,
+     "baseline": 0.785,
+     "model_error": 0.07314,
+     "baseline_error": 0.075939
+    },
+    {
+     "horizon": 6,
+     "month": "2023-03",
+     "actual": 0.7728,
+     "model": 0.7849,
+     "baseline": 0.7857,
+     "model_error": 0.063189,
+     "baseline_error": 0.061337
+    },
+    {
+     "horizon": 6,
+     "month": "2023-04",
+     "actual": 0.767,
+     "model": 0.7909,
+     "baseline": 0.7882,
+     "model_error": 0.063101,
+     "baseline_error": 0.06147
+    },
+    {
+     "horizon": 6,
+     "month": "2023-05",
+     "actual": 0.7582,
+     "model": 0.7891,
+     "baseline": 0.7893,
+     "model_error": 0.066582,
+     "baseline_error": 0.066299
+    },
+    {
+     "horizon": 6,
+     "month": "2023-06",
+     "actual": 0.7775,
+     "model": 0.7884,
+     "baseline": 0.7873,
+     "model_error": 0.059632,
+     "baseline_error": 0.06042
+    },
+    {
+     "horizon": 6,
+     "month": "2023-07",
+     "actual": 0.8208,
+     "model": 0.8082,
+     "baseline": 0.786,
+     "model_error": 0.058095,
+     "baseline_error": 0.06478
+    },
+    {
+     "horizon": 6,
+     "month": "2023-08",
+     "actual": 0.8198,
+     "model": 0.796,
+     "baseline": 0.7798,
+     "model_error": 0.052483,
+     "baseline_error": 0.059898
+    },
+    {
+     "horizon": 6,
+     "month": "2023-09",
+     "actual": 0.8099,
+     "model": 0.7971,
+     "baseline": 0.7807,
+     "model_error": 0.051471,
+     "baseline_error": 0.05561
+    },
+    {
+     "horizon": 6,
+     "month": "2023-10",
+     "actual": 0.8214,
+     "model": 0.7991,
+     "baseline": 0.7812,
+     "model_error": 0.053045,
+     "baseline_error": 0.065893
+    },
+    {
+     "horizon": 6,
+     "month": "2023-11",
+     "actual": 0.8206,
+     "model": 0.8001,
+     "baseline": 0.7805,
+     "model_error": 0.060784,
+     "baseline_error": 0.077259
+    },
+    {
+     "horizon": 6,
+     "month": "2023-12",
+     "actual": 0.8065,
+     "model": 0.8005,
+     "baseline": 0.7808,
+     "model_error": 0.059179,
+     "baseline_error": 0.079482
+    }
+   ],
+   "figures": {
+    "monthly": "figures/b_actual_vs_predicted_monthly.png",
+    "scatter": "figures/b_scatter.png",
+    "residuals": "figures/b_residuals.png",
+    "by_horizon": "figures/b_by_horizon.png",
+    "by_volume": "figures/b_by_volume.png",
+    "by_entity": "figures/b_by_entity.png",
+    "error_by_month": "figures/b_error_by_month.png",
+    "feature_gain": "figures/b_feature_gain.png"
+   },
+   "seat_weighted_bias": {
+    "value": -0.0005215167369813678,
+    "ci95": [
+     -0.010506319602747682,
+     0.009230852641249915
+    ],
+    "months": 12
+   }
+  },
+  "d_pax": {
+   "title": "Model D: monthly paid passengers by route",
+   "unit": "paid passengers",
+   "rows": 33762,
+   "metric": "WAPE",
+   "lightgbm": {
+    "value": 0.22241908531491802,
+    "ci95": [
+     0.2064994332919436,
+     0.23838779830807752
+    ],
+    "months": 12
+   },
+   "baselines": {
+    "Same month last year": {
+     "value": 0.2530850061037174,
+     "ci95": [
+      0.24122907737102553,
+      0.2657536341552741
+     ],
+     "months": 12
+    },
+    "Same month last year, with trend": {
+     "value": 0.3052313579139144,
+     "ci95": [
+      0.2838185924999902,
+      0.3282279271902566
+     ],
+     "months": 12
+    }
+   },
+   "best_baseline": "Same month last year",
+   "difference_vs_best_baseline": {
+    "value": -0.030665920788799404,
+    "ci95": [
+     -0.049723562135277316,
+     -0.010949179894957603
+    ],
+    "months": 12
+   },
+   "beats_best_baseline": true,
+   "bias": {
+    "value": -0.12214797588806191,
+    "ci95": [
+     -0.1554378467251502,
+     -0.08902421506672024
+    ],
+    "months": 12
+   },
+   "best_iteration": 395,
+   "rows_fit": 291026,
+   "top_features_by_gain": {
+    "destination": 0.1287,
+    "origin": 0.1209,
+    "hist_yoy_pax": 0.0863,
+    "cal_month": 0.0862,
+    "cal_is_school_vacation": 0.0476,
+    "hist_pax_lag_24": 0.0449,
+    "cal_days_in_month": 0.0418,
+    "hist_yoy_seats": 0.0391,
+    "cal_weekend_days": 0.033,
+    "hist_lf_lag_12": 0.029
+   },
+   "by_horizon": [
+    {
+     "horizon": 1,
+     "rows": 11383,
+     "model": 0.187414,
+     "baselines": {
+      "Same month last year": 0.254866,
+      "Same month last year, with trend": 0.240745
+     },
+     "bias_model": -0.09288,
+     "bias_best_baseline": -0.127833,
+     "rmse_model": 3566.093,
+     "rmse_best_baseline": 4562.791,
+     "mae_model": 1839.354
+    },
+    {
+     "horizon": 3,
+     "rows": 11280,
+     "model": 0.213114,
+     "baselines": {
+      "Same month last year": 0.253481,
+      "Same month last year, with trend": 0.289419
+     },
+     "bias_model": -0.110087,
+     "bias_best_baseline": -0.1228,
+     "rmse_model": 4097.18,
+     "rmse_best_baseline": 4574.841,
+     "mae_model": 2102.094
+    },
+    {
+     "horizon": 6,
+     "rows": 11099,
+     "model": 0.267149,
+     "baselines": {
+      "Same month last year": 0.250888,
+      "Same month last year, with trend": 0.386294
+     },
+     "bias_model": -0.163853,
+     "bias_best_baseline": -0.115222,
+     "rmse_model": 5212.151,
+     "rmse_best_baseline": 4596.272,
+     "mae_model": 2661.516
+    }
+   ],
+   "by_volume_decile": [
+    {
+     "decile": 1,
+     "rows": 3379,
+     "level_min": 49.83,
+     "level_max": 675.25,
+     "model": 0.784503,
+     "baseline": 0.901507
+    },
+    {
+     "decile": 2,
+     "rows": 3374,
+     "level_min": 675.75,
+     "level_max": 1193.92,
+     "model": 0.623835,
+     "baseline": 0.713774
+    },
+    {
+     "decile": 3,
+     "rows": 3376,
+     "level_min": 1194.83,
+     "level_max": 1960.75,
+     "model": 0.501862,
+     "baseline": 0.597483
+    },
+    {
+     "decile": 4,
+     "rows": 3377,
+     "level_min": 1961.58,
+     "level_max": 2905.08,
+     "model": 0.413271,
+     "baseline": 0.502149
+    },
+    {
+     "decile": 5,
+     "rows": 3377,
+     "level_min": 2906.17,
+     "level_max": 4124.75,
+     "model": 0.340263,
+     "baseline": 0.39338
+    },
+    {
+     "decile": 6,
+     "rows": 3376,
+     "level_min": 4124.83,
+     "level_max": 6086.25,
+     "model": 0.297826,
+     "baseline": 0.365873
+    },
+    {
+     "decile": 7,
+     "rows": 3376,
+     "level_min": 6087.92,
+     "level_max": 8671.08,
+     "model": 0.236539,
+     "baseline": 0.265917
+    },
+    {
+     "decile": 8,
+     "rows": 3374,
+     "level_min": 8671.5,
+     "level_max": 13318.17,
+     "model": 0.222429,
+     "baseline": 0.262365
+    },
+    {
+     "decile": 9,
+     "rows": 3377,
+     "level_min": 13341.33,
+     "level_max": 22821.08,
+     "model": 0.187531,
+     "baseline": 0.211894
+    },
+    {
+     "decile": 10,
+     "rows": 3376,
+     "level_min": 22822.75,
+     "level_max": 146028.25,
+     "model": 0.168777,
+     "baseline": 0.183569
+    }
+   ],
+   "by_entity": [
+    {
+     "entity": "SBRJ→SBSP",
+     "volume": 5374623.0,
+     "rows": 36,
+     "model": 0.137244,
+     "baseline": 0.159414,
+     "bias_model": -0.117433
+    },
+    {
+     "entity": "SBSP→SBRJ",
+     "volume": 5213901.0,
+     "rows": 36,
+     "model": 0.133878,
+     "baseline": 0.15315,
+     "bias_model": -0.127022
+    },
+    {
+     "entity": "SBBR→SBSP",
+     "volume": 3356118.0,
+     "rows": 36,
+     "model": 0.306984,
+     "baseline": 0.30769,
+     "bias_model": -0.306984
+    },
+    {
+     "entity": "SBSP→SBBR",
+     "volume": 3349233.0,
+     "rows": 36,
+     "model": 0.290127,
+     "baseline": 0.292526,
+     "bias_model": -0.289714
+    },
+    {
+     "entity": "SBSP→SBPA",
+     "volume": 3265863.0,
+     "rows": 36,
+     "model": 0.231805,
+     "baseline": 0.249405,
+     "bias_model": -0.231796
+    },
+    {
+     "entity": "SBPA→SBSP",
+     "volume": 3238071.0,
+     "rows": 36,
+     "model": 0.252328,
+     "baseline": 0.246369,
+     "bias_model": -0.252328
+    },
+    {
+     "entity": "SBCF→SBSP",
+     "volume": 2834310.0,
+     "rows": 36,
+     "model": 0.166649,
+     "baseline": 0.209604,
+     "bias_model": -0.163522
+    },
+    {
+     "entity": "SBSP→SBCF",
+     "volume": 2831019.0,
+     "rows": 36,
+     "model": 0.169066,
+     "baseline": 0.207304,
+     "bias_model": -0.163389
+    },
+    {
+     "entity": "SBGR→SBRF",
+     "volume": 2613822.0,
+     "rows": 36,
+     "model": 0.112429,
+     "baseline": 0.11836,
+     "bias_model": -0.103053
+    },
+    {
+     "entity": "SBRF→SBGR",
+     "volume": 2584299.0,
+     "rows": 36,
+     "model": 0.093328,
+     "baseline": 0.095434,
+     "bias_model": -0.076939
+    },
+    {
+     "entity": "SBGR→SBPA",
+     "volume": 2525652.0,
+     "rows": 36,
+     "model": 0.111974,
+     "baseline": 0.084857,
+     "bias_model": -0.101824
+    },
+    {
+     "entity": "SBPA→SBGR",
+     "volume": 2492496.0,
+     "rows": 36,
+     "model": 0.119916,
+     "baseline": 0.097355,
+     "bias_model": -0.119104
+    },
+    {
+     "entity": "SBSP→SBSV",
+     "volume": 2208927.0,
+     "rows": 36,
+     "model": 0.148284,
+     "baseline": 0.137981,
+     "bias_model": -0.148284
+    },
+    {
+     "entity": "SBSV→SBSP",
+     "volume": 2184285.0,
+     "rows": 36,
+     "model": 0.142172,
+     "baseline": 0.119923,
+     "bias_model": -0.129053
+    },
+    {
+     "entity": "SBSP→SBCT",
+     "volume": 2157657.0,
+     "rows": 36,
+     "model": 0.216718,
+     "baseline": 0.28291,
+     "bias_model": -0.211058
+    },
+    {
+     "entity": "SBCT→SBSP",
+     "volume": 2130624.0,
+     "rows": 36,
+     "model": 0.21526,
+     "baseline": 0.277992,
+     "bias_model": -0.207483
+    },
+    {
+     "entity": "SBCF→SBGR",
+     "volume": 2078307.0,
+     "rows": 36,
+     "model": 0.092187,
+     "baseline": 0.138525,
+     "bias_model": -0.035159
+    },
+    {
+     "entity": "SBGR→SBCF",
+     "volume": 2047425.0,
+     "rows": 36,
+     "model": 0.100663,
+     "baseline": 0.140664,
+     "bias_model": -0.0364
+    },
+    {
+     "entity": "SBSP→SBFL",
+     "volume": 1862643.0,
+     "rows": 36,
+     "model": 0.226824,
+     "baseline": 0.173463,
+     "bias_model": -0.226824
+    },
+    {
+     "entity": "SBBR→SBRJ",
+     "volume": 1839075.0,
+     "rows": 36,
+     "model": 0.207995,
+     "baseline": 0.209783,
+     "bias_model": -0.013079
+    },
+    {
+     "entity": "SBFL→SBSP",
+     "volume": 1834275.0,
+     "rows": 36,
+     "model": 0.206147,
+     "baseline": 0.182526,
+     "bias_model": -0.204409
+    },
+    {
+     "entity": "SBGR→SBCT",
+     "volume": 1822482.0,
+     "rows": 36,
+     "model": 0.072071,
+     "baseline": 0.090677,
+     "bias_model": -0.033311
+    },
+    {
+     "entity": "SBCT→SBGR",
+     "volume": 1804269.0,
+     "rows": 36,
+     "model": 0.068545,
+     "baseline": 0.076299,
+     "bias_model": -0.017709
+    },
+    {
+     "entity": "SBRJ→SBBR",
+     "volume": 1799574.0,
+     "rows": 36,
+     "model": 0.208682,
+     "baseline": 0.204383,
+     "bias_model": -0.046723
+    },
+    {
+     "entity": "SBBR→SBGR",
+     "volume": 1770564.0,
+     "rows": 36,
+     "model": 0.084095,
+     "baseline": 0.083451,
+     "bias_model": -0.081229
+    }
+   ],
+   "by_market": [
+    {
+     "market": "Domestic",
+     "rows": 26697,
+     "model": 0.212853,
+     "baseline": 0.245407
+    },
+    {
+     "market": "International",
+     "rows": 7065,
+     "model": 0.264161,
+     "baseline": 0.28659
+    }
+   ],
+   "residuals": {
+    "unit": "relative error",
+    "edges": [
+     -1.0,
+     -0.95,
+     -0.9,
+     -0.85,
+     -0.8,
+     -0.75,
+     -0.7,
+     -0.65,
+     -0.6,
+     -0.55,
+     -0.5,
+     -0.45,
+     -0.4,
+     -0.35,
+     -0.3,
+     -0.25,
+     -0.2,
+     -0.15,
+     -0.1,
+     -0.05,
+     0.0,
+     0.05,
+     0.1,
+     0.15,
+     0.2,
+     0.25,
+     0.3,
+     0.35,
+     0.4,
+     0.45,
+     0.5,
+     0.55,
+     0.6,
+     0.65,
+     0.7,
+     0.75,
+     0.8,
+     0.85,
+     0.9,
+     0.95,
+     1.0
+    ],
+    "model": [
+     54,
+     70,
+     142,
+     213,
+     223,
+     296,
+     378,
+     392,
+     522,
+     649,
+     729,
+     987,
+     1224,
+     1507,
+     1901,
+     2156,
+     2349,
+     2576,
+     2606,
+     2313,
+     1792,
+     1443,
+     1097,
+     886,
+     661,
+     530,
+     432,
+     378,
+     272,
+     213,
+     200,
+     174,
+     165,
+     137,
+     107,
+     96,
+     82,
+     65,
+     73,
+     1375
+    ],
+    "baseline": [
+     1785,
+     131,
+     130,
+     180,
+     141,
+     237,
+     297,
+     339,
+     488,
+     593,
+     743,
+     965,
+     864,
+     1088,
+     1464,
+     1805,
+     2127,
+     2252,
+     2278,
+     2123,
+     1820,
+     1495,
+     1154,
+     892,
+     724,
+     512,
+     505,
+     381,
+     343,
+     352,
+     291,
+     262,
+     210,
+     186,
+     159,
+     137,
+     143,
+     138,
+     93,
+     1638
+    ],
+    "rows": 31465,
+    "model_quantiles": {
+     "p10": -0.4849,
+     "p50": -0.1116,
+     "p90": 0.3737
+    },
+    "baseline_quantiles": {
+     "p10": -0.6094,
+     "p50": -0.0983,
+     "p90": 0.5183
+    }
+   },
+   "monthly": [
+    {
+     "horizon": 1,
+     "month": "2023-01",
+     "actual": 9955320.0,
+     "model": 8871759.7348,
+     "baseline": 8377789.0,
+     "model_error": 0.177826,
+     "baseline_error": 0.280698
+    },
+    {
+     "horizon": 1,
+     "month": "2023-02",
+     "actual": 8102122.0,
+     "model": 7420458.1161,
+     "baseline": 6440854.0,
+     "model_error": 0.15593,
+     "baseline_error": 0.294443
+    },
+    {
+     "horizon": 1,
+     "month": "2023-03",
+     "actual": 9042383.0,
+     "model": 7845826.5982,
+     "baseline": 7517174.0,
+     "model_error": 0.186219,
+     "baseline_error": 0.28468
+    },
+    {
+     "horizon": 1,
+     "month": "2023-04",
+     "actual": 8479751.0,
+     "model": 7769658.9014,
+     "baseline": 7303130.0,
+     "model_error": 0.183478,
+     "baseline_error": 0.245607
+    },
+    {
+     "horizon": 1,
+     "month": "2023-05",
+     "actual": 8900770.0,
+     "model": 8241560.7771,
+     "baseline": 7611390.0,
+     "model_error": 0.176434,
+     "baseline_error": 0.249077
+    },
+    {
+     "horizon": 1,
+     "month": "2023-06",
+     "actual": 8811329.0,
+     "model": 7471940.4368,
+     "baseline": 7292083.0,
+     "model_error": 0.212204,
+     "baseline_error": 0.260235
+    },
+    {
+     "horizon": 1,
+     "month": "2023-07",
+     "actual": 10267620.0,
+     "model": 8356041.5744,
+     "baseline": 9090056.0,
+     "model_error": 0.225318,
+     "baseline_error": 0.242891
+    },
+    {
+     "horizon": 1,
+     "month": "2023-08",
+     "actual": 10051012.0,
+     "model": 9022769.7506,
+     "baseline": 8709176.0,
+     "model_error": 0.168599,
+     "baseline_error": 0.231196
+    },
+    {
+     "horizon": 1,
+     "month": "2023-09",
+     "actual": 9385456.0,
+     "model": 8983361.2182,
+     "baseline": 8346484.0,
+     "model_error": 0.146249,
+     "baseline_error": 0.225366
+    },
+    {
+     "horizon": 1,
+     "month": "2023-10",
+     "actual": 9576532.0,
+     "model": 9244824.7778,
+     "baseline": 8686012.0,
+     "model_error": 0.159065,
+     "baseline_error": 0.238243
+    },
+    {
+     "horizon": 1,
+     "month": "2023-11",
+     "actual": 9343567.0,
+     "model": 8660373.9051,
+     "baseline": 8848073.0,
+     "model_error": 0.218688,
+     "baseline_error": 0.243075
+    },
+    {
+     "horizon": 1,
+     "month": "2023-12",
+     "actual": 9801637.0,
+     "model": 9452566.5524,
+     "baseline": 9214040.0,
+     "model_error": 0.232256,
+     "baseline_error": 0.269394
+    },
+    {
+     "horizon": 3,
+     "month": "2023-01",
+     "actual": 9965933.0,
+     "model": 8635043.4761,
+     "baseline": 8425111.0,
+     "model_error": 0.21098,
+     "baseline_error": 0.28183
+    },
+    {
+     "horizon": 3,
+     "month": "2023-02",
+     "actual": 8085820.0,
+     "model": 7247464.6693,
+     "baseline": 6473555.0,
+     "model_error": 0.187961,
+     "baseline_error": 0.298692
+    },
+    {
+     "horizon": 3,
+     "month": "2023-03",
+     "actual": 8990895.0,
+     "model": 7580894.2159,
+     "baseline": 7483011.0,
+     "model_error": 0.217976,
+     "baseline_error": 0.27897
+    },
+    {
+     "horizon": 3,
+     "month": "2023-04",
+     "actual": 8418007.0,
+     "model": 7376274.5936,
+     "baseline": 7273020.0,
+     "model_error": 0.217602,
+     "baseline_error": 0.237362
+    },
+    {
+     "horizon": 3,
+     "month": "2023-05",
+     "actual": 8865099.0,
+     "model": 7907116.3424,
+     "baseline": 7618189.0,
+     "model_error": 0.204078,
+     "baseline_error": 0.246994
+    },
+    {
+     "horizon": 3,
+     "month": "2023-06",
+     "actual": 8775677.0,
+     "model": 7227043.0002,
+     "baseline": 7294324.0,
+     "model_error": 0.242126,
+     "baseline_error": 0.257542
+    },
+    {
+     "horizon": 3,
+     "month": "2023-07",
+     "actual": 10206871.0,
+     "model": 7927791.1302,
+     "baseline": 9118699.0,
+     "model_error": 0.272664,
+     "baseline_error": 0.241378
+    },
+    {
+     "horizon": 3,
+     "month": "2023-08",
+     "actual": 9975504.0,
+     "model": 8680467.0642,
+     "baseline": 8742252.0,
+     "model_error": 0.208753,
+     "baseline_error": 0.22867
+    },
+    {
+     "horizon": 3,
+     "month": "2023-09",
+     "actual": 9333166.0,
+     "model": 8690735.0302,
+     "baseline": 8386625.0,
+     "model_error": 0.175898,
+     "baseline_error": 0.224463
+    },
+    {
+     "horizon": 3,
+     "month": "2023-10",
+     "actual": 9566861.0,
+     "model": 9052298.4747,
+     "baseline": 8701785.0,
+     "model_error": 0.178373,
+     "baseline_error": 0.23908
+    },
+    {
+     "horizon": 3,
+     "month": "2023-11",
+     "actual": 9301818.0,
+     "model": 8961342.5978,
+     "baseline": 8842016.0,
+     "model_error": 0.203988,
+     "baseline_error": 0.241631
+    },
+    {
+     "horizon": 3,
+     "month": "2023-12",
+     "actual": 9777175.0,
+     "model": 9727719.373,
+     "baseline": 9241150.0,
+     "model_error": 0.230388,
+     "baseline_error": 0.270884
+    },
+    {
+     "horizon": 6,
+     "month": "2023-01",
+     "actual": 9889644.0,
+     "model": 8077943.7781,
+     "baseline": 8442870.0,
+     "model_error": 0.274409,
+     "baseline_error": 0.276328
+    },
+    {
+     "horizon": 6,
+     "month": "2023-02",
+     "actual": 7999901.0,
+     "model": 6871760.255,
+     "baseline": 6460084.0,
+     "model_error": 0.242797,
+     "baseline_error": 0.292795
+    },
+    {
+     "horizon": 6,
+     "month": "2023-03",
+     "actual": 8964348.0,
+     "model": 7252600.3993,
+     "baseline": 7520092.0,
+     "model_error": 0.26728,
+     "baseline_error": 0.281109
+    },
+    {
+     "horizon": 6,
+     "month": "2023-04",
+     "actual": 8399794.0,
+     "model": 7009011.2469,
+     "baseline": 7318240.0,
+     "model_error": 0.269481,
+     "baseline_error": 0.240731
+    },
+    {
+     "horizon": 6,
+     "month": "2023-05",
+     "actual": 8822521.0,
+     "model": 7335142.6949,
+     "baseline": 7632600.0,
+     "model_error": 0.259378,
+     "baseline_error": 0.244916
+    },
+    {
+     "horizon": 6,
+     "month": "2023-06",
+     "actual": 8714421.0,
+     "model": 6574166.0095,
+     "baseline": 7290594.0,
+     "model_error": 0.302974,
+     "baseline_error": 0.253283
+    },
+    {
+     "horizon": 6,
+     "month": "2023-07",
+     "actual": 10121940.0,
+     "model": 6888215.1993,
+     "baseline": 9087822.0,
+     "model_error": 0.360941,
+     "baseline_error": 0.233254
+    },
+    {
+     "horizon": 6,
+     "month": "2023-08",
+     "actual": 9899348.0,
+     "model": 8090233.0416,
+     "baseline": 8751559.0,
+     "model_error": 0.25673,
+     "baseline_error": 0.223862
+    },
+    {
+     "horizon": 6,
+     "month": "2023-09",
+     "actual": 9259974.0,
+     "model": 8093235.3563,
+     "baseline": 8403488.0,
+     "model_error": 0.226854,
+     "baseline_error": 0.220747
+    },
+    {
+     "horizon": 6,
+     "month": "2023-10",
+     "actual": 9500357.0,
+     "model": 8492507.1723,
+     "baseline": 8733145.0,
+     "model_error": 0.226017,
+     "baseline_error": 0.236948
+    },
+    {
+     "horizon": 6,
+     "month": "2023-11",
+     "actual": 9254806.0,
+     "model": 8394810.0843,
+     "baseline": 8901121.0,
+     "model_error": 0.252732,
+     "baseline_error": 0.241027
+    },
+    {
+     "horizon": 6,
+     "month": "2023-12",
+     "actual": 9748363.0,
+     "model": 9377625.7212,
+     "baseline": 9293062.0,
+     "model_error": 0.257895,
+     "baseline_error": 0.27224
+    }
+   ],
+   "figures": {
+    "monthly": "figures/d_pax_actual_vs_predicted_monthly.png",
+    "scatter": "figures/d_pax_scatter.png",
+    "residuals": "figures/d_pax_residuals.png",
+    "by_horizon": "figures/d_pax_by_horizon.png",
+    "by_volume": "figures/d_pax_by_volume.png",
+    "by_entity": "figures/d_pax_by_entity.png",
+    "error_by_month": "figures/d_pax_error_by_month.png",
+    "feature_gain": "figures/d_pax_feature_gain.png",
+    "examples": "figures/d_pax_examples.png"
+   },
+   "examples": {
+    "best": {
+     "entity": "SBCF→SBGR",
+     "model": 0.092187,
+     "baseline": 0.138525,
+     "points": [
+      {
+       "month": "2023-01",
+       "actual": 64285.0,
+       "model": 57779.7,
+       "baseline": 54907.0
+      },
+      {
+       "month": "2023-02",
+       "actual": 51221.0,
+       "model": 47557.9,
+       "baseline": 44017.0
+      },
+      {
+       "month": "2023-03",
+       "actual": 64061.0,
+       "model": 53528.3,
+       "baseline": 50751.0
+      },
+      {
+       "month": "2023-04",
+       "actual": 56530.0,
+       "model": 51984.4,
+       "baseline": 43770.0
+      },
+      {
+       "month": "2023-05",
+       "actual": 58544.0,
+       "model": 56736.7,
+       "baseline": 43958.0
+      },
+      {
+       "month": "2023-06",
+       "actual": 51919.0,
+       "model": 54436.4,
+       "baseline": 43529.0
+      },
+      {
+       "month": "2023-07",
+       "actual": 59678.0,
+       "model": 64118.5,
+       "baseline": 53520.0
+      },
+      {
+       "month": "2023-08",
+       "actual": 61710.0,
+       "model": 65539.8,
+       "baseline": 57503.0
+      },
+      {
+       "month": "2023-09",
+       "actual": 57105.0,
+       "model": 63126.9,
+       "baseline": 54993.0
+      },
+      {
+       "month": "2023-10",
+       "actual": 62181.0,
+       "model": 60986.9,
+       "baseline": 56043.0
+      },
+      {
+       "month": "2023-11",
+       "actual": 55096.0,
+       "model": 54966.8,
+       "baseline": 59877.0
+      },
+      {
+       "month": "2023-12",
+       "actual": 50439.0,
+       "model": 49842.7,
+       "baseline": 57381.0
+      }
+     ]
+    },
+    "worst": {
+     "entity": "SBBR→SBSP",
+     "model": 0.306984,
+     "baseline": 0.30769,
+     "points": [
+      {
+       "month": "2023-01",
+       "actual": 70317.0,
+       "model": 59236.1,
+       "baseline": 52118.0
+      },
+      {
+       "month": "2023-02",
+       "actual": 66946.0,
+       "model": 48123.0,
+       "baseline": 42282.0
+      },
+      {
+       "month": "2023-03",
+       "actual": 88823.0,
+       "model": 55492.0,
+       "baseline": 51014.0
+      },
+      {
+       "month": "2023-04",
+       "actual": 92939.0,
+       "model": 60366.5,
+       "baseline": 58447.0
+      },
+      {
+       "month": "2023-05",
+       "actual": 96797.0,
+       "model": 64356.5,
+       "baseline": 62369.0
+      },
+      {
+       "month": "2023-06",
+       "actual": 95278.0,
+       "model": 61576.1,
+       "baseline": 58157.0
+      },
+      {
+       "month": "2023-07",
+       "actual": 99871.0,
+       "model": 75185.4,
+       "baseline": 70316.0
+      },
+      {
+       "month": "2023-08",
+       "actual": 105006.0,
+       "model": 80689.0,
+       "baseline": 78143.0
+      },
+      {
+       "month": "2023-09",
+       "actual": 101848.0,
+       "model": 82421.9,
+       "baseline": 73351.0
+      },
+      {
+       "month": "2023-10",
+       "actual": 104595.0,
+       "model": 87028.1,
+       "baseline": 76020.0
+      },
+      {
+       "month": "2023-11",
+       "actual": 102162.0,
+       "model": 87045.9,
+       "baseline": 79242.0
+      },
+      {
+       "month": "2023-12",
+       "actual": 94124.0,
+       "model": 89961.6,
+       "baseline": 73032.0
+      }
+     ]
+    }
+   }
+  },
+  "d_seats": {
+   "title": "Model D: monthly seats offered by route",
+   "unit": "seats",
+   "rows": 33762,
+   "metric": "WAPE",
+   "lightgbm": {
+    "value": 0.2239705606422805,
+    "ci95": [
+     0.20685289167561977,
+     0.24040899606938027
+    ],
+    "months": 12
+   },
+   "baselines": {
+    "Same month last year": {
+     "value": 0.257299309532146,
+     "ci95": [
+      0.24391341834008093,
+      0.27162483575071084
+     ],
+     "months": 12
+    },
+    "Same month last year, with trend": {
+     "value": 0.32567431862450824,
+     "ci95": [
+      0.30499208642987,
+      0.347221274187862
+     ],
+     "months": 12
+    }
+   },
+   "best_baseline": "Same month last year",
+   "difference_vs_best_baseline": {
+    "value": -0.03332874888986558,
+    "ci95": [
+     -0.05317339653152352,
+     -0.011855662449720875
+    ],
+    "months": 12
+   },
+   "beats_best_baseline": true,
+   "bias": {
+    "value": -0.11776599729365429,
+    "ci95": [
+     -0.15289083211555277,
+     -0.08289227246211543
+    ],
+    "months": 12
+   },
+   "best_iteration": 243,
+   "rows_fit": 291104,
+   "top_features_by_gain": {
+    "destination": 0.1115,
+    "origin": 0.1114,
+    "cal_month": 0.0899,
+    "hist_yoy_seats": 0.0805,
+    "cal_days_in_month": 0.0757,
+    "hist_yoy_pax": 0.0707,
+    "cal_weekend_days": 0.0401,
+    "hist_pax_lag_24": 0.0344,
+    "cal_is_school_vacation": 0.0303,
+    "hist_unknown_months_12": 0.0297
+   },
+   "by_horizon": [
+    {
+     "horizon": 1,
+     "rows": 11383,
+     "model": 0.187105,
+     "baselines": {
+      "Same month last year": 0.258972,
+      "Same month last year, with trend": 0.257176
+     },
+     "bias_model": -0.08386,
+     "bias_best_baseline": -0.11082,
+     "rmse_model": 4711.034,
+     "rmse_best_baseline": 6105.401,
+     "mae_model": 2312.083
+    },
+    {
+     "horizon": 3,
+     "rows": 11280,
+     "model": 0.214866,
+     "baselines": {
+      "Same month last year": 0.257636,
+      "Same month last year, with trend": 0.310606
+     },
+     "bias_model": -0.105739,
+     "bias_best_baseline": -0.10531,
+     "rmse_model": 5516.459,
+     "rmse_best_baseline": 6122.124,
+     "mae_model": 2667.745
+    },
+    {
+     "horizon": 6,
+     "rows": 11099,
+     "model": 0.270399,
+     "baselines": {
+      "Same month last year": 0.255269,
+      "Same month last year, with trend": 0.410081
+     },
+     "bias_model": -0.164144,
+     "bias_best_baseline": -0.097105,
+     "rmse_model": 7147.027,
+     "rmse_best_baseline": 6153.316,
+     "mae_model": 3390.107
+    }
+   ],
+   "by_volume_decile": [
+    {
+     "decile": 1,
+     "rows": 3377,
+     "level_min": 500.0,
+     "level_max": 991.67,
+     "model": 0.792306,
+     "baseline": 0.906744
+    },
+    {
+     "decile": 2,
+     "rows": 3377,
+     "level_min": 993.17,
+     "level_max": 1678.17,
+     "model": 0.594462,
+     "baseline": 0.700902
+    },
+    {
+     "decile": 3,
+     "rows": 3377,
+     "level_min": 1678.33,
+     "level_max": 2597.5,
+     "model": 0.49369,
+     "baseline": 0.594127
+    },
+    {
+     "decile": 4,
+     "rows": 3374,
+     "level_min": 2598.0,
+     "level_max": 3833.33,
+     "model": 0.386816,
+     "baseline": 0.478805
+    },
+    {
+     "decile": 5,
+     "rows": 3376,
+     "level_min": 3837.83,
+     "level_max": 5279.0,
+     "model": 0.336157,
+     "baseline": 0.406303
+    },
+    {
+     "decile": 6,
+     "rows": 3378,
+     "level_min": 5279.83,
+     "level_max": 7765.08,
+     "model": 0.293611,
+     "baseline": 0.368082
+    },
+    {
+     "decile": 7,
+     "rows": 3375,
+     "level_min": 7765.25,
+     "level_max": 10662.75,
+     "model": 0.231131,
+     "baseline": 0.272495
+    },
+    {
+     "decile": 8,
+     "rows": 3379,
+     "level_min": 10664.25,
+     "level_max": 16806.58,
+     "model": 0.230365,
+     "baseline": 0.276836
+    },
+    {
+     "decile": 9,
+     "rows": 3374,
+     "level_min": 16811.83,
+     "level_max": 27916.42,
+     "model": 0.177131,
+     "baseline": 0.204418
+    },
+    {
+     "decile": 10,
+     "rows": 3375,
+     "level_min": 27917.42,
+     "level_max": 216249.67,
+     "model": 0.176627,
+     "baseline": 0.188919
+    }
+   ],
+   "by_entity": [
+    {
+     "entity": "SBRJ→SBSP",
+     "volume": 7734642.0,
+     "rows": 36,
+     "model": 0.185242,
+     "baseline": 0.1795,
+     "bias_model": -0.175903
+    },
+    {
+     "entity": "SBSP→SBRJ",
+     "volume": 7688175.0,
+     "rows": 36,
+     "model": 0.194039,
+     "baseline": 0.181442,
+     "bias_model": -0.19108
+    },
+    {
+     "entity": "SBSP→SBBR",
+     "volume": 4612623.0,
+     "rows": 36,
+     "model": 0.298969,
+     "baseline": 0.290938,
+     "bias_model": -0.297481
+    },
+    {
+     "entity": "SBBR→SBSP",
+     "volume": 4588233.0,
+     "rows": 36,
+     "model": 0.298412,
+     "baseline": 0.293303,
+     "bias_model": -0.295595
+    },
+    {
+     "entity": "SBSP→SBPA",
+     "volume": 4380348.0,
+     "rows": 36,
+     "model": 0.25625,
+     "baseline": 0.231663,
+     "bias_model": -0.252759
+    },
+    {
+     "entity": "SBPA→SBSP",
+     "volume": 4373142.0,
+     "rows": 36,
+     "model": 0.263034,
+     "baseline": 0.232674,
+     "bias_model": -0.260052
+    },
+    {
+     "entity": "SBSP→SBCF",
+     "volume": 3872961.0,
+     "rows": 36,
+     "model": 0.198454,
+     "baseline": 0.224907,
+     "bias_model": -0.198454
+    },
+    {
+     "entity": "SBCF→SBSP",
+     "volume": 3867861.0,
+     "rows": 36,
+     "model": 0.193619,
+     "baseline": 0.22537,
+     "bias_model": -0.193619
+    },
+    {
+     "entity": "SBGR→SBPA",
+     "volume": 3242088.0,
+     "rows": 36,
+     "model": 0.11436,
+     "baseline": 0.095306,
+     "bias_model": -0.097702
+    },
+    {
+     "entity": "SBPA→SBGR",
+     "volume": 3213993.0,
+     "rows": 36,
+     "model": 0.116912,
+     "baseline": 0.095128,
+     "bias_model": -0.094948
+    },
+    {
+     "entity": "SBSP→SBCT",
+     "volume": 3138009.0,
+     "rows": 36,
+     "model": 0.241363,
+     "baseline": 0.280252,
+     "bias_model": -0.241363
+    },
+    {
+     "entity": "SBCT→SBSP",
+     "volume": 3109572.0,
+     "rows": 36,
+     "model": 0.232838,
+     "baseline": 0.277314,
+     "bias_model": -0.232838
+    },
+    {
+     "entity": "SBGR→SBRF",
+     "volume": 3093147.0,
+     "rows": 36,
+     "model": 0.133618,
+     "baseline": 0.135004,
+     "bias_model": -0.133127
+    },
+    {
+     "entity": "SBRF→SBGR",
+     "volume": 3072750.0,
+     "rows": 36,
+     "model": 0.119253,
+     "baseline": 0.130421,
+     "bias_model": -0.117242
+    },
+    {
+     "entity": "SBCF→SBGR",
+     "volume": 2631864.0,
+     "rows": 36,
+     "model": 0.1061,
+     "baseline": 0.138422,
+     "bias_model": -0.028938
+    },
+    {
+     "entity": "SBGR→SBCF",
+     "volume": 2611992.0,
+     "rows": 36,
+     "model": 0.110526,
+     "baseline": 0.143756,
+     "bias_model": -0.04921
+    },
+    {
+     "entity": "SBSP→SBSV",
+     "volume": 2603340.0,
+     "rows": 36,
+     "model": 0.154359,
+     "baseline": 0.106152,
+     "bias_model": -0.153195
+    },
+    {
+     "entity": "SBSV→SBSP",
+     "volume": 2586249.0,
+     "rows": 36,
+     "model": 0.163577,
+     "baseline": 0.112857,
+     "bias_model": -0.153743
+    },
+    {
+     "entity": "SBSP→SBFL",
+     "volume": 2452896.0,
+     "rows": 36,
+     "model": 0.227848,
+     "baseline": 0.203941,
+     "bias_model": -0.227848
+    },
+    {
+     "entity": "SBFL→SBSP",
+     "volume": 2415507.0,
+     "rows": 36,
+     "model": 0.213864,
+     "baseline": 0.202774,
+     "bias_model": -0.213864
+    },
+    {
+     "entity": "SBBR→SBRJ",
+     "volume": 2384682.0,
+     "rows": 36,
+     "model": 0.235862,
+     "baseline": 0.247571,
+     "bias_model": -0.012815
+    },
+    {
+     "entity": "SBCT→SBGR",
+     "volume": 2375661.0,
+     "rows": 36,
+     "model": 0.063834,
+     "baseline": 0.075302,
+     "bias_model": -0.024833
+    },
+    {
+     "entity": "SBGR→SBCT",
+     "volume": 2368983.0,
+     "rows": 36,
+     "model": 0.064338,
+     "baseline": 0.079599,
+     "bias_model": -0.026873
+    },
+    {
+     "entity": "SBRJ→SBBR",
+     "volume": 2342865.0,
+     "rows": 36,
+     "model": 0.249742,
+     "baseline": 0.258362,
+     "bias_model": -0.036469
+    },
+    {
+     "entity": "SBBR→SBGR",
+     "volume": 2218383.0,
+     "rows": 36,
+     "model": 0.075925,
+     "baseline": 0.080637,
+     "bias_model": -0.060843
+    }
+   ],
+   "by_market": [
+    {
+     "market": "Domestic",
+     "rows": 26697,
+     "model": 0.219316,
+     "baseline": 0.253138
+    },
+    {
+     "market": "International",
+     "rows": 7065,
+     "model": 0.245869,
+     "baseline": 0.276876
+    }
+   ],
+   "residuals": {
+    "unit": "relative error",
+    "edges": [
+     -1.0,
+     -0.95,
+     -0.9,
+     -0.85,
+     -0.8,
+     -0.75,
+     -0.7,
+     -0.65,
+     -0.6,
+     -0.55,
+     -0.5,
+     -0.45,
+     -0.4,
+     -0.35,
+     -0.3,
+     -0.25,
+     -0.2,
+     -0.15,
+     -0.1,
+     -0.05,
+     0.0,
+     0.05,
+     0.1,
+     0.15,
+     0.2,
+     0.25,
+     0.3,
+     0.35,
+     0.4,
+     0.45,
+     0.5,
+     0.55,
+     0.6,
+     0.65,
+     0.7,
+     0.75,
+     0.8,
+     0.85,
+     0.9,
+     0.95,
+     1.0
+    ],
+    "model": [
+     45,
+     78,
+     127,
+     217,
+     227,
+     287,
+     295,
+     412,
+     514,
+     639,
+     753,
+     898,
+     1070,
+     1324,
+     1760,
+     2038,
+     2497,
+     2695,
+     2657,
+     2490,
+     1984,
+     1421,
+     1116,
+     794,
+     661,
+     490,
+     465,
+     404,
+     314,
+     222,
+     205,
+     153,
+     171,
+     155,
+     111,
+     111,
+     105,
+     104,
+     95,
+     1369
+    ],
+    "baseline": [
+     1751,
+     137,
+     125,
+     134,
+     173,
+     184,
+     207,
+     356,
+     491,
+     531,
+     746,
+     856,
+     787,
+     1036,
+     1420,
+     1749,
+     1777,
+     2040,
+     2131,
+     2301,
+     2778,
+     1283,
+     1079,
+     888,
+     653,
+     598,
+     435,
+     406,
+     391,
+     284,
+     274,
+     261,
+     238,
+     226,
+     214,
+     194,
+     192,
+     153,
+     144,
+     1850
+    ],
+    "rows": 31473,
+    "model_quantiles": {
+     "p10": -0.479,
+     "p50": -0.1023,
+     "p90": 0.3953
+    },
+    "baseline_quantiles": {
+     "p10": -0.5889,
+     "p50": -0.0729,
+     "p90": 0.6136
+    }
+   },
+   "monthly": [
+    {
+     "horizon": 1,
+     "month": "2023-01",
+     "actual": 12438935.0,
+     "model": 10662333.7528,
+     "baseline": 10448361.0,
+     "model_error": 0.193481,
+     "baseline_error": 0.282557
+    },
+    {
+     "horizon": 1,
+     "month": "2023-02",
+     "actual": 10468241.0,
+     "model": 9566279.3871,
+     "baseline": 8318286.0,
+     "model_error": 0.156698,
+     "baseline_error": 0.298105
+    },
+    {
+     "horizon": 1,
+     "month": "2023-03",
+     "actual": 11725738.0,
+     "model": 10419491.4893,
+     "baseline": 9593022.0,
+     "model_error": 0.17808,
+     "baseline_error": 0.302786
+    },
+    {
+     "horizon": 1,
+     "month": "2023-04",
+     "actual": 11110029.0,
+     "model": 10109847.1889,
+     "baseline": 9449059.0,
+     "model_error": 0.200631,
+     "baseline_error": 0.266211
+    },
+    {
+     "horizon": 1,
+     "month": "2023-05",
+     "actual": 11789395.0,
+     "model": 10821991.3112,
+     "baseline": 10234285.0,
+     "model_error": 0.194535,
+     "baseline_error": 0.254703
+    },
+    {
+     "horizon": 1,
+     "month": "2023-06",
+     "actual": 11375622.0,
+     "model": 9803470.4773,
+     "baseline": 9695146.0,
+     "model_error": 0.208753,
+     "baseline_error": 0.254909
+    },
+    {
+     "horizon": 1,
+     "month": "2023-07",
+     "actual": 12542182.0,
+     "model": 10361712.2802,
+     "baseline": 11360990.0,
+     "model_error": 0.224315,
+     "baseline_error": 0.23451
+    },
+    {
+     "horizon": 1,
+     "month": "2023-08",
+     "actual": 12308594.0,
+     "model": 11540875.7714,
+     "baseline": 10917981.0,
+     "model_error": 0.15232,
+     "baseline_error": 0.231925
+    },
+    {
+     "horizon": 1,
+     "month": "2023-09",
+     "actual": 11620372.0,
+     "model": 11238813.7933,
+     "baseline": 10516859.0,
+     "model_error": 0.144854,
+     "baseline_error": 0.229879
+    },
+    {
+     "horizon": 1,
+     "month": "2023-10",
+     "actual": 11693035.0,
+     "model": 11595908.6765,
+     "baseline": 11113076.0,
+     "model_error": 0.155847,
+     "baseline_error": 0.23451
+    },
+    {
+     "horizon": 1,
+     "month": "2023-11",
+     "actual": 11402978.0,
+     "model": 10962927.197,
+     "baseline": 11287334.0,
+     "model_error": 0.200802,
+     "baseline_error": 0.250277
+    },
+    {
+     "horizon": 1,
+     "month": "2023-12",
+     "actual": 12186356.0,
+     "model": 11781904.7455,
+     "baseline": 12138931.0,
+     "model_error": 0.229974,
+     "baseline_error": 0.272291
+    },
+    {
+     "horizon": 3,
+     "month": "2023-01",
+     "actual": 12444896.0,
+     "model": 10335713.3475,
+     "baseline": 10503255.0,
+     "model_error": 0.228311,
+     "baseline_error": 0.283498
+    },
+    {
+     "horizon": 3,
+     "month": "2023-02",
+     "actual": 10444586.0,
+     "model": 9267858.2816,
+     "baseline": 8362100.0,
+     "model_error": 0.194772,
+     "baseline_error": 0.302532
+    },
+    {
+     "horizon": 3,
+     "month": "2023-03",
+     "actual": 11658657.0,
+     "model": 9958045.169,
+     "baseline": 9554985.0,
+     "model_error": 0.21603,
+     "baseline_error": 0.297708
+    },
+    {
+     "horizon": 3,
+     "month": "2023-04",
+     "actual": 11027276.0,
+     "model": 9592888.1557,
+     "baseline": 9411868.0,
+     "model_error": 0.228311,
+     "baseline_error": 0.258154
+    },
+    {
+     "horizon": 3,
+     "month": "2023-05",
+     "actual": 11739842.0,
+     "model": 10306091.3841,
+     "baseline": 10242171.0,
+     "model_error": 0.22187,
+     "baseline_error": 0.252403
+    },
+    {
+     "horizon": 3,
+     "month": "2023-06",
+     "actual": 11326132.0,
+     "model": 9468954.663,
+     "baseline": 9701013.0,
+     "model_error": 0.237781,
+     "baseline_error": 0.252194
+    },
+    {
+     "horizon": 3,
+     "month": "2023-07",
+     "actual": 12462970.0,
+     "model": 9891643.3168,
+     "baseline": 11398416.0,
+     "model_error": 0.263005,
+     "baseline_error": 0.232714
+    },
+    {
+     "horizon": 3,
+     "month": "2023-08",
+     "actual": 12215074.0,
+     "model": 11066026.0516,
+     "baseline": 10960442.0,
+     "model_error": 0.193689,
+     "baseline_error": 0.229474
+    },
+    {
+     "horizon": 3,
+     "month": "2023-09",
+     "actual": 11555131.0,
+     "model": 10910230.5158,
+     "baseline": 10567946.0,
+     "model_error": 0.17512,
+     "baseline_error": 0.229159
+    },
+    {
+     "horizon": 3,
+     "month": "2023-10",
+     "actual": 11680057.0,
+     "model": 11322887.4439,
+     "baseline": 11136982.0,
+     "model_error": 0.178846,
+     "baseline_error": 0.235708
+    },
+    {
+     "horizon": 3,
+     "month": "2023-11",
+     "actual": 11346070.0,
+     "model": 11121845.4327,
+     "baseline": 11282451.0,
+     "model_error": 0.202209,
+     "baseline_error": 0.248697
+    },
+    {
+     "horizon": 3,
+     "month": "2023-12",
+     "actual": 12150078.0,
+     "model": 11999714.8106,
+     "baseline": 12180350.0,
+     "model_error": 0.23308,
+     "baseline_error": 0.274149
+    },
+    {
+     "horizon": 6,
+     "month": "2023-01",
+     "actual": 12346325.0,
+     "model": 9507096.2844,
+     "baseline": 10529998.0,
+     "model_error": 0.296715,
+     "baseline_error": 0.277608
+    },
+    {
+     "horizon": 6,
+     "month": "2023-02",
+     "actual": 10331699.0,
+     "model": 8609624.0583,
+     "baseline": 8347083.0,
+     "model_error": 0.257137,
+     "baseline_error": 0.296844
+    },
+    {
+     "horizon": 6,
+     "month": "2023-03",
+     "actual": 11619847.0,
+     "model": 9471831.5048,
+     "baseline": 9603956.0,
+     "model_error": 0.267929,
+     "baseline_error": 0.300027
+    },
+    {
+     "horizon": 6,
+     "month": "2023-04",
+     "actual": 11000343.0,
+     "model": 9075756.3819,
+     "baseline": 9475077.0,
+     "model_error": 0.279207,
+     "baseline_error": 0.261835
+    },
+    {
+     "horizon": 6,
+     "month": "2023-05",
+     "actual": 11685051.0,
+     "model": 9627575.1475,
+     "baseline": 10269283.0,
+     "model_error": 0.273725,
+     "baseline_error": 0.251186
+    },
+    {
+     "horizon": 6,
+     "month": "2023-06",
+     "actual": 11247504.0,
+     "model": 8640535.4526,
+     "baseline": 9700639.0,
+     "model_error": 0.298275,
+     "baseline_error": 0.248221
+    },
+    {
+     "horizon": 6,
+     "month": "2023-07",
+     "actual": 12357076.0,
+     "model": 8227112.5595,
+     "baseline": 11359704.0,
+     "model_error": 0.378495,
+     "baseline_error": 0.224491
+    },
+    {
+     "horizon": 6,
+     "month": "2023-08",
+     "actual": 12113195.0,
+     "model": 10344046.1993,
+     "baseline": 10972010.0,
+     "model_error": 0.237379,
+     "baseline_error": 0.224164
+    },
+    {
+     "horizon": 6,
+     "month": "2023-09",
+     "actual": 11459526.0,
+     "model": 10191711.1178,
+     "baseline": 10591347.0,
+     "model_error": 0.221414,
+     "baseline_error": 0.225373
+    },
+    {
+     "horizon": 6,
+     "month": "2023-10",
+     "actual": 11597380.0,
+     "model": 10630360.2266,
+     "baseline": 11179092.0,
+     "model_error": 0.220894,
+     "baseline_error": 0.233816
+    },
+    {
+     "horizon": 6,
+     "month": "2023-11",
+     "actual": 11285833.0,
+     "model": 10452178.2495,
+     "baseline": 11361733.0,
+     "model_error": 0.244928,
+     "baseline_error": 0.248766
+    },
+    {
+     "horizon": 6,
+     "month": "2023-12",
+     "actual": 12108996.0,
+     "model": 11533916.248,
+     "baseline": 12250358.0,
+     "model_error": 0.260382,
+     "baseline_error": 0.27602
+    }
+   ],
+   "figures": {
+    "monthly": "figures/d_seats_actual_vs_predicted_monthly.png",
+    "scatter": "figures/d_seats_scatter.png",
+    "residuals": "figures/d_seats_residuals.png",
+    "by_horizon": "figures/d_seats_by_horizon.png",
+    "by_volume": "figures/d_seats_by_volume.png",
+    "by_entity": "figures/d_seats_by_entity.png",
+    "error_by_month": "figures/d_seats_error_by_month.png",
+    "feature_gain": "figures/d_seats_feature_gain.png"
+   }
+  }
+ },
+ "overview_figure": "figures/overview_model_vs_baseline.png",
+ "eda": {
+  "figures": {
+   "market": "figures/eda_monthly_market.png",
+   "concentration": "figures/eda_concentration.png"
+  },
+  "absent_months": [
+   "2015-08",
+   "2016-02",
+   "2018-07",
+   "2020-08"
+  ],
+  "top50_airport_movement_share_2022": 0.9108,
+  "airports_2022": 393,
+  "routes_with_pax_2022": 1971,
+  "paid_passengers_2022": 98610803,
+  "routes_for_80pct_pax_2022": 331,
+  "modules": {
+   "a": {
+    "splits": [
+     {
+      "split": "purged",
+      "rows": 9150,
+      "first_target": "2022-09",
+      "last_target": "2022-12"
+     },
+     {
+      "split": "train",
+      "rows": 356050,
+      "first_target": "2013-01",
+      "last_target": "2022-10"
+     },
+     {
+      "split": "validation",
+      "rows": 36500,
+      "first_target": "2023-01",
+      "last_target": "2023-12"
+     }
+    ],
+    "numeric_features": 20,
+    "categorical_features": 1,
+    "categorical": [
+     "airport"
+    ],
+    "feature_groups": {
+     "cal_": 10,
+     "hist_": 6,
+     "id_": 1,
+     "lag_": 0
+    }
+   },
+   "b": {
+    "splits": [
+     {
+      "split": "purged",
+      "rows": 15591,
+      "first_target": "2022-06",
+      "last_target": "2022-12"
+     },
+     {
+      "split": "train",
+      "rows": 488226,
+      "first_target": "2013-01",
+      "last_target": "2022-10"
+     },
+     {
+      "split": "validation",
+      "rows": 47197,
+      "first_target": "2023-01",
+      "last_target": "2023-12"
+     }
+    ],
+    "numeric_features": 39,
+    "categorical_features": 3,
+    "categorical": [
+     "origin",
+     "destination",
+     "carrier"
+    ],
+    "feature_groups": {
+     "cal_": 6,
+     "hist_": 29,
+     "id_": 2,
+     "lag_": 0
+    }
+   },
+   "d": {
+    "splits": [
+     {
+      "split": "purged",
+      "rows": 11052,
+      "first_target": "2022-06",
+      "last_target": "2022-12"
+     },
+     {
+      "split": "train",
+      "rows": 318149,
+      "first_target": "2013-01",
+      "last_target": "2022-10"
+     },
+     {
+      "split": "validation",
+      "rows": 33762,
+      "first_target": "2023-01",
+      "last_target": "2023-12"
+     }
+    ],
+    "numeric_features": 36,
+    "categorical_features": 2,
+    "categorical": [
+     "origin",
+     "destination"
+    ],
+    "feature_groups": {
+     "cal_": 6,
+     "hist_": 26,
+     "id_": 2,
+     "lag_": 0
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,101 @@
+{
+  "model": "openai/gpt-oss-120b",
+  "provider": "groq",
+  "results": [
+    {
+      "case": 1,
+      "question": "Quantos passageiros pagos o mercado transportou no período mais recente e qual foi a variação?",
+      "tool_calls": [
+        {
+          "name": "get_market_overview",
+          "arguments": {
+            "include_monthly": false
+          }
+        }
+      ],
+      "status": "answered",
+      "answer": "O mercado transportou 131,593,763 passageiros pagos no período de 2025‑01 a 2025‑12 (dataset flights, endpoint /v2/overview).  \nO mercado teve variação de 9.72 % em relação aos 12 meses anteriores.",
+      "sources": [
+        {
+          "endpoint": "/v2/overview",
+          "dataset": "flights",
+          "period": "2025-01 to 2025-12",
+          "unit": "flights and paid passengers as counts; load factor as a ratio from 0 to 1",
+          "generated_at": "2026-11-06T18:02:59+00:00"
+        }
+      ],
+      "caveats": [
+        "The last 12 months published in this dataset. Paid passengers are summed per flight leg, so a passenger staying aboard a multi-leg flight counts once per leg, which runs about 1-2% above ANAC's published totals. Load factor is paid passengers over seats on passenger legs. Absent months: 2015-08, 2016-02, 2018-07, 2020-08."
+      ],
+      "rejected_drafts": [],
+      "problems": []
+    },
+    {
+      "case": 4,
+      "question": "Qual método o módulo A usa e qual o WAPE dele? Isso é uma previsão atual?",
+      "tool_calls": [
+        {
+          "name": "get_model_results",
+          "arguments": {
+            "module": "a"
+          }
+        }
+      ],
+      "status": "answered",
+      "answer": "Módulo A usa o método “Baseline: same weekday, recent 8 weeks” (fonte: endpoint /v2/models, dataset flights, período validation on 2023-01 to 2023-12).  \nMódulo A tem WAPE de 0.1030256582380125, ou 10,30 % (fonte: endpoint /v2/models, dataset flights, período validation on 2023-01 to 2023-12).  \nEsses resultados são de validação de 2023 e não são previsões atuais.",
+      "sources": [
+        {
+          "endpoint": "/v2/models",
+          "dataset": "flights",
+          "period": "validation on 2023-01 to 2023-12",
+          "unit": "WAPE as a ratio (0.10 is 10%); seat-weighted MAE as a ratio (0.06 is 6 points)",
+          "generated_at": "2026-11-06T18:02:59+00:00"
+        }
+      ],
+      "caveats": [
+        "Validation results for 2023, not current forecasts. The final test on 2024-2025 has not been run. No live predictions are available."
+      ],
+      "rejected_drafts": [],
+      "problems": []
+    },
+    {
+      "case": 6,
+      "question": "Quantos passageiros teve a rota BJP para GRU?",
+      "tool_calls": [
+        {
+          "name": "search_routes",
+          "arguments": {
+            "destination": "GRU",
+            "limit": 10,
+            "origin": "BJP"
+          }
+        }
+      ],
+      "status": "no_data",
+      "answer": "Paid passenger count for route BJP‑GRU is not available for the period 2025‑01 to 2025‑12 (dataset flights).",
+      "sources": [
+        {
+          "endpoint": "/v2/routes",
+          "dataset": "flights",
+          "period": "2025-01 to 2025-12",
+          "unit": "passengers: paid passengers per leg, as a count; loadFactor: ratio from 0 to 1",
+          "generated_at": "2026-11-06T18:02:59+00:00"
+        }
+      ],
+      "caveats": [
+        "Only the 200 busiest routes by paid passengers are available, in IATA codes. A route missing here may still exist."
+      ],
+      "rejected_drafts": [
+        {
+          "answer": "Os dados de passageiros pagos para a rota BJP‑GRU não estão disponíveis, pois não consta entre as 200 rotas mais movimentadas no conjunto de dados.",
+          "problems": [
+            "200 does not belong to the entity or metric it is attached to"
+          ]
+        }
+      ],
+      "problems": [
+        "expected mention of 200"
+      ]
+    }
+  ]
+}

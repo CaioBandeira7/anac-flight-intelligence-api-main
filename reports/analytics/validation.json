@@ -1,0 +1,31 @@
+{
+  "status": "passed",
+  "months_compared_with_source": 308,
+  "tolerance_relative": 1e-06,
+  "totals": {
+    "source_rows": 22094201.0,
+    "all_takeoffs": 22074908.0,
+    "all_paid_passengers": 2245041228.0,
+    "paid_cargo_kg": 31297012546.0,
+    "mail_kg": 2793028410.0,
+    "passenger_takeoffs": 21043562.0,
+    "paid_passengers": 2241027975.0,
+    "seats": 3103667644.0,
+    "rpk": 4155111310932.0,
+    "ask": 5375089120017.0
+  },
+  "feature_panel": {
+    "checked": true,
+    "agrees": true,
+    "rows_in_panel": 533247
+  },
+  "tables": {
+    "dim_month": 312,
+    "dim_airport": 1180,
+    "dim_carrier": 317,
+    "fact_route_carrier_month": 678975,
+    "fact_route_month": 405134,
+    "fact_carrier_month": 20384,
+    "fact_airport_month": 67522
+  }
+}

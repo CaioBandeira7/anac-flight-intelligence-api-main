@@ -1,0 +1,5867 @@
+{
+  "status": "passed",
+  "base_commit": "22a120a5aa94c95810580618531864f9d85f99b9",
+  "scope": "saved 2023 selection-model predictions only; frozen final boosters are not used to score 2023",
+  "test_period_read": false,
+  "production_models_refit": false,
+  "corrected_training_requires_new_version": true,
+  "source_sha256": {
+    "data/features/v1/module_a/baseline_predictions_validation.parquet": "964d3d42d3f21a0326dadbac7c442d0d5e947ee5a83d6b55d1b0220fed61f22f",
+    "data/features/v1/module_a/features.parquet": "691dac1a900b4021d5d4c981fa7109a57f293763f5cae32b4dbbe3ec06ea51c5",
+    "data/features/v1/module_a/lightgbm_predictions_validation.parquet": "732617876f2621daf5ab23d195321a99f2269e5ca7ec812d36066acf4dd3a8e5",
+    "data/features/v1/module_a/manifest.json": "3be5f4b3c8d4864caaa56f18bbaf768ef961c3ad35a7a070db7212b5e2a84d32",
+    "data/features/v1/module_a/targets.parquet": "3e1b7a75e43395a14c6096007dc9af6f2384f048e5c800cd8d480acc3b633ffb",
+    "data/features/v1/module_b/baseline_predictions_validation.parquet": "3f489dac811b377ae5f3a55f83db7cd622daa1fa8385c91a8ef85af55719454b",
+    "data/features/v1/module_b/features.parquet": "bfd471423806ad7cd922f199734c2c6b44947d7332c5590ec51b2d75a173651e",
+    "data/features/v1/module_b/lightgbm_predictions_validation.parquet": "fd53653b78810bcbb267850c8f5afc1f07213bbcdfa0d0fc794d365fc006ce87",
+    "data/features/v1/module_b/manifest.json": "614ce2cd4d58eaabcdf4821ca7201b6152c03b4395702d011dca65c66fad052c",
+    "data/features/v1/module_b/targets.parquet": "5adc2e970b81fd2efce7ee06f882ffc6f429681b9f9e84b105a6642233192da3",
+    "data/features/v1/module_d/baseline_predictions_validation.parquet": "33bfb7b512aa836e70c77671c9ca004b2a6551bfd739b48a6488f841c3e99606",
+    "data/features/v1/module_d/features.parquet": "88543feac5009c45c590b7b34378efe1d34220d551068ea6c7c76667b0a388d1",
+    "data/features/v1/module_d/lightgbm_predictions_validation.parquet": "b295db5a4521adf8eda12ca55aa26b41176bcf3010ec6258be3dd9071b3d7e83",
+    "data/features/v1/module_d/manifest.json": "b155f0ce6cd1cd3c8543c9ab092b225256d054785094a106a98b790669b4c736",
+    "data/features/v1/module_d/targets.parquet": "e38de1fdf0e1d6dc32afd69b7c5cda42fffeecccd25b30689c816418a48808a1",
+    "data/features/v1/panels/airport_day.parquet": "1caf44951aeea4ff02d848423ee5fc56d6d4249e5eb97714bf322c848239e9b8",
+    "data/features/v1/panels/manifest.json": "5fbdff9e4a34c18dbc5099308e43f1c8baed0ed39ce4f18cc6d89ec4cb4bf786",
+    "data/features/v1/panels/route_carrier.parquet": "23e0cb0de55b144b24cbde0f79bafc438200f166f0115ece9a55d4f595dbba03",
+    "models/v1/module_a/manifest.json": "3a9f3bb3f819e0eebb6926d0e5b0d2f56bc5c4e52ebfe879103df01a61e0fd6b",
+    "models/v1/module_a/movements.txt": "af024184ec6f0e3929fe4792bd83f8f1cdd4411f7d5d7145544690c11fbfef0c",
+    "models/v1/module_a/movements.vocabulary.json": "f46cd65a6d7ac08dd135f02db16471e44d38df789c7786e354d852600b69a4d0",
+    "models/v1/module_b/load_factor.txt": "a34f7c7251fc3e7c2195d702c79d5793976e49228881725059a34f3de714a87b",
+    "models/v1/module_b/load_factor.vocabulary.json": "f84893866d93af0eb7430fe6c4c20fde2a08967fbfe10ef231a479d28482821f",
+    "models/v1/module_b/manifest.json": "912fb4fab07bace94150261295fe8632295c65f7942a95ff01f83706d73d37f7",
+    "models/v1/module_d/manifest.json": "d13738d187aa7ecd490bc60f804f77a4f0f6dfc4a517bb9d951676072dc50784",
+    "models/v1/module_d/pax.txt": "71ca382bc476a135aa9021a842479ade180da57d676c3b5f31256c7e4632c699",
+    "models/v1/module_d/pax.vocabulary.json": "36dc073b99ba4c556f16db91269ec2d69bc591e4396d6f8ac18901a7a4f09780",
+    "models/v1/module_d/seats.txt": "bca404d52957f83f093d1d32efa25259c24fe5fd0f186a3da11c5377bb90c075",
+    "models/v1/module_d/seats.vocabulary.json": "36dc073b99ba4c556f16db91269ec2d69bc591e4396d6f8ac18901a7a4f09780"
+  },
+  "modules": {
+    "a": {
+      "feature_rows": 401700,
+      "target_rows": 6595436,
+      "splits": [
+        {
+          "split": "purged",
+          "len": 9150
+        },
+        {
+          "split": "train",
+          "len": 356050
+        },
+        {
+          "split": "validation",
+          "len": 36500
+        }
+      ],
+      "unknown_months": [
+        "2015-08",
+        "2016-02",
+        "2018-07",
+        "2020-08"
+      ],
+      "unknown_target_feature_rows": 12200,
+      "corrected_loader_rows": 388700,
+      "features": [
+        {
+          "name": "horizon",
+          "description": "Months from origin to target"
+        },
+        {
+          "name": "distance",
+          "description": "Months from cutoff to target"
+        },
+        {
+          "name": "distance_days",
+          "description": "Days from cutoff to target"
+        },
+        {
+          "name": "cal_day_of_week",
+          "description": "0 is Monday"
+        },
+        {
+          "name": "cal_day_of_month",
+          "description": "Day of the month"
+        },
+        {
+          "name": "cal_month",
+          "description": "Calendar month"
+        },
+        {
+          "name": "cal_week_of_year",
+          "description": "ISO week"
+        },
+        {
+          "name": "cal_is_weekend",
+          "description": "Saturday or Sunday"
+        },
+        {
+          "name": "cal_is_holiday",
+          "description": "National holiday"
+        },
+        {
+          "name": "cal_is_carnival",
+          "description": "Carnival Monday or Tuesday"
+        },
+        {
+          "name": "cal_is_day_before_special",
+          "description": "Day before a holiday or Carnival"
+        },
+        {
+          "name": "cal_is_day_after_special",
+          "description": "Day after a holiday or Carnival"
+        },
+        {
+          "name": "cal_is_school_vacation",
+          "description": "January, July or December"
+        },
+        {
+          "name": "id_rank_24m",
+          "description": "Rank by movements, 24 months to cutoff"
+        },
+        {
+          "name": "hist_lag_364",
+          "description": "Movements 364 days before target (null if unknown)"
+        },
+        {
+          "name": "hist_lag_728",
+          "description": "Movements 728 days before target (null if unknown)"
+        },
+        {
+          "name": "hist_same_dow_mean_8w",
+          "description": "Mean on the target's weekday, 8 weeks to cutoff"
+        },
+        {
+          "name": "hist_level_28",
+          "description": "Mean daily movements, 28 days to cutoff"
+        },
+        {
+          "name": "hist_level_56",
+          "description": "Mean daily movements, 56 days to cutoff"
+        },
+        {
+          "name": "hist_yoy_56",
+          "description": "Last 56 days over the same days a year earlier"
+        },
+        {
+          "name": "airport",
+          "description": "Airport ICAO"
+        }
+      ],
+      "frozen_manifest": {
+        "module": "a",
+        "status": "frozen",
+        "trained_at": "2026-11-06T17:51:39+00:00",
+        "dataset": "flights",
+        "dataset_digest": "14fa41725d655b59",
+        "params_fingerprint": "a70a4733ebdd068c",
+        "params": {
+          "objective": "l1",
+          "metric": "l1",
+          "learning_rate": 0.03,
+          "num_leaves": 31,
+          "min_data_in_leaf": 200,
+          "feature_fraction": 0.8,
+          "bagging_fraction": 0.8,
+          "bagging_freq": 1,
+          "lambda_l2": 5.0,
+          "cat_smooth": 20.0,
+          "min_data_per_group": 200,
+          "max_cat_threshold": 32,
+          "seed": 42,
+          "deterministic": true,
+          "force_col_wise": true,
+          "num_threads": 4,
+          "verbosity": -1
+        },
+        "git": {
+          "commit": "210b039",
+          "tracked_changes": true
+        },
+        "models": {
+          "movements": {
+            "file": "movements.txt",
+            "sha256": "af024184ec6f0e3929fe4792bd83f8f1cdd4411f7d5d7145544690c11fbfef0c",
+            "rows": 379068,
+            "rounds": 98,
+            "numeric": [
+              "horizon",
+              "distance",
+              "distance_days",
+              "cal_day_of_week",
+              "cal_day_of_month",
+              "cal_month",
+              "cal_week_of_year",
+              "cal_is_weekend",
+              "cal_is_holiday",
+              "cal_is_carnival",
+              "cal_is_day_before_special",
+              "cal_is_day_after_special",
+              "cal_is_school_vacation",
+              "id_rank_24m",
+              "hist_lag_364",
+              "hist_lag_728",
+              "hist_same_dow_mean_8w",
+              "hist_level_28",
+              "hist_level_56",
+              "hist_yoy_56"
+            ],
+            "categorical": [
+              "airport"
+            ],
+            "scale": "hist_level_56",
+            "last_target_month_used": "2023-10"
+          }
+        },
+        "test_period_used": false
+      },
+      "source_identity": {
+        "module": "a",
+        "dataset": "flights",
+        "dataset_digest": "14fa41725d655b59",
+        "config": "6b053f861555d17b",
+        "first_target": "2013-01",
+        "last_target": "2023-12"
+      },
+      "fit_target_first": 24156
+    },
+    "b": {
+      "feature_rows": 551014,
+      "target_rows": 490691,
+      "splits": [
+        {
+          "split": "purged",
+          "len": 15591
+        },
+        {
+          "split": "train",
+          "len": 488226
+        },
+        {
+          "split": "validation",
+          "len": 47197
+        }
+      ],
+      "unknown_months": [
+        "2015-08",
+        "2016-02",
+        "2018-07",
+        "2020-08"
+      ],
+      "unknown_target_feature_rows": 18030,
+      "corrected_loader_rows": 458000,
+      "features": [
+        {
+          "name": "horizon",
+          "description": "Months from origin to target"
+        },
+        {
+          "name": "distance",
+          "description": "Months from cutoff to target"
+        },
+        {
+          "name": "cal_month",
+          "description": "Calendar month"
+        },
+        {
+          "name": "cal_days_in_month",
+          "description": "Days in the month"
+        },
+        {
+          "name": "cal_weekend_days",
+          "description": "Saturdays and Sundays"
+        },
+        {
+          "name": "cal_holidays",
+          "description": "National holidays"
+        },
+        {
+          "name": "cal_has_carnival",
+          "description": "Month contains Carnival"
+        },
+        {
+          "name": "cal_is_school_vacation",
+          "description": "January, July or December"
+        },
+        {
+          "name": "id_km",
+          "description": "Median route distance up to cutoff"
+        },
+        {
+          "name": "id_is_international",
+          "description": "Crosses the border"
+        },
+        {
+          "name": "hist_route_lf_3",
+          "description": "Load factor of the route across carriers, 3 months to cutoff"
+        },
+        {
+          "name": "hist_carrier_lf_3",
+          "description": "Load factor of the carrier across routes, 3 months to cutoff"
+        },
+        {
+          "name": "hist_carrier_seat_share_3",
+          "description": "Carrier share of the route's seats, 3 months to cutoff"
+        },
+        {
+          "name": "hist_seats_mean_3",
+          "description": "Mean monthly seats, 3 known months to cutoff"
+        },
+        {
+          "name": "hist_seats_mean_6",
+          "description": "Mean monthly seats, 6 known months to cutoff"
+        },
+        {
+          "name": "hist_seats_mean_12",
+          "description": "Mean monthly seats, 12 known months to cutoff"
+        },
+        {
+          "name": "hist_pax_mean_3",
+          "description": "Mean monthly paid passengers, 3 known months to cutoff"
+        },
+        {
+          "name": "hist_pax_mean_6",
+          "description": "Mean monthly paid passengers, 6 known months to cutoff"
+        },
+        {
+          "name": "hist_pax_mean_12",
+          "description": "Mean monthly paid passengers, 12 known months to cutoff"
+        },
+        {
+          "name": "hist_flights_mean_3",
+          "description": "Mean monthly flights, 3 known months to cutoff"
+        },
+        {
+          "name": "hist_seats_per_flight_3",
+          "description": "Seats per flight, 3 months to cutoff"
+        },
+        {
+          "name": "hist_lf_3",
+          "description": "Seat-weighted paid load factor, 3 months to cutoff"
+        },
+        {
+          "name": "hist_lf_6",
+          "description": "Seat-weighted paid load factor, 6 months to cutoff"
+        },
+        {
+          "name": "hist_lf_12",
+          "description": "Seat-weighted paid load factor, 12 months to cutoff"
+        },
+        {
+          "name": "hist_lf_std_12",
+          "description": "Standard deviation of monthly load factor, 12 months to cutoff"
+        },
+        {
+          "name": "hist_yoy_pax",
+          "description": "Paid passengers, last 3 months over the same months a year earlier"
+        },
+        {
+          "name": "hist_yoy_seats",
+          "description": "Seats, last 3 months over the same months a year earlier"
+        },
+        {
+          "name": "hist_pax_lag_12",
+          "description": "Paid passengers in month T-12 (0 if not flown, null if unknown)"
+        },
+        {
+          "name": "hist_seats_lag_12",
+          "description": "Seats in target month minus 12 (0 if not operated, null if unknown)"
+        },
+        {
+          "name": "hist_lf_lag_12",
+          "description": "Load factor in target month minus 12 (null if not operated or unknown)"
+        },
+        {
+          "name": "hist_pax_lag_24",
+          "description": "Paid passengers in month T-24 (0 if not flown, null if unknown)"
+        },
+        {
+          "name": "hist_seats_lag_24",
+          "description": "Seats in target month minus 24 (0 if not operated, null if unknown)"
+        },
+        {
+          "name": "hist_lf_lag_24",
+          "description": "Load factor in target month minus 24 (null if not operated or unknown)"
+        },
+        {
+          "name": "hist_origin_lf_3",
+          "description": "Load factor of the origin airport, 3 months to cutoff"
+        },
+        {
+          "name": "hist_destination_lf_3",
+          "description": "Load factor of the destination airport, 3 months to cutoff"
+        },
+        {
+          "name": "hist_carriers_on_route_3",
+          "description": "Carriers on the route, 3 months to cutoff"
+        },
+        {
+          "name": "hist_months_observed_12",
+          "description": "Months with flights among the 12 to cutoff"
+        },
+        {
+          "name": "hist_unknown_months_12",
+          "description": "Months with no data at all among the 12 to cutoff"
+        },
+        {
+          "name": "hist_months_since_first",
+          "description": "Months between first flight and cutoff"
+        },
+        {
+          "name": "origin",
+          "description": "Origin ICAO"
+        },
+        {
+          "name": "destination",
+          "description": "Destination ICAO"
+        },
+        {
+          "name": "carrier",
+          "description": "Carrier ICAO"
+        }
+      ],
+      "frozen_manifest": {
+        "module": "b",
+        "status": "frozen",
+        "trained_at": "2026-11-06T17:51:47+00:00",
+        "dataset": "flights",
+        "dataset_digest": "14fa41725d655b59",
+        "params_fingerprint": "a70a4733ebdd068c",
+        "params": {
+          "objective": "l1",
+          "metric": "l1",
+          "learning_rate": 0.03,
+          "num_leaves": 31,
+          "min_data_in_leaf": 200,
+          "feature_fraction": 0.8,
+          "bagging_fraction": 0.8,
+          "bagging_freq": 1,
+          "lambda_l2": 5.0,
+          "cat_smooth": 20.0,
+          "min_data_per_group": 200,
+          "max_cat_threshold": 32,
+          "seed": 42,
+          "deterministic": true,
+          "force_col_wise": true,
+          "num_threads": 4,
+          "verbosity": -1
+        },
+        "git": {
+          "commit": "210b039",
+          "tracked_changes": true
+        },
+        "models": {
+          "load_factor": {
+            "file": "load_factor.txt",
+            "sha256": "a34f7c7251fc3e7c2195d702c79d5793976e49228881725059a34f3de714a87b",
+            "rows": 442733,
+            "rounds": 46,
+            "numeric": [
+              "horizon",
+              "distance",
+              "cal_month",
+              "cal_days_in_month",
+              "cal_weekend_days",
+              "cal_holidays",
+              "cal_has_carnival",
+              "cal_is_school_vacation",
+              "id_km",
+              "id_is_international",
+              "hist_route_lf_3",
+              "hist_carrier_lf_3",
+              "hist_carrier_seat_share_3",
+              "hist_seats_mean_3",
+              "hist_seats_mean_6",
+              "hist_seats_mean_12",
+              "hist_pax_mean_3",
+              "hist_pax_mean_6",
+              "hist_pax_mean_12",
+              "hist_flights_mean_3",
+              "hist_seats_per_flight_3",
+              "hist_lf_3",
+              "hist_lf_6",
+              "hist_lf_12",
+              "hist_lf_std_12",
+              "hist_yoy_pax",
+              "hist_yoy_seats",
+              "hist_pax_lag_12",
+              "hist_seats_lag_12",
+              "hist_lf_lag_12",
+              "hist_pax_lag_24",
+              "hist_seats_lag_24",
+              "hist_lf_lag_24",
+              "hist_origin_lf_3",
+              "hist_destination_lf_3",
+              "hist_carriers_on_route_3",
+              "hist_months_observed_12",
+              "hist_unknown_months_12",
+              "hist_months_since_first"
+            ],
+            "categorical": [
+              "origin",
+              "destination",
+              "carrier"
+            ],
+            "scale": null,
+            "last_target_month_used": "2023-10"
+          }
+        },
+        "test_period_used": false
+      },
+      "source_identity": {
+        "module": "b",
+        "dataset": "flights",
+        "dataset_digest": "14fa41725d655b59",
+        "config": "6b053f861555d17b",
+        "first_target": "2013-01",
+        "last_target": "2023-12"
+      },
+      "fit_target_first": 24156
+    },
+    "d": {
+      "feature_rows": 362963,
+      "target_rows": 306969,
+      "splits": [
+        {
+          "split": "purged",
+          "len": 11052
+        },
+        {
+          "split": "train",
+          "len": 318149
+        },
+        {
+          "split": "validation",
+          "len": 33762
+        }
+      ],
+      "unknown_months": [
+        "2015-08",
+        "2016-02",
+        "2018-07",
+        "2020-08"
+      ],
+      "unknown_target_feature_rows": 11692,
+      "corrected_loader_rows": 351271,
+      "features": [
+        {
+          "name": "horizon",
+          "description": "Months from origin to target"
+        },
+        {
+          "name": "distance",
+          "description": "Months from cutoff to target"
+        },
+        {
+          "name": "cal_month",
+          "description": "Calendar month"
+        },
+        {
+          "name": "cal_days_in_month",
+          "description": "Days in the month"
+        },
+        {
+          "name": "cal_weekend_days",
+          "description": "Saturdays and Sundays"
+        },
+        {
+          "name": "cal_holidays",
+          "description": "National holidays"
+        },
+        {
+          "name": "cal_has_carnival",
+          "description": "Month contains Carnival"
+        },
+        {
+          "name": "cal_is_school_vacation",
+          "description": "January, July or December"
+        },
+        {
+          "name": "id_km",
+          "description": "Median route distance up to cutoff"
+        },
+        {
+          "name": "id_is_international",
+          "description": "Crosses the border"
+        },
+        {
+          "name": "hist_seats_mean_3",
+          "description": "Mean monthly seats, 3 known months to cutoff"
+        },
+        {
+          "name": "hist_seats_mean_6",
+          "description": "Mean monthly seats, 6 known months to cutoff"
+        },
+        {
+          "name": "hist_seats_mean_12",
+          "description": "Mean monthly seats, 12 known months to cutoff"
+        },
+        {
+          "name": "hist_pax_mean_3",
+          "description": "Mean monthly paid passengers, 3 known months to cutoff"
+        },
+        {
+          "name": "hist_pax_mean_6",
+          "description": "Mean monthly paid passengers, 6 known months to cutoff"
+        },
+        {
+          "name": "hist_pax_mean_12",
+          "description": "Mean monthly paid passengers, 12 known months to cutoff"
+        },
+        {
+          "name": "hist_flights_mean_3",
+          "description": "Mean monthly flights, 3 known months to cutoff"
+        },
+        {
+          "name": "hist_seats_per_flight_3",
+          "description": "Seats per flight, 3 months to cutoff"
+        },
+        {
+          "name": "hist_lf_3",
+          "description": "Seat-weighted paid load factor, 3 months to cutoff"
+        },
+        {
+          "name": "hist_lf_6",
+          "description": "Seat-weighted paid load factor, 6 months to cutoff"
+        },
+        {
+          "name": "hist_lf_12",
+          "description": "Seat-weighted paid load factor, 12 months to cutoff"
+        },
+        {
+          "name": "hist_lf_std_12",
+          "description": "Standard deviation of monthly load factor, 12 months to cutoff"
+        },
+        {
+          "name": "hist_yoy_pax",
+          "description": "Paid passengers, last 3 months over the same months a year earlier"
+        },
+        {
+          "name": "hist_yoy_seats",
+          "description": "Seats, last 3 months over the same months a year earlier"
+        },
+        {
+          "name": "hist_pax_lag_12",
+          "description": "Paid passengers in month T-12 (0 if not flown, null if unknown)"
+        },
+        {
+          "name": "hist_seats_lag_12",
+          "description": "Seats in target month minus 12 (0 if not operated, null if unknown)"
+        },
+        {
+          "name": "hist_lf_lag_12",
+          "description": "Load factor in target month minus 12 (null if not operated or unknown)"
+        },
+        {
+          "name": "hist_pax_lag_24",
+          "description": "Paid passengers in month T-24 (0 if not flown, null if unknown)"
+        },
+        {
+          "name": "hist_seats_lag_24",
+          "description": "Seats in target month minus 24 (0 if not operated, null if unknown)"
+        },
+        {
+          "name": "hist_lf_lag_24",
+          "description": "Load factor in target month minus 24 (null if not operated or unknown)"
+        },
+        {
+          "name": "hist_origin_lf_3",
+          "description": "Load factor of the origin airport, 3 months to cutoff"
+        },
+        {
+          "name": "hist_destination_lf_3",
+          "description": "Load factor of the destination airport, 3 months to cutoff"
+        },
+        {
+          "name": "hist_carriers_on_route_3",
+          "description": "Carriers on the route, 3 months to cutoff"
+        },
+        {
+          "name": "hist_months_observed_12",
+          "description": "Months with flights among the 12 to cutoff"
+        },
+        {
+          "name": "hist_unknown_months_12",
+          "description": "Months with no data at all among the 12 to cutoff"
+        },
+        {
+          "name": "hist_months_since_first",
+          "description": "Months between first flight and cutoff"
+        },
+        {
+          "name": "origin",
+          "description": "Origin ICAO"
+        },
+        {
+          "name": "destination",
+          "description": "Destination ICAO"
+        }
+      ],
+      "frozen_manifest": {
+        "module": "d",
+        "status": "frozen",
+        "trained_at": "2026-11-06T17:52:37+00:00",
+        "dataset": "flights",
+        "dataset_digest": "14fa41725d655b59",
+        "params_fingerprint": "a70a4733ebdd068c",
+        "params": {
+          "objective": "l1",
+          "metric": "l1",
+          "learning_rate": 0.03,
+          "num_leaves": 31,
+          "min_data_in_leaf": 200,
+          "feature_fraction": 0.8,
+          "bagging_fraction": 0.8,
+          "bagging_freq": 1,
+          "lambda_l2": 5.0,
+          "cat_smooth": 20.0,
+          "min_data_per_group": 200,
+          "max_cat_threshold": 32,
+          "seed": 42,
+          "deterministic": true,
+          "force_col_wise": true,
+          "num_threads": 4,
+          "verbosity": -1
+        },
+        "git": {
+          "commit": "210b039",
+          "tracked_changes": true
+        },
+        "models": {
+          "pax": {
+            "file": "pax.txt",
+            "sha256": "71ca382bc476a135aa9021a842479ade180da57d676c3b5f31256c7e4632c699",
+            "rows": 350518,
+            "rounds": 395,
+            "numeric": [
+              "horizon",
+              "distance",
+              "cal_month",
+              "cal_days_in_month",
+              "cal_weekend_days",
+              "cal_holidays",
+              "cal_has_carnival",
+              "cal_is_school_vacation",
+              "id_km",
+              "id_is_international",
+              "hist_seats_mean_3",
+              "hist_seats_mean_6",
+              "hist_seats_mean_12",
+              "hist_pax_mean_3",
+              "hist_pax_mean_6",
+              "hist_pax_mean_12",
+              "hist_flights_mean_3",
+              "hist_seats_per_flight_3",
+              "hist_lf_3",
+              "hist_lf_6",
+              "hist_lf_12",
+              "hist_lf_std_12",
+              "hist_yoy_pax",
+              "hist_yoy_seats",
+              "hist_pax_lag_12",
+              "hist_seats_lag_12",
+              "hist_lf_lag_12",
+              "hist_pax_lag_24",
+              "hist_seats_lag_24",
+              "hist_lf_lag_24",
+              "hist_origin_lf_3",
+              "hist_destination_lf_3",
+              "hist_carriers_on_route_3",
+              "hist_months_observed_12",
+              "hist_unknown_months_12",
+              "hist_months_since_first"
+            ],
+            "categorical": [
+              "origin",
+              "destination"
+            ],
+            "scale": "hist_pax_mean_12",
+            "last_target_month_used": "2023-10"
+          },
+          "seats": {
+            "file": "seats.txt",
+            "sha256": "bca404d52957f83f093d1d32efa25259c24fe5fd0f186a3da11c5377bb90c075",
+            "rows": 350614,
+            "rounds": 243,
+            "numeric": [
+              "horizon",
+              "distance",
+              "cal_month",
+              "cal_days_in_month",
+              "cal_weekend_days",
+              "cal_holidays",
+              "cal_has_carnival",
+              "cal_is_school_vacation",
+              "id_km",
+              "id_is_international",
+              "hist_seats_mean_3",
+              "hist_seats_mean_6",
+              "hist_seats_mean_12",
+              "hist_pax_mean_3",
+              "hist_pax_mean_6",
+              "hist_pax_mean_12",
+              "hist_flights_mean_3",
+              "hist_seats_per_flight_3",
+              "hist_lf_3",
+              "hist_lf_6",
+              "hist_lf_12",
+              "hist_lf_std_12",
+              "hist_yoy_pax",
+              "hist_yoy_seats",
+              "hist_pax_lag_12",
+              "hist_seats_lag_12",
+              "hist_lf_lag_12",
+              "hist_pax_lag_24",
+              "hist_seats_lag_24",
+              "hist_lf_lag_24",
+              "hist_origin_lf_3",
+              "hist_destination_lf_3",
+              "hist_carriers_on_route_3",
+              "hist_months_observed_12",
+              "hist_unknown_months_12",
+              "hist_months_since_first"
+            ],
+            "categorical": [
+              "origin",
+              "destination"
+            ],
+            "scale": "hist_seats_mean_12",
+            "last_target_month_used": "2023-10"
+          }
+        },
+        "test_period_used": false
+      },
+      "source_identity": {
+        "module": "d",
+        "dataset": "flights",
+        "dataset_digest": "14fa41725d655b59",
+        "config": "6b053f861555d17b",
+        "first_target": "2013-01",
+        "last_target": "2023-12"
+      },
+      "fit_target_first": 24156
+    }
+  },
+  "tasks": {
+    "a": {
+      "module": "a",
+      "target": "movements",
+      "rows": 36500,
+      "metrics": {
+        "rows": 36500,
+        "metric": "WAPE",
+        "lightgbm": {
+          "value": 0.10095354006630727,
+          "ci95": [
+            0.09153552645630834,
+            0.11097888839532825
+          ],
+          "months": 12
+        },
+        "baselines": {
+          "pred_seasonal_naive": {
+            "value": 0.1600431780286839,
+            "ci95": [
+              0.144298031797103,
+              0.1773545591556727
+            ],
+            "months": 12
+          },
+          "pred_seasonal_trend": {
+            "value": 0.15699105110640207,
+            "ci95": [
+              0.14630325364074814,
+              0.16791027140770168
+            ],
+            "months": 12
+          },
+          "pred_recent_weekday": {
+            "value": 0.1030256582380125,
+            "ci95": [
+              0.09192403686687717,
+              0.11433860149376324
+            ],
+            "months": 12
+          }
+        },
+        "best_baseline": "pred_recent_weekday",
+        "difference_vs_best_baseline": {
+          "value": -0.0020721181717052403,
+          "ci95": [
+            -0.008440248533917142,
+            0.00346761259643621
+          ],
+          "months": 12
+        },
+        "beats_best_baseline": false,
+        "bias": {
+          "value": -0.02005155733107821,
+          "ci95": [
+            -0.03799843817620899,
+            0.0011116316402585492
+          ],
+          "months": 12
+        },
+        "by_horizon": {
+          "1": {
+            "lightgbm": 0.09874214720125202,
+            "best_baseline": "pred_recent_weekday",
+            "best_baseline_value": 0.10091942113827698,
+            "difference": -0.002177273937024944,
+            "ci95": [
+              -0.00963472322878388,
+              0.004565885003076764
+            ]
+          },
+          "3": {
+            "lightgbm": 0.10316512579614683,
+            "best_baseline": "pred_recent_weekday",
+            "best_baseline_value": 0.10513207903145999,
+            "difference": -0.0019669532353131657,
+            "ci95": [
+              -0.008745380943996984,
+              0.004740756594515321
+            ]
+          }
+        }
+      },
+      "selection_fit_rows_recorded": 306068,
+      "stopping_rows_recorded": 27350,
+      "rounds": 98,
+      "legacy_unknown_train_rows": 0,
+      "legacy_unknown_fit_rows": 0,
+      "residual_histogram_rows": 36498,
+      "zero_target_rows": 2,
+      "seat_weighted_signed_error": null,
+      "seat_weighted_bias": null,
+      "seat_weighted_bias_by_horizon": null
+    },
+    "b": {
+      "module": "b",
+      "target": "load_factor",
+      "rows": 42369,
+      "metrics": {
+        "rows": 42369,
+        "metric": "seat-weighted MAE",
+        "lightgbm": {
+          "value": 0.06058022524963082,
+          "ci95": [
+            0.05696962468107372,
+            0.06430929210408846
+          ],
+          "months": 12
+        },
+        "baselines": {
+          "pred_same_month_last_year": {
+            "value": 0.06897145799697646,
+            "ci95": [
+              0.06505608291865328,
+              0.07296726615531801
+            ],
+            "months": 12
+          },
+          "pred_mean_12": {
+            "value": 0.065419953889521,
+            "ci95": [
+              0.06170788325424179,
+              0.06948925886429058
+            ],
+            "months": 12
+          },
+          "pred_mean_3": {
+            "value": 0.07265192382292908,
+            "ci95": [
+              0.06931301270041881,
+              0.07573330463279641
+            ],
+            "months": 12
+          }
+        },
+        "best_baseline": "pred_mean_12",
+        "difference_vs_best_baseline": {
+          "value": -0.004839728639890176,
+          "ci95": [
+            -0.009382302220348096,
+            -0.0004380255218705908
+          ],
+          "months": 12
+        },
+        "beats_best_baseline": true,
+        "bias": {
+          "value": 0.0003880224987605219,
+          "ci95": [
+            -0.009140914357788488,
+            0.010187022496506824
+          ],
+          "months": 12
+        },
+        "by_horizon": {
+          "1": {
+            "lightgbm": 0.059891204342132236,
+            "best_baseline": "pred_mean_12",
+            "best_baseline_value": 0.06329839854672205,
+            "difference": -0.00340719420458983,
+            "ci95": [
+              -0.008325451402749375,
+              0.0015216527863929628
+            ]
+          },
+          "3": {
+            "lightgbm": 0.060917801035934055,
+            "best_baseline": "pred_mean_12",
+            "best_baseline_value": 0.06555343203779894,
+            "difference": -0.004635631001864891,
+            "ci95": [
+              -0.009541636424253229,
+              0.0001650441438935362
+            ]
+          },
+          "6": {
+            "lightgbm": 0.060944029401407744,
+            "best_baseline": "pred_mean_12",
+            "best_baseline_value": 0.06745879866740051,
+            "difference": -0.006514769265992767,
+            "ci95": [
+              -0.010827755084009898,
+              -0.002815190343286603
+            ]
+          }
+        }
+      },
+      "selection_fit_rows_recorded": 366818,
+      "stopping_rows_recorded": 23448,
+      "rounds": 46,
+      "legacy_unknown_train_rows": 0,
+      "legacy_unknown_fit_rows": 0,
+      "residual_histogram_rows": 42369,
+      "zero_target_rows": 14,
+      "seat_weighted_signed_error": -0.0005215167369813692,
+      "seat_weighted_bias": {
+        "value": -0.0005215167369813692,
+        "ci95": [
+          -0.010506319602747683,
+          0.009230852641249914
+        ],
+        "months": 12
+      },
+      "seat_weighted_bias_by_horizon": {
+        "1": -0.0003609636414512955,
+        "3": -0.0004060165001490541,
+        "6": -0.0008031745625882337
+      }
+    },
+    "d_pax": {
+      "module": "d",
+      "target": "pax",
+      "rows": 33762,
+      "metrics": {
+        "rows": 33762,
+        "metric": "WAPE",
+        "lightgbm": {
+          "value": 0.22241908531491802,
+          "ci95": [
+            0.20649943329194362,
+            0.23838779830807752
+          ],
+          "months": 12
+        },
+        "baselines": {
+          "pred_pax_seasonal_naive": {
+            "value": 0.2530850061037174,
+            "ci95": [
+              0.24122907737102553,
+              0.2657536341552741
+            ],
+            "months": 12
+          },
+          "pred_pax_seasonal_trend": {
+            "value": 0.3052313579139144,
+            "ci95": [
+              0.28381859249999025,
+              0.3282279271902566
+            ],
+            "months": 12
+          }
+        },
+        "best_baseline": "pred_pax_seasonal_naive",
+        "difference_vs_best_baseline": {
+          "value": -0.030665920788799397,
+          "ci95": [
+            -0.04972356213527732,
+            -0.010949179894957608
+          ],
+          "months": 12
+        },
+        "beats_best_baseline": true,
+        "bias": {
+          "value": -0.12214797588806191,
+          "ci95": [
+            -0.1554378467251502,
+            -0.08902421506672023
+          ],
+          "months": 12
+        },
+        "by_horizon": {
+          "1": {
+            "lightgbm": 0.18741354177023622,
+            "best_baseline": "pred_pax_seasonal_trend",
+            "best_baseline_value": 0.24074469767728146,
+            "difference": -0.053331155907045236,
+            "ci95": [
+              -0.07058579566684044,
+              -0.03723001096858025
+            ]
+          },
+          "3": {
+            "lightgbm": 0.21311363727440333,
+            "best_baseline": "pred_pax_seasonal_naive",
+            "best_baseline_value": 0.2534808795886597,
+            "difference": -0.040367242314256424,
+            "ci95": [
+              -0.059002732402585176,
+              -0.0208880719184914
+            ]
+          },
+          "6": {
+            "lightgbm": 0.26714948160301233,
+            "best_baseline": "pred_pax_seasonal_naive",
+            "best_baseline_value": 0.25088750060965176,
+            "difference": 0.016261980993360545,
+            "ci95": [
+              -0.006148280271326427,
+              0.04251390293211161
+            ]
+          }
+        }
+      },
+      "selection_fit_rows_recorded": 291026,
+      "stopping_rows_recorded": 18087,
+      "rounds": 395,
+      "legacy_unknown_train_rows": 11689,
+      "legacy_unknown_fit_rows": 11689,
+      "residual_histogram_rows": 31465,
+      "zero_target_rows": 2297,
+      "seat_weighted_signed_error": null,
+      "seat_weighted_bias": null,
+      "seat_weighted_bias_by_horizon": null
+    },
+    "d_seats": {
+      "module": "d",
+      "target": "seats",
+      "rows": 33762,
+      "metrics": {
+        "rows": 33762,
+        "metric": "WAPE",
+        "lightgbm": {
+          "value": 0.22397056064228046,
+          "ci95": [
+            0.20685289167561977,
+            0.24040899606938027
+          ],
+          "months": 12
+        },
+        "baselines": {
+          "pred_seats_seasonal_naive": {
+            "value": 0.257299309532146,
+            "ci95": [
+              0.24391341834008093,
+              0.27162483575071084
+            ],
+            "months": 12
+          },
+          "pred_seats_seasonal_trend": {
+            "value": 0.3256743186245082,
+            "ci95": [
+              0.30499208642986997,
+              0.347221274187862
+            ],
+            "months": 12
+          }
+        },
+        "best_baseline": "pred_seats_seasonal_naive",
+        "difference_vs_best_baseline": {
+          "value": -0.03332874888986558,
+          "ci95": [
+            -0.05317339653152352,
+            -0.011855662449720875
+          ],
+          "months": 12
+        },
+        "beats_best_baseline": true,
+        "bias": {
+          "value": -0.1177659972936543,
+          "ci95": [
+            -0.1528908321155528,
+            -0.08289227246211543
+          ],
+          "months": 12
+        },
+        "by_horizon": {
+          "1": {
+            "lightgbm": 0.18710479087946139,
+            "best_baseline": "pred_seats_seasonal_trend",
+            "best_baseline_value": 0.25717632721428707,
+            "difference": -0.07007153633482571,
+            "ci95": [
+              -0.07986907441613994,
+              -0.05987366558395567
+            ]
+          },
+          "3": {
+            "lightgbm": 0.2148661344313528,
+            "best_baseline": "pred_seats_seasonal_naive",
+            "best_baseline_value": 0.2576361576422333,
+            "difference": -0.04277002321088052,
+            "ci95": [
+              -0.0610888721312659,
+              -0.02399704696003282
+            ]
+          },
+          "6": {
+            "lightgbm": 0.27039921086304863,
+            "best_baseline": "pred_seats_seasonal_naive",
+            "best_baseline_value": 0.2552694834867648,
+            "difference": 0.015129727376283791,
+            "ci95": [
+              -0.009359009924325182,
+              0.046135728745428595
+            ]
+          }
+        }
+      },
+      "selection_fit_rows_recorded": 291104,
+      "stopping_rows_recorded": 18099,
+      "rounds": 243,
+      "legacy_unknown_train_rows": 11692,
+      "legacy_unknown_fit_rows": 11692,
+      "residual_histogram_rows": 31473,
+      "zero_target_rows": 2289,
+      "seat_weighted_signed_error": null,
+      "seat_weighted_bias": null,
+      "seat_weighted_bias_by_horizon": null
+    }
+  },
+  "secondary_pressure": {
+    "threshold_reported": 0.84545093,
+    "brier_independently_recomputed": false,
+    "brier_limitation": "Calibration rates and selection-stage training predictions are not saved; no refit was performed.",
+    "lightgbm": {
+      "average_precision_tie_corrected": 0.6008393126813367,
+      "reported_legacy_pr_auc": 0.6008393126813367,
+      "reported_brier": 0.197712632459003,
+      "rows": 31473
+    },
+    "baseline": {
+      "average_precision_tie_corrected": 0.58905061460486,
+      "reported_legacy_pr_auc": 0.58904433,
+      "reported_brier": 0.18634969,
+      "rows": 31473
+    }
+  },
+  "checks": [
+    {
+      "name": "a.feature_test_rows",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "a.target_month_max_before_test",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "a.split_assignment",
+      "actual": "validated every feature row",
+      "expected": "chronological split_expr with per-row purging",
+      "passed": true
+    },
+    {
+      "name": "a.frozen_test_used",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "name": "a.feature_test_written",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "name": "a.target_stamps",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "a.prediction_join_rows",
+      "actual": 36500,
+      "expected": 36500,
+      "passed": true
+    },
+    {
+      "name": "a.movements.saved_targets",
+      "actual": "checked every saved target",
+      "expected": "exact match to separate target file",
+      "passed": true
+    },
+    {
+      "name": "a.model_hash",
+      "actual": "af024184ec6f0e3929fe4792bd83f8f1cdd4411f7d5d7145544690c11fbfef0c",
+      "expected": "af024184ec6f0e3929fe4792bd83f8f1cdd4411f7d5d7145544690c11fbfef0c",
+      "passed": true
+    },
+    {
+      "name": "a.feature_order",
+      "actual": [
+        "horizon",
+        "distance",
+        "distance_days",
+        "cal_day_of_week",
+        "cal_day_of_month",
+        "cal_month",
+        "cal_week_of_year",
+        "cal_is_weekend",
+        "cal_is_holiday",
+        "cal_is_carnival",
+        "cal_is_day_before_special",
+        "cal_is_day_after_special",
+        "cal_is_school_vacation",
+        "id_rank_24m",
+        "hist_lag_364",
+        "hist_lag_728",
+        "hist_same_dow_mean_8w",
+        "hist_level_28",
+        "hist_level_56",
+        "hist_yoy_56",
+        "airport"
+      ],
+      "expected": [
+        "horizon",
+        "distance",
+        "distance_days",
+        "cal_day_of_week",
+        "cal_day_of_month",
+        "cal_month",
+        "cal_week_of_year",
+        "cal_is_weekend",
+        "cal_is_holiday",
+        "cal_is_carnival",
+        "cal_is_day_before_special",
+        "cal_is_day_after_special",
+        "cal_is_school_vacation",
+        "id_rank_24m",
+        "hist_lag_364",
+        "hist_lag_728",
+        "hist_same_dow_mean_8w",
+        "hist_level_28",
+        "hist_level_56",
+        "hist_yoy_56",
+        "airport"
+      ],
+      "passed": true
+    },
+    {
+      "name": "a.independent_primary",
+      "actual": 0.10095354006630726,
+      "expected": 0.10095354006630726,
+      "passed": true
+    },
+    {
+      "name": "a.rows",
+      "actual": 36500,
+      "expected": 36500,
+      "passed": true
+    },
+    {
+      "name": "a.lightgbm.value",
+      "actual": 0.10095354006630727,
+      "expected": 0.10095354006630726,
+      "passed": true
+    },
+    {
+      "name": "a.lightgbm.ci_lower",
+      "actual": 0.09153552645630834,
+      "expected": 0.09153552645630834,
+      "passed": true
+    },
+    {
+      "name": "a.lightgbm.ci_upper",
+      "actual": 0.11097888839532825,
+      "expected": 0.11097888839532824,
+      "passed": true
+    },
+    {
+      "name": "a.difference_vs_best_baseline.value",
+      "actual": -0.0020721181717052403,
+      "expected": -0.0020721181717052385,
+      "passed": true
+    },
+    {
+      "name": "a.difference_vs_best_baseline.ci_lower",
+      "actual": -0.008440248533917142,
+      "expected": -0.008440248533917137,
+      "passed": true
+    },
+    {
+      "name": "a.difference_vs_best_baseline.ci_upper",
+      "actual": 0.00346761259643621,
+      "expected": 0.003467612596436211,
+      "passed": true
+    },
+    {
+      "name": "a.bias.value",
+      "actual": -0.02005155733107821,
+      "expected": -0.020051557331078215,
+      "passed": true
+    },
+    {
+      "name": "a.bias.ci_lower",
+      "actual": -0.03799843817620899,
+      "expected": -0.03799843817620899,
+      "passed": true
+    },
+    {
+      "name": "a.bias.ci_upper",
+      "actual": 0.0011116316402585492,
+      "expected": 0.0011116316402585472,
+      "passed": true
+    },
+    {
+      "name": "a.baseline_identity",
+      "actual": "pred_recent_weekday",
+      "expected": "pred_recent_weekday",
+      "passed": true
+    },
+    {
+      "name": "a.pred_seasonal_naive",
+      "actual": 0.1600431780286839,
+      "expected": 0.1600431780286839,
+      "passed": true
+    },
+    {
+      "name": "a.pred_seasonal_trend",
+      "actual": 0.15699105110640207,
+      "expected": 0.15699105110640205,
+      "passed": true
+    },
+    {
+      "name": "a.pred_recent_weekday",
+      "actual": 0.1030256582380125,
+      "expected": 0.1030256582380125,
+      "passed": true
+    },
+    {
+      "name": "a.h1.lightgbm",
+      "actual": 0.09874214720125202,
+      "expected": 0.09874214720125202,
+      "passed": true
+    },
+    {
+      "name": "a.h1.best_baseline_value",
+      "actual": 0.10091942113827698,
+      "expected": 0.10091942113827698,
+      "passed": true
+    },
+    {
+      "name": "a.h1.difference",
+      "actual": -0.002177273937024944,
+      "expected": -0.0021772739370249437,
+      "passed": true
+    },
+    {
+      "name": "a.h1.ci0",
+      "actual": -0.00963472322878388,
+      "expected": -0.009634723228783879,
+      "passed": true
+    },
+    {
+      "name": "a.h1.ci1",
+      "actual": 0.004565885003076764,
+      "expected": 0.004565885003076764,
+      "passed": true
+    },
+    {
+      "name": "a.h3.lightgbm",
+      "actual": 0.10316512579614683,
+      "expected": 0.10316512579614683,
+      "passed": true
+    },
+    {
+      "name": "a.h3.best_baseline_value",
+      "actual": 0.10513207903145999,
+      "expected": 0.10513207903145999,
+      "passed": true
+    },
+    {
+      "name": "a.h3.difference",
+      "actual": -0.0019669532353131657,
+      "expected": -0.0019669532353131644,
+      "passed": true
+    },
+    {
+      "name": "a.h3.ci0",
+      "actual": -0.008745380943996984,
+      "expected": -0.008745380943996984,
+      "passed": true
+    },
+    {
+      "name": "a.h3.ci1",
+      "actual": 0.004740756594515321,
+      "expected": 0.004740756594515326,
+      "passed": true
+    },
+    {
+      "name": "a.ui_primary",
+      "actual": 0.10095354006630726,
+      "expected": 0.10095354006630726,
+      "passed": true
+    },
+    {
+      "name": "a.ui_adoption",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "name": "a.ui_scatter_max",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "a.ui_months",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "a.monthly.1.2023-01.actual",
+      "actual": 151075.0,
+      "expected": 151075.0,
+      "passed": true
+    },
+    {
+      "name": "a.monthly.1.2023-01.model",
+      "actual": 140947.7653,
+      "expected": 140947.7653,
+      "passed": true
+    },
+    {
+      "name": "a.monthly.1.2023-01.baseline",
+      "actual": 134275.875,
+      "expected": 134275.875,
+      "passed": true
+    },
+    {
+      "name": "a.monthly.1.2023-02.actual",
+      "actual": 125966.0,
+      "expected": 125966.0,
+      "passed": true
+    },
+    {
+      "name": "a.monthly.1.2023-02.model",
+      "actual": 124898.9902,
+      "expected": 124898.9902,
+      "passed": true
+    },
+    {
+      "name": "a.monthly.1.2023-02.baseline",
+      "actual": 124348.5,
+      "expected": 124348.5,
+      "passed": true
+    },
+    {
+      "name": "a.monthly.1.2023-03.actual",
+      "actual": 141324.0,
+      "expected": 141324.0,
+      "passed": true
+    },
+    {
+      "name": "a.monthly.1.2023-03.model",
+      "actual": 139394.6618,
+      "expected": 139394.6618,
+      "passed": true
+    },
+    {
+      "name": "a.monthly.1.2023-03.baseline",
+      "actual": 144857.5,
+      "expected": 144857.5,
+      "passed": true
+    },
+    {
+      "name": "a.monthly.1.2023-04.actual",
+      "actual": 133320.0,
+      "expected": 133320.0,
+      "passed": true
+    },
+    {
+      "name": "a.monthly.1.2023-04.model",
+      "actual": 131648.3,
+      "expected": 131648.3,
+      "passed": true
+    },
+    {
+      "name": "a.monthly.1.2023-04.baseline",
+      "actual": 143382.875,
+      "expected": 143382.875,
+      "passed": true
+    },
+    {
+      "name": "a.monthly.1.2023-05.actual",
+      "actual": 142007.0,
+      "expected": 142007.0,
+      "passed": true
+    },
+    {
+      "name": "a.monthly.1.2023-05.model",
+      "actual": 135555.925,
+      "expected": 135555.925,
+      "passed": true
+    },
+    {
+      "name": "a.monthly.1.2023-05.baseline",
+      "actual": 146204.75,
+      "expected": 146204.75,
+      "passed": true
+    },
+    {
+      "name": "a.monthly.1.2023-06.actual",
+      "actual": 136217.0,
+      "expected": 136217.0,
+      "passed": true
+    },
+    {
+      "name": "a.monthly.1.2023-06.model",
+      "actual": 128185.3969,
+      "expected": 128185.3969,
+      "passed": true
+    },
+    {
+      "name": "a.monthly.1.2023-06.baseline",
+      "actual": 135967.0,
+      "expected": 135967.0,
+      "passed": true
+    },
+    {
+      "name": "a.monthly.1.2023-07.actual",
+      "actual": 150573.0,
+      "expected": 150573.0,
+      "passed": true
+    },
+    {
+      "name": "a.monthly.1.2023-07.model",
+      "actual": 140695.0079,
+      "expected": 140695.0079,
+      "passed": true
+    },
+    {
+      "name": "a.monthly.1.2023-07.baseline",
+      "actual": 138671.5,
+      "expected": 138671.5,
+      "passed": true
+    },
+    {
+      "name": "a.monthly.1.2023-08.actual",
+      "actual": 146966.0,
+      "expected": 146966.0,
+      "passed": true
+    },
+    {
+      "name": "a.monthly.1.2023-08.model",
+      "actual": 141877.8251,
+      "expected": 141877.8251,
+      "passed": true
+    },
+    {
+      "name": "a.monthly.1.2023-08.baseline",
+      "actual": 140694.25,
+      "expected": 140694.25,
+      "passed": true
+    },
+    {
+      "name": "a.monthly.1.2023-09.actual",
+      "actual": 138229.0,
+      "expected": 138229.0,
+      "passed": true
+    },
+    {
+      "name": "a.monthly.1.2023-09.model",
+      "actual": 137180.2115,
+      "expected": 137180.2115,
+      "passed": true
+    },
+    {
+      "name": "a.monthly.1.2023-09.baseline",
+      "actual": 135925.25,
+      "expected": 135925.25,
+      "passed": true
+    },
+    {
+      "name": "a.monthly.1.2023-10.actual",
+      "actual": 139314.0,
+      "expected": 139314.0,
+      "passed": true
+    },
+    {
+      "name": "a.monthly.1.2023-10.model",
+      "actual": 147147.5266,
+      "expected": 147147.5266,
+      "passed": true
+    },
+    {
+      "name": "a.monthly.1.2023-10.baseline",
+      "actual": 146305.625,
+      "expected": 146305.625,
+      "passed": true
+    },
+    {
+      "name": "a.monthly.1.2023-11.actual",
+      "actual": 135825.0,
+      "expected": 135825.0,
+      "passed": true
+    },
+    {
+      "name": "a.monthly.1.2023-11.model",
+      "actual": 145266.6679,
+      "expected": 145266.6679,
+      "passed": true
+    },
+    {
+      "name": "a.monthly.1.2023-11.baseline",
+      "actual": 144241.625,
+      "expected": 144241.625,
+      "passed": true
+    },
+    {
+      "name": "a.monthly.1.2023-12.actual",
+      "actual": 144837.0,
+      "expected": 144837.0,
+      "passed": true
+    },
+    {
+      "name": "a.monthly.1.2023-12.model",
+      "actual": 149181.0602,
+      "expected": 149181.0602,
+      "passed": true
+    },
+    {
+      "name": "a.monthly.1.2023-12.baseline",
+      "actual": 143925.125,
+      "expected": 143925.125,
+      "passed": true
+    },
+    {
+      "name": "a.monthly.3.2023-01.actual",
+      "actual": 151075.0,
+      "expected": 151075.0,
+      "passed": true
+    },
+    {
+      "name": "a.monthly.3.2023-01.model",
+      "actual": 143147.9757,
+      "expected": 143147.9757,
+      "passed": true
+    },
+    {
+      "name": "a.monthly.3.2023-01.baseline",
+      "actual": 136380.25,
+      "expected": 136380.25,
+      "passed": true
+    },
+    {
+      "name": "a.monthly.3.2023-02.actual",
+      "actual": 125966.0,
+      "expected": 125966.0,
+      "passed": true
+    },
+    {
+      "name": "a.monthly.3.2023-02.model",
+      "actual": 120223.8408,
+      "expected": 120223.8408,
+      "passed": true
+    },
+    {
+      "name": "a.monthly.3.2023-02.baseline",
+      "actual": 119670.5,
+      "expected": 119670.5,
+      "passed": true
+    },
+    {
+      "name": "a.monthly.3.2023-03.actual",
+      "actual": 141324.0,
+      "expected": 141324.0,
+      "passed": true
+    },
+    {
+      "name": "a.monthly.3.2023-03.model",
+      "actual": 130857.2803,
+      "expected": 130857.2803,
+      "passed": true
+    },
+    {
+      "name": "a.monthly.3.2023-03.baseline",
+      "actual": 134690.25,
+      "expected": 134690.25,
+      "passed": true
+    },
+    {
+      "name": "a.monthly.3.2023-04.actual",
+      "actual": 133309.0,
+      "expected": 133309.0,
+      "passed": true
+    },
+    {
+      "name": "a.monthly.3.2023-04.model",
+      "actual": 123692.6474,
+      "expected": 123692.6474,
+      "passed": true
+    },
+    {
+      "name": "a.monthly.3.2023-04.baseline",
+      "actual": 132324.375,
+      "expected": 132324.375,
+      "passed": true
+    },
+    {
+      "name": "a.monthly.3.2023-05.actual",
+      "actual": 141986.0,
+      "expected": 141986.0,
+      "passed": true
+    },
+    {
+      "name": "a.monthly.3.2023-05.model",
+      "actual": 134083.3233,
+      "expected": 134083.3233,
+      "passed": true
+    },
+    {
+      "name": "a.monthly.3.2023-05.baseline",
+      "actual": 144443.75,
+      "expected": 144443.75,
+      "passed": true
+    },
+    {
+      "name": "a.monthly.3.2023-06.actual",
+      "actual": 136217.0,
+      "expected": 136217.0,
+      "passed": true
+    },
+    {
+      "name": "a.monthly.3.2023-06.model",
+      "actual": 134657.3159,
+      "expected": 134657.3159,
+      "passed": true
+    },
+    {
+      "name": "a.monthly.3.2023-06.baseline",
+      "actual": 145000.125,
+      "expected": 145000.125,
+      "passed": true
+    },
+    {
+      "name": "a.monthly.3.2023-07.actual",
+      "actual": 150573.0,
+      "expected": 150573.0,
+      "passed": true
+    },
+    {
+      "name": "a.monthly.3.2023-07.model",
+      "actual": 145747.7082,
+      "expected": 145747.7082,
+      "passed": true
+    },
+    {
+      "name": "a.monthly.3.2023-07.baseline",
+      "actual": 145119.5,
+      "expected": 145119.5,
+      "passed": true
+    },
+    {
+      "name": "a.monthly.3.2023-08.actual",
+      "actual": 146966.0,
+      "expected": 146966.0,
+      "passed": true
+    },
+    {
+      "name": "a.monthly.3.2023-08.model",
+      "actual": 144571.0503,
+      "expected": 144571.0503,
+      "passed": true
+    },
+    {
+      "name": "a.monthly.3.2023-08.baseline",
+      "actual": 140388.25,
+      "expected": 140388.25,
+      "passed": true
+    },
+    {
+      "name": "a.monthly.3.2023-09.actual",
+      "actual": 138229.0,
+      "expected": 138229.0,
+      "passed": true
+    },
+    {
+      "name": "a.monthly.3.2023-09.model",
+      "actual": 136602.0636,
+      "expected": 136602.0636,
+      "passed": true
+    },
+    {
+      "name": "a.monthly.3.2023-09.baseline",
+      "actual": 134513.0,
+      "expected": 134513.0,
+      "passed": true
+    },
+    {
+      "name": "a.monthly.3.2023-10.actual",
+      "actual": 139314.0,
+      "expected": 139314.0,
+      "passed": true
+    },
+    {
+      "name": "a.monthly.3.2023-10.model",
+      "actual": 141266.3283,
+      "expected": 141266.3283,
+      "passed": true
+    },
+    {
+      "name": "a.monthly.3.2023-10.baseline",
+      "actual": 139873.5,
+      "expected": 139873.5,
+      "passed": true
+    },
+    {
+      "name": "a.monthly.3.2023-11.actual",
+      "actual": 135825.0,
+      "expected": 135825.0,
+      "passed": true
+    },
+    {
+      "name": "a.monthly.3.2023-11.model",
+      "actual": 137773.1486,
+      "expected": 137773.1486,
+      "passed": true
+    },
+    {
+      "name": "a.monthly.3.2023-11.baseline",
+      "actual": 136714.625,
+      "expected": 136714.625,
+      "passed": true
+    },
+    {
+      "name": "a.monthly.3.2023-12.actual",
+      "actual": 144722.0,
+      "expected": 144722.0,
+      "passed": true
+    },
+    {
+      "name": "a.monthly.3.2023-12.model",
+      "actual": 148959.9913,
+      "expected": 148959.9913,
+      "passed": true
+    },
+    {
+      "name": "a.monthly.3.2023-12.baseline",
+      "actual": 145508.875,
+      "expected": 145508.875,
+      "passed": true
+    },
+    {
+      "name": "a.ui_gain_source",
+      "actual": {
+        "cal_day_of_week": 0.3075,
+        "airport": 0.1779,
+        "cal_week_of_year": 0.0916,
+        "cal_is_weekend": 0.0686,
+        "cal_month": 0.067,
+        "hist_level_28": 0.0431,
+        "hist_yoy_56": 0.0414,
+        "hist_level_56": 0.0385,
+        "hist_lag_364": 0.0382,
+        "cal_is_school_vacation": 0.0336
+      },
+      "expected": {
+        "cal_day_of_week": 0.3075,
+        "airport": 0.1779,
+        "cal_week_of_year": 0.0916,
+        "cal_is_weekend": 0.0686,
+        "cal_month": 0.067,
+        "hist_level_28": 0.0431,
+        "hist_yoy_56": 0.0414,
+        "hist_level_56": 0.0385,
+        "hist_lag_364": 0.0382,
+        "cal_is_school_vacation": 0.0336
+      },
+      "passed": true
+    },
+    {
+      "name": "a.histogram.model",
+      "actual": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        4,
+        8,
+        43,
+        91,
+        205,
+        464,
+        790,
+        1295,
+        1694,
+        2437,
+        3804,
+        4793,
+        5440,
+        4529,
+        3222,
+        2181,
+        1437,
+        1084,
+        730,
+        512,
+        417,
+        289,
+        207,
+        166,
+        100,
+        93,
+        97,
+        63,
+        52,
+        23,
+        23,
+        17,
+        188
+      ],
+      "expected": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        4,
+        8,
+        43,
+        91,
+        205,
+        464,
+        790,
+        1295,
+        1694,
+        2437,
+        3804,
+        4793,
+        5440,
+        4529,
+        3222,
+        2181,
+        1437,
+        1084,
+        730,
+        512,
+        417,
+        289,
+        207,
+        166,
+        100,
+        93,
+        97,
+        63,
+        52,
+        23,
+        23,
+        17,
+        188
+      ],
+      "passed": true
+    },
+    {
+      "name": "a.residual.model.p10",
+      "actual": -0.2261,
+      "expected": -0.2261,
+      "passed": true
+    },
+    {
+      "name": "a.residual.model.p50",
+      "actual": -0.0257,
+      "expected": -0.0257,
+      "passed": true
+    },
+    {
+      "name": "a.residual.model.p90",
+      "actual": 0.2172,
+      "expected": 0.2172,
+      "passed": true
+    },
+    {
+      "name": "a.histogram.baseline",
+      "actual": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        4,
+        18,
+        36,
+        108,
+        238,
+        393,
+        700,
+        921,
+        1568,
+        2104,
+        3396,
+        4817,
+        5067,
+        4771,
+        3324,
+        2216,
+        1633,
+        1234,
+        974,
+        731,
+        455,
+        387,
+        254,
+        242,
+        142,
+        128,
+        92,
+        70,
+        100,
+        64,
+        39,
+        28,
+        242
+      ],
+      "expected": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        4,
+        18,
+        36,
+        108,
+        238,
+        393,
+        700,
+        921,
+        1568,
+        2104,
+        3396,
+        4817,
+        5067,
+        4771,
+        3324,
+        2216,
+        1633,
+        1234,
+        974,
+        731,
+        455,
+        387,
+        254,
+        242,
+        142,
+        128,
+        92,
+        70,
+        100,
+        64,
+        39,
+        28,
+        242
+      ],
+      "passed": true
+    },
+    {
+      "name": "a.residual.baseline.p10",
+      "actual": -0.2083,
+      "expected": -0.2083,
+      "passed": true
+    },
+    {
+      "name": "a.residual.baseline.p50",
+      "actual": -0.0125,
+      "expected": -0.0125,
+      "passed": true
+    },
+    {
+      "name": "a.residual.baseline.p90",
+      "actual": 0.2611,
+      "expected": 0.2611,
+      "passed": true
+    },
+    {
+      "name": "b.feature_test_rows",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "b.target_month_max_before_test",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "b.split_assignment",
+      "actual": "validated every feature row",
+      "expected": "chronological split_expr with per-row purging",
+      "passed": true
+    },
+    {
+      "name": "b.frozen_test_used",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "name": "b.feature_test_written",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "name": "b.target_stamps",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "b.prediction_join_rows",
+      "actual": 42369,
+      "expected": 42369,
+      "passed": true
+    },
+    {
+      "name": "b.load_factor.saved_targets",
+      "actual": "checked every saved target",
+      "expected": "exact match to separate target file",
+      "passed": true
+    },
+    {
+      "name": "b.model_hash",
+      "actual": "a34f7c7251fc3e7c2195d702c79d5793976e49228881725059a34f3de714a87b",
+      "expected": "a34f7c7251fc3e7c2195d702c79d5793976e49228881725059a34f3de714a87b",
+      "passed": true
+    },
+    {
+      "name": "b.feature_order",
+      "actual": [
+        "horizon",
+        "distance",
+        "cal_month",
+        "cal_days_in_month",
+        "cal_weekend_days",
+        "cal_holidays",
+        "cal_has_carnival",
+        "cal_is_school_vacation",
+        "id_km",
+        "id_is_international",
+        "hist_route_lf_3",
+        "hist_carrier_lf_3",
+        "hist_carrier_seat_share_3",
+        "hist_seats_mean_3",
+        "hist_seats_mean_6",
+        "hist_seats_mean_12",
+        "hist_pax_mean_3",
+        "hist_pax_mean_6",
+        "hist_pax_mean_12",
+        "hist_flights_mean_3",
+        "hist_seats_per_flight_3",
+        "hist_lf_3",
+        "hist_lf_6",
+        "hist_lf_12",
+        "hist_lf_std_12",
+        "hist_yoy_pax",
+        "hist_yoy_seats",
+        "hist_pax_lag_12",
+        "hist_seats_lag_12",
+        "hist_lf_lag_12",
+        "hist_pax_lag_24",
+        "hist_seats_lag_24",
+        "hist_lf_lag_24",
+        "hist_origin_lf_3",
+        "hist_destination_lf_3",
+        "hist_carriers_on_route_3",
+        "hist_months_observed_12",
+        "hist_unknown_months_12",
+        "hist_months_since_first",
+        "origin",
+        "destination",
+        "carrier"
+      ],
+      "expected": [
+        "horizon",
+        "distance",
+        "cal_month",
+        "cal_days_in_month",
+        "cal_weekend_days",
+        "cal_holidays",
+        "cal_has_carnival",
+        "cal_is_school_vacation",
+        "id_km",
+        "id_is_international",
+        "hist_route_lf_3",
+        "hist_carrier_lf_3",
+        "hist_carrier_seat_share_3",
+        "hist_seats_mean_3",
+        "hist_seats_mean_6",
+        "hist_seats_mean_12",
+        "hist_pax_mean_3",
+        "hist_pax_mean_6",
+        "hist_pax_mean_12",
+        "hist_flights_mean_3",
+        "hist_seats_per_flight_3",
+        "hist_lf_3",
+        "hist_lf_6",
+        "hist_lf_12",
+        "hist_lf_std_12",
+        "hist_yoy_pax",
+        "hist_yoy_seats",
+        "hist_pax_lag_12",
+        "hist_seats_lag_12",
+        "hist_lf_lag_12",
+        "hist_pax_lag_24",
+        "hist_seats_lag_24",
+        "hist_lf_lag_24",
+        "hist_origin_lf_3",
+        "hist_destination_lf_3",
+        "hist_carriers_on_route_3",
+        "hist_months_observed_12",
+        "hist_unknown_months_12",
+        "hist_months_since_first",
+        "origin",
+        "destination",
+        "carrier"
+      ],
+      "passed": true
+    },
+    {
+      "name": "b.independent_primary",
+      "actual": 0.06058022524963082,
+      "expected": 0.06058022524963083,
+      "passed": true
+    },
+    {
+      "name": "b.rows",
+      "actual": 42369,
+      "expected": 42369,
+      "passed": true
+    },
+    {
+      "name": "b.lightgbm.value",
+      "actual": 0.06058022524963082,
+      "expected": 0.06058022524963083,
+      "passed": true
+    },
+    {
+      "name": "b.lightgbm.ci_lower",
+      "actual": 0.05696962468107372,
+      "expected": 0.05696962468107372,
+      "passed": true
+    },
+    {
+      "name": "b.lightgbm.ci_upper",
+      "actual": 0.06430929210408846,
+      "expected": 0.06430929210408848,
+      "passed": true
+    },
+    {
+      "name": "b.difference_vs_best_baseline.value",
+      "actual": -0.004839728639890176,
+      "expected": -0.004839728639890175,
+      "passed": true
+    },
+    {
+      "name": "b.difference_vs_best_baseline.ci_lower",
+      "actual": -0.009382302220348096,
+      "expected": -0.009382302220348094,
+      "passed": true
+    },
+    {
+      "name": "b.difference_vs_best_baseline.ci_upper",
+      "actual": -0.0004380255218705908,
+      "expected": -0.000438025521870591,
+      "passed": true
+    },
+    {
+      "name": "b.bias.value",
+      "actual": 0.0003880224987605219,
+      "expected": 0.0003880224987605245,
+      "passed": true
+    },
+    {
+      "name": "b.bias.ci_lower",
+      "actual": -0.009140914357788488,
+      "expected": -0.009140914357788486,
+      "passed": true
+    },
+    {
+      "name": "b.bias.ci_upper",
+      "actual": 0.010187022496506824,
+      "expected": 0.010187022496506826,
+      "passed": true
+    },
+    {
+      "name": "b.baseline_identity",
+      "actual": "pred_mean_12",
+      "expected": "pred_mean_12",
+      "passed": true
+    },
+    {
+      "name": "b.pred_same_month_last_year",
+      "actual": 0.06897145799697646,
+      "expected": 0.06897145799697646,
+      "passed": true
+    },
+    {
+      "name": "b.pred_mean_12",
+      "actual": 0.065419953889521,
+      "expected": 0.065419953889521,
+      "passed": true
+    },
+    {
+      "name": "b.pred_mean_3",
+      "actual": 0.07265192382292908,
+      "expected": 0.07265192382292908,
+      "passed": true
+    },
+    {
+      "name": "b.h1.lightgbm",
+      "actual": 0.059891204342132236,
+      "expected": 0.059891204342132236,
+      "passed": true
+    },
+    {
+      "name": "b.h1.best_baseline_value",
+      "actual": 0.06329839854672205,
+      "expected": 0.06329839854672205,
+      "passed": true
+    },
+    {
+      "name": "b.h1.difference",
+      "actual": -0.00340719420458983,
+      "expected": -0.003407194204589829,
+      "passed": true
+    },
+    {
+      "name": "b.h1.ci0",
+      "actual": -0.008325451402749375,
+      "expected": -0.008325451402749373,
+      "passed": true
+    },
+    {
+      "name": "b.h1.ci1",
+      "actual": 0.0015216527863929628,
+      "expected": 0.0015216527863929634,
+      "passed": true
+    },
+    {
+      "name": "b.h3.lightgbm",
+      "actual": 0.060917801035934055,
+      "expected": 0.060917801035934055,
+      "passed": true
+    },
+    {
+      "name": "b.h3.best_baseline_value",
+      "actual": 0.06555343203779894,
+      "expected": 0.06555343203779894,
+      "passed": true
+    },
+    {
+      "name": "b.h3.difference",
+      "actual": -0.004635631001864891,
+      "expected": -0.004635631001864892,
+      "passed": true
+    },
+    {
+      "name": "b.h3.ci0",
+      "actual": -0.009541636424253229,
+      "expected": -0.00954163642425323,
+      "passed": true
+    },
+    {
+      "name": "b.h3.ci1",
+      "actual": 0.0001650441438935362,
+      "expected": 0.00016504414389353734,
+      "passed": true
+    },
+    {
+      "name": "b.h6.lightgbm",
+      "actual": 0.060944029401407744,
+      "expected": 0.060944029401407744,
+      "passed": true
+    },
+    {
+      "name": "b.h6.best_baseline_value",
+      "actual": 0.06745879866740051,
+      "expected": 0.06745879866740051,
+      "passed": true
+    },
+    {
+      "name": "b.h6.difference",
+      "actual": -0.006514769265992767,
+      "expected": -0.006514769265992766,
+      "passed": true
+    },
+    {
+      "name": "b.h6.ci0",
+      "actual": -0.010827755084009898,
+      "expected": -0.010827755084009896,
+      "passed": true
+    },
+    {
+      "name": "b.h6.ci1",
+      "actual": -0.002815190343286603,
+      "expected": -0.0028151903432866027,
+      "passed": true
+    },
+    {
+      "name": "b.ui_primary",
+      "actual": 0.06058022524963083,
+      "expected": 0.06058022524963082,
+      "passed": true
+    },
+    {
+      "name": "b.ui_adoption",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "b.ui_scatter_max",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "b.ui_months",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.1.2023-01.actual",
+      "actual": 0.8011,
+      "expected": 0.8011,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.1.2023-01.model",
+      "actual": 0.8067,
+      "expected": 0.8067,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.1.2023-01.baseline",
+      "actual": 0.7894,
+      "expected": 0.7894,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.1.2023-02.actual",
+      "actual": 0.774,
+      "expected": 0.774,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.1.2023-02.model",
+      "actual": 0.7907,
+      "expected": 0.7907,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.1.2023-02.baseline",
+      "actual": 0.7858,
+      "expected": 0.7858,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.1.2023-03.actual",
+      "actual": 0.7717,
+      "expected": 0.7717,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.1.2023-03.model",
+      "actual": 0.7855,
+      "expected": 0.7855,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.1.2023-03.baseline",
+      "actual": 0.7786,
+      "expected": 0.7786,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.1.2023-04.actual",
+      "actual": 0.7665,
+      "expected": 0.7665,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.1.2023-04.model",
+      "actual": 0.79,
+      "expected": 0.79,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.1.2023-04.baseline",
+      "actual": 0.7794,
+      "expected": 0.7794,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.1.2023-05.actual",
+      "actual": 0.7574,
+      "expected": 0.7574,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.1.2023-05.model",
+      "actual": 0.7858,
+      "expected": 0.7858,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.1.2023-05.baseline",
+      "actual": 0.7794,
+      "expected": 0.7794,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.1.2023-06.actual",
+      "actual": 0.7756,
+      "expected": 0.7756,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.1.2023-06.model",
+      "actual": 0.7847,
+      "expected": 0.7847,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.1.2023-06.baseline",
+      "actual": 0.7776,
+      "expected": 0.7776,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.1.2023-07.actual",
+      "actual": 0.8197,
+      "expected": 0.8197,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.1.2023-07.model",
+      "actual": 0.8041,
+      "expected": 0.8041,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.1.2023-07.baseline",
+      "actual": 0.7767,
+      "expected": 0.7767,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.1.2023-08.actual",
+      "actual": 0.8179,
+      "expected": 0.8179,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.1.2023-08.model",
+      "actual": 0.7917,
+      "expected": 0.7917,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.1.2023-08.baseline",
+      "actual": 0.7745,
+      "expected": 0.7745,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.1.2023-09.actual",
+      "actual": 0.8087,
+      "expected": 0.8087,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.1.2023-09.model",
+      "actual": 0.7929,
+      "expected": 0.7929,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.1.2023-09.baseline",
+      "actual": 0.7779,
+      "expected": 0.7779,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.1.2023-10.actual",
+      "actual": 0.8197,
+      "expected": 0.8197,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.1.2023-10.model",
+      "actual": 0.7989,
+      "expected": 0.7989,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.1.2023-10.baseline",
+      "actual": 0.7819,
+      "expected": 0.7819,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.1.2023-11.actual",
+      "actual": 0.8203,
+      "expected": 0.8203,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.1.2023-11.model",
+      "actual": 0.8035,
+      "expected": 0.8035,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.1.2023-11.baseline",
+      "actual": 0.7853,
+      "expected": 0.7853,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.1.2023-12.actual",
+      "actual": 0.806,
+      "expected": 0.806,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.1.2023-12.model",
+      "actual": 0.8051,
+      "expected": 0.8051,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.1.2023-12.baseline",
+      "actual": 0.788,
+      "expected": 0.788,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.3.2023-01.actual",
+      "actual": 0.8015,
+      "expected": 0.8015,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.3.2023-01.model",
+      "actual": 0.8067,
+      "expected": 0.8067,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.3.2023-01.baseline",
+      "actual": 0.7909,
+      "expected": 0.7909,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.3.2023-02.actual",
+      "actual": 0.7741,
+      "expected": 0.7741,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.3.2023-02.model",
+      "actual": 0.7917,
+      "expected": 0.7917,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.3.2023-02.baseline",
+      "actual": 0.7906,
+      "expected": 0.7906,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.3.2023-03.actual",
+      "actual": 0.7721,
+      "expected": 0.7721,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.3.2023-03.model",
+      "actual": 0.7874,
+      "expected": 0.7874,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.3.2023-03.baseline",
+      "actual": 0.7864,
+      "expected": 0.7864,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.3.2023-04.actual",
+      "actual": 0.7665,
+      "expected": 0.7665,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.3.2023-04.model",
+      "actual": 0.7918,
+      "expected": 0.7918,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.3.2023-04.baseline",
+      "actual": 0.7848,
+      "expected": 0.7848,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.3.2023-05.actual",
+      "actual": 0.7578,
+      "expected": 0.7578,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.3.2023-05.model",
+      "actual": 0.7869,
+      "expected": 0.7869,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.3.2023-05.baseline",
+      "actual": 0.7794,
+      "expected": 0.7794,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.3.2023-06.actual",
+      "actual": 0.777,
+      "expected": 0.777,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.3.2023-06.model",
+      "actual": 0.787,
+      "expected": 0.787,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.3.2023-06.baseline",
+      "actual": 0.7799,
+      "expected": 0.7799,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.3.2023-07.actual",
+      "actual": 0.8204,
+      "expected": 0.8204,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.3.2023-07.model",
+      "actual": 0.8065,
+      "expected": 0.8065,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.3.2023-07.baseline",
+      "actual": 0.7809,
+      "expected": 0.7809,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.3.2023-08.actual",
+      "actual": 0.8181,
+      "expected": 0.8181,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.3.2023-08.model",
+      "actual": 0.7944,
+      "expected": 0.7944,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.3.2023-08.baseline",
+      "actual": 0.7776,
+      "expected": 0.7776,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.3.2023-09.actual",
+      "actual": 0.809,
+      "expected": 0.809,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.3.2023-09.model",
+      "actual": 0.7933,
+      "expected": 0.7933,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.3.2023-09.baseline",
+      "actual": 0.7763,
+      "expected": 0.7763,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.3.2023-10.actual",
+      "actual": 0.8199,
+      "expected": 0.8199,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.3.2023-10.model",
+      "actual": 0.7958,
+      "expected": 0.7958,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.3.2023-10.baseline",
+      "actual": 0.7766,
+      "expected": 0.7766,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.3.2023-11.actual",
+      "actual": 0.8204,
+      "expected": 0.8204,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.3.2023-11.model",
+      "actual": 0.799,
+      "expected": 0.799,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.3.2023-11.baseline",
+      "actual": 0.7804,
+      "expected": 0.7804,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.3.2023-12.actual",
+      "actual": 0.8066,
+      "expected": 0.8066,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.3.2023-12.model",
+      "actual": 0.8024,
+      "expected": 0.8024,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.3.2023-12.baseline",
+      "actual": 0.7853,
+      "expected": 0.7853,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.6.2023-01.actual",
+      "actual": 0.8028,
+      "expected": 0.8028,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.6.2023-01.model",
+      "actual": 0.8049,
+      "expected": 0.8049,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.6.2023-01.baseline",
+      "actual": 0.788,
+      "expected": 0.788,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.6.2023-02.actual",
+      "actual": 0.775,
+      "expected": 0.775,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.6.2023-02.model",
+      "actual": 0.7869,
+      "expected": 0.7869,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.6.2023-02.baseline",
+      "actual": 0.785,
+      "expected": 0.785,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.6.2023-03.actual",
+      "actual": 0.7728,
+      "expected": 0.7728,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.6.2023-03.model",
+      "actual": 0.7849,
+      "expected": 0.7849,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.6.2023-03.baseline",
+      "actual": 0.7857,
+      "expected": 0.7857,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.6.2023-04.actual",
+      "actual": 0.767,
+      "expected": 0.767,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.6.2023-04.model",
+      "actual": 0.7909,
+      "expected": 0.7909,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.6.2023-04.baseline",
+      "actual": 0.7882,
+      "expected": 0.7882,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.6.2023-05.actual",
+      "actual": 0.7582,
+      "expected": 0.7582,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.6.2023-05.model",
+      "actual": 0.7891,
+      "expected": 0.7891,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.6.2023-05.baseline",
+      "actual": 0.7893,
+      "expected": 0.7893,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.6.2023-06.actual",
+      "actual": 0.7775,
+      "expected": 0.7775,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.6.2023-06.model",
+      "actual": 0.7884,
+      "expected": 0.7884,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.6.2023-06.baseline",
+      "actual": 0.7873,
+      "expected": 0.7873,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.6.2023-07.actual",
+      "actual": 0.8208,
+      "expected": 0.8208,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.6.2023-07.model",
+      "actual": 0.8082,
+      "expected": 0.8082,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.6.2023-07.baseline",
+      "actual": 0.786,
+      "expected": 0.786,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.6.2023-08.actual",
+      "actual": 0.8198,
+      "expected": 0.8198,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.6.2023-08.model",
+      "actual": 0.796,
+      "expected": 0.796,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.6.2023-08.baseline",
+      "actual": 0.7798,
+      "expected": 0.7798,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.6.2023-09.actual",
+      "actual": 0.8099,
+      "expected": 0.8099,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.6.2023-09.model",
+      "actual": 0.7971,
+      "expected": 0.7971,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.6.2023-09.baseline",
+      "actual": 0.7807,
+      "expected": 0.7807,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.6.2023-10.actual",
+      "actual": 0.8214,
+      "expected": 0.8214,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.6.2023-10.model",
+      "actual": 0.7991,
+      "expected": 0.7991,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.6.2023-10.baseline",
+      "actual": 0.7812,
+      "expected": 0.7812,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.6.2023-11.actual",
+      "actual": 0.8206,
+      "expected": 0.8206,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.6.2023-11.model",
+      "actual": 0.8001,
+      "expected": 0.8001,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.6.2023-11.baseline",
+      "actual": 0.7805,
+      "expected": 0.7805,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.6.2023-12.actual",
+      "actual": 0.8065,
+      "expected": 0.8065,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.6.2023-12.model",
+      "actual": 0.8005,
+      "expected": 0.8005,
+      "passed": true
+    },
+    {
+      "name": "b.monthly.6.2023-12.baseline",
+      "actual": 0.7808,
+      "expected": 0.7808,
+      "passed": true
+    },
+    {
+      "name": "b.ui_gain_source",
+      "actual": {
+        "hist_lf_lag_12": 0.5153,
+        "hist_lf_lag_24": 0.0998,
+        "hist_lf_12": 0.0938,
+        "hist_lf_6": 0.0731,
+        "hist_lf_3": 0.0578,
+        "id_km": 0.0321,
+        "destination": 0.0312,
+        "origin": 0.0297,
+        "cal_is_school_vacation": 0.0166,
+        "cal_month": 0.0099
+      },
+      "expected": {
+        "hist_lf_lag_12": 0.5153,
+        "hist_lf_lag_24": 0.0998,
+        "hist_lf_12": 0.0938,
+        "hist_lf_6": 0.0731,
+        "hist_lf_3": 0.0578,
+        "id_km": 0.0321,
+        "destination": 0.0312,
+        "origin": 0.0297,
+        "cal_is_school_vacation": 0.0166,
+        "cal_month": 0.0099
+      },
+      "passed": true
+    },
+    {
+      "name": "b.histogram.model",
+      "actual": [
+        11,
+        20,
+        27,
+        39,
+        68,
+        150,
+        260,
+        567,
+        1185,
+        2123,
+        3105,
+        3980,
+        4244,
+        4144,
+        4058,
+        3679,
+        3009,
+        2508,
+        2052,
+        1687,
+        1282,
+        996,
+        773,
+        558,
+        399,
+        261,
+        255,
+        186,
+        131,
+        612
+      ],
+      "expected": [
+        11,
+        20,
+        27,
+        39,
+        68,
+        150,
+        260,
+        567,
+        1185,
+        2123,
+        3105,
+        3980,
+        4244,
+        4144,
+        4058,
+        3679,
+        3009,
+        2508,
+        2052,
+        1687,
+        1282,
+        996,
+        773,
+        558,
+        399,
+        261,
+        255,
+        186,
+        131,
+        612
+      ],
+      "passed": true
+    },
+    {
+      "name": "b.residual.model.p10",
+      "actual": -10.1604,
+      "expected": -10.1604,
+      "passed": true
+    },
+    {
+      "name": "b.residual.model.p50",
+      "actual": -1.3659,
+      "expected": -1.3659,
+      "passed": true
+    },
+    {
+      "name": "b.residual.model.p90",
+      "actual": 11.854,
+      "expected": 11.854,
+      "passed": true
+    },
+    {
+      "name": "b.histogram.baseline",
+      "actual": [
+        209,
+        96,
+        131,
+        217,
+        337,
+        481,
+        808,
+        1134,
+        1682,
+        2262,
+        2866,
+        3510,
+        3958,
+        4208,
+        3978,
+        3542,
+        2839,
+        2457,
+        1850,
+        1456,
+        1243,
+        883,
+        593,
+        413,
+        302,
+        216,
+        166,
+        112,
+        87,
+        333
+      ],
+      "expected": [
+        209,
+        96,
+        131,
+        217,
+        337,
+        481,
+        808,
+        1134,
+        1682,
+        2262,
+        2866,
+        3510,
+        3958,
+        4208,
+        3978,
+        3542,
+        2839,
+        2457,
+        1850,
+        1456,
+        1243,
+        883,
+        593,
+        413,
+        302,
+        216,
+        166,
+        112,
+        87,
+        333
+      ],
+      "passed": true
+    },
+    {
+      "name": "b.residual.baseline.p10",
+      "actual": -12.921,
+      "expected": -12.921,
+      "passed": true
+    },
+    {
+      "name": "b.residual.baseline.p50",
+      "actual": -2.3309,
+      "expected": -2.3309,
+      "passed": true
+    },
+    {
+      "name": "b.residual.baseline.p90",
+      "actual": 10.1597,
+      "expected": 10.1597,
+      "passed": true
+    },
+    {
+      "name": "b.ui_weighted_bias.value",
+      "actual": -0.0005215167369813678,
+      "expected": -0.0005215167369813691,
+      "passed": true
+    },
+    {
+      "name": "b.ui_weighted_bias.ci95",
+      "actual": [
+        -0.010506319602747682,
+        0.009230852641249915
+      ],
+      "expected": [
+        -0.010506319602747682,
+        0.009230852641249914
+      ],
+      "passed": true
+    },
+    {
+      "name": "b.ui_weighted_bias.months",
+      "actual": 12,
+      "expected": 12,
+      "passed": true
+    },
+    {
+      "name": "b.ui_weighted_bias.h1",
+      "actual": -0.0003609636414512955,
+      "expected": -0.0003609636414512955,
+      "passed": true
+    },
+    {
+      "name": "b.ui_weighted_bias.h3",
+      "actual": -0.0004060165001490541,
+      "expected": -0.0004060165001490541,
+      "passed": true
+    },
+    {
+      "name": "b.ui_weighted_bias.h6",
+      "actual": -0.0008031745625882337,
+      "expected": -0.0008031745625882337,
+      "passed": true
+    },
+    {
+      "name": "d.feature_test_rows",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "d.target_month_max_before_test",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "d.split_assignment",
+      "actual": "validated every feature row",
+      "expected": "chronological split_expr with per-row purging",
+      "passed": true
+    },
+    {
+      "name": "d.frozen_test_used",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "name": "d.feature_test_written",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "name": "d.target_stamps",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "d.prediction_join_rows",
+      "actual": 33762,
+      "expected": 33762,
+      "passed": true
+    },
+    {
+      "name": "d.pax.saved_targets",
+      "actual": "checked every saved target",
+      "expected": "exact match to separate target file",
+      "passed": true
+    },
+    {
+      "name": "d.seats.saved_targets",
+      "actual": "checked every saved target",
+      "expected": "exact match to separate target file",
+      "passed": true
+    },
+    {
+      "name": "d_pax.model_hash",
+      "actual": "71ca382bc476a135aa9021a842479ade180da57d676c3b5f31256c7e4632c699",
+      "expected": "71ca382bc476a135aa9021a842479ade180da57d676c3b5f31256c7e4632c699",
+      "passed": true
+    },
+    {
+      "name": "d_pax.feature_order",
+      "actual": [
+        "horizon",
+        "distance",
+        "cal_month",
+        "cal_days_in_month",
+        "cal_weekend_days",
+        "cal_holidays",
+        "cal_has_carnival",
+        "cal_is_school_vacation",
+        "id_km",
+        "id_is_international",
+        "hist_seats_mean_3",
+        "hist_seats_mean_6",
+        "hist_seats_mean_12",
+        "hist_pax_mean_3",
+        "hist_pax_mean_6",
+        "hist_pax_mean_12",
+        "hist_flights_mean_3",
+        "hist_seats_per_flight_3",
+        "hist_lf_3",
+        "hist_lf_6",
+        "hist_lf_12",
+        "hist_lf_std_12",
+        "hist_yoy_pax",
+        "hist_yoy_seats",
+        "hist_pax_lag_12",
+        "hist_seats_lag_12",
+        "hist_lf_lag_12",
+        "hist_pax_lag_24",
+        "hist_seats_lag_24",
+        "hist_lf_lag_24",
+        "hist_origin_lf_3",
+        "hist_destination_lf_3",
+        "hist_carriers_on_route_3",
+        "hist_months_observed_12",
+        "hist_unknown_months_12",
+        "hist_months_since_first",
+        "origin",
+        "destination"
+      ],
+      "expected": [
+        "horizon",
+        "distance",
+        "cal_month",
+        "cal_days_in_month",
+        "cal_weekend_days",
+        "cal_holidays",
+        "cal_has_carnival",
+        "cal_is_school_vacation",
+        "id_km",
+        "id_is_international",
+        "hist_seats_mean_3",
+        "hist_seats_mean_6",
+        "hist_seats_mean_12",
+        "hist_pax_mean_3",
+        "hist_pax_mean_6",
+        "hist_pax_mean_12",
+        "hist_flights_mean_3",
+        "hist_seats_per_flight_3",
+        "hist_lf_3",
+        "hist_lf_6",
+        "hist_lf_12",
+        "hist_lf_std_12",
+        "hist_yoy_pax",
+        "hist_yoy_seats",
+        "hist_pax_lag_12",
+        "hist_seats_lag_12",
+        "hist_lf_lag_12",
+        "hist_pax_lag_24",
+        "hist_seats_lag_24",
+        "hist_lf_lag_24",
+        "hist_origin_lf_3",
+        "hist_destination_lf_3",
+        "hist_carriers_on_route_3",
+        "hist_months_observed_12",
+        "hist_unknown_months_12",
+        "hist_months_since_first",
+        "origin",
+        "destination"
+      ],
+      "passed": true
+    },
+    {
+      "name": "d_pax.independent_primary",
+      "actual": 0.22241908531491802,
+      "expected": 0.22241908531491802,
+      "passed": true
+    },
+    {
+      "name": "d_pax.rows",
+      "actual": 33762,
+      "expected": 33762,
+      "passed": true
+    },
+    {
+      "name": "d_pax.lightgbm.value",
+      "actual": 0.22241908531491802,
+      "expected": 0.22241908531491802,
+      "passed": true
+    },
+    {
+      "name": "d_pax.lightgbm.ci_lower",
+      "actual": 0.20649943329194362,
+      "expected": 0.2064994332919436,
+      "passed": true
+    },
+    {
+      "name": "d_pax.lightgbm.ci_upper",
+      "actual": 0.23838779830807752,
+      "expected": 0.23838779830807752,
+      "passed": true
+    },
+    {
+      "name": "d_pax.difference_vs_best_baseline.value",
+      "actual": -0.030665920788799397,
+      "expected": -0.030665920788799404,
+      "passed": true
+    },
+    {
+      "name": "d_pax.difference_vs_best_baseline.ci_lower",
+      "actual": -0.04972356213527732,
+      "expected": -0.049723562135277316,
+      "passed": true
+    },
+    {
+      "name": "d_pax.difference_vs_best_baseline.ci_upper",
+      "actual": -0.010949179894957608,
+      "expected": -0.010949179894957603,
+      "passed": true
+    },
+    {
+      "name": "d_pax.bias.value",
+      "actual": -0.12214797588806191,
+      "expected": -0.12214797588806191,
+      "passed": true
+    },
+    {
+      "name": "d_pax.bias.ci_lower",
+      "actual": -0.1554378467251502,
+      "expected": -0.1554378467251502,
+      "passed": true
+    },
+    {
+      "name": "d_pax.bias.ci_upper",
+      "actual": -0.08902421506672023,
+      "expected": -0.08902421506672024,
+      "passed": true
+    },
+    {
+      "name": "d_pax.baseline_identity",
+      "actual": "pred_pax_seasonal_naive",
+      "expected": "pred_pax_seasonal_naive",
+      "passed": true
+    },
+    {
+      "name": "d_pax.pred_pax_seasonal_naive",
+      "actual": 0.2530850061037174,
+      "expected": 0.2530850061037174,
+      "passed": true
+    },
+    {
+      "name": "d_pax.pred_pax_seasonal_trend",
+      "actual": 0.3052313579139144,
+      "expected": 0.3052313579139144,
+      "passed": true
+    },
+    {
+      "name": "d_pax.h1.lightgbm",
+      "actual": 0.18741354177023622,
+      "expected": 0.18741354177023622,
+      "passed": true
+    },
+    {
+      "name": "d_pax.h1.best_baseline_value",
+      "actual": 0.24074469767728146,
+      "expected": 0.24074469767728143,
+      "passed": true
+    },
+    {
+      "name": "d_pax.h1.difference",
+      "actual": -0.053331155907045236,
+      "expected": -0.05333115590704524,
+      "passed": true
+    },
+    {
+      "name": "d_pax.h1.ci0",
+      "actual": -0.07058579566684044,
+      "expected": -0.07058579566684045,
+      "passed": true
+    },
+    {
+      "name": "d_pax.h1.ci1",
+      "actual": -0.03723001096858025,
+      "expected": -0.03723001096858025,
+      "passed": true
+    },
+    {
+      "name": "d_pax.h3.lightgbm",
+      "actual": 0.21311363727440333,
+      "expected": 0.2131136372744033,
+      "passed": true
+    },
+    {
+      "name": "d_pax.h3.best_baseline_value",
+      "actual": 0.2534808795886597,
+      "expected": 0.2534808795886597,
+      "passed": true
+    },
+    {
+      "name": "d_pax.h3.difference",
+      "actual": -0.040367242314256424,
+      "expected": -0.040367242314256424,
+      "passed": true
+    },
+    {
+      "name": "d_pax.h3.ci0",
+      "actual": -0.059002732402585176,
+      "expected": -0.05900273240258519,
+      "passed": true
+    },
+    {
+      "name": "d_pax.h3.ci1",
+      "actual": -0.0208880719184914,
+      "expected": -0.0208880719184914,
+      "passed": true
+    },
+    {
+      "name": "d_pax.h6.lightgbm",
+      "actual": 0.26714948160301233,
+      "expected": 0.26714948160301233,
+      "passed": true
+    },
+    {
+      "name": "d_pax.h6.best_baseline_value",
+      "actual": 0.25088750060965176,
+      "expected": 0.25088750060965176,
+      "passed": true
+    },
+    {
+      "name": "d_pax.h6.difference",
+      "actual": 0.016261980993360545,
+      "expected": 0.016261980993360545,
+      "passed": true
+    },
+    {
+      "name": "d_pax.h6.ci0",
+      "actual": -0.006148280271326427,
+      "expected": -0.006148280271326431,
+      "passed": true
+    },
+    {
+      "name": "d_pax.h6.ci1",
+      "actual": 0.04251390293211161,
+      "expected": 0.04251390293211161,
+      "passed": true
+    },
+    {
+      "name": "d_pax.ui_primary",
+      "actual": 0.22241908531491802,
+      "expected": 0.22241908531491802,
+      "passed": true
+    },
+    {
+      "name": "d_pax.ui_adoption",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "d_pax.ui_scatter_max",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "d_pax.ui_months",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.1.2023-01.actual",
+      "actual": 9955320.0,
+      "expected": 9955320.0,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.1.2023-01.model",
+      "actual": 8871759.7348,
+      "expected": 8871759.7348,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.1.2023-01.baseline",
+      "actual": 8377789.0,
+      "expected": 8377789.0,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.1.2023-02.actual",
+      "actual": 8102122.0,
+      "expected": 8102122.0,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.1.2023-02.model",
+      "actual": 7420458.1161,
+      "expected": 7420458.1161,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.1.2023-02.baseline",
+      "actual": 6440854.0,
+      "expected": 6440854.0,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.1.2023-03.actual",
+      "actual": 9042383.0,
+      "expected": 9042383.0,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.1.2023-03.model",
+      "actual": 7845826.5982,
+      "expected": 7845826.5982,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.1.2023-03.baseline",
+      "actual": 7517174.0,
+      "expected": 7517174.0,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.1.2023-04.actual",
+      "actual": 8479751.0,
+      "expected": 8479751.0,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.1.2023-04.model",
+      "actual": 7769658.9014,
+      "expected": 7769658.9014,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.1.2023-04.baseline",
+      "actual": 7303130.0,
+      "expected": 7303130.0,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.1.2023-05.actual",
+      "actual": 8900770.0,
+      "expected": 8900770.0,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.1.2023-05.model",
+      "actual": 8241560.7771,
+      "expected": 8241560.7771,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.1.2023-05.baseline",
+      "actual": 7611390.0,
+      "expected": 7611390.0,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.1.2023-06.actual",
+      "actual": 8811329.0,
+      "expected": 8811329.0,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.1.2023-06.model",
+      "actual": 7471940.4368,
+      "expected": 7471940.4368,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.1.2023-06.baseline",
+      "actual": 7292083.0,
+      "expected": 7292083.0,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.1.2023-07.actual",
+      "actual": 10267620.0,
+      "expected": 10267620.0,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.1.2023-07.model",
+      "actual": 8356041.5744,
+      "expected": 8356041.5744,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.1.2023-07.baseline",
+      "actual": 9090056.0,
+      "expected": 9090056.0,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.1.2023-08.actual",
+      "actual": 10051012.0,
+      "expected": 10051012.0,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.1.2023-08.model",
+      "actual": 9022769.7506,
+      "expected": 9022769.7506,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.1.2023-08.baseline",
+      "actual": 8709176.0,
+      "expected": 8709176.0,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.1.2023-09.actual",
+      "actual": 9385456.0,
+      "expected": 9385456.0,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.1.2023-09.model",
+      "actual": 8983361.2182,
+      "expected": 8983361.2182,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.1.2023-09.baseline",
+      "actual": 8346484.0,
+      "expected": 8346484.0,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.1.2023-10.actual",
+      "actual": 9576532.0,
+      "expected": 9576532.0,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.1.2023-10.model",
+      "actual": 9244824.7778,
+      "expected": 9244824.7778,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.1.2023-10.baseline",
+      "actual": 8686012.0,
+      "expected": 8686012.0,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.1.2023-11.actual",
+      "actual": 9343567.0,
+      "expected": 9343567.0,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.1.2023-11.model",
+      "actual": 8660373.9051,
+      "expected": 8660373.9051,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.1.2023-11.baseline",
+      "actual": 8848073.0,
+      "expected": 8848073.0,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.1.2023-12.actual",
+      "actual": 9801637.0,
+      "expected": 9801637.0,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.1.2023-12.model",
+      "actual": 9452566.5524,
+      "expected": 9452566.5524,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.1.2023-12.baseline",
+      "actual": 9214040.0,
+      "expected": 9214040.0,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.3.2023-01.actual",
+      "actual": 9965933.0,
+      "expected": 9965933.0,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.3.2023-01.model",
+      "actual": 8635043.4761,
+      "expected": 8635043.4761,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.3.2023-01.baseline",
+      "actual": 8425111.0,
+      "expected": 8425111.0,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.3.2023-02.actual",
+      "actual": 8085820.0,
+      "expected": 8085820.0,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.3.2023-02.model",
+      "actual": 7247464.6693,
+      "expected": 7247464.6693,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.3.2023-02.baseline",
+      "actual": 6473555.0,
+      "expected": 6473555.0,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.3.2023-03.actual",
+      "actual": 8990895.0,
+      "expected": 8990895.0,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.3.2023-03.model",
+      "actual": 7580894.2159,
+      "expected": 7580894.2159,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.3.2023-03.baseline",
+      "actual": 7483011.0,
+      "expected": 7483011.0,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.3.2023-04.actual",
+      "actual": 8418007.0,
+      "expected": 8418007.0,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.3.2023-04.model",
+      "actual": 7376274.5936,
+      "expected": 7376274.5936,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.3.2023-04.baseline",
+      "actual": 7273020.0,
+      "expected": 7273020.0,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.3.2023-05.actual",
+      "actual": 8865099.0,
+      "expected": 8865099.0,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.3.2023-05.model",
+      "actual": 7907116.3424,
+      "expected": 7907116.3424,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.3.2023-05.baseline",
+      "actual": 7618189.0,
+      "expected": 7618189.0,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.3.2023-06.actual",
+      "actual": 8775677.0,
+      "expected": 8775677.0,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.3.2023-06.model",
+      "actual": 7227043.0002,
+      "expected": 7227043.0002,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.3.2023-06.baseline",
+      "actual": 7294324.0,
+      "expected": 7294324.0,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.3.2023-07.actual",
+      "actual": 10206871.0,
+      "expected": 10206871.0,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.3.2023-07.model",
+      "actual": 7927791.1302,
+      "expected": 7927791.1302,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.3.2023-07.baseline",
+      "actual": 9118699.0,
+      "expected": 9118699.0,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.3.2023-08.actual",
+      "actual": 9975504.0,
+      "expected": 9975504.0,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.3.2023-08.model",
+      "actual": 8680467.0642,
+      "expected": 8680467.0642,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.3.2023-08.baseline",
+      "actual": 8742252.0,
+      "expected": 8742252.0,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.3.2023-09.actual",
+      "actual": 9333166.0,
+      "expected": 9333166.0,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.3.2023-09.model",
+      "actual": 8690735.0302,
+      "expected": 8690735.0302,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.3.2023-09.baseline",
+      "actual": 8386625.0,
+      "expected": 8386625.0,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.3.2023-10.actual",
+      "actual": 9566861.0,
+      "expected": 9566861.0,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.3.2023-10.model",
+      "actual": 9052298.4747,
+      "expected": 9052298.4747,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.3.2023-10.baseline",
+      "actual": 8701785.0,
+      "expected": 8701785.0,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.3.2023-11.actual",
+      "actual": 9301818.0,
+      "expected": 9301818.0,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.3.2023-11.model",
+      "actual": 8961342.5978,
+      "expected": 8961342.5978,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.3.2023-11.baseline",
+      "actual": 8842016.0,
+      "expected": 8842016.0,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.3.2023-12.actual",
+      "actual": 9777175.0,
+      "expected": 9777175.0,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.3.2023-12.model",
+      "actual": 9727719.373,
+      "expected": 9727719.373,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.3.2023-12.baseline",
+      "actual": 9241150.0,
+      "expected": 9241150.0,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.6.2023-01.actual",
+      "actual": 9889644.0,
+      "expected": 9889644.0,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.6.2023-01.model",
+      "actual": 8077943.7781,
+      "expected": 8077943.7781,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.6.2023-01.baseline",
+      "actual": 8442870.0,
+      "expected": 8442870.0,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.6.2023-02.actual",
+      "actual": 7999901.0,
+      "expected": 7999901.0,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.6.2023-02.model",
+      "actual": 6871760.255,
+      "expected": 6871760.255,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.6.2023-02.baseline",
+      "actual": 6460084.0,
+      "expected": 6460084.0,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.6.2023-03.actual",
+      "actual": 8964348.0,
+      "expected": 8964348.0,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.6.2023-03.model",
+      "actual": 7252600.3993,
+      "expected": 7252600.3993,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.6.2023-03.baseline",
+      "actual": 7520092.0,
+      "expected": 7520092.0,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.6.2023-04.actual",
+      "actual": 8399794.0,
+      "expected": 8399794.0,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.6.2023-04.model",
+      "actual": 7009011.2469,
+      "expected": 7009011.2469,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.6.2023-04.baseline",
+      "actual": 7318240.0,
+      "expected": 7318240.0,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.6.2023-05.actual",
+      "actual": 8822521.0,
+      "expected": 8822521.0,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.6.2023-05.model",
+      "actual": 7335142.6949,
+      "expected": 7335142.6949,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.6.2023-05.baseline",
+      "actual": 7632600.0,
+      "expected": 7632600.0,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.6.2023-06.actual",
+      "actual": 8714421.0,
+      "expected": 8714421.0,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.6.2023-06.model",
+      "actual": 6574166.0095,
+      "expected": 6574166.0095,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.6.2023-06.baseline",
+      "actual": 7290594.0,
+      "expected": 7290594.0,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.6.2023-07.actual",
+      "actual": 10121940.0,
+      "expected": 10121940.0,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.6.2023-07.model",
+      "actual": 6888215.1993,
+      "expected": 6888215.1993,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.6.2023-07.baseline",
+      "actual": 9087822.0,
+      "expected": 9087822.0,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.6.2023-08.actual",
+      "actual": 9899348.0,
+      "expected": 9899348.0,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.6.2023-08.model",
+      "actual": 8090233.0416,
+      "expected": 8090233.0416,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.6.2023-08.baseline",
+      "actual": 8751559.0,
+      "expected": 8751559.0,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.6.2023-09.actual",
+      "actual": 9259974.0,
+      "expected": 9259974.0,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.6.2023-09.model",
+      "actual": 8093235.3563,
+      "expected": 8093235.3563,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.6.2023-09.baseline",
+      "actual": 8403488.0,
+      "expected": 8403488.0,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.6.2023-10.actual",
+      "actual": 9500357.0,
+      "expected": 9500357.0,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.6.2023-10.model",
+      "actual": 8492507.1723,
+      "expected": 8492507.1723,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.6.2023-10.baseline",
+      "actual": 8733145.0,
+      "expected": 8733145.0,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.6.2023-11.actual",
+      "actual": 9254806.0,
+      "expected": 9254806.0,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.6.2023-11.model",
+      "actual": 8394810.0843,
+      "expected": 8394810.0843,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.6.2023-11.baseline",
+      "actual": 8901121.0,
+      "expected": 8901121.0,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.6.2023-12.actual",
+      "actual": 9748363.0,
+      "expected": 9748363.0,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.6.2023-12.model",
+      "actual": 9377625.7212,
+      "expected": 9377625.7212,
+      "passed": true
+    },
+    {
+      "name": "d_pax.monthly.6.2023-12.baseline",
+      "actual": 9293062.0,
+      "expected": 9293062.0,
+      "passed": true
+    },
+    {
+      "name": "d_pax.ui_gain_source",
+      "actual": {
+        "destination": 0.1287,
+        "origin": 0.1209,
+        "hist_yoy_pax": 0.0863,
+        "cal_month": 0.0862,
+        "cal_is_school_vacation": 0.0476,
+        "hist_pax_lag_24": 0.0449,
+        "cal_days_in_month": 0.0418,
+        "hist_yoy_seats": 0.0391,
+        "cal_weekend_days": 0.033,
+        "hist_lf_lag_12": 0.029
+      },
+      "expected": {
+        "destination": 0.1287,
+        "origin": 0.1209,
+        "hist_yoy_pax": 0.0863,
+        "cal_month": 0.0862,
+        "cal_is_school_vacation": 0.0476,
+        "hist_pax_lag_24": 0.0449,
+        "cal_days_in_month": 0.0418,
+        "hist_yoy_seats": 0.0391,
+        "cal_weekend_days": 0.033,
+        "hist_lf_lag_12": 0.029
+      },
+      "passed": true
+    },
+    {
+      "name": "d_pax.histogram.model",
+      "actual": [
+        54,
+        70,
+        142,
+        213,
+        223,
+        296,
+        378,
+        392,
+        522,
+        649,
+        729,
+        987,
+        1224,
+        1507,
+        1901,
+        2156,
+        2349,
+        2576,
+        2606,
+        2313,
+        1792,
+        1443,
+        1097,
+        886,
+        661,
+        530,
+        432,
+        378,
+        272,
+        213,
+        200,
+        174,
+        165,
+        137,
+        107,
+        96,
+        82,
+        65,
+        73,
+        1375
+      ],
+      "expected": [
+        54,
+        70,
+        142,
+        213,
+        223,
+        296,
+        378,
+        392,
+        522,
+        649,
+        729,
+        987,
+        1224,
+        1507,
+        1901,
+        2156,
+        2349,
+        2576,
+        2606,
+        2313,
+        1792,
+        1443,
+        1097,
+        886,
+        661,
+        530,
+        432,
+        378,
+        272,
+        213,
+        200,
+        174,
+        165,
+        137,
+        107,
+        96,
+        82,
+        65,
+        73,
+        1375
+      ],
+      "passed": true
+    },
+    {
+      "name": "d_pax.residual.model.p10",
+      "actual": -0.4849,
+      "expected": -0.4849,
+      "passed": true
+    },
+    {
+      "name": "d_pax.residual.model.p50",
+      "actual": -0.1116,
+      "expected": -0.1116,
+      "passed": true
+    },
+    {
+      "name": "d_pax.residual.model.p90",
+      "actual": 0.3737,
+      "expected": 0.3737,
+      "passed": true
+    },
+    {
+      "name": "d_pax.histogram.baseline",
+      "actual": [
+        1785,
+        131,
+        130,
+        180,
+        141,
+        237,
+        297,
+        339,
+        488,
+        593,
+        743,
+        965,
+        864,
+        1088,
+        1464,
+        1805,
+        2127,
+        2252,
+        2278,
+        2123,
+        1820,
+        1495,
+        1154,
+        892,
+        724,
+        512,
+        505,
+        381,
+        343,
+        352,
+        291,
+        262,
+        210,
+        186,
+        159,
+        137,
+        143,
+        138,
+        93,
+        1638
+      ],
+      "expected": [
+        1785,
+        131,
+        130,
+        180,
+        141,
+        237,
+        297,
+        339,
+        488,
+        593,
+        743,
+        965,
+        864,
+        1088,
+        1464,
+        1805,
+        2127,
+        2252,
+        2278,
+        2123,
+        1820,
+        1495,
+        1154,
+        892,
+        724,
+        512,
+        505,
+        381,
+        343,
+        352,
+        291,
+        262,
+        210,
+        186,
+        159,
+        137,
+        143,
+        138,
+        93,
+        1638
+      ],
+      "passed": true
+    },
+    {
+      "name": "d_pax.residual.baseline.p10",
+      "actual": -0.6094,
+      "expected": -0.6094,
+      "passed": true
+    },
+    {
+      "name": "d_pax.residual.baseline.p50",
+      "actual": -0.0983,
+      "expected": -0.0983,
+      "passed": true
+    },
+    {
+      "name": "d_pax.residual.baseline.p90",
+      "actual": 0.5183,
+      "expected": 0.5183,
+      "passed": true
+    },
+    {
+      "name": "d_seats.model_hash",
+      "actual": "bca404d52957f83f093d1d32efa25259c24fe5fd0f186a3da11c5377bb90c075",
+      "expected": "bca404d52957f83f093d1d32efa25259c24fe5fd0f186a3da11c5377bb90c075",
+      "passed": true
+    },
+    {
+      "name": "d_seats.feature_order",
+      "actual": [
+        "horizon",
+        "distance",
+        "cal_month",
+        "cal_days_in_month",
+        "cal_weekend_days",
+        "cal_holidays",
+        "cal_has_carnival",
+        "cal_is_school_vacation",
+        "id_km",
+        "id_is_international",
+        "hist_seats_mean_3",
+        "hist_seats_mean_6",
+        "hist_seats_mean_12",
+        "hist_pax_mean_3",
+        "hist_pax_mean_6",
+        "hist_pax_mean_12",
+        "hist_flights_mean_3",
+        "hist_seats_per_flight_3",
+        "hist_lf_3",
+        "hist_lf_6",
+        "hist_lf_12",
+        "hist_lf_std_12",
+        "hist_yoy_pax",
+        "hist_yoy_seats",
+        "hist_pax_lag_12",
+        "hist_seats_lag_12",
+        "hist_lf_lag_12",
+        "hist_pax_lag_24",
+        "hist_seats_lag_24",
+        "hist_lf_lag_24",
+        "hist_origin_lf_3",
+        "hist_destination_lf_3",
+        "hist_carriers_on_route_3",
+        "hist_months_observed_12",
+        "hist_unknown_months_12",
+        "hist_months_since_first",
+        "origin",
+        "destination"
+      ],
+      "expected": [
+        "horizon",
+        "distance",
+        "cal_month",
+        "cal_days_in_month",
+        "cal_weekend_days",
+        "cal_holidays",
+        "cal_has_carnival",
+        "cal_is_school_vacation",
+        "id_km",
+        "id_is_international",
+        "hist_seats_mean_3",
+        "hist_seats_mean_6",
+        "hist_seats_mean_12",
+        "hist_pax_mean_3",
+        "hist_pax_mean_6",
+        "hist_pax_mean_12",
+        "hist_flights_mean_3",
+        "hist_seats_per_flight_3",
+        "hist_lf_3",
+        "hist_lf_6",
+        "hist_lf_12",
+        "hist_lf_std_12",
+        "hist_yoy_pax",
+        "hist_yoy_seats",
+        "hist_pax_lag_12",
+        "hist_seats_lag_12",
+        "hist_lf_lag_12",
+        "hist_pax_lag_24",
+        "hist_seats_lag_24",
+        "hist_lf_lag_24",
+        "hist_origin_lf_3",
+        "hist_destination_lf_3",
+        "hist_carriers_on_route_3",
+        "hist_months_observed_12",
+        "hist_unknown_months_12",
+        "hist_months_since_first",
+        "origin",
+        "destination"
+      ],
+      "passed": true
+    },
+    {
+      "name": "d_seats.independent_primary",
+      "actual": 0.22397056064228046,
+      "expected": 0.2239705606422805,
+      "passed": true
+    },
+    {
+      "name": "d_seats.rows",
+      "actual": 33762,
+      "expected": 33762,
+      "passed": true
+    },
+    {
+      "name": "d_seats.lightgbm.value",
+      "actual": 0.22397056064228046,
+      "expected": 0.2239705606422805,
+      "passed": true
+    },
+    {
+      "name": "d_seats.lightgbm.ci_lower",
+      "actual": 0.20685289167561977,
+      "expected": 0.20685289167561977,
+      "passed": true
+    },
+    {
+      "name": "d_seats.lightgbm.ci_upper",
+      "actual": 0.24040899606938027,
+      "expected": 0.24040899606938027,
+      "passed": true
+    },
+    {
+      "name": "d_seats.difference_vs_best_baseline.value",
+      "actual": -0.03332874888986558,
+      "expected": -0.03332874888986558,
+      "passed": true
+    },
+    {
+      "name": "d_seats.difference_vs_best_baseline.ci_lower",
+      "actual": -0.05317339653152352,
+      "expected": -0.05317339653152352,
+      "passed": true
+    },
+    {
+      "name": "d_seats.difference_vs_best_baseline.ci_upper",
+      "actual": -0.011855662449720875,
+      "expected": -0.011855662449720875,
+      "passed": true
+    },
+    {
+      "name": "d_seats.bias.value",
+      "actual": -0.1177659972936543,
+      "expected": -0.11776599729365429,
+      "passed": true
+    },
+    {
+      "name": "d_seats.bias.ci_lower",
+      "actual": -0.1528908321155528,
+      "expected": -0.15289083211555277,
+      "passed": true
+    },
+    {
+      "name": "d_seats.bias.ci_upper",
+      "actual": -0.08289227246211543,
+      "expected": -0.08289227246211543,
+      "passed": true
+    },
+    {
+      "name": "d_seats.baseline_identity",
+      "actual": "pred_seats_seasonal_naive",
+      "expected": "pred_seats_seasonal_naive",
+      "passed": true
+    },
+    {
+      "name": "d_seats.pred_seats_seasonal_naive",
+      "actual": 0.257299309532146,
+      "expected": 0.257299309532146,
+      "passed": true
+    },
+    {
+      "name": "d_seats.pred_seats_seasonal_trend",
+      "actual": 0.3256743186245082,
+      "expected": 0.32567431862450824,
+      "passed": true
+    },
+    {
+      "name": "d_seats.h1.lightgbm",
+      "actual": 0.18710479087946139,
+      "expected": 0.18710479087946139,
+      "passed": true
+    },
+    {
+      "name": "d_seats.h1.best_baseline_value",
+      "actual": 0.25717632721428707,
+      "expected": 0.25717632721428707,
+      "passed": true
+    },
+    {
+      "name": "d_seats.h1.difference",
+      "actual": -0.07007153633482571,
+      "expected": -0.07007153633482571,
+      "passed": true
+    },
+    {
+      "name": "d_seats.h1.ci0",
+      "actual": -0.07986907441613994,
+      "expected": -0.07986907441613994,
+      "passed": true
+    },
+    {
+      "name": "d_seats.h1.ci1",
+      "actual": -0.05987366558395567,
+      "expected": -0.05987366558395566,
+      "passed": true
+    },
+    {
+      "name": "d_seats.h3.lightgbm",
+      "actual": 0.2148661344313528,
+      "expected": 0.21486613443135277,
+      "passed": true
+    },
+    {
+      "name": "d_seats.h3.best_baseline_value",
+      "actual": 0.2576361576422333,
+      "expected": 0.2576361576422333,
+      "passed": true
+    },
+    {
+      "name": "d_seats.h3.difference",
+      "actual": -0.04277002321088052,
+      "expected": -0.04277002321088052,
+      "passed": true
+    },
+    {
+      "name": "d_seats.h3.ci0",
+      "actual": -0.0610888721312659,
+      "expected": -0.0610888721312659,
+      "passed": true
+    },
+    {
+      "name": "d_seats.h3.ci1",
+      "actual": -0.02399704696003282,
+      "expected": -0.02399704696003282,
+      "passed": true
+    },
+    {
+      "name": "d_seats.h6.lightgbm",
+      "actual": 0.27039921086304863,
+      "expected": 0.2703992108630486,
+      "passed": true
+    },
+    {
+      "name": "d_seats.h6.best_baseline_value",
+      "actual": 0.2552694834867648,
+      "expected": 0.2552694834867648,
+      "passed": true
+    },
+    {
+      "name": "d_seats.h6.difference",
+      "actual": 0.015129727376283791,
+      "expected": 0.015129727376283791,
+      "passed": true
+    },
+    {
+      "name": "d_seats.h6.ci0",
+      "actual": -0.009359009924325182,
+      "expected": -0.009359009924325182,
+      "passed": true
+    },
+    {
+      "name": "d_seats.h6.ci1",
+      "actual": 0.046135728745428595,
+      "expected": 0.046135728745428595,
+      "passed": true
+    },
+    {
+      "name": "d_seats.ui_primary",
+      "actual": 0.2239705606422805,
+      "expected": 0.22397056064228046,
+      "passed": true
+    },
+    {
+      "name": "d_seats.ui_adoption",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "d_seats.ui_scatter_max",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "d_seats.ui_months",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.1.2023-01.actual",
+      "actual": 12438935.0,
+      "expected": 12438935.0,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.1.2023-01.model",
+      "actual": 10662333.7528,
+      "expected": 10662333.7528,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.1.2023-01.baseline",
+      "actual": 10448361.0,
+      "expected": 10448361.0,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.1.2023-02.actual",
+      "actual": 10468241.0,
+      "expected": 10468241.0,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.1.2023-02.model",
+      "actual": 9566279.3871,
+      "expected": 9566279.3871,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.1.2023-02.baseline",
+      "actual": 8318286.0,
+      "expected": 8318286.0,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.1.2023-03.actual",
+      "actual": 11725738.0,
+      "expected": 11725738.0,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.1.2023-03.model",
+      "actual": 10419491.4893,
+      "expected": 10419491.4893,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.1.2023-03.baseline",
+      "actual": 9593022.0,
+      "expected": 9593022.0,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.1.2023-04.actual",
+      "actual": 11110029.0,
+      "expected": 11110029.0,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.1.2023-04.model",
+      "actual": 10109847.1889,
+      "expected": 10109847.1889,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.1.2023-04.baseline",
+      "actual": 9449059.0,
+      "expected": 9449059.0,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.1.2023-05.actual",
+      "actual": 11789395.0,
+      "expected": 11789395.0,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.1.2023-05.model",
+      "actual": 10821991.3112,
+      "expected": 10821991.3112,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.1.2023-05.baseline",
+      "actual": 10234285.0,
+      "expected": 10234285.0,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.1.2023-06.actual",
+      "actual": 11375622.0,
+      "expected": 11375622.0,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.1.2023-06.model",
+      "actual": 9803470.4773,
+      "expected": 9803470.4773,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.1.2023-06.baseline",
+      "actual": 9695146.0,
+      "expected": 9695146.0,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.1.2023-07.actual",
+      "actual": 12542182.0,
+      "expected": 12542182.0,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.1.2023-07.model",
+      "actual": 10361712.2802,
+      "expected": 10361712.2802,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.1.2023-07.baseline",
+      "actual": 11360990.0,
+      "expected": 11360990.0,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.1.2023-08.actual",
+      "actual": 12308594.0,
+      "expected": 12308594.0,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.1.2023-08.model",
+      "actual": 11540875.7714,
+      "expected": 11540875.7714,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.1.2023-08.baseline",
+      "actual": 10917981.0,
+      "expected": 10917981.0,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.1.2023-09.actual",
+      "actual": 11620372.0,
+      "expected": 11620372.0,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.1.2023-09.model",
+      "actual": 11238813.7933,
+      "expected": 11238813.7933,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.1.2023-09.baseline",
+      "actual": 10516859.0,
+      "expected": 10516859.0,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.1.2023-10.actual",
+      "actual": 11693035.0,
+      "expected": 11693035.0,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.1.2023-10.model",
+      "actual": 11595908.6765,
+      "expected": 11595908.6765,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.1.2023-10.baseline",
+      "actual": 11113076.0,
+      "expected": 11113076.0,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.1.2023-11.actual",
+      "actual": 11402978.0,
+      "expected": 11402978.0,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.1.2023-11.model",
+      "actual": 10962927.197,
+      "expected": 10962927.197,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.1.2023-11.baseline",
+      "actual": 11287334.0,
+      "expected": 11287334.0,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.1.2023-12.actual",
+      "actual": 12186356.0,
+      "expected": 12186356.0,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.1.2023-12.model",
+      "actual": 11781904.7455,
+      "expected": 11781904.7455,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.1.2023-12.baseline",
+      "actual": 12138931.0,
+      "expected": 12138931.0,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.3.2023-01.actual",
+      "actual": 12444896.0,
+      "expected": 12444896.0,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.3.2023-01.model",
+      "actual": 10335713.3475,
+      "expected": 10335713.3475,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.3.2023-01.baseline",
+      "actual": 10503255.0,
+      "expected": 10503255.0,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.3.2023-02.actual",
+      "actual": 10444586.0,
+      "expected": 10444586.0,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.3.2023-02.model",
+      "actual": 9267858.2816,
+      "expected": 9267858.2816,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.3.2023-02.baseline",
+      "actual": 8362100.0,
+      "expected": 8362100.0,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.3.2023-03.actual",
+      "actual": 11658657.0,
+      "expected": 11658657.0,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.3.2023-03.model",
+      "actual": 9958045.169,
+      "expected": 9958045.169,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.3.2023-03.baseline",
+      "actual": 9554985.0,
+      "expected": 9554985.0,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.3.2023-04.actual",
+      "actual": 11027276.0,
+      "expected": 11027276.0,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.3.2023-04.model",
+      "actual": 9592888.1557,
+      "expected": 9592888.1557,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.3.2023-04.baseline",
+      "actual": 9411868.0,
+      "expected": 9411868.0,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.3.2023-05.actual",
+      "actual": 11739842.0,
+      "expected": 11739842.0,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.3.2023-05.model",
+      "actual": 10306091.3841,
+      "expected": 10306091.3841,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.3.2023-05.baseline",
+      "actual": 10242171.0,
+      "expected": 10242171.0,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.3.2023-06.actual",
+      "actual": 11326132.0,
+      "expected": 11326132.0,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.3.2023-06.model",
+      "actual": 9468954.663,
+      "expected": 9468954.663,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.3.2023-06.baseline",
+      "actual": 9701013.0,
+      "expected": 9701013.0,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.3.2023-07.actual",
+      "actual": 12462970.0,
+      "expected": 12462970.0,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.3.2023-07.model",
+      "actual": 9891643.3168,
+      "expected": 9891643.3168,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.3.2023-07.baseline",
+      "actual": 11398416.0,
+      "expected": 11398416.0,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.3.2023-08.actual",
+      "actual": 12215074.0,
+      "expected": 12215074.0,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.3.2023-08.model",
+      "actual": 11066026.0516,
+      "expected": 11066026.0516,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.3.2023-08.baseline",
+      "actual": 10960442.0,
+      "expected": 10960442.0,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.3.2023-09.actual",
+      "actual": 11555131.0,
+      "expected": 11555131.0,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.3.2023-09.model",
+      "actual": 10910230.5158,
+      "expected": 10910230.5158,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.3.2023-09.baseline",
+      "actual": 10567946.0,
+      "expected": 10567946.0,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.3.2023-10.actual",
+      "actual": 11680057.0,
+      "expected": 11680057.0,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.3.2023-10.model",
+      "actual": 11322887.4439,
+      "expected": 11322887.4439,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.3.2023-10.baseline",
+      "actual": 11136982.0,
+      "expected": 11136982.0,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.3.2023-11.actual",
+      "actual": 11346070.0,
+      "expected": 11346070.0,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.3.2023-11.model",
+      "actual": 11121845.4327,
+      "expected": 11121845.4327,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.3.2023-11.baseline",
+      "actual": 11282451.0,
+      "expected": 11282451.0,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.3.2023-12.actual",
+      "actual": 12150078.0,
+      "expected": 12150078.0,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.3.2023-12.model",
+      "actual": 11999714.8106,
+      "expected": 11999714.8106,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.3.2023-12.baseline",
+      "actual": 12180350.0,
+      "expected": 12180350.0,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.6.2023-01.actual",
+      "actual": 12346325.0,
+      "expected": 12346325.0,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.6.2023-01.model",
+      "actual": 9507096.2844,
+      "expected": 9507096.2844,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.6.2023-01.baseline",
+      "actual": 10529998.0,
+      "expected": 10529998.0,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.6.2023-02.actual",
+      "actual": 10331699.0,
+      "expected": 10331699.0,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.6.2023-02.model",
+      "actual": 8609624.0583,
+      "expected": 8609624.0583,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.6.2023-02.baseline",
+      "actual": 8347083.0,
+      "expected": 8347083.0,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.6.2023-03.actual",
+      "actual": 11619847.0,
+      "expected": 11619847.0,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.6.2023-03.model",
+      "actual": 9471831.5048,
+      "expected": 9471831.5048,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.6.2023-03.baseline",
+      "actual": 9603956.0,
+      "expected": 9603956.0,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.6.2023-04.actual",
+      "actual": 11000343.0,
+      "expected": 11000343.0,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.6.2023-04.model",
+      "actual": 9075756.3819,
+      "expected": 9075756.3819,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.6.2023-04.baseline",
+      "actual": 9475077.0,
+      "expected": 9475077.0,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.6.2023-05.actual",
+      "actual": 11685051.0,
+      "expected": 11685051.0,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.6.2023-05.model",
+      "actual": 9627575.1475,
+      "expected": 9627575.1475,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.6.2023-05.baseline",
+      "actual": 10269283.0,
+      "expected": 10269283.0,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.6.2023-06.actual",
+      "actual": 11247504.0,
+      "expected": 11247504.0,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.6.2023-06.model",
+      "actual": 8640535.4526,
+      "expected": 8640535.4526,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.6.2023-06.baseline",
+      "actual": 9700639.0,
+      "expected": 9700639.0,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.6.2023-07.actual",
+      "actual": 12357076.0,
+      "expected": 12357076.0,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.6.2023-07.model",
+      "actual": 8227112.5595,
+      "expected": 8227112.5595,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.6.2023-07.baseline",
+      "actual": 11359704.0,
+      "expected": 11359704.0,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.6.2023-08.actual",
+      "actual": 12113195.0,
+      "expected": 12113195.0,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.6.2023-08.model",
+      "actual": 10344046.1993,
+      "expected": 10344046.1993,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.6.2023-08.baseline",
+      "actual": 10972010.0,
+      "expected": 10972010.0,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.6.2023-09.actual",
+      "actual": 11459526.0,
+      "expected": 11459526.0,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.6.2023-09.model",
+      "actual": 10191711.1178,
+      "expected": 10191711.1178,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.6.2023-09.baseline",
+      "actual": 10591347.0,
+      "expected": 10591347.0,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.6.2023-10.actual",
+      "actual": 11597380.0,
+      "expected": 11597380.0,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.6.2023-10.model",
+      "actual": 10630360.2266,
+      "expected": 10630360.2266,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.6.2023-10.baseline",
+      "actual": 11179092.0,
+      "expected": 11179092.0,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.6.2023-11.actual",
+      "actual": 11285833.0,
+      "expected": 11285833.0,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.6.2023-11.model",
+      "actual": 10452178.2495,
+      "expected": 10452178.2495,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.6.2023-11.baseline",
+      "actual": 11361733.0,
+      "expected": 11361733.0,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.6.2023-12.actual",
+      "actual": 12108996.0,
+      "expected": 12108996.0,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.6.2023-12.model",
+      "actual": 11533916.248,
+      "expected": 11533916.248,
+      "passed": true
+    },
+    {
+      "name": "d_seats.monthly.6.2023-12.baseline",
+      "actual": 12250358.0,
+      "expected": 12250358.0,
+      "passed": true
+    },
+    {
+      "name": "d_seats.ui_gain_source",
+      "actual": {
+        "destination": 0.1115,
+        "origin": 0.1114,
+        "cal_month": 0.0899,
+        "hist_yoy_seats": 0.0805,
+        "cal_days_in_month": 0.0757,
+        "hist_yoy_pax": 0.0707,
+        "cal_weekend_days": 0.0401,
+        "hist_pax_lag_24": 0.0344,
+        "cal_is_school_vacation": 0.0303,
+        "hist_unknown_months_12": 0.0297
+      },
+      "expected": {
+        "destination": 0.1115,
+        "origin": 0.1114,
+        "cal_month": 0.0899,
+        "hist_yoy_seats": 0.0805,
+        "cal_days_in_month": 0.0757,
+        "hist_yoy_pax": 0.0707,
+        "cal_weekend_days": 0.0401,
+        "hist_pax_lag_24": 0.0344,
+        "cal_is_school_vacation": 0.0303,
+        "hist_unknown_months_12": 0.0297
+      },
+      "passed": true
+    },
+    {
+      "name": "d_seats.histogram.model",
+      "actual": [
+        45,
+        78,
+        127,
+        217,
+        227,
+        287,
+        295,
+        412,
+        514,
+        639,
+        753,
+        898,
+        1070,
+        1324,
+        1760,
+        2038,
+        2497,
+        2695,
+        2657,
+        2490,
+        1984,
+        1421,
+        1116,
+        794,
+        661,
+        490,
+        465,
+        404,
+        314,
+        222,
+        205,
+        153,
+        171,
+        155,
+        111,
+        111,
+        105,
+        104,
+        95,
+        1369
+      ],
+      "expected": [
+        45,
+        78,
+        127,
+        217,
+        227,
+        287,
+        295,
+        412,
+        514,
+        639,
+        753,
+        898,
+        1070,
+        1324,
+        1760,
+        2038,
+        2497,
+        2695,
+        2657,
+        2490,
+        1984,
+        1421,
+        1116,
+        794,
+        661,
+        490,
+        465,
+        404,
+        314,
+        222,
+        205,
+        153,
+        171,
+        155,
+        111,
+        111,
+        105,
+        104,
+        95,
+        1369
+      ],
+      "passed": true
+    },
+    {
+      "name": "d_seats.residual.model.p10",
+      "actual": -0.479,
+      "expected": -0.479,
+      "passed": true
+    },
+    {
+      "name": "d_seats.residual.model.p50",
+      "actual": -0.1023,
+      "expected": -0.1023,
+      "passed": true
+    },
+    {
+      "name": "d_seats.residual.model.p90",
+      "actual": 0.3953,
+      "expected": 0.3953,
+      "passed": true
+    },
+    {
+      "name": "d_seats.histogram.baseline",
+      "actual": [
+        1751,
+        137,
+        125,
+        134,
+        173,
+        184,
+        207,
+        356,
+        491,
+        531,
+        746,
+        856,
+        787,
+        1036,
+        1420,
+        1749,
+        1777,
+        2040,
+        2131,
+        2301,
+        2778,
+        1283,
+        1079,
+        888,
+        653,
+        598,
+        435,
+        406,
+        391,
+        284,
+        274,
+        261,
+        238,
+        226,
+        214,
+        194,
+        192,
+        153,
+        144,
+        1850
+      ],
+      "expected": [
+        1751,
+        137,
+        125,
+        134,
+        173,
+        184,
+        207,
+        356,
+        491,
+        531,
+        746,
+        856,
+        787,
+        1036,
+        1420,
+        1749,
+        1777,
+        2040,
+        2131,
+        2301,
+        2778,
+        1283,
+        1079,
+        888,
+        653,
+        598,
+        435,
+        406,
+        391,
+        284,
+        274,
+        261,
+        238,
+        226,
+        214,
+        194,
+        192,
+        153,
+        144,
+        1850
+      ],
+      "passed": true
+    },
+    {
+      "name": "d_seats.residual.baseline.p10",
+      "actual": -0.5889,
+      "expected": -0.5889,
+      "passed": true
+    },
+    {
+      "name": "d_seats.residual.baseline.p50",
+      "actual": -0.0729,
+      "expected": -0.0729,
+      "passed": true
+    },
+    {
+      "name": "d_seats.residual.baseline.p90",
+      "actual": 0.6136,
+      "expected": 0.6136,
+      "passed": true
+    },
+    {
+      "name": "source_artifacts_unchanged",
+      "actual": "SHA-256 rechecked for every input file",
+      "expected": "same hashes before and after read-only audit",
+      "passed": true
+    }
+  ],
+  "check_count": 601,
+  "failures": []
+}

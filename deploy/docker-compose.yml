@@ -1,0 +1,30 @@
+# ANAC Flight Intelligence v2 — API and dashboard together, for a local or single-host run.
+#   docker compose -f deploy/docker-compose.yml up --build
+# Then open http://localhost:3000/dashboard. The legacy v1 compose file at the root is unrelated.
+services:
+  api:
+    build:
+      context: ..
+      dockerfile: deploy/api/Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      ANAC_CORS_ORIGINS: http://localhost:3000
+      # Optional. Without it the analyst reports "not configured" and the rest works.
+      GROQ_API_KEY: ${GROQ_API_KEY:-}
+    restart: unless-stopped
+
+  web:
+    build:
+      context: ..
+      dockerfile: deploy/web/Dockerfile
+      args:
+        NEXT_PUBLIC_DATA_SOURCE: api
+        # The browser calls the API directly, so this is the address the browser sees.
+        NEXT_PUBLIC_API_URL: http://localhost:8000
+    ports:
+      - "3000:3000"
+    depends_on:
+      api:
+        condition: service_healthy
+    restart: unless-stopped

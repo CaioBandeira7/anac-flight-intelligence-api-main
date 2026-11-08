@@ -1,0 +1,120 @@
+{
+  "module": "b",
+  "title": "Seat occupancy by route and carrier",
+  "kind": "lightgbm",
+  "evaluated_on": "validation (2023-01 to 2023-12)",
+  "dataset": "flights",
+  "unknown_months": [
+    "2015-08",
+    "2016-02",
+    "2018-07",
+    "2020-08"
+  ],
+  "trained_at": "2026-11-06T17:51:47+00:00",
+  "params_fingerprint": "a70a4733ebdd068c",
+  "targets": {
+    "load_factor": {
+      "rows": 42369,
+      "metric": "seat-weighted MAE",
+      "lightgbm": {
+        "value": 0.06058022524963083,
+        "ci95": [
+          0.05696962468107372,
+          0.06430929210408848
+        ],
+        "months": 12
+      },
+      "baselines": {
+        "pred_same_month_last_year": {
+          "value": 0.06897145799697646,
+          "ci95": [
+            0.06505608291865328,
+            0.07296726615531801
+          ],
+          "months": 12
+        },
+        "pred_mean_12": {
+          "value": 0.065419953889521,
+          "ci95": [
+            0.061707883254241806,
+            0.06948925886429058
+          ],
+          "months": 12
+        },
+        "pred_mean_3": {
+          "value": 0.07265192382292908,
+          "ci95": [
+            0.06931301270041881,
+            0.07573330463279641
+          ],
+          "months": 12
+        }
+      },
+      "best_baseline": "pred_mean_12",
+      "difference_vs_best_baseline": {
+        "value": -0.004839728639890175,
+        "ci95": [
+          -0.009382302220348094,
+          -0.000438025521870591
+        ],
+        "months": 12
+      },
+      "beats_best_baseline": true,
+      "bias": {
+        "value": 0.0003880224987605245,
+        "ci95": [
+          -0.009140914357788486,
+          0.010187022496506826
+        ],
+        "months": 12
+      },
+      "by_horizon": {
+        "1": {
+          "lightgbm": 0.059891204342132236,
+          "best_baseline": "pred_mean_12",
+          "best_baseline_value": 0.06329839854672205,
+          "difference": -0.003407194204589829,
+          "ci95": [
+            -0.008325451402749373,
+            0.0015216527863929634
+          ]
+        },
+        "3": {
+          "lightgbm": 0.060917801035934055,
+          "best_baseline": "pred_mean_12",
+          "best_baseline_value": 0.06555343203779894,
+          "difference": -0.004635631001864892,
+          "ci95": [
+            -0.00954163642425323,
+            0.00016504414389353734
+          ]
+        },
+        "6": {
+          "lightgbm": 0.060944029401407744,
+          "best_baseline": "pred_mean_12",
+          "best_baseline_value": 0.06745879866740051,
+          "difference": -0.006514769265992766,
+          "ci95": [
+            -0.010827755084009896,
+            -0.0028151903432866027
+          ]
+        }
+      },
+      "rows_fit": 366818,
+      "rows_early_stopping": 23448,
+      "best_iteration": 46,
+      "top_features_by_gain": {
+        "hist_lf_lag_12": 0.5153,
+        "hist_lf_lag_24": 0.0998,
+        "hist_lf_12": 0.0938,
+        "hist_lf_6": 0.0731,
+        "hist_lf_3": 0.0578,
+        "id_km": 0.0321,
+        "destination": 0.0312,
+        "origin": 0.0297,
+        "cal_is_school_vacation": 0.0166,
+        "cal_month": 0.0099
+      }
+    }
+  }
+}

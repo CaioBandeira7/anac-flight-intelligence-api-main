@@ -1,0 +1,110 @@
+{
+  "module": "a",
+  "title": "Flight movements by airport and day",
+  "kind": "lightgbm",
+  "evaluated_on": "validation (2023-01 to 2023-12)",
+  "dataset": "flights",
+  "unknown_months": [
+    "2015-08",
+    "2016-02",
+    "2018-07",
+    "2020-08"
+  ],
+  "trained_at": "2026-11-06T17:51:39+00:00",
+  "params_fingerprint": "a70a4733ebdd068c",
+  "targets": {
+    "movements": {
+      "rows": 36500,
+      "metric": "WAPE",
+      "lightgbm": {
+        "value": 0.10095354006630726,
+        "ci95": [
+          0.09153552645630834,
+          0.11097888839532824
+        ],
+        "months": 12
+      },
+      "baselines": {
+        "pred_seasonal_naive": {
+          "value": 0.1600431780286839,
+          "ci95": [
+            0.144298031797103,
+            0.1773545591556727
+          ],
+          "months": 12
+        },
+        "pred_seasonal_trend": {
+          "value": 0.15699105110640205,
+          "ci95": [
+            0.14630325364074814,
+            0.16791027140770168
+          ],
+          "months": 12
+        },
+        "pred_recent_weekday": {
+          "value": 0.1030256582380125,
+          "ci95": [
+            0.09192403686687717,
+            0.11433860149376324
+          ],
+          "months": 12
+        }
+      },
+      "best_baseline": "pred_recent_weekday",
+      "difference_vs_best_baseline": {
+        "value": -0.0020721181717052385,
+        "ci95": [
+          -0.008440248533917137,
+          0.003467612596436211
+        ],
+        "months": 12
+      },
+      "beats_best_baseline": false,
+      "bias": {
+        "value": -0.020051557331078215,
+        "ci95": [
+          -0.03799843817620899,
+          0.0011116316402585472
+        ],
+        "months": 12
+      },
+      "by_horizon": {
+        "1": {
+          "lightgbm": 0.09874214720125202,
+          "best_baseline": "pred_recent_weekday",
+          "best_baseline_value": 0.10091942113827698,
+          "difference": -0.0021772739370249437,
+          "ci95": [
+            -0.009634723228783879,
+            0.004565885003076764
+          ]
+        },
+        "3": {
+          "lightgbm": 0.10316512579614683,
+          "best_baseline": "pred_recent_weekday",
+          "best_baseline_value": 0.10513207903145999,
+          "difference": -0.0019669532353131644,
+          "ci95": [
+            -0.008745380943996984,
+            0.004740756594515326
+          ]
+        }
+      },
+      "rows_fit": 306068,
+      "rows_early_stopping": 27350,
+      "best_iteration": 98,
+      "top_features_by_gain": {
+        "cal_day_of_week": 0.3075,
+        "airport": 0.1779,
+        "cal_week_of_year": 0.0916,
+        "cal_is_weekend": 0.0686,
+        "cal_month": 0.067,
+        "hist_level_28": 0.0431,
+        "hist_yoy_56": 0.0414,
+        "hist_level_56": 0.0385,
+        "hist_lag_364": 0.0382,
+        "cal_is_school_vacation": 0.0336
+      }
+    }
+  }
+}

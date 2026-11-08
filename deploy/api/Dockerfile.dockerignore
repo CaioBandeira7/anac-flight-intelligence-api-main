@@ -1,0 +1,10 @@
+# Allowlist for deploy/api/Dockerfile (BuildKit reads <Dockerfile>.dockerignore).
+# Everything is excluded unless listed: .env, raw data, models and web/ stay out.
+*
+!pyproject.toml
+!requirements-lock.txt
+!README.md
+!src/
+!data/serving/v1/
+!data/analytics/v1/
+**/__pycache__

@@ -5,3 +5,22 @@ __pycache__/
 *.joblib
 *.pt
 *.pth
+
+# Large artifacts that could otherwise appear outside data/
+/models/
+*.parquet
+*.tmp-*
+*.tar.gz
+
+# Tooling
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Secrets
+.env
+.env.*
+!.env.example

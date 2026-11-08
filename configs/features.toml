@@ -1,0 +1,36 @@
+# Feature definitions. Changing any value changes the build fingerprint recorded in manifests.
+
+[paths]
+processed = "data/processed"
+output = "data/features/v1"
+reports = "reports/baselines"
+
+[time]
+# At the start of origin month O, the last known month is O - publication_lag_months.
+publication_lag_months = 2
+# First target month built. Use 2003-01 for the longer-window experiment.
+first_target = "2013-01"
+validation_start = "2023-01"
+validation_end = "2023-12"
+# Targets from test_start on are never written unless explicitly unsealed.
+test_start = "2024-01"
+test_end = "2025-12"
+
+[scope]
+# Flights above this paid load factor are treated as recording errors for B and D.
+max_flight_load_factor = 1.5
+active_months = 3
+
+[module_a]
+horizons = [1, 3]
+top_airports = 50
+
+[module_b]
+horizons = [1, 3, 6]
+min_mean_seats = 500
+
+[module_d]
+horizons = [1, 3, 6]
+min_mean_seats = 500
+# Quantile of the training paid load factor that defines "high pressure".
+high_pressure_quantile = 0.75

@@ -1,0 +1,38 @@
+# Ingestion v2 defaults. Paths are relative to the repository root.
+# See docs/ingestion.md for why each threshold has this value.
+
+[paths]
+source_csv = "data/raw/anac_brazil.csv"
+# Full runs write to <full_output_root>/{interim/ingestion,processed/flights}.
+full_output_root = "data"
+# Sample runs never touch the full-run directories.
+sample_output_root = "data/sample"
+# The quality report of a full run is small and meant to be versioned.
+full_report_dir = "reports/ingestion"
+
+[chunking]
+chunk_size_mb = 128
+
+[sample]
+blocks = 20
+block_mb = 16
+seed = 42
+
+[parquet]
+interim_zstd_level = 1
+processed_zstd_level = 6
+
+[memory]
+# Checked between chunks: exceeding the abort limit stops the run, which can then resume.
+warn_gb = 8.0
+abort_gb = 12.0
+# Also stop if the whole machine runs short, before Windows starts paging heavily.
+min_available_gb = 1.0
+
+[rules]
+min_reference_date = "2000-01-01"
+max_reference_date = "2025-12-31"
+max_departure_reference_gap_days = 3
+max_flight_hours = 30.0
+hours_clock_tolerance = 0.25
+ask_rpk_relative_tolerance = 0.01

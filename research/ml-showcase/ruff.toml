@@ -1,0 +1,6 @@
+# Same rules as the project, with the exceptions it already grants to scripts/:
+# chart titles are long strings, and labels use "−", "→" and "×" on purpose.
+extend = "../../pyproject.toml"
+
+[lint]
+extend-ignore = ["E501", "RUF001"]

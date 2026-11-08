@@ -1,0 +1,125 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" role="img" aria-label="Twin-engine airliner in flight">
+  <defs>
+    <linearGradient id="fus" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="0.38" stop-color="#f4f7fb"/>
+      <stop offset="0.7" stop-color="#d9e1ea"/>
+      <stop offset="1" stop-color="#9eabbc"/>
+    </linearGradient>
+    <linearGradient id="belly" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#c3ccd8" stop-opacity="0"/>
+      <stop offset="1" stop-color="#6f7d90" stop-opacity="0.55"/>
+    </linearGradient>
+    <linearGradient id="tail" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f1e3a"/>
+      <stop offset="0.55" stop-color="#1d4ed8"/>
+      <stop offset="1" stop-color="#22d3ee"/>
+    </linearGradient>
+    <linearGradient id="wing" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e8edf3"/>
+      <stop offset="1" stop-color="#9aa7b8"/>
+    </linearGradient>
+    <linearGradient id="wingFar" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#b7c2d0"/>
+      <stop offset="1" stop-color="#8592a5"/>
+    </linearGradient>
+    <linearGradient id="nacelle" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="0.45" stop-color="#e3e9f0"/>
+      <stop offset="1" stop-color="#8996a8"/>
+    </linearGradient>
+    <linearGradient id="cheat" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#22d3ee" stop-opacity="0"/>
+      <stop offset="0.25" stop-color="#22d3ee"/>
+      <stop offset="1" stop-color="#3b82f6"/>
+    </linearGradient>
+    <radialGradient id="intake" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#1c2433"/>
+      <stop offset="0.7" stop-color="#3a4558"/>
+      <stop offset="1" stop-color="#c9d2dd"/>
+    </radialGradient>
+    <linearGradient id="glass" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3a5578"/>
+      <stop offset="1" stop-color="#101a2c"/>
+    </linearGradient>
+    <filter id="soft" x="-5%" y="-5%" width="110%" height="110%">
+      <feGaussianBlur stdDeviation="0.6"/>
+    </filter>
+  </defs>
+
+  <!-- far-side horizontal stabilizer -->
+  <path d="M168 196 L92 168 L74 170 L130 204 Z" fill="url(#wingFar)"/>
+  <!-- far-side wing (mostly hidden behind fuselage) -->
+  <path d="M560 204 L470 128 L440 128 L500 210 Z" fill="url(#wingFar)" opacity="0.9"/>
+
+  <!-- vertical stabilizer -->
+  <path d="M150 178 C140 150 112 82 96 40 L146 38 C176 70 236 128 292 156 Z" fill="url(#tail)"/>
+  <path d="M104 46 L144 44 C170 72 220 120 262 146 L250 150 C206 122 160 82 128 52 Z" fill="#ffffff" opacity="0.08"/>
+
+  <!-- fuselage -->
+  <path id="body" d="M84 192
+           C112 176 164 160 240 153
+           L955 147
+           C1030 146 1090 158 1128 184
+           C1142 194 1140 206 1124 212
+           C1088 228 1030 238 958 240
+           L300 241
+           C220 241 150 224 84 192 Z" fill="url(#fus)"/>
+  <path d="M84 192 C150 224 220 241 300 241 L958 240 C1030 238 1088 228 1124 212 C1105 222 1040 232 958 233 L300 234 C226 234 158 220 84 192 Z" fill="url(#belly)"/>
+  <!-- specular highlight along the crown -->
+  <path d="M250 158 L950 152 C1010 152 1060 160 1092 172 C1050 164 1000 160 950 160 L250 165 Z" fill="#ffffff" opacity="0.85"/>
+  <!-- cheatline -->
+  <path d="M240 214 L1000 208 C1040 206 1076 200 1104 192 L1110 197 C1080 207 1044 214 1000 216 L240 222 Z" fill="url(#cheat)" opacity="0.9"/>
+
+  <!-- cabin windows -->
+  <g fill="#1f2a3d" opacity="0.92">
+    <rect x="330" y="173" width="7" height="11" rx="3.5"/><rect x="348" y="173" width="7" height="11" rx="3.5"/>
+    <rect x="366" y="173" width="7" height="11" rx="3.5"/><rect x="384" y="173" width="7" height="11" rx="3.5"/>
+    <rect x="402" y="173" width="7" height="11" rx="3.5"/><rect x="420" y="173" width="7" height="11" rx="3.5"/>
+    <rect x="438" y="173" width="7" height="11" rx="3.5"/><rect x="456" y="172" width="7" height="11" rx="3.5"/>
+    <rect x="474" y="172" width="7" height="11" rx="3.5"/><rect x="492" y="172" width="7" height="11" rx="3.5"/>
+    <rect x="510" y="172" width="7" height="11" rx="3.5"/><rect x="528" y="172" width="7" height="11" rx="3.5"/>
+    <rect x="546" y="172" width="7" height="11" rx="3.5"/><rect x="564" y="172" width="7" height="11" rx="3.5"/>
+    <rect x="610" y="171" width="7" height="11" rx="3.5"/><rect x="628" y="171" width="7" height="11" rx="3.5"/>
+    <rect x="646" y="171" width="7" height="11" rx="3.5"/><rect x="664" y="171" width="7" height="11" rx="3.5"/>
+    <rect x="682" y="171" width="7" height="11" rx="3.5"/><rect x="700" y="171" width="7" height="11" rx="3.5"/>
+    <rect x="718" y="171" width="7" height="11" rx="3.5"/><rect x="736" y="170" width="7" height="11" rx="3.5"/>
+    <rect x="754" y="170" width="7" height="11" rx="3.5"/><rect x="772" y="170" width="7" height="11" rx="3.5"/>
+    <rect x="790" y="170" width="7" height="11" rx="3.5"/><rect x="808" y="170" width="7" height="11" rx="3.5"/>
+    <rect x="826" y="170" width="7" height="11" rx="3.5"/><rect x="844" y="170" width="7" height="11" rx="3.5"/>
+    <rect x="862" y="170" width="7" height="11" rx="3.5"/><rect x="880" y="170" width="7" height="11" rx="3.5"/>
+    <rect x="898" y="170" width="7" height="11" rx="3.5"/><rect x="916" y="170" width="7" height="11" rx="3.5"/>
+  </g>
+  <!-- doors -->
+  <g fill="none" stroke="#9aa6b6" stroke-width="1.4" opacity="0.8">
+    <rect x="292" y="166" width="20" height="40" rx="5"/>
+    <rect x="584" y="164" width="16" height="30" rx="4"/>
+    <rect x="950" y="162" width="20" height="40" rx="5"/>
+  </g>
+  <!-- cockpit -->
+  <path d="M1040 170 C1058 168 1080 171 1098 178 L1094 186 C1078 182 1058 180 1040 181 Z" fill="url(#glass)"/>
+  <path d="M1046 172 L1060 171 L1058 180 L1046 181 Z M1066 171 L1082 173 L1078 182 L1064 180 Z" fill="#7aa3d6" opacity="0.35"/>
+
+  <!-- near-side horizontal stabilizer -->
+  <path d="M176 204 L70 246 L96 252 L246 212 Z" fill="url(#wing)"/>
+
+  <!-- near-side wing, swept, with winglet -->
+  <path d="M520 214 L392 322 L370 330 L382 338 L432 336 L716 226 Z" fill="url(#wing)"/>
+  <path d="M392 322 L366 292 L376 290 L404 318 Z" fill="url(#tail)"/>
+  <path d="M520 214 L716 226 L700 231 L528 222 Z" fill="#ffffff" opacity="0.55"/>
+  <path d="M432 336 L716 226 L708 232 L440 340 Z" fill="#6b7789" opacity="0.5"/>
+
+  <!-- engine pylon + nacelle -->
+  <path d="M560 232 L640 230 L652 252 L572 256 Z" fill="#b8c3d1"/>
+  <path d="M506 262 C506 244 530 236 566 236 L664 238 C684 238 694 248 694 262 C694 276 684 286 664 286 L566 288 C530 288 506 280 506 262 Z" fill="url(#nacelle)"/>
+  <ellipse cx="686" cy="262" rx="12" ry="24" fill="url(#intake)"/>
+  <path d="M520 254 L660 248 L660 252 L520 258 Z" fill="#ffffff" opacity="0.7"/>
+  <path d="M500 262 C500 270 503 276 508 279 L498 279 C494 274 493 268 494 262 Z" fill="#46505f"/>
+
+  <!-- belly fairing + gear doors hint -->
+  <path d="M520 238 C580 248 680 248 760 238 L760 241 C680 252 580 252 520 241 Z" fill="#8f9bab" opacity="0.55"/>
+  <!-- tail cone / APU -->
+  <path d="M84 192 C80 190 78 188 80 186 C84 184 92 184 100 186 Z" fill="#a9b4c3"/>
+  <!-- beacon -->
+  <circle cx="620" cy="146" r="2.4" fill="#ef4444"/>
+</svg>

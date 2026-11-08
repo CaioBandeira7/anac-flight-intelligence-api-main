@@ -1,0 +1,207 @@
+{
+  "question": "Is total checked baggage per paid passenger a defensible target?",
+  "period": "2018-01 to 2022-12 (2024-2025 and 2023 not read)",
+  "criteria": {
+    "min_share_of_flights_with_baggage": 0.98,
+    "max_shift_relative_to_trailing_market_position": 0.25,
+    "min_year_over_year_route_persistence": 0.7,
+    "min_admitted_months": 36,
+    "min_qualified_carriers": 2,
+    "min_share_of_domestic_paid_pax": 0.6
+  },
+  "carriers": {
+    "AZU": {
+      "qualified": true,
+      "reasons": [],
+      "months_in_period": 58,
+      "months_admitted": 58,
+      "months_excluded": [],
+      "route_persistence_spearman": 0.843788196222816,
+      "route_pairs": 8491,
+      "admitted_pax": 109049547.0
+    },
+    "GLO": {
+      "qualified": false,
+      "reasons": [
+        "only 31 admitted months"
+      ],
+      "months_in_period": 58,
+      "months_admitted": 31,
+      "months_excluded": [
+        "2019-05",
+        "2019-06",
+        "2019-07",
+        "2019-08",
+        "2019-09",
+        "2019-10",
+        "2019-11",
+        "2019-12",
+        "2020-01",
+        "2020-02",
+        "2020-03",
+        "2020-04",
+        "2020-05",
+        "2020-06",
+        "2020-07",
+        "2020-09",
+        "2020-10",
+        "2020-11",
+        "2020-12",
+        "2021-01",
+        "2021-02",
+        "2021-03",
+        "2021-04",
+        "2021-05",
+        "2021-06",
+        "2021-07",
+        "2021-08"
+      ],
+      "route_persistence_spearman": 0.8791139668859428,
+      "route_pairs": 1832,
+      "admitted_pax": 73860333.0
+    },
+    "TAM": {
+      "qualified": true,
+      "reasons": [],
+      "months_in_period": 58,
+      "months_admitted": 57,
+      "months_excluded": [
+        "2019-05"
+      ],
+      "route_persistence_spearman": 0.8655736045156489,
+      "route_pairs": 6150,
+      "admitted_pax": 117045010.0
+    },
+    "ONE": {
+      "qualified": false,
+      "reasons": [
+        "only 14 admitted months"
+      ],
+      "months_in_period": 15,
+      "months_admitted": 14,
+      "months_excluded": [
+        "2019-04"
+      ],
+      "route_persistence_spearman": 0.9119652827392767,
+      "route_pairs": 324,
+      "admitted_pax": 13380544.0
+    },
+    "ACN": {
+      "qualified": false,
+      "reasons": [
+        "route persistence None"
+      ],
+      "months_in_period": 56,
+      "months_admitted": 40,
+      "months_excluded": [
+        "2020-04",
+        "2020-05",
+        "2020-06",
+        "2021-12",
+        "2022-01",
+        "2022-02",
+        "2022-03",
+        "2022-04",
+        "2022-05",
+        "2022-06",
+        "2022-07",
+        "2022-08",
+        "2022-09",
+        "2022-10",
+        "2022-11",
+        "2022-12"
+      ],
+      "route_persistence_spearman": null,
+      "route_pairs": null,
+      "admitted_pax": 93675.0
+    },
+    "PTB": {
+      "qualified": true,
+      "reasons": [],
+      "months_in_period": 55,
+      "months_admitted": 36,
+      "months_excluded": [
+        "2020-03",
+        "2020-10",
+        "2020-11",
+        "2020-12",
+        "2021-01",
+        "2021-02",
+        "2021-03",
+        "2021-04",
+        "2021-05",
+        "2021-06",
+        "2021-07",
+        "2021-08",
+        "2022-06",
+        "2022-07",
+        "2022-08",
+        "2022-09",
+        "2022-10",
+        "2022-11",
+        "2022-12"
+      ],
+      "route_persistence_spearman": 0.8542398777692898,
+      "route_pairs": 34,
+      "admitted_pax": 1570287.0
+    },
+    "PAM": {
+      "qualified": false,
+      "reasons": [
+        "only 22 admitted months",
+        "route persistence None"
+      ],
+      "months_in_period": 58,
+      "months_admitted": 22,
+      "months_excluded": [
+        "2018-11",
+        "2019-10",
+        "2019-11",
+        "2019-12",
+        "2020-01",
+        "2020-02",
+        "2020-03",
+        "2020-04",
+        "2020-05",
+        "2020-06",
+        "2020-07",
+        "2020-09",
+        "2020-10",
+        "2020-11",
+        "2020-12",
+        "2021-01",
+        "2021-02",
+        "2021-03",
+        "2021-04",
+        "2021-05",
+        "2021-09",
+        "2021-10",
+        "2021-11",
+        "2021-12",
+        "2022-01",
+        "2022-02",
+        "2022-03",
+        "2022-04",
+        "2022-05",
+        "2022-06",
+        "2022-07",
+        "2022-08",
+        "2022-09",
+        "2022-10",
+        "2022-11",
+        "2022-12"
+      ],
+      "route_persistence_spearman": null,
+      "route_pairs": null,
+      "admitted_pax": 291375.0
+    }
+  },
+  "qualified_carriers": [
+    "AZU",
+    "TAM",
+    "PTB"
+  ],
+  "share_of_domestic_paid_pax_covered": 0.615,
+  "verdict": "may_proceed_to_baseline",
+  "remaining_condition": "A model must still beat the same-month-last-year baseline on validation. If it does not, the module is suspended rather than published."
+}

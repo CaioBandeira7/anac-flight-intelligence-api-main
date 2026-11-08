@@ -1,0 +1,5 @@
+extend = "../../../pyproject.toml"
+
+[lint]
+# Slide prose and exact source/asset names remain readable as single strings.
+extend-ignore = ["E501", "RUF001"]
