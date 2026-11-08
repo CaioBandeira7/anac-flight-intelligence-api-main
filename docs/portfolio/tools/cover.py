@@ -10,7 +10,7 @@ def make(W,H,name,lang="pt"):
     bg=Image.open(S/"landing-ready-to-fly.jpg").convert("RGB")
     # sky area only: crop the upper band without the headline, then scale
     left=bg.crop((0,470,590,674)); right=bg.crop((770,470,1355,674))
-    band=Image.new("RGB",(590+585-60,204)); band.paste(left,(0,0)); 
+    band=Image.new("RGB",(590+585-60,204)); band.paste(left,(0,0));
     m=Image.linear_gradient("L").rotate(90).resize((60,204)).transpose(Image.FLIP_LEFT_RIGHT)
     rpart=right.copy(); band.paste(rpart,(530,0)); band.paste(left.crop((530,0,590,204)),(530,0),Image.linear_gradient("L").rotate(-90).resize((60,204)))
     sky=band.resize((W,int(H*0.40)),Image.LANCZOS)
