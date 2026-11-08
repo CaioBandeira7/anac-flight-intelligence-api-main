@@ -1,0 +1,4 @@
+# Extra packages for the research scripts, on top of the project environment
+# (requirements-lock.txt + pip install -e .). Versions used to produce the published figures.
+matplotlib==3.11.2
+markdown==3.11.3

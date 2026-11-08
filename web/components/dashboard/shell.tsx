@@ -247,7 +247,7 @@ function SourceIndicator() {
     <div className="flex items-center gap-3 text-xs text-muted">
       <span className="flex items-center gap-2">
         <span className={cn("size-1.5 rounded-full", provider.kind === "DEMO" ? "bg-demo" : "bg-success")} aria-hidden />
-        {provider.kind === "DEMO" ? "Demo mode" : "Live API"}
+        {provider.kind === "DEMO" ? "Demo mode" : "API data"}
       </span>
       {provider.kind === "DEMO" && <DemoBadge />}
     </div>

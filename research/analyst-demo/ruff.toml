@@ -1,0 +1,5 @@
+# Same rules as the project, with the exceptions it already grants to scripts/.
+extend = "../../pyproject.toml"
+
+[lint]
+extend-ignore = ["E501", "RUF001"]

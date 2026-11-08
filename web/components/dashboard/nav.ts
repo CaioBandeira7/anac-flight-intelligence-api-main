@@ -1,4 +1,4 @@
-import { BookOpenText, Bot, BrainCircuit, CircleHelp, LayoutDashboard, Plane, Route, TowerControl, type LucideIcon } from "lucide-react";
+import { BookOpenText, Bot, BrainCircuit, CircleHelp, LayoutDashboard, Plane, Route, Sparkles, TowerControl, type LucideIcon } from "lucide-react";
 
 export interface NavItem {
   href: string;
@@ -59,6 +59,13 @@ export const NAV: NavItem[] = [
     label: "How to read the data",
     icon: CircleHelp,
     description: "Coverage, missing months and the caveats behind every figure.",
+    group: "support",
+  },
+  {
+    href: "/dashboard/analyst#in-action",
+    label: "AI Analyst in Action",
+    icon: Sparkles,
+    description: "Recorded runs of the analyst, verified against the data.",
     group: "support",
   },
   {

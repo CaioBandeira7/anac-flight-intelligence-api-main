@@ -1,0 +1,7 @@
+# Allowlist for deploy/web/Dockerfile: only the web app, without local builds or env files.
+*
+!web/
+web/node_modules
+web/.next
+web/.env*
+web/tsconfig.tsbuildinfo

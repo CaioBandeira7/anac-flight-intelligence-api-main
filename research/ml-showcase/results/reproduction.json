@@ -1,0 +1,526 @@
+{
+  "environment": {
+    "python": "3.12.10",
+    "lightgbm": "4.7.0",
+    "polars": "2.1.0",
+    "numpy": "2.5.4"
+  },
+  "modules": {
+    "a": {
+      "rows": 36500,
+      "origin_months": [
+        "24273",
+        "24286"
+      ],
+      "manifest": {
+        "trained_at": "2026-11-06T17:51:39+00:00",
+        "dataset": "flights",
+        "dataset_digest": "14fa41725d655b59",
+        "params_fingerprint": "a70a4733ebdd068c",
+        "test_period_used": false,
+        "git": {
+          "commit": "210b039",
+          "tracked_changes": true
+        }
+      },
+      "frozen_models": {
+        "movements": {
+          "file": "models/v1/module_a/movements.txt",
+          "sha256": "af024184ec6f0e3929fe4792bd83f8f1cdd4411f7d5d7145544690c11fbfef0c",
+          "matches_manifest": true,
+          "rounds": 98,
+          "rows": 379068,
+          "last_target_month_used": "2023-10"
+        }
+      },
+      "targets": {
+        "movements": {
+          "recomputed": {
+            "rows": 36500,
+            "metric": "WAPE",
+            "lightgbm": {
+              "value": 0.1009535401,
+              "ci95": [
+                0.0915355265,
+                0.1109788884
+              ],
+              "months": 12
+            },
+            "baselines": {
+              "pred_seasonal_naive": {
+                "value": 0.160043178,
+                "ci95": [
+                  0.1442980318,
+                  0.1773545592
+                ],
+                "months": 12
+              },
+              "pred_seasonal_trend": {
+                "value": 0.1569910511,
+                "ci95": [
+                  0.1463032536,
+                  0.1679102714
+                ],
+                "months": 12
+              },
+              "pred_recent_weekday": {
+                "value": 0.1030256582,
+                "ci95": [
+                  0.0919240369,
+                  0.1143386015
+                ],
+                "months": 12
+              }
+            },
+            "best_baseline": "pred_recent_weekday",
+            "difference_vs_best_baseline": {
+              "value": -0.0020721182,
+              "ci95": [
+                -0.0084402485,
+                0.0034676126
+              ],
+              "months": 12
+            },
+            "beats_best_baseline": false,
+            "bias": {
+              "value": -0.0200515573,
+              "ci95": [
+                -0.0379984382,
+                0.0011116316
+              ],
+              "months": 12
+            },
+            "by_horizon": {
+              "1": {
+                "lightgbm": 0.0987421472,
+                "best_baseline": "pred_recent_weekday",
+                "best_baseline_value": 0.1009194211,
+                "difference": -0.0021772739,
+                "ci95": [
+                  -0.0096347232,
+                  0.004565885
+                ]
+              },
+              "3": {
+                "lightgbm": 0.1031651258,
+                "best_baseline": "pred_recent_weekday",
+                "best_baseline_value": 0.105132079,
+                "difference": -0.0019669532,
+                "ci95": [
+                  -0.0087453809,
+                  0.0047407566
+                ]
+              }
+            }
+          },
+          "matches_report": true,
+          "best_iteration_in_report": 98,
+          "top_features_by_gain": {
+            "cal_day_of_week": 0.3075,
+            "airport": 0.1779,
+            "cal_week_of_year": 0.0916,
+            "cal_is_weekend": 0.0686,
+            "cal_month": 0.067,
+            "hist_level_28": 0.0431,
+            "hist_yoy_56": 0.0414,
+            "hist_level_56": 0.0385,
+            "hist_lag_364": 0.0382,
+            "cal_is_school_vacation": 0.0336
+          },
+          "refit": {
+            "best_iteration": 98,
+            "same_iteration_as_report": true,
+            "rows_fit": 306068,
+            "max_abs_difference": 0.0,
+            "identical": true
+          }
+        }
+      }
+    },
+    "b": {
+      "rows": 42369,
+      "origin_months": [
+        "24270",
+        "24286"
+      ],
+      "manifest": {
+        "trained_at": "2026-11-06T17:51:47+00:00",
+        "dataset": "flights",
+        "dataset_digest": "14fa41725d655b59",
+        "params_fingerprint": "a70a4733ebdd068c",
+        "test_period_used": false,
+        "git": {
+          "commit": "210b039",
+          "tracked_changes": true
+        }
+      },
+      "frozen_models": {
+        "load_factor": {
+          "file": "models/v1/module_b/load_factor.txt",
+          "sha256": "a34f7c7251fc3e7c2195d702c79d5793976e49228881725059a34f3de714a87b",
+          "matches_manifest": true,
+          "rounds": 46,
+          "rows": 442733,
+          "last_target_month_used": "2023-10"
+        }
+      },
+      "targets": {
+        "load_factor": {
+          "recomputed": {
+            "rows": 42369,
+            "metric": "seat-weighted MAE",
+            "lightgbm": {
+              "value": 0.0605802252,
+              "ci95": [
+                0.0569696247,
+                0.0643092921
+              ],
+              "months": 12
+            },
+            "baselines": {
+              "pred_same_month_last_year": {
+                "value": 0.068971458,
+                "ci95": [
+                  0.0650560829,
+                  0.0729672662
+                ],
+                "months": 12
+              },
+              "pred_mean_12": {
+                "value": 0.0654199539,
+                "ci95": [
+                  0.0617078833,
+                  0.0694892589
+                ],
+                "months": 12
+              },
+              "pred_mean_3": {
+                "value": 0.0726519238,
+                "ci95": [
+                  0.0693130127,
+                  0.0757333046
+                ],
+                "months": 12
+              }
+            },
+            "best_baseline": "pred_mean_12",
+            "difference_vs_best_baseline": {
+              "value": -0.0048397286,
+              "ci95": [
+                -0.0093823022,
+                -0.0004380255
+              ],
+              "months": 12
+            },
+            "beats_best_baseline": true,
+            "bias": {
+              "value": 0.0003880225,
+              "ci95": [
+                -0.0091409144,
+                0.0101870225
+              ],
+              "months": 12
+            },
+            "by_horizon": {
+              "1": {
+                "lightgbm": 0.0598912043,
+                "best_baseline": "pred_mean_12",
+                "best_baseline_value": 0.0632983985,
+                "difference": -0.0034071942,
+                "ci95": [
+                  -0.0083254514,
+                  0.0015216528
+                ]
+              },
+              "3": {
+                "lightgbm": 0.060917801,
+                "best_baseline": "pred_mean_12",
+                "best_baseline_value": 0.065553432,
+                "difference": -0.004635631,
+                "ci95": [
+                  -0.0095416364,
+                  0.0001650441
+                ]
+              },
+              "6": {
+                "lightgbm": 0.0609440294,
+                "best_baseline": "pred_mean_12",
+                "best_baseline_value": 0.0674587987,
+                "difference": -0.0065147693,
+                "ci95": [
+                  -0.0108277551,
+                  -0.0028151903
+                ]
+              }
+            }
+          },
+          "matches_report": true,
+          "best_iteration_in_report": 46,
+          "top_features_by_gain": {
+            "hist_lf_lag_12": 0.5153,
+            "hist_lf_lag_24": 0.0998,
+            "hist_lf_12": 0.0938,
+            "hist_lf_6": 0.0731,
+            "hist_lf_3": 0.0578,
+            "id_km": 0.0321,
+            "destination": 0.0312,
+            "origin": 0.0297,
+            "cal_is_school_vacation": 0.0166,
+            "cal_month": 0.0099
+          },
+          "refit": {
+            "best_iteration": 46,
+            "same_iteration_as_report": true,
+            "rows_fit": 366818,
+            "max_abs_difference": 0.0,
+            "identical": true
+          }
+        }
+      }
+    },
+    "d": {
+      "rows": 33762,
+      "origin_months": [
+        "24270",
+        "24286"
+      ],
+      "manifest": {
+        "trained_at": "2026-11-06T17:52:37+00:00",
+        "dataset": "flights",
+        "dataset_digest": "14fa41725d655b59",
+        "params_fingerprint": "a70a4733ebdd068c",
+        "test_period_used": false,
+        "git": {
+          "commit": "210b039",
+          "tracked_changes": true
+        }
+      },
+      "frozen_models": {
+        "pax": {
+          "file": "models/v1/module_d/pax.txt",
+          "sha256": "71ca382bc476a135aa9021a842479ade180da57d676c3b5f31256c7e4632c699",
+          "matches_manifest": true,
+          "rounds": 395,
+          "rows": 350518,
+          "last_target_month_used": "2023-10"
+        },
+        "seats": {
+          "file": "models/v1/module_d/seats.txt",
+          "sha256": "bca404d52957f83f093d1d32efa25259c24fe5fd0f186a3da11c5377bb90c075",
+          "matches_manifest": true,
+          "rounds": 243,
+          "rows": 350614,
+          "last_target_month_used": "2023-10"
+        }
+      },
+      "targets": {
+        "pax": {
+          "recomputed": {
+            "rows": 33762,
+            "metric": "WAPE",
+            "lightgbm": {
+              "value": 0.2224190853,
+              "ci95": [
+                0.2064994333,
+                0.2383877983
+              ],
+              "months": 12
+            },
+            "baselines": {
+              "pred_pax_seasonal_naive": {
+                "value": 0.2530850061,
+                "ci95": [
+                  0.2412290774,
+                  0.2657536342
+                ],
+                "months": 12
+              },
+              "pred_pax_seasonal_trend": {
+                "value": 0.3052313579,
+                "ci95": [
+                  0.2838185925,
+                  0.3282279272
+                ],
+                "months": 12
+              }
+            },
+            "best_baseline": "pred_pax_seasonal_naive",
+            "difference_vs_best_baseline": {
+              "value": -0.0306659208,
+              "ci95": [
+                -0.0497235621,
+                -0.0109491799
+              ],
+              "months": 12
+            },
+            "beats_best_baseline": true,
+            "bias": {
+              "value": -0.1221479759,
+              "ci95": [
+                -0.1554378467,
+                -0.0890242151
+              ],
+              "months": 12
+            },
+            "by_horizon": {
+              "1": {
+                "lightgbm": 0.1874135418,
+                "best_baseline": "pred_pax_seasonal_trend",
+                "best_baseline_value": 0.2407446977,
+                "difference": -0.0533311559,
+                "ci95": [
+                  -0.0705857957,
+                  -0.037230011
+                ]
+              },
+              "3": {
+                "lightgbm": 0.2131136373,
+                "best_baseline": "pred_pax_seasonal_naive",
+                "best_baseline_value": 0.2534808796,
+                "difference": -0.0403672423,
+                "ci95": [
+                  -0.0590027324,
+                  -0.0208880719
+                ]
+              },
+              "6": {
+                "lightgbm": 0.2671494816,
+                "best_baseline": "pred_pax_seasonal_naive",
+                "best_baseline_value": 0.2508875006,
+                "difference": 0.016261981,
+                "ci95": [
+                  -0.0061482803,
+                  0.0425139029
+                ]
+              }
+            }
+          },
+          "matches_report": true,
+          "best_iteration_in_report": 395,
+          "top_features_by_gain": {
+            "destination": 0.1287,
+            "origin": 0.1209,
+            "hist_yoy_pax": 0.0863,
+            "cal_month": 0.0862,
+            "cal_is_school_vacation": 0.0476,
+            "hist_pax_lag_24": 0.0449,
+            "cal_days_in_month": 0.0418,
+            "hist_yoy_seats": 0.0391,
+            "cal_weekend_days": 0.033,
+            "hist_lf_lag_12": 0.029
+          },
+          "refit": {
+            "best_iteration": 395,
+            "same_iteration_as_report": true,
+            "rows_fit": 291026,
+            "max_abs_difference": 0.0,
+            "identical": true
+          }
+        },
+        "seats": {
+          "recomputed": {
+            "rows": 33762,
+            "metric": "WAPE",
+            "lightgbm": {
+              "value": 0.2239705606,
+              "ci95": [
+                0.2068528917,
+                0.2404089961
+              ],
+              "months": 12
+            },
+            "baselines": {
+              "pred_seats_seasonal_naive": {
+                "value": 0.2572993095,
+                "ci95": [
+                  0.2439134183,
+                  0.2716248358
+                ],
+                "months": 12
+              },
+              "pred_seats_seasonal_trend": {
+                "value": 0.3256743186,
+                "ci95": [
+                  0.3049920864,
+                  0.3472212742
+                ],
+                "months": 12
+              }
+            },
+            "best_baseline": "pred_seats_seasonal_naive",
+            "difference_vs_best_baseline": {
+              "value": -0.0333287489,
+              "ci95": [
+                -0.0531733965,
+                -0.0118556624
+              ],
+              "months": 12
+            },
+            "beats_best_baseline": true,
+            "bias": {
+              "value": -0.1177659973,
+              "ci95": [
+                -0.1528908321,
+                -0.0828922725
+              ],
+              "months": 12
+            },
+            "by_horizon": {
+              "1": {
+                "lightgbm": 0.1871047909,
+                "best_baseline": "pred_seats_seasonal_trend",
+                "best_baseline_value": 0.2571763272,
+                "difference": -0.0700715363,
+                "ci95": [
+                  -0.0798690744,
+                  -0.0598736656
+                ]
+              },
+              "3": {
+                "lightgbm": 0.2148661344,
+                "best_baseline": "pred_seats_seasonal_naive",
+                "best_baseline_value": 0.2576361576,
+                "difference": -0.0427700232,
+                "ci95": [
+                  -0.0610888721,
+                  -0.023997047
+                ]
+              },
+              "6": {
+                "lightgbm": 0.2703992109,
+                "best_baseline": "pred_seats_seasonal_naive",
+                "best_baseline_value": 0.2552694835,
+                "difference": 0.0151297274,
+                "ci95": [
+                  -0.0093590099,
+                  0.0461357287
+                ]
+              }
+            }
+          },
+          "matches_report": true,
+          "best_iteration_in_report": 243,
+          "top_features_by_gain": {
+            "destination": 0.1115,
+            "origin": 0.1114,
+            "cal_month": 0.0899,
+            "hist_yoy_seats": 0.0805,
+            "cal_days_in_month": 0.0757,
+            "hist_yoy_pax": 0.0707,
+            "cal_weekend_days": 0.0401,
+            "hist_pax_lag_24": 0.0344,
+            "cal_is_school_vacation": 0.0303,
+            "hist_unknown_months_12": 0.0297
+          },
+          "refit": {
+            "best_iteration": 243,
+            "same_iteration_as_report": true,
+            "rows_fit": 291104,
+            "max_abs_difference": 0.0,
+            "identical": true
+          }
+        }
+      }
+    }
+  }
+}

@@ -6,6 +6,7 @@ import { useDataProvider } from "@/components/data-provider";
 import { useResource, type Resource } from "@/hooks/use-resource";
 import type { ModelCard, ModelMetric } from "@/lib/data/contracts";
 import { formatPercent } from "@/lib/utils";
+import { MlShowcase } from "./ml-showcase";
 import { navByHref } from "./nav";
 import { Card, DataTable, DemoBadge, EmptyState, ErrorState, PageHeader, Skeleton } from "./ui";
 
@@ -157,11 +158,15 @@ export function MlStudioView() {
   return (
     <>
       <PageHeader title="ML Studio" description="How each forecasting method scored on 2023 data it had not seen." />
-      <p className="mb-5 rounded-xl border border-line bg-hover px-4 py-3 text-[13px] leading-relaxed text-ink-2">
+      <p className="mb-5 rounded-xl border border-line bg-glass-strong px-4 py-3 text-[13px] leading-relaxed text-ink-2 backdrop-blur-xl">
         These are <strong className="font-medium text-ink">validation results for 2023</strong>, not current forecasts. No forecasts are
         produced or served: <span className="text-ink">Selected method</span> is the one chosen on validation. The final test on 2024–2025 has not
         been run.
       </p>
+      <MlShowcase />
+      <h2 className="mb-4 w-fit rounded-xl border border-line bg-glass-strong px-4 py-2 text-[15px] font-semibold tracking-[-0.01em] text-ink backdrop-blur-xl">
+        Model registry
+      </h2>
       <Loaded state={state} isEmpty={isEmptyList} emptyMessage="No models were reported.">
         {(cards: ModelCard[]) => (
           <div className="grid gap-5 xl:grid-cols-2">
@@ -194,6 +199,31 @@ export function MlStudioView() {
                   </p>
                 </Card>
               ))}
+            <Card title="Using these results" className="xl:col-span-2">
+              <div className="grid gap-5 text-[13px] leading-relaxed text-ink-2 md:grid-cols-3">
+                <div>
+                  <h3 className="mb-1.5 font-medium text-ink">What they support</h3>
+                  <p>
+                    Airport staffing signals 1–3 months ahead (the weekday baseline), load-factor expectations per route and carrier, and the
+                    relative ranking and seasonality of route demand 1–3 months ahead.
+                  </p>
+                </div>
+                <div>
+                  <h3 className="mb-1.5 font-medium text-ink">What they do not</h3>
+                  <p>
+                    Absolute route demand without a level correction, Module D six months ahead, structural changes such as an airport losing
+                    traffic, and anything about prices: the data has no fares.
+                  </p>
+                </div>
+                <div>
+                  <h3 className="mb-1.5 font-medium text-ink">Why there is no prediction playground</h3>
+                  <p>
+                    The models read dozens of features computed from history at a cutoff, which a form cannot supply honestly. The frozen models
+                    have not been tested beyond 2023, so this page shows verified out-of-sample predictions instead of generating new ones.
+                  </p>
+                </div>
+              </div>
+            </Card>
             <Card title="How to read these numbers" className="xl:col-span-2">
               <dl className="grid gap-4 text-[13px] leading-relaxed sm:grid-cols-2 xl:grid-cols-3">
                 {GLOSSARY.map((item) => (

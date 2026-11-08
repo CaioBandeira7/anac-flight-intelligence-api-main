@@ -46,7 +46,8 @@ export function Card({
       borderRadius="20px"
       shadowIntensity="xs"
       glowIntensity="none"
-      className={cn("min-w-0 border border-line bg-glass p-5 sm:p-6", className)}
+      // isolate: the glass layers (z-10..z-30) stay inside the card, so it scrolls under the sticky header.
+      className={cn("isolate min-w-0 border border-line bg-glass p-5 sm:p-6", className)}
     >
       {(title || action) && (
         <header className="mb-5 flex items-start justify-between gap-4">
@@ -67,7 +68,8 @@ export function Card({
 
 export function PageHeader({ title, description, meta }: { title: string; description?: string; meta?: ReactNode }) {
   return (
-    <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+    // On a glass panel, like the filter bars: plain text over the DAY sky is not readable.
+    <div className="mb-8 flex flex-col gap-4 rounded-2xl border border-line bg-glass-strong px-5 py-4 backdrop-blur-xl sm:flex-row sm:items-end sm:justify-between sm:px-6">
       <div>
         <h1 className="text-[clamp(1.6rem,2.6vw,2.15rem)] font-semibold tracking-[-0.03em] text-ink">{title}</h1>
         {description && <p className="mt-1.5 max-w-2xl text-[14.5px] text-muted">{description}</p>}

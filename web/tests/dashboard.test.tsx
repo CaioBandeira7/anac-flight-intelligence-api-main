@@ -103,8 +103,10 @@ describe("AI Aviation Analyst", () => {
     await waitFor(() => expect(input).toBeEnabled());
     fireEvent.change(input, { target: { value: "Q" } });
     fireEvent.click(screen.getByRole("button", { name: /send/i }));
-    expect(await screen.findByRole("alert")).toHaveTextContent("free usage limit");
-    expect(screen.getByRole("button", { name: /retry/i })).toBeInTheDocument();
+    // The page also holds the recorded-cases section, which has its own states.
+    await waitFor(() => expect(screen.getAllByRole("alert").some((a) => /free usage limit/.test(a.textContent ?? ""))).toBe(true));
+    const limit = screen.getAllByRole("alert").find((a) => /free usage limit/.test(a.textContent ?? "")) as HTMLElement;
+    expect(within(limit).getByRole("button", { name: /retry/i })).toBeInTheDocument();
   });
 
   it("explains when the server has no key", async () => {

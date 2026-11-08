@@ -7,6 +7,8 @@ import { useDataProvider } from "@/components/data-provider";
 import { useResource } from "@/hooks/use-resource";
 import { DataProviderError, type ChatResponse, type ChatTurn } from "@/lib/data/contracts";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
+import { AnalystInAction } from "./analyst-in-action";
 import { Header, Loaded } from "./data-views";
 import { Card, ErrorState, Skeleton } from "./ui";
 
@@ -406,6 +408,9 @@ export function FloatingAnalyst() {
             <div>
               <h2 className="text-[15px] font-semibold tracking-[-0.01em] text-ink">AI Aviation Analyst</h2>
               <ConnectionControl />
+              <Link href="/dashboard/analyst#in-action" onClick={close} className="mt-1 inline-block text-xs text-cyan hover:underline">
+                See recorded, verified examples
+              </Link>
             </div>
             <button type="button" onClick={close} aria-label="Close analyst" className="grid size-8 place-items-center rounded-lg text-ink-2 hover:bg-hover">
               <X className="size-4" aria-hidden />
@@ -479,6 +484,9 @@ function AnalystPage() {
             )}
           </Loaded>
         </Card>
+      </div>
+      <div className="mt-8">
+        <AnalystInAction />
       </div>
     </>
   );

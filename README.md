@@ -4,6 +4,17 @@ A reproducible data and machine-learning platform built on ANAC's air transport 
 
 **Current version: v2.** Version 1 is described under [History](#history-version-1). **Portfolio:** [caiobandeira7.github.io](https://caiobandeira7.github.io)
 
+## The problem
+
+ANAC publishes every Brazilian flight leg since 2000, about 20 GB of open data. Getting correct answers from it is hard: flights, passenger flights and aircraft movements are different counts, routes have a direction, load factor cannot be averaged, and four months are missing entirely. This platform does that work once, validates it, and shows every figure with its period, scope and unit.
+
+| Overview | ML Studio | AI Analyst in Action |
+|---|---|---|
+| ![Overview](docs/portfolio/screenshots/overview-day.png) | ![ML Studio](docs/portfolio/screenshots/ml-studio-day.png) | ![Analyst](docs/portfolio/screenshots/analyst-in-action-day.png) |
+| ![Routes](docs/portfolio/screenshots/routes-day.png) | ![ML Studio, NIGHT theme](docs/portfolio/screenshots/ml-studio-night.png) | ![Mobile](docs/portfolio/screenshots/ml-studio-mobile-night.png) |
+
+*Real screenshots of the running dashboard (DAY and NIGHT themes), captured in headless Chrome. More are in [docs/portfolio/screenshots](docs/portfolio/screenshots).*
+
 ## What it does
 
 - **Market overview:** paid passengers, flights, seats offered and load factor for any period, compared with the same months a year earlier.
@@ -43,7 +54,24 @@ These are validation results on 2023, data the models did not see during trainin
 | C | Checked baggage per passenger | Not trained | Provisional target |
 | D | Demand and capacity by route | LightGBM | WAPE 22.24% (passengers), 22.40% (seats) |
 
+**Full study:** [How Predictable Is Brazilian Aviation?](research/ml-showcase/REPORT.md) ([PDF](research/ml-showcase/REPORT.pdf)): error analysis by horizon, volume, entity and month, residuals, gain importance and 37 figures. Every metric is reproduced from the saved artifacts, and an in-memory refit matches the saved predictions bit for bit (`research/ml-showcase/results/reproduction.json`). The 2024–2025 test was deliberately not run (report, Section 6.4). There is no prediction playground: the models need features computed from history, which a form cannot supply honestly.
+
 Known limitations are in [docs/models.md](docs/models.md). They include a bias of about −12% on module D and four absent months in the data (2015-08, 2016-02, 2018-07, 2020-08).
+
+## AI Analyst in Action
+
+Five real runs, recorded during the analyst's validation (Groq, `openai/gpt-oss-120b`), each re-checked against the analytical tables by a path that does not use the analyst's tools ([ANALYST_DEMO.md](docs/portfolio/ANALYST_DEMO.md), and `/dashboard/analyst#in-action` in the app):
+
+| Case | Tool | Answer | Independent check |
+|---|---|---|---|
+| Market size and growth | `get_market_overview` | 131,593,763 paid passengers in 2025, +9.72% | ✅ both match. Two earlier drafts were refused by the verifier |
+| GRU vs CGH | `search_airports` ×2 | 287,291 and 186,664 movements | ✅ |
+| CGH → SDU | `search_routes` | 1,968,523 paid passengers, load factor 77% | ✅ (76.94%) |
+| Is module A a forecast? | `get_model_results` | 10.30% WAPE, validation 2023, "not current forecasts" | ✅ |
+| Prompt injection, invented price | none | Refused: no price data | ✅ no price column exists |
+| Passengers in 2019 | `get_data_coverage` | "Not available" | ❌ known gap: the tools cover only the latest 12 months |
+
+The analyst has no carrier tool, so airline market share is answered by the Airlines page instead.
 
 ## What the data does not contain
 
@@ -75,6 +103,18 @@ npm.cmd run dev                         # http://localhost:3000
 
 Use `npm.cmd` rather than `npm` in PowerShell: if the execution policy blocks scripts, `npm` resolves to `npm.ps1` and fails, while `npm.cmd` runs either way.
 
+### Reproduce the experiments and demos
+
+```powershell
+.venv\Scripts\python -m pip install -r research\ml-showcase\requirements.txt
+.venv\Scripts\python research\ml-showcase\reproduce.py --refit   # metrics, hashes, in-memory refit
+.venv\Scripts\python research\ml-showcase\analysis.py            # figures, tables, ML Studio payload
+.venv\Scripts\python research\ml-showcase\build_pdf.py           # technical report PDF
+.venv\Scripts\python research\analyst-demo\build_cases.py        # analyst cases, verified, no LLM call
+```
+
+To publish the API and dashboard, see [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md). Nothing is deployed yet.
+
 The API serves data built locally, which Git does not version. See [docs/ingestion.md](docs/ingestion.md), [docs/features.md](docs/features.md), [docs/models.md](docs/models.md) and [docs/analytics.md](docs/analytics.md) to rebuild it. The analyst needs `GROQ_API_KEY` in `.env` (see `.env.example`).
 
 ## Documentation
@@ -88,6 +128,10 @@ The API serves data built locally, which Git does not version. See [docs/ingesti
 | [analytics.md](docs/analytics.md) | Tables, measures, coverage, Power BI, analytics API |
 | [decisions.md](docs/decisions.md) | Every methodological decision and why |
 | [AGENTS.md](AGENTS.md) | Rules for coding agents working on this repository |
+| [DEPLOYMENT.md](docs/DEPLOYMENT.md) | Environment variables, Docker files, deployment options and validation checklist |
+| [ML report](research/ml-showcase/REPORT.md) | Reproduction and error analysis of models A, B and D |
+| [Case study](docs/portfolio/CASE_STUDY.md) | How the platform was built with AI agents under human control |
+| [One-pager](docs/portfolio/ONE_PAGER.md) · [Demo script](docs/portfolio/DEMO_SCRIPT.md) | Portfolio summary and a 90-second video script |
 
 ## History: version 1
 
